@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>찾아오시는 길 | (주)대형특수기어</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* 찾아오시는 길 전용 스타일 */
+  .location-section {
+    padding: 80px 24px;
+    background-color: #f8f9fa;
+  }
+  .location-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Section Title */
+  .sec-intro {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .sec-intro .sub-tag {
+    font-family: 'Noto Serif KR', serif;
+    color: var(--signal, #b42318);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .sec-intro h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 32px;
+    color: var(--ink, #111518);
+    line-height: 1.4;
+  }
+
+  /* 지도 및 약도 영역 */
+  .map-card {
+    background: #ffffff;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
+    padding: 32px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    text-align: center;
+  }
+  .map-image-wrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 24px auto;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #eee;
+  }
+  .map-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* 네이버 길찾기 버튼 */
+  .map-action-bar {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn-naver-map {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #03C75A;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.2s;
+    box-shadow: 0 4px 12px rgba(3, 199, 90, 0.25);
+  }
+  .btn-naver-map:hover {
+    background-color: #02b350;
+    transform: translateY(-2px);
+  }
+
+  /* 정보 카드 그리드 (주소 & 전화번호) */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .info-card {
+    background: #ffffff;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
+    padding: 36px 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .info-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #fef2f2;
+    color: var(--signal, #b42318);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .info-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+  }
+  .info-details {
+    flex: 1;
+  }
+  .info-details h3 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    color: var(--signal, #b42318);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .info-details .sub-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  /* 목록 정렬 (1번 이미지 스타일 반영) */
+  .info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .info-list li {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .info-list li:last-child {
+    margin-bottom: 0;
+  }
+  .info-list li strong {
+    font-weight: 700;
+    color: #111;
+    min-width: 75px;
+    display: inline-block;
+  }
+  .info-list li .sep {
+    margin-right: 12px;
+    color: #111;
+    font-weight: 700;
+  }
+  .info-list li .text-content {
+    color: #333;
+  }
+  .info-list li .phone-num {
+    font-weight: 700;
+    color: #111;
+    letter-spacing: 0.5px;
+  }
+
+  /* 반응형 모바일 */
+  @media (max-width: 768px) {
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+    .info-card {
+      padding: 24px;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .map-card {
+      padding: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- 상단 헤더 -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="brand-logo">
+        (주)대형특수기어 <span>DAE HYUNG GEAR</span>
+      </a>
+      <nav class="nav-links">
+        <div class="nav-item"><a href="index.html">홈</a></div>
+        <div class="nav-item active">
+          <a href="greeting.html">회사소개</a>
+          <div class="dropdown-menu">
+            <a href="greeting.html">인사말씀</a>
+            <a href="history.html">회사연혁</a>
+            <a href="location.html">찾아오시는 길</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="cnc.html">제품소개</a>
+          <div class="dropdown-menu">
+            <a href="cnc.html">OM CNC 터닝</a>
+            <a href="bearing.html">선회 베어링</a>
+            <a href="gear.html">기어</a>
+          </div>
+        </div>
+        <div class="nav-item"><a href="equipment.html">설비현황</a></div>
+        <div class="nav-item">
+          <a href="support-center.html">고객지원</a>
+          <div class="dropdown-menu">
+            <a href="support-center.html">고객센터</a>
+            
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 서브 히어로 -->
+  <section class="sub-hero">
+    <div class="sub-hero-bg">
+      <img src="./image/factory_front.png" alt="(주)대형특수기어 공장 전경">
+    </div>
+    <div class="sub-hero-overlay"></div>
+    <div class="sub-hero-content">
+      <div class="sub-hero-tag">LOCATION</div>
+      <h1 class="sub-hero-title">찾아오시는 길</h1>
+      <div class="breadcrumb">홈 &gt; 회사소개 &gt; 찾아오시는 길</div>
+    </div>
+  </section>
+
+  <!-- 메인 찾아오시는 길 섹션 -->
+  <section class="location-section">
+    <div class="location-container">
+      
+      <div class="sec-intro">
+        <span class="sub-tag">LOCATION &amp; CONTACT</span>
+        <h2>(주)대형특수기어로 오시는 길을 안내해 드립니다</h2>
+      </div>
+
+      <!-- 지도 약도 & 길찾기 버튼 -->
+      <div class="map-card">
+        <div class="map-image-wrapper">
+          <img src="./image/a2c10.jpg" alt="(주)대형특수기어 오시는 길 약도">
+        </div>
+        <div class="map-action-bar">
+          <a href="https://map.naver.com/p/directions/-/14152532.929973442,4553293.6339835245,%EB%8C%80%ED%98%95%ED%8A%B9%EC%88%98%EA%B8%B0%EC%96%B4,11815870,PLACE_POI/-/car" target="_blank" class="btn-naver-map">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#FFFFFF"/>
+            </svg>
+            네이버 지도로 길찾기
+          </a>
+        </div>
+      </div>
+
+      <!-- 정보 카드 그리드 (주소 & 전화번호 정렬 완료) -->
+      <div class="info-grid">
+        
+        <!-- 찾아오실 주소 카드 -->
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+          </div>
+          <div class="info-details">
+            <h3>찾아오실 주소</h3>
+            <p class="sub-desc">네비게이션 또는 지도 검색에 새로 개정된 신주소 또는 구 주소를 이용하여 찾아오세요.</p>
+            <ul class="info-list">
+              <li>
+                <strong>신주소</strong><span class="sep">:</span>
+                <span class="text-content">경기도 포천시 소흘읍 호국로479번길 15</span>
+              </li>
+              <li>
+                <strong>구주소</strong><span class="sep">:</span>
+                <span class="text-content">경기도 포천시 소흘읍 이동교리 85-2</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 상담전화 카드 -->
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+          </div>
+          <div class="info-details">
+            <h3>상담전화</h3>
+            <p class="sub-desc">전화를 사용하시어 상세한 견적 및 문의 상담을 하실 수 있습니다.</p>
+            <ul class="info-list">
+              <li>
+                <strong>전화번호</strong><span class="sep">:</span>
+                <span class="phone-num">031 - 541 - 1248</span>
+              </li>
+              <li>
+                <strong>팩스번호</strong><span class="sep">:</span>
+                <span class="phone-num">031 - 541 - 1249</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="site-footer">
+    <div class="footer-nav-bar">
+      <div class="footer-nav-inner">
+        <a href="index.html">홈</a>
+        <span class="divider">|</span>
+        <a href="greeting.html">회사소개</a>
+        <span class="divider">|</span>
+        <a href="cnc.html">제품소개</a>
+        <span class="divider">|</span>
+        <a href="equipment.html">설비현황</a>
+        <span class="divider">|</span>
+        <a href="support-center.html">고객지원</a>
+      </div>
+    </div>
+    <div class="footer-body">
+      <div class="footer-info-text">
+        <span>사업자등록번호 127-86-41052</span><span class="sep">*</span>
+        <span>대표이사 박병호</span><span class="sep">*</span>
+        <span>경기도 포천시 소흘읍 호국로479번길 15</span><span class="sep">*</span>
+        <span>전화 031-541-1248~9</span><span class="sep">*</span>
+        <span>dehyoung@naver.com</span>
+      </div>
+      <div class="footer-copyright">
+        COPYRIGHT © (주)대형특수기어 ALL RIGHT RESERVED.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
