@@ -25,13 +25,87 @@
     .site-header { display: none !important; }
   }
 
-  /* 찾아오시는 길 전용 스타일 */
-  .location-section {
-    padding: 80px 24px;
-    background-color: #f8f9fa;
+  /* 서브 히어로 섹션 */
+  .sub-hero {
+    position: relative;
+    height: 240px;
+    background: #111;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: #fff;
   }
+  .sub-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .sub-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+  }
+  .sub-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+    z-index: 2;
+  }
+  .sub-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: left;
+  }
+  .sub-hero-tag {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #ff4d4d;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .sub-hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 34px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .breadcrumb {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  /* 찾아오시는 길 전용 섹션 및 메인 레이아웃 */
+  .location-section {
+    padding: 60px 24px 80px;
+    background-color: #f8f9fa;
+    position: relative;
+  }
+
+  .main-layout {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .main-container {
+    flex: 1;
+    min-width: 0;
+  }
+
   .location-container {
-    max-width: 1100px;
+    max-width: 1000px;
     margin: 0 auto;
   }
 
@@ -193,7 +267,143 @@
     letter-spacing: 0.5px;
   }
 
+  /* 120px 슬림 사이드바 */
+  .sticky-edge-sidebar {
+    position: sticky !important;
+    top: 180px !important;
+    width: 120px !important;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    z-index: 100;
+  }
+
+  .sidebar-header {
+    background-color: #111518;
+    color: #ffffff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--signal, #b42318);
+    letter-spacing: -0.02em;
+  }
+
+  .sidebar-category-group {
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .sidebar-category-title {
+    background-color: #f8fafc;
+    padding: 7px 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #1e293b;
+    border-left: 3px solid var(--signal, #b42318);
+    letter-spacing: -0.03em;
+  }
+
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar-menu li a {
+    display: block;
+    padding: 6px 6px 6px 10px;
+    color: #475569;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    letter-spacing: -0.04em;
+  }
+
+  .sidebar-menu li a:hover {
+    background-color: #faf5f5;
+    color: var(--signal, #b42318);
+  }
+
+  .sidebar-menu li.active a {
+    color: var(--signal, #b42318);
+    font-weight: 700;
+    background-color: #fef2f2;
+  }
+
+  /* 푸터 스타일 */
+  .site-footer {
+    background-color: #111518;
+    color: #a0aec0;
+    font-size: 13px;
+  }
+
+  .footer-nav-bar {
+    border-bottom: 1px solid #2d3748;
+    padding: 16px 0;
+  }
+
+  .footer-nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .footer-nav-inner a {
+    color: #e2e8f0;
+    text-decoration: none;
+  }
+
+  .footer-nav-inner a:hover {
+    color: var(--signal, #b42318);
+  }
+
+  .footer-nav-inner .divider {
+    color: #4a5568;
+  }
+
+  .footer-body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+  }
+
+  .footer-info-text {
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  .footer-info-text .sep {
+    margin: 0 8px;
+    color: #4a5568;
+  }
+
+  .footer-copyright {
+    color: #718096;
+    font-size: 12px;
+  }
+
   /* 반응형 모바일 */
+  @media (max-width: 1024px) {
+    .main-layout {
+      flex-direction: column-reverse;
+      gap: 32px;
+    }
+    .sticky-edge-sidebar {
+      width: 100% !important;
+      position: relative !important;
+      top: 0 !important;
+    }
+  }
+
   @media (max-width: 768px) {
     .info-grid {
       grid-template-columns: 1fr;
@@ -313,78 +523,126 @@
 
   <!-- 메인 찾아오시는 길 섹션 -->
   <section class="location-section">
-    <div class="location-container">
-      
-      <div class="sec-intro">
-        <span class="sub-tag">LOCATION &amp; CONTACT</span>
-        <h2>(주)대형특수기어로 오시는 길을 안내해 드립니다</h2>
+    <div class="main-layout">
+
+      <!-- 메인 콘텐츠 영역 -->
+      <div class="main-container">
+        <div class="location-container">
+          
+          <div class="sec-intro">
+            <span class="sub-tag">LOCATION &amp; CONTACT</span>
+            <h2>(주)대형특수기어로 오시는 길을 안내해 드립니다</h2>
+          </div>
+
+          <!-- 지도 약도 & 길찾기 버튼 -->
+          <div class="map-card">
+            <div class="map-image-wrapper">
+              <img src="./image/a2c10.jpg" alt="(주)대형특수기어 오시는 길 약도">
+            </div>
+            <div class="map-action-bar">
+              <a href="https://map.naver.com/p/directions/-/14152532.929973442,4553293.6339835245,%EB%8C%80%ED%98%95%ED%8A%B9%EC%88%98%EA%B8%B0%EC%96%B4,11815870,PLACE_POI/-/car" target="_blank" class="btn-naver-map">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#FFFFFF"/>
+                </svg>
+                네이버 지도로 길찾기
+              </a>
+            </div>
+          </div>
+
+          <!-- 정보 카드 그리드 -->
+          <div class="info-grid">
+            
+            <!-- 찾아오실 주소 카드 -->
+            <div class="info-card">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+              </div>
+              <div class="info-details">
+                <h3>찾아오실 주소</h3>
+                <p class="sub-desc">네비게이션 또는 지도 검색에 새로 개정된 신주소 또는 구 주소를 이용하여 찾아오세요.</p>
+                <ul class="info-list">
+                  <li>
+                    <strong>신주소</strong><span class="sep">:</span>
+                    <span class="text-content">경기도 포천시 소흘읍 호국로479번길 15</span>
+                  </li>
+                  <li>
+                    <strong>구주소</strong><span class="sep">:</span>
+                    <span class="text-content">경기도 포천시 소흘읍 이동교리 85-2</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 상담전화 카드 -->
+            <div class="info-card">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+              </div>
+              <div class="info-details">
+                <h3>상담전화</h3>
+                <p class="sub-desc">전화를 사용하시어 상세한 견적 및 문의 상담을 하실 수 있습니다.</p>
+                <ul class="info-list">
+                  <li>
+                    <strong>전화번호</strong><span class="sep">:</span>
+                    <span class="phone-num">031 - 541 - 1248</span>
+                  </li>
+                  <li>
+                    <strong>팩스번호</strong><span class="sep">:</span>
+                    <span class="phone-num">031 - 541 - 1249</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
       </div>
 
-      <!-- 지도 약도 & 길찾기 버튼 -->
-      <div class="map-card">
-        <div class="map-image-wrapper">
-          <img src="./image/a2c10.jpg" alt="(주)대형특수기어 오시는 길 약도">
-        </div>
-        <div class="map-action-bar">
-          <a href="https://map.naver.com/p/directions/-/14152532.929973442,4553293.6339835245,%EB%8C%80%ED%98%95%ED%8A%B9%EC%88%98%EA%B8%B0%EC%96%B4,11815870,PLACE_POI/-/car" target="_blank" class="btn-naver-map">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#FFFFFF"/>
-            </svg>
-            네이버 지도로 길찾기
-          </a>
-        </div>
-      </div>
+      <!-- 120px 슬림 사이드바 -->
+      <aside class="sticky-edge-sidebar">
+        <div class="sidebar-header">전체 메뉴</div>
 
-      <!-- 정보 카드 그리드 -->
-      <div class="info-grid">
-        
-        <!-- 찾아오실 주소 카드 -->
-        <div class="info-card">
-          <div class="info-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-          </div>
-          <div class="info-details">
-            <h3>찾아오실 주소</h3>
-            <p class="sub-desc">네비게이션 또는 지도 검색에 새로 개정된 신주소 또는 구 주소를 이용하여 찾아오세요.</p>
-            <ul class="info-list">
-              <li>
-                <strong>신주소</strong><span class="sep">:</span>
-                <span class="text-content">경기도 포천시 소흘읍 호국로479번길 15</span>
-              </li>
-              <li>
-                <strong>구주소</strong><span class="sep">:</span>
-                <span class="text-content">경기도 포천시 소흘읍 이동교리 85-2</span>
-              </li>
-            </ul>
-          </div>
+        <!-- 1. 회사소개 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">회사소개</div>
+          <ul class="sidebar-menu">
+            <li><a href="greeting.html">인사말씀</a></li>
+            <li><a href="history.html">회사연혁</a></li>
+            <li class="active"><a href="location.html">찾아오시는 길</a></li>
+          </ul>
         </div>
 
-        <!-- 상담전화 카드 -->
-        <div class="info-card">
-          <div class="info-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-            </svg>
-          </div>
-          <div class="info-details">
-            <h3>상담전화</h3>
-            <p class="sub-desc">전화를 사용하시어 상세한 견적 및 문의 상담을 하실 수 있습니다.</p>
-            <ul class="info-list">
-              <li>
-                <strong>전화번호</strong><span class="sep">:</span>
-                <span class="phone-num">031 - 541 - 1248</span>
-              </li>
-              <li>
-                <strong>팩스번호</strong><span class="sep">:</span>
-                <span class="phone-num">031 - 541 - 1249</span>
-              </li>
-            </ul>
-          </div>
+        <!-- 2. 제품소개 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">제품소개</div>
+          <ul class="sidebar-menu">
+            <li><a href="cnc.html">OM CNC 터닝</a></li>
+            <li><a href="bearing.html">선회 베어링</a></li>
+            <li><a href="gear.html">특수 기어</a></li>
+          </ul>
         </div>
 
-      </div>
+        <!-- 3. 설비현황 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">설비현황</div>
+          <ul class="sidebar-menu">
+            <li><a href="equipment.html">보유 설비 전체</a></li>
+          </ul>
+        </div>
+
+        <!-- 4. 고객지원 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">고객지원</div>
+          <ul class="sidebar-menu">
+            <li><a href="support-center.html">고객센터</a></li>
+          </ul>
+        </div>
+      </aside>
 
     </div>
   </section>

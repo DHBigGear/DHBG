@@ -25,20 +25,89 @@
     .site-header { display: none !important; }
   }
 
+  /* 서브 히어로 섹션 */
+  .sub-hero {
+    position: relative;
+    height: 240px;
+    background: #111;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: #fff;
+  }
+  .sub-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .sub-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+  }
+  .sub-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+    z-index: 2;
+  }
+  .sub-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: left;
+  }
+  .sub-hero-tag {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #ff4d4d;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .sub-hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 34px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .breadcrumb {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
   /* 기어 페이지 전용 스타일 */
   .gear-section {
-    padding: 80px 24px;
+    padding: 60px 24px 80px;
     background-color: #f8f9fa;
+    position: relative;
   }
-  .gear-container {
-    max-width: 1100px;
+
+  .main-layout {
+    max-width: 1400px;
     margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .main-container {
+    flex: 1;
+    min-width: 0;
   }
 
   /* 섹션 타이틀 */
   .sec-intro {
     text-align: center;
-    margin-bottom: 56px;
+    margin-bottom: 48px;
   }
   .sec-intro .sub-tag {
     font-family: 'Noto Serif KR', serif;
@@ -204,7 +273,143 @@
     line-height: 1.6;
   }
 
-  /* 모바일 반응형 */
+  /* 타이트한 슬림 사이드바 (폭 120px) */
+  .sticky-edge-sidebar {
+    position: sticky !important;
+    top: 180px !important;
+    width: 120px !important;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    z-index: 100;
+  }
+
+  .sidebar-header {
+    background-color: #111518;
+    color: #ffffff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--signal, #b42318);
+    letter-spacing: -0.02em;
+  }
+
+  .sidebar-category-group {
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .sidebar-category-title {
+    background-color: #f8fafc;
+    padding: 7px 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #1e293b;
+    border-left: 3px solid var(--signal, #b42318);
+    letter-spacing: -0.03em;
+  }
+
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar-menu li a {
+    display: block;
+    padding: 6px 6px 6px 10px;
+    color: #475569;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    letter-spacing: -0.04em;
+  }
+
+  .sidebar-menu li a:hover {
+    background-color: #faf5f5;
+    color: var(--signal, #b42318);
+  }
+
+  .sidebar-menu li.active a {
+    color: var(--signal, #b42318);
+    font-weight: 700;
+    background-color: #fef2f2;
+  }
+
+  /* 푸터 스타일 */
+  .site-footer {
+    background-color: #111518;
+    color: #a0aec0;
+    font-size: 13px;
+  }
+
+  .footer-nav-bar {
+    border-bottom: 1px solid #2d3748;
+    padding: 16px 0;
+  }
+
+  .footer-nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .footer-nav-inner a {
+    color: #e2e8f0;
+    text-decoration: none;
+  }
+
+  .footer-nav-inner a:hover {
+    color: var(--signal, #b42318);
+  }
+
+  .footer-nav-inner .divider {
+    color: #4a5568;
+  }
+
+  .footer-body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+  }
+
+  .footer-info-text {
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  .footer-info-text .sep {
+    margin: 0 8px;
+    color: #4a5568;
+  }
+
+  .footer-copyright {
+    color: #718096;
+    font-size: 12px;
+  }
+
+  /* 반응형 */
+  @media (max-width: 1024px) {
+    .main-layout {
+      flex-direction: column-reverse;
+      gap: 32px;
+    }
+    .sticky-edge-sidebar {
+      width: 100% !important;
+      position: relative !important;
+      top: 0 !important;
+    }
+  }
+
   @media (max-width: 868px) {
     .hero-product-card,
     .reducer-card {
@@ -216,6 +421,12 @@
     }
     .gallery-card-img {
       height: 240px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .sub-hero-content {
+      padding: 0 20px;
     }
   }
 </style>
@@ -324,110 +535,155 @@
 
   <!-- 메인 기어 제품 섹션 -->
   <section class="gear-section">
-    <div class="gear-container">
-      
-      <div class="sec-intro">
-        <span class="sub-tag">PRECISION GEAR MANUFACTURING</span>
-        <h2>고정밀 연마 기술과 엄격한 품질의 산업용 기어</h2>
+    <div class="main-layout">
+
+      <!-- 메인 콘텐츠 영역 -->
+      <div class="main-container">
+        <div class="sec-intro">
+          <span class="sub-tag">PRECISION GEAR MANUFACTURING</span>
+          <h2>고정밀 연마 기술과 엄격한 품질의 산업용 기어</h2>
+        </div>
+
+        <!-- 1번 이미지: 대표 정밀 기어 세트 -->
+        <div class="hero-product-card">
+          <div class="hero-product-img">
+            <img src="./image/machine/gear01.jpg" alt="무소음 고속 정밀 연마 기어">
+          </div>
+          <div class="hero-product-info">
+            <h3>고속 정밀 연마 기어</h3>
+            <div class="subtitle">Precision Ground Gear Series</div>
+            <p>
+              정밀 가공 및 치형 연마 기술을 적용하여 고속 회전 시 발생하는 진동과 소음을 극소화하였습니다. 
+              다양한 산업 현장의 내구성과 신뢰성을 높여줍니다.
+            </p>
+            <ul class="feature-list">
+              <li>무소음, 고속 정밀 연마 기어 생산</li>
+              <li>산업용 감속기 및 산업용 특수기어 맞춤 제작</li>
+              <li>고하중·고내구성 열처리 및 정밀 치형 가공</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2번 ~ 5번 이미지: 세부 기어 종류 및 가공 과정 갤러리 -->
+        <div class="detail-gallery-grid">
+          
+          <!-- 2번 이미지 -->
+          <div class="gallery-card">
+            <div class="gallery-card-img">
+              <img src="./image/machine/gear02.jpg" alt="스파이럴 베벨 기어 및 샤프트 기어 모음">
+            </div>
+            <div class="gallery-card-body">
+              <h4>스파이럴 베벨 &amp; 피니언 기어 세트</h4>
+              <p>직교 축 동력 전달을 위한 정밀 스파이럴 베벨 기어 및 맞춤형 스플라인 샤프트 가공품</p>
+            </div>
+          </div>
+
+          <!-- 3번 이미지 -->
+          <div class="gallery-card">
+            <div class="gallery-card-img">
+              <img src="./image/machine/gear03.jpg" alt="대형 링 기어">
+            </div>
+            <div class="gallery-card-body">
+              <h4>대형 내치/외치 링 기어</h4>
+              <p>산업용 회전체 및 대형 턴테이블 구동을 위한 대구경 정밀 링 기어</p>
+            </div>
+          </div>
+
+          <!-- 4번 이미지 -->
+          <div class="gallery-card">
+            <div class="gallery-card-img">
+              <img src="./image/machine/gear04.jpg" alt="헬리컬 기어 및 정밀 기어 부품">
+            </div>
+            <div class="gallery-card-body">
+              <h4>헬리컬 &amp; 스퍼 기어 시리즈</h4>
+              <p>우수한 물림율로 동력 전달 효율을 극대화한 다양한 규격의 헬리컬 기어 제품군</p>
+            </div>
+          </div>
+
+          <!-- 5번 이미지 -->
+          <div class="gallery-card">
+            <div class="gallery-card-img">
+              <img src="./image/machine/gear05.jpg" alt="대형 기어 가공 설비 작업 모습">
+            </div>
+            <div class="gallery-card-body">
+              <h4>대형 기어 절삭 및 가공 공정</h4>
+              <p>최첨단 호빙기 및 치형 연마 설비를 통한 대형 특수 기어 가공 현장</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 6번 이미지: 헬리컬 기어 및 샤프트 세트 카드 (넓은 형태) -->
+        <div class="hero-product-card" style="margin-bottom: 48px;">
+          <div class="hero-product-img">
+            <img src="./image/machine/gear06.jpg" alt="정밀 연마 헬리컬 기어와 피니언 샤프트">
+          </div>
+          <div class="hero-product-info">
+            <h3>정밀 연마 헬리컬 기어 &amp; 샤프트</h3>
+            <div class="subtitle">Helical Gear &amp; Pinion Shaft Assembly</div>
+            <p>
+              내마모성이 뛰어난 합금강 소재를 사용하고 정밀 열처리 후 연마 가공을 거쳐 
+              장시간 운전에도 뛰어난 치형 정밀도와 동력 전달 수명을 자랑합니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 7번 이미지: 완제품 감속기 하단 쇼케이스 -->
+        <div class="reducer-card">
+          <div class="reducer-img">
+            <img src="./image/machine/gear07.jpg" alt="산업용 정밀 감속기 완제품">
+          </div>
+          <div class="reducer-info">
+            <h3>산업용 감속기 완제품 (Industrial Gearbox)</h3>
+            <p>
+              각종 플랜트 및 제철, 건설 기계 등에 적용되는 고효율 산업용 감속기입니다. 
+              완벽한 치형 맞물림 설계와 견고한 케이싱 조립으로 가혹한 작동 환경에서도 최상의 성능을 발휘합니다.
+            </p>
+          </div>
+        </div>
+
       </div>
 
-      <!-- 1번 이미지: 대표 정밀 기어 세트 -->
-      <div class="hero-product-card">
-        <div class="hero-product-img">
-          <img src="./image/machine/gear01.jpg" alt="무소음 고속 정밀 연마 기어">
-        </div>
-        <div class="hero-product-info">
-          <h3>고속 정밀 연마 기어</h3>
-          <div class="subtitle">Precision Ground Gear Series</div>
-          <p>
-            정밀 가공 및 치형 연마 기술을 적용하여 고속 회전 시 발생하는 진동과 소음을 극소화하였습니다. 
-            다양한 산업 현장의 내구성과 신뢰성을 높여줍니다.
-          </p>
-          <ul class="feature-list">
-            <li>무소음, 고속 정밀 연마 기어 생산</li>
-            <li>산업용 감속기 및 산업용 특수기어 맞춤 제작</li>
-            <li>고하중·고내구성 열처리 및 정밀 치형 가공</li>
+      <!-- 120px 슬림 사이드바 -->
+      <aside class="sticky-edge-sidebar">
+        <div class="sidebar-header">전체 메뉴</div>
+
+        <!-- 1. 회사소개 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">회사소개</div>
+          <ul class="sidebar-menu">
+            <li><a href="greeting.html">인사말씀</a></li>
+            <li><a href="history.html">회사연혁</a></li>
+            <li><a href="location.html">찾아오시는 길</a></li>
           </ul>
         </div>
-      </div>
 
-      <!-- 2번 ~ 5번 이미지: 세부 기어 종류 및 가공 과정 갤러리 -->
-      <div class="detail-gallery-grid">
-        
-        <!-- 2번 이미지 -->
-        <div class="gallery-card">
-          <div class="gallery-card-img">
-            <img src="./image/machine/gear02.jpg" alt="스파이럴 베벨 기어 및 샤프트 기어 모음">
-          </div>
-          <div class="gallery-card-body">
-            <h4>스파이럴 베벨 &amp; 피니언 기어 세트</h4>
-            <p>직교 축 동력 전달을 위한 정밀 스파이럴 베벨 기어 및 맞춤형 스플라인 샤프트 가공품</p>
-          </div>
+        <!-- 2. 제품소개 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">제품소개</div>
+          <ul class="sidebar-menu">
+            <li><a href="cnc.html">OM CNC 터닝</a></li>
+            <li><a href="bearing.html">선회 베어링</a></li>
+            <li class="active"><a href="gear.html">특수 기어</a></li>
+          </ul>
         </div>
 
-        <!-- 3번 이미지 -->
-        <div class="gallery-card">
-          <div class="gallery-card-img">
-            <img src="./image/machine/gear03.jpg" alt="대형 링 기어">
-          </div>
-          <div class="gallery-card-body">
-            <h4>대형 내치/외치 링 기어</h4>
-            <p>산업용 회전체 및 대형 턴테이블 구동을 위한 대구경 정밀 링 기어</p>
-          </div>
+        <!-- 3. 설비현황 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">설비현황</div>
+          <ul class="sidebar-menu">
+            <li><a href="equipment.html">보유 설비 전체</a></li>
+          </ul>
         </div>
 
-        <!-- 4번 이미지 -->
-        <div class="gallery-card">
-          <div class="gallery-card-img">
-            <img src="./image/machine/gear04.jpg" alt="헬리컬 기어 및 정밀 기어 부품">
-          </div>
-          <div class="gallery-card-body">
-            <h4>헬리컬 &amp; 스퍼 기어 시리즈</h4>
-            <p>우수한 물림율로 동력 전달 효율을 극대화한 다양한 규격의 헬리컬 기어 제품군</p>
-          </div>
+        <!-- 4. 고객지원 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">고객지원</div>
+          <ul class="sidebar-menu">
+            <li><a href="support-center.html">고객센터</a></li>
+          </ul>
         </div>
-
-        <!-- 5번 이미지 -->
-        <div class="gallery-card">
-          <div class="gallery-card-img">
-            <img src="./image/machine/gear05.jpg" alt="대형 기어 가공 설비 작업 모습">
-          </div>
-          <div class="gallery-card-body">
-            <h4>대형 기어 절삭 및 가공 공정</h4>
-            <p>최첨단 호빙기 및 치형 연마 설비를 통한 대형 특수 기어 가공 현장</p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- 6번 이미지: 헬리컬 기어 및 샤프트 세트 카드 (넓은 형태) -->
-      <div class="hero-product-card" style="margin-bottom: 48px;">
-        <div class="hero-product-img">
-          <img src="./image/machine/gear06.jpg" alt="정밀 연마 헬리컬 기어와 피니언 샤프트">
-        </div>
-        <div class="hero-product-info">
-          <h3>정밀 연마 헬리컬 기어 &amp; 샤프트</h3>
-          <div class="subtitle">Helical Gear &amp; Pinion Shaft Assembly</div>
-          <p>
-            내마모성이 뛰어난 합금강 소재를 사용하고 정밀 열처리 후 연마 가공을 거쳐 
-            장시간 운전에도 뛰어난 치형 정밀도와 동력 전달 수명을 자랑합니다.
-          </p>
-        </div>
-      </div>
-
-      <!-- 7번 이미지: 완제품 감속기 하단 쇼케이스 -->
-      <div class="reducer-card">
-        <div class="reducer-img">
-          <img src="./image/machine/gear07.jpg" alt="산업용 정밀 감속기 완제품">
-        </div>
-        <div class="reducer-info">
-          <h3>산업용 감속기 완제품 (Industrial Gearbox)</h3>
-          <p>
-            각종 플랜트 및 제철, 건설 기계 등에 적용되는 고효율 산업용 감속기입니다. 
-            완벽한 치형 맞물림 설계와 견고한 케이싱 조립으로 가혹한 작동 환경에서도 최상의 성능을 발휘합니다.
-          </p>
-        </div>
-      </div>
+      </aside>
 
     </div>
   </section>

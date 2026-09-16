@@ -9,40 +9,110 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-  /* 로고 스타일 정의 */
+  /* 로고 및 기본 스타일 */
   .brand-logo img, .m-brand-logo img {
     max-height: 40px;
     width: auto;
     display: block;
   }
 
-  /* 선회 베어링 페이지 전용 스타일 */
-  .bearing-section {
-    padding: 80px 24px;
-    background-color: #f8f9fa;
+  /* [추가/수정] equipment.html 기준 동일 서브 히어로 섹션 규격 적용 (높이 240px) */
+  .sub-hero {
+    position: relative;
+    height: 240px;
+    background: #111;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: #fff;
   }
-  .bearing-container {
-    max-width: 1100px;
+  .sub-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .sub-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+  }
+  .sub-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+    z-index: 2;
+  }
+  .sub-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
+    padding: 0 24px;
+    text-align: left;
+  }
+  .sub-hero-tag {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #ff4d4d;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .sub-hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 34px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .breadcrumb {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  /* 선회 베어링 페이지 전용 레이아웃 */
+  .bearing-section {
+    padding: 60px 24px 80px;
+    background-color: #f8f9fa;
+    position: relative;
+  }
+  
+  /* 메인 컨테이너 레이아웃 */
+  .bearing-layout {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .bearing-container {
+    flex: 1;
+    min-width: 0;
   }
 
   /* 섹션 타이틀 */
   .sec-intro {
     text-align: center;
-    margin-bottom: 56px;
+    margin-bottom: 48px;
   }
   .sec-intro .sub-tag {
     font-family: 'Noto Serif KR', serif;
-    color: var(--signal, #b42318);
-    font-size: 15px;
+    color: var(--signal, #b91d2b);
+    font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.1em;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     display: block;
   }
   .sec-intro h2 {
     font-family: 'Noto Serif KR', serif;
-    font-size: 32px;
+    font-size: 30px;
     color: var(--ink, #111518);
     line-height: 1.4;
   }
@@ -52,12 +122,12 @@
     background: #ffffff;
     border: 1px solid var(--line, #e2e8f0);
     border-radius: 8px;
-    padding: 36px;
-    margin-bottom: 48px;
+    padding: 32px;
+    margin-bottom: 40px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 36px;
+    gap: 32px;
     align-items: center;
   }
   .hero-product-img {
@@ -74,65 +144,65 @@
   }
   .hero-product-info h3 {
     font-family: 'Noto Serif KR', serif;
-    font-size: 26px;
+    font-size: 24px;
     color: var(--ink, #111518);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
   .hero-product-info .subtitle {
-    font-size: 16px;
-    color: var(--signal, #b42318);
+    font-size: 15px;
+    color: var(--signal, #b91d2b);
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
   .hero-product-info p {
-    font-size: 15px;
+    font-size: 14px;
     color: #555;
     line-height: 1.6;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   
-  /* 적용 분야 태그 목록 */
+  /* 태그 목록 */
   .application-box {
     background: #f8fafc;
     border-radius: 6px;
-    padding: 20px;
+    padding: 16px;
     border: 1px dashed #cbd5e1;
   }
   .application-box strong {
     display: block;
-    font-size: 14px;
+    font-size: 13px;
     color: #111;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .tag-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
   }
   .tag-item {
     background: #ffffff;
     border: 1px solid #d1d5db;
     color: #374151;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
-    padding: 6px 14px;
+    padding: 4px 12px;
     border-radius: 20px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
   }
 
-  /* 제품 상세 갤러리 그리드 (2열) */
+  /* 제품 상세 갤러리 그리드 */
   .detail-gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-    margin-bottom: 56px;
+    gap: 24px;
+    margin-bottom: 48px;
   }
   .gallery-card {
     background: #ffffff;
     border: 1px solid var(--line, #e2e8f0);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
     transition: transform 0.2s, box-shadow 0.2s;
   }
   .gallery-card:hover {
@@ -141,7 +211,7 @@
   }
   .gallery-card-img {
     width: 100%;
-    height: 320px;
+    height: 280px;
     overflow: hidden;
     background-color: #f1f5f9;
   }
@@ -152,34 +222,34 @@
     display: block;
   }
   .gallery-card-body {
-    padding: 20px 24px;
+    padding: 18px 20px;
   }
   .gallery-card-body h4 {
-    font-size: 18px;
+    font-size: 17px;
     color: #111518;
     font-weight: 700;
     margin-bottom: 6px;
   }
   .gallery-card-body p {
-    font-size: 14px;
+    font-size: 13.5px;
     color: #666;
   }
 
-  /* 제조 현장 및 샘플 쇼케이스 (하단 대형 카드) */
+  /* 쇼케이스 카드 */
   .showcase-card {
     background: #ffffff;
     border: 1px solid var(--line, #e2e8f0);
     border-radius: 8px;
-    padding: 36px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    padding: 32px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
   }
   .showcase-card h3 {
     font-family: 'Noto Serif KR', serif;
-    font-size: 22px;
+    font-size: 20px;
     color: var(--ink, #111518);
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid var(--signal, #b42318);
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--signal, #b91d2b);
     display: inline-block;
   }
   .showcase-img {
@@ -194,17 +264,101 @@
     display: block;
   }
 
-  /* 모바일 반응형 */
-  @media (max-width: 868px) {
+  /* 타이트한 슬림 사이드바 (폭 120px) */
+  .sticky-edge-sidebar {
+    position: sticky !important;
+    top: 180px !important;
+    width: 120px !important;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    z-index: 100;
+  }
+
+  .sidebar-header {
+    background-color: #111518;
+    color: #ffffff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--signal, #b91d2b);
+    letter-spacing: -0.02em;
+  }
+
+  .sidebar-category-group {
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .sidebar-category-title {
+    background-color: #f8fafc;
+    padding: 7px 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #1e293b;
+    border-left: 3px solid var(--signal, #b91d2b);
+    letter-spacing: -0.03em;
+  }
+
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar-menu li a {
+    display: block;
+    padding: 6px 6px 6px 10px;
+    color: #475569;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    letter-spacing: -0.04em;
+  }
+
+  .sidebar-menu li a:hover {
+    background-color: #faf5f5;
+    color: var(--signal, #b91d2b);
+  }
+
+  .sidebar-menu li.active a {
+    color: var(--signal, #b91d2b);
+    font-weight: 700;
+    background-color: #fef2f2;
+  }
+
+  /* 반응형 처리 */
+  @media (max-width: 1024px) {
+    .bearing-layout {
+      flex-direction: column-reverse;
+      gap: 32px;
+    }
+    .sticky-edge-sidebar {
+      width: 100% !important;
+      position: relative !important;
+      top: 0 !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .sub-hero-content {
+      padding: 0 20px;
+    }
     .hero-product-card {
       grid-template-columns: 1fr;
-      padding: 24px;
+      padding: 20px;
     }
     .detail-gallery-grid {
       grid-template-columns: 1fr;
     }
     .gallery-card-img {
-      height: 240px;
+      height: 220px;
     }
     .showcase-card {
       padding: 20px;
@@ -305,7 +459,7 @@
     </div>
   </header>
 
-  <!-- 서브 히어로 -->
+  <!-- 서브 히어로 (equipment.html과 동일 규격) -->
   <section class="sub-hero">
     <div class="sub-hero-bg">
       <img src="./image/hero_gear1.png" alt="(주)대형특수기어 공장 전경">
@@ -318,112 +472,158 @@
     </div>
   </section>
 
-  <!-- 메인 선회 베어링 섹션 -->
+  <!-- 메인 섹션 -->
   <section class="bearing-section">
-    <div class="bearing-container">
+    <div class="bearing-layout">
       
-      <div class="sec-intro">
-        <span class="sub-tag">SLEWING BEARING</span>
-        <h2>고하중 및 정밀 선회를 위한 중장비 핵심 부품</h2>
-      </div>
-
-      <!-- 1번 이미지: 대표 메인 제품 정보 -->
-      <div class="hero-product-card">
-        <div class="hero-product-img">
-          <img src="./image/bearing1.png" alt="선회 베어링 제작 메인 이미지">
+      <!-- 메인 콘텐츠 영역 -->
+      <div class="bearing-container">
+        
+        <div class="sec-intro">
+          <span class="sub-tag">SLEWING BEARING</span>
+          <h2>고하중 및 정밀 선회를 위한 중장비 핵심 부품</h2>
         </div>
-        <div class="hero-product-info">
-          <h3>선회 베어링 (제작)</h3>
-          <div class="subtitle">Slewing Bearing Custom Manufacturing</div>
-          <p>
-            중장비 및 산업용 크레인의 하중 분산과 정밀한 회전을 담당하는 핵심 부품으로, 
-            (주)대형특수기어의 엄격한 품질 관리 및 고정밀 가공 기술로 제작됩니다.
-          </p>
-          <div class="application-box">
-            <strong>주요 적용 분야</strong>
-            <div class="tag-group">
-              <span class="tag-item">타워크레인</span>
-              <span class="tag-item">센터홀오가</span>
-              <span class="tag-item">포크레인</span>
-              <span class="tag-item">유압크레인</span>
-              <span class="tag-item">펌프카</span>
+
+        <!-- 대표 메인 제품 정보 -->
+        <div class="hero-product-card">
+          <div class="hero-product-img">
+            <img src="./image/bearing1.png" alt="선회 베어링 제작 메인 이미지">
+          </div>
+          <div class="hero-product-info">
+            <h3>선회 베어링 (제작)</h3>
+            <div class="subtitle">Slewing Bearing Custom Manufacturing</div>
+            <p>
+              중장비 및 산업용 크레인의 하중 분산과 정밀한 회전을 담당하는 핵심 부품으로,<br>
+              (주)대형특수기어의 엄격한 품질 관리 및 고정밀 가공 기술로 제작됩니다.
+            </p>
+            <div class="application-box">
+              <strong>주요 적용 분야</strong>
+              <div class="tag-group">
+                <span class="tag-item">타워크레인</span>
+                <span class="tag-item">센터홀오가</span>
+                <span class="tag-item">포크레인</span>
+                <span class="tag-item">유압크레인</span>
+                <span class="tag-item">펌프카</span>
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- 세부 부품 카드 갤러리 -->
+        <div class="detail-gallery-grid">
+          
+          <div class="gallery-card">
+            <div class="gallery-card-img">
+              <img src="./image/machine/Bearing01.jpg" alt="선회 베어링 상단 측면">
+            </div>
+            <div class="gallery-card-body">
+              <h4>외치형 선회 베어링</h4>
+              <p>외부 기어 치형 가공으로 동력 전달 유닛과의 완벽한 맞물림 제공</p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-card-img">
+              <img src="./image/machine/Bearing02.jpg" alt="선회 베어링 평면 정면">
+            </div>
+            <div class="gallery-card-body">
+              <h4>고정밀 와이어/볼 레이스 가공</h4>
+              <p>균일한 하중 분산과 부드러운 회전을 보장하는 내경 및 체결홀 가공</p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-card-img">
+              <img src="./image/machine/Bearing03.jpg" alt="베어링 볼 및 궤도면 상세">
+            </div>
+            <div class="gallery-card-body">
+              <h4>고강도 스틸 볼 &amp; 궤도면 상세</h4>
+              <p>고하중 환경에서도 내마모성과 내구성을 극대화한 정밀 구체 사양</p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-card-img">
+              <img src="./image/machine/Bearing04.jpg" alt="황동 케이지 타입 베어링">
+            </div>
+            <div class="gallery-card-body">
+              <h4>황동 리테이너 / 롤러 타입</h4>
+              <p>롤러 및 황동 케이지 적용으로 극대화된 수명과 안정적 마찰 계수 제공</p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-card-img">
+              <img src="./image/machine/Bearing05.jpg" alt="내치형 선회 베어링">
+            </div>
+            <div class="gallery-card-body">
+              <h4>내치형 선회 베어링</h4>
+              <p>내부에 기어 치형이 형성된 구조로 컴팩트한 모듈 설계에 적합</p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-card-img">
+              <img src="./image/machine/Bearing06.jpg" alt="출하 전 완제품 방청 및 포장">
+            </div>
+            <div class="gallery-card-body">
+              <h4>완제품 품질검사 및 방청 포장</h4>
+              <p>철저한 사후 검수 후 안전한 이송을 위한 특수 방청 포장 처리</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 다양화된 선회 베어링 제작 갤러리 -->
+        <div class="showcase-card">
+          <h3>선회 베어링 다양한 규격 및 제조 현장</h3>
+          <div class="showcase-img">
+            <img src="./image/machine/Bearing07.png" alt="다양한 크기 및 종류의 선회 베어링 제품 모음">
+          </div>
+        </div>
+
       </div>
 
-      <!-- 2번 ~ 6번 이미지: 세부 부품 및 타입별 카드 갤러리 -->
-      <div class="detail-gallery-grid">
-        
-        <div class="gallery-card">
-          <div class="gallery-card-img">
-            <img src="./image/machine/Bearing01.jpg" alt="선회 베어링 상단 측면">
-          </div>
-          <div class="gallery-card-body">
-            <h4>외치형 선회 베어링</h4>
-            <p>외부 기어 치형 가공으로 동력 전달 유닛과의 완벽한 맞물림 제공</p>
-          </div>
+      <!-- 120px 슬림 사이즈 사이드바 -->
+      <aside class="sticky-edge-sidebar">
+        <div class="sidebar-header">전체 메뉴</div>
+
+        <!-- 1. 회사소개 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">회사소개</div>
+          <ul class="sidebar-menu">
+            <li><a href="greeting.html">인사말씀</a></li>
+            <li><a href="history.html">회사연혁</a></li>
+            <li><a href="location.html">찾아오시는 길</a></li>
+          </ul>
         </div>
 
-        <div class="gallery-card">
-          <div class="gallery-card-img">
-            <img src="./image/machine/Bearing02.jpg" alt="선회 베어링 평면 정면">
-          </div>
-          <div class="gallery-card-body">
-            <h4>고정밀 와이어/볼 레이스 가공</h4>
-            <p>균일한 하중 분산과 부드러운 회전을 보장하는 내경 및 체결홀 가공</p>
-          </div>
+        <!-- 2. 제품소개 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">제품소개</div>
+          <ul class="sidebar-menu">
+            <li><a href="cnc.html">OM CNC 터닝</a></li>
+            <li class="active"><a href="bearing.html">선회 베어링</a></li>
+            <li><a href="gear.html">특수 기어</a></li>
+          </ul>
         </div>
 
-        <div class="gallery-card">
-          <div class="gallery-card-img">
-            <img src="./image/machine/Bearing03.jpg" alt="베어링 볼 및 궤도면 상세">
-          </div>
-          <div class="gallery-card-body">
-            <h4>고강도 스틸 볼 &amp; 궤도면 상세</h4>
-            <p>고하중 환경에서도 내마모성과 내구성을 극대화한 정밀 구체 사양</p>
-          </div>
+        <!-- 3. 설비현황 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">설비현황</div>
+          <ul class="sidebar-menu">
+            <li><a href="equipment.html">보유 설비 전체</a></li>
+          </ul>
         </div>
 
-        <div class="gallery-card">
-          <div class="gallery-card-img">
-            <img src="./image/machine/Bearing04.jpg" alt="황동 케이지 타입 베어링">
-          </div>
-          <div class="gallery-card-body">
-            <h4>황동 리테이너 / 롤러 타입</h4>
-            <p>롤러 및 황동 케이지 적용으로 극대화된 수명과 안정적 마찰 계수 제공</p>
-          </div>
+        <!-- 4. 고객지원 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">고객지원</div>
+          <ul class="sidebar-menu">
+            <li><a href="support-center.html">고객센터</a></li>
+          </ul>
         </div>
-
-        <div class="gallery-card">
-          <div class="gallery-card-img">
-            <img src="./image/machine/Bearing05.jpg" alt="내치형 선회 베어링">
-          </div>
-          <div class="gallery-card-body">
-            <h4>내치형 선회 베어링</h4>
-            <p>내부에 기어 치형이 형성된 구조로 컴팩트한 모듈 설계에 적합</p>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <div class="gallery-card-img">
-            <img src="./image/machine/Bearing06.jpg" alt="출하 전 완제품 방청 및 포장">
-          </div>
-          <div class="gallery-card-body">
-            <h4>완제품 품질검사 및 방청 포장</h4>
-            <p>철저한 사후 검수 후 안전한 이송을 위한 특수 방청 포장 처리</p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- 7번 이미지: 다양화된 선회 베어링 제작 갤러리 -->
-      <div class="showcase-card">
-        <h3>선회 베어링 다양한 규격 및 제조 현장</h3>
-        <div class="showcase-img">
-          <img src="./image/machine/Bearing07.png" alt="다양한 크기 및 종류의 선회 베어링 제품 모음">
-        </div>
-      </div>
+      </aside>
 
     </div>
   </section>
@@ -457,7 +657,6 @@
     </div>
   </footer>
 
-  <!-- 모바일 메뉴 동작 JS -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var openBtn = document.getElementById('side-menu-open-btn');

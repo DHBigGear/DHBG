@@ -25,11 +25,85 @@
     .site-header { display: none !important; }
   }
 
-  /* 회사연혁 페이지 전용 스타일 */
-  .history-section {
-    padding: 96px 32px;
-    background: #ffffff;
+  /* 서브 히어로 섹션 */
+  .sub-hero {
+    position: relative;
+    height: 240px;
+    background: #111;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: #fff;
   }
+  .sub-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .sub-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+  }
+  .sub-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+    z-index: 2;
+  }
+  .sub-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: left;
+  }
+  .sub-hero-tag {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #ff4d4d;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .sub-hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 34px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .breadcrumb {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  /* 회사연혁 페이지 메인 레이아웃 */
+  .history-section {
+    padding: 60px 24px 80px;
+    background: #ffffff;
+    position: relative;
+  }
+
+  .main-layout {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .main-container {
+    flex: 1;
+    min-width: 0;
+  }
+
   .history-container {
     max-width: 900px;
     margin: 0 auto;
@@ -142,7 +216,143 @@
     margin: 0;
   }
 
-  /* 모바일 반응형 */
+  /* 120px 슬림 사이드바 */
+  .sticky-edge-sidebar {
+    position: sticky !important;
+    top: 180px !important;
+    width: 120px !important;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    z-index: 100;
+  }
+
+  .sidebar-header {
+    background-color: #111518;
+    color: #ffffff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--signal, #b42318);
+    letter-spacing: -0.02em;
+  }
+
+  .sidebar-category-group {
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .sidebar-category-title {
+    background-color: #f8fafc;
+    padding: 7px 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #1e293b;
+    border-left: 3px solid var(--signal, #b42318);
+    letter-spacing: -0.03em;
+  }
+
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar-menu li a {
+    display: block;
+    padding: 6px 6px 6px 10px;
+    color: #475569;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    letter-spacing: -0.04em;
+  }
+
+  .sidebar-menu li a:hover {
+    background-color: #faf5f5;
+    color: var(--signal, #b42318);
+  }
+
+  .sidebar-menu li.active a {
+    color: var(--signal, #b42318);
+    font-weight: 700;
+    background-color: #fef2f2;
+  }
+
+  /* 푸터 스타일 */
+  .site-footer {
+    background-color: #111518;
+    color: #a0aec0;
+    font-size: 13px;
+  }
+
+  .footer-nav-bar {
+    border-bottom: 1px solid #2d3748;
+    padding: 16px 0;
+  }
+
+  .footer-nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .footer-nav-inner a {
+    color: #e2e8f0;
+    text-decoration: none;
+  }
+
+  .footer-nav-inner a:hover {
+    color: var(--signal, #b42318);
+  }
+
+  .footer-nav-inner .divider {
+    color: #4a5568;
+  }
+
+  .footer-body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+  }
+
+  .footer-info-text {
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  .footer-info-text .sep {
+    margin: 0 8px;
+    color: #4a5568;
+  }
+
+  .footer-copyright {
+    color: #718096;
+    font-size: 12px;
+  }
+
+  /* 반응형 처리 */
+  @media (max-width: 1024px) {
+    .main-layout {
+      flex-direction: column-reverse;
+      gap: 32px;
+    }
+    .sticky-edge-sidebar {
+      width: 100% !important;
+      position: relative !important;
+      top: 0 !important;
+    }
+  }
+
   @media (max-width: 768px) {
     .timeline {
       padding-left: 28px;
@@ -271,116 +481,164 @@
 
   <!-- 타임라인 연혁 섹션 -->
   <section class="history-section">
-    <div class="history-container">
-      
-      <div class="sec-intro">
-        <span class="sub-tag">GROWTH &amp; CHALLENGE</span>
-        <h2>품질과 신용으로 걸어온 30여 년의 역사</h2>
+    <div class="main-layout">
+
+      <!-- 메인 콘텐츠 영역 -->
+      <div class="main-container">
+        <div class="history-container">
+          
+          <div class="sec-intro">
+            <span class="sub-tag">GROWTH &amp; CHALLENGE</span>
+            <h2>품질과 신용으로 걸어온 30여 년의 역사</h2>
+          </div>
+
+          <div class="timeline">
+
+            <!-- 2012년 7월 -->
+            <div class="timeline-item">
+              <div class="timeline-date">2012년 <span>7월</span></div>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>사업확장으로 법인설립 및 법인으로 전환</h3>
+                <p>경기도 포천시 소흘읍 호국로479번길 15에 (주)대형특수기어 설립</p>
+              </div>
+            </div>
+
+            <!-- 2004년 9월 -->
+            <div class="timeline-item">
+              <div class="timeline-date">2004년 <span>9월</span></div>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>포천 공장 완공 및 사업지 이전</h3>
+                <p>1200평 규모 공장 완공으로 모든 사업지 통합</p>
+              </div>
+            </div>
+
+            <!-- 2003년 5월 -->
+            <div class="timeline-item">
+              <div class="timeline-date">2003년 <span>5월</span></div>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>포천 공장 착공</h3>
+                <p>1200평 규모의 공장 착공</p>
+              </div>
+            </div>
+
+            <!-- 2001년 6월 (연마기) -->
+            <div class="timeline-item">
+              <div class="timeline-date">2001년 <span>6월</span></div>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>사업부지 확장 및 장비 증설</h3>
+                <p>독일(헤플러) 치면 연마기 2종 도입</p>
+              </div>
+            </div>
+
+            <!-- 2001년 6월 (터닝) -->
+            <div class="timeline-item">
+              <div class="timeline-date">2001년 <span>6월</span></div>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>사업부지 확장 및 장비 증설</h3>
+                <p>포천산하 제2공장 설립 및 수직선반(터닝) 2대 도입</p>
+              </div>
+            </div>
+
+            <!-- 1999년 10월 -->
+            <div class="timeline-item">
+              <div class="timeline-date">1999년 <span>10월</span></div>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>사업부지 확장 및 장비 증설</h3>
+                <p>공장 150평 증설 / 기어 연마기 2종, 기어 홉빙기 1종, 베어링 연마기 1종 도입</p>
+              </div>
+            </div>
+
+            <!-- 1996년 9월 -->
+            <div class="timeline-item">
+              <div class="timeline-date">1996년 <span>9월</span></div>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>사업확장으로 장비 증설</h3>
+                <p>외경 연마기 외 1종 도입</p>
+              </div>
+            </div>
+
+            <!-- 1994년 7월 -->
+            <div class="timeline-item">
+              <div class="timeline-date">1994년 <span>7월</span></div>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>사업확장으로 장비 증설</h3>
+                <p>기어 치면 연마기 2종 도입</p>
+              </div>
+            </div>
+
+            <!-- 1993년 3월 -->
+            <div class="timeline-item">
+              <div class="timeline-date">1993년 <span>3월</span></div>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>사업확장으로 공장이전 및 장비 증설</h3>
+                <p>서울시 성동구 성수1가 655-2 로 이전 및 홉빙기계 외 2종 도입</p>
+              </div>
+            </div>
+
+            <!-- 1991년 10월 -->
+            <div class="timeline-item">
+              <div class="timeline-date">1991년 <span>10월</span></div>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>대형특수기어 설립</h3>
+                <p>서울시 성동구 성수1가 385-10 에 최초설립</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
 
-      <div class="timeline">
+      <!-- 120px 슬림 사이드바 -->
+      <aside class="sticky-edge-sidebar">
+        <div class="sidebar-header">전체 메뉴</div>
 
-        <!-- 2012년 7월 -->
-        <div class="timeline-item">
-          <div class="timeline-date">2012년 <span>7월</span></div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>사업확장으로 법인설립 및 법인으로 전환</h3>
-            <p>경기도 포천시 소흘읍 호국로479번길 15에 (주)대형특수기어 설립</p>
-          </div>
+        <!-- 1. 회사소개 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">회사소개</div>
+          <ul class="sidebar-menu">
+            <li><a href="greeting.html">인사말씀</a></li>
+            <li class="active"><a href="history.html">회사연혁</a></li>
+            <li><a href="location.html">찾아오시는 길</a></li>
+          </ul>
         </div>
 
-        <!-- 2004년 9월 -->
-        <div class="timeline-item">
-          <div class="timeline-date">2004년 <span>9월</span></div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>포천 공장 완공 및 사업지 이전</h3>
-            <p>1200평 규모 공장 완공으로 모든 사업지 통합</p>
-          </div>
+        <!-- 2. 제품소개 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">제품소개</div>
+          <ul class="sidebar-menu">
+            <li><a href="cnc.html">OM CNC 터닝</a></li>
+            <li><a href="bearing.html">선회 베어링</a></li>
+            <li><a href="gear.html">특수 기어</a></li>
+          </ul>
         </div>
 
-        <!-- 2003년 5월 -->
-        <div class="timeline-item">
-          <div class="timeline-date">2003년 <span>5월</span></div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>포천 공장 착공</h3>
-            <p>1200평 규모의 공장 착공</p>
-          </div>
+        <!-- 3. 설비현황 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">설비현황</div>
+          <ul class="sidebar-menu">
+            <li><a href="equipment.html">보유 설비 전체</a></li>
+          </ul>
         </div>
 
-        <!-- 2001년 6월 (연마기) -->
-        <div class="timeline-item">
-          <div class="timeline-date">2001년 <span>6월</span></div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>사업부지 확장 및 장비 증설</h3>
-            <p>독일(헤플러) 치면 연마기 2종 도입</p>
-          </div>
+        <!-- 4. 고객지원 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">고객지원</div>
+          <ul class="sidebar-menu">
+            <li><a href="support-center.html">고객센터</a></li>
+          </ul>
         </div>
+      </aside>
 
-        <!-- 2001년 6월 (터닝) -->
-        <div class="timeline-item">
-          <div class="timeline-date">2001년 <span>6월</span></div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>사업부지 확장 및 장비 증설</h3>
-            <p>포천산하 제2공장 설립 및 수직선반(터닝) 2대 도입</p>
-          </div>
-        </div>
-
-        <!-- 1999년 10월 -->
-        <div class="timeline-item">
-          <div class="timeline-date">1999년 <span>10월</span></div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>사업부지 확장 및 장비 증설</h3>
-            <p>공장 150평 증설 / 기어 연마기 2종, 기어 홉빙기 1종, 베어링 연마기 1종 도입</p>
-          </div>
-        </div>
-
-        <!-- 1996년 9월 -->
-        <div class="timeline-item">
-          <div class="timeline-date">1996년 <span>9월</span></div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>사업확장으로 장비 증설</h3>
-            <p>외경 연마기 외 1종 도입</p>
-          </div>
-        </div>
-
-        <!-- 1994년 7월 -->
-        <div class="timeline-item">
-          <div class="timeline-date">1994년 <span>7월</span></div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>사업확장으로 장비 증설</h3>
-            <p>기어 치면 연마기 2종 도입</p>
-          </div>
-        </div>
-
-        <!-- 1993년 3월 -->
-        <div class="timeline-item">
-          <div class="timeline-date">1993년 <span>3월</span></div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>사업확장으로 공장이전 및 장비 증설</h3>
-            <p>서울시 성동구 성수1가 655-2 로 이전 및 홉빙기계 외 2종 도입</p>
-          </div>
-        </div>
-
-        <!-- 1991년 10월 -->
-        <div class="timeline-item">
-          <div class="timeline-date">1991년 <span>10월</span></div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>대형특수기어 설립</h3>
-            <p>서울시 성동구 성수1가 385-10 에 최초설립</p>
-          </div>
-        </div>
-
-      </div>
     </div>
   </section>
 

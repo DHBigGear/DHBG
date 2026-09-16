@@ -7,40 +7,77 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+
 <style>
-  /* ---------- 메인 전용 스타일 ---------- */
+  /* 기본 브랜드 스타일 */
+  .brand-logo img, .m-brand-logo img {
+    max-height: 40px;
+    width: auto;
+    display: block;
+  }
+
+  /* 메인 히어로 & 슬라이더 전용 스타일 */
   .main-hero {
     position: relative;
-    height: 75vh;
-    min-height: 480px;
+    height: 580px;
     background: #111518;
     overflow: hidden;
   }
-  .main-hero img {
+
+  .hero-slider {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    z-index: 1;
+  }
+
+  .hero-slide.active {
+    opacity: 1;
+  }
+
+  .hero-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.45;
+    object-position: center;
   }
-  .hero-content {
+
+  .hero-overlay {
     position: absolute;
     inset: 0;
-    max-width: 1140px;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1400px;
+    height: 100%;
     margin: 0 auto;
     padding: 0 32px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: #ffffff;
-    z-index: 2;
   }
+
   .hero-tag {
     font-family: 'Noto Serif KR', serif;
-    color: var(--signal);
+    color: var(--signal, #b91d2b);
     font-size: 15px;
     letter-spacing: 0.1em;
     margin-bottom: 12px;
   }
+
   .hero-title {
     font-family: 'Noto Serif KR', serif;
     font-size: 42px;
@@ -48,6 +85,7 @@
     line-height: 1.35;
     margin-bottom: 24px;
   }
+
   .hero-desc {
     font-size: 17px;
     color: #c8c4bb;
@@ -56,37 +94,58 @@
     margin-bottom: 32px;
   }
 
-  /* 로고 스타일 추가/조정 */
-  .brand-logo img, .m-brand-logo img {
-    max-height: 40px; /* 로고 높이에 맞게 조절하세요 */
-    width: auto;
-    display: block;
+  .btn-signal {
+    display: inline-block;
+    background-color: var(--signal, #b91d2b);
+    color: #ffffff;
+    padding: 12px 28px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
   }
 
-  /* 제품/사업 섹션 */
+  .btn-signal:hover {
+    background-color: #961723;
+  }
+
+  /* 메인 섹션 레이아웃 (사이드바 결합) */
   .biz-section {
-    padding: 96px 32px;
+    padding: 60px 24px 80px;
+    background-color: #f8f9fa;
+    position: relative;
   }
-  .section-inner {
-    max-width: 1140px;
+
+  .main-layout {
+    max-width: 1400px;
     margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    position: relative;
   }
+
+  .main-container {
+    flex: 1;
+    min-width: 0;
+  }
+
   .sec-header {
     margin-bottom: 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
   }
+
   .sec-title {
     font-family: 'Noto Serif KR', serif;
     font-size: 32px;
     font-weight: 700;
   }
+
   .sec-title span {
     display: block;
     font-size: 13px;
     font-family: 'Noto Sans KR', sans-serif;
-    color: var(--signal);
+    color: var(--signal, #b91d2b);
     letter-spacing: 0.1em;
     margin-bottom: 8px;
   }
@@ -94,64 +153,202 @@
   .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+    gap: 24px;
   }
+
   .card-item {
     background: #ffffff;
-    border: 1px solid var(--line);
-    border-radius: 2px;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
     overflow: hidden;
     text-decoration: none;
-    color: var(--ink);
+    color: var(--ink, #111518);
     transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
   }
+
   .card-item:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   }
+
   .card-img {
     height: 220px;
     overflow: hidden;
+    background-color: #f1f5f9;
   }
+
   .card-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
   .card-body {
     padding: 24px;
   }
+
   .card-body h3 {
     font-family: 'Noto Serif KR', serif;
     font-size: 20px;
     margin-bottom: 10px;
   }
+
   .card-body p {
     font-size: 14px;
-    color: var(--steel);
+    color: #64748b;
     line-height: 1.6;
   }
 
-  /* 강점 안내 섹션 */
-  .strength-section {
-    background: var(--ink);
-    color: #efece6;
-    padding: 96px 32px;
+  /* 타이트한 슬림 사이드바 (폭 120px) */
+  .sticky-edge-sidebar {
+    position: sticky !important;
+    top: 180px !important;
+    width: 120px !important;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    z-index: 100;
+  }
+
+  .sidebar-header {
+    background-color: #111518;
+    color: #ffffff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--signal, #b91d2b);
+    letter-spacing: -0.02em;
+  }
+
+  .sidebar-category-group {
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .sidebar-category-title {
+    background-color: #f8fafc;
+    padding: 7px 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #1e293b;
+    border-left: 3px solid var(--signal, #b91d2b);
+    letter-spacing: -0.03em;
+  }
+
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar-menu li a {
+    display: block;
+    padding: 6px 6px 6px 10px;
+    color: #475569;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    letter-spacing: -0.04em;
+  }
+
+  .sidebar-menu li a:hover {
+    background-color: #faf5f5;
+    color: var(--signal, #b91d2b);
+  }
+
+  .sidebar-menu li.active a {
+    color: var(--signal, #b91d2b);
+    font-weight: 700;
+    background-color: #fef2f2;
+  }
+
+  /* 푸터 스타일 */
+  .site-footer {
+    background-color: #111518;
+    color: #a0aec0;
+    font-size: 13px;
+  }
+
+  .footer-nav-bar {
+    border-bottom: 1px solid #2d3748;
+    padding: 16px 0;
+  }
+
+  .footer-nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .footer-nav-inner a {
+    color: #e2e8f0;
+    text-decoration: none;
+  }
+
+  .footer-nav-inner a:hover {
+    color: var(--signal, #b91d2b);
+  }
+
+  .footer-nav-inner .divider {
+    color: #4a5568;
+  }
+
+  .footer-body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+  }
+
+  .footer-info-text {
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  .footer-info-text .sep {
+    margin: 0 8px;
+    color: #4a5568;
+  }
+
+  .footer-copyright {
+    color: #718096;
+    font-size: 12px;
+  }
+
+  /* 반응형 처리 */
+  @media (max-width: 1024px) {
+    .main-layout {
+      flex-direction: column-reverse;
+      gap: 32px;
+    }
+    .sticky-edge-sidebar {
+      width: 100% !important;
+      position: relative !important;
+      top: 0 !important;
+    }
   }
 
   @media (max-width: 820px) {
+    .main-hero { height: 450px; }
     .hero-title { font-size: 28px; }
     .grid-3 { grid-template-columns: 1fr; }
-    .sec-header { flex-direction: column; align-items: flex-start; gap: 16px; }
   }
 </style>
 </head>
 <body>
 
-  <!-- 모바일 대응 공통 헤더 및 드로어 -->
+  <!-- 모바일 헤더 -->
   <header class="m-site-header">
     <a href="index.html" class="m-brand-logo">
-      <!-- 모바일 로고 이미지 삽입 위치 -->
       <img src="image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR">
     </a>
     <button id="side-menu-open-btn" class="m-menu-btn" aria-label="메뉴 열기">☰</button>
@@ -196,11 +393,10 @@
     </div>
   </aside>
 
-  <!-- 상단 공통 헤더 (PC) -->
+  <!-- PC 공통 헤더 -->
   <header class="site-header">
     <div class="nav-inner">
       <a href="index.html" class="brand-logo">
-        <!-- PC 로고 이미지 삽입 위치 -->
         <img src="image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR">
       </a>
       <nav class="nav-links">
@@ -237,15 +433,14 @@
             <a href="support-center.html">고객센터</a>
           </div>
         </div>
-
       </nav>
     </div>
   </header>
 
-  <!-- 메인 히어로 섹션 -->
+  <!-- 메인 히어로 (다중 이미지 슬라이드 구조) -->
   <section class="main-hero">
     <div class="hero-slider">
-      <div class="hero-slide">
+      <div class="hero-slide active">
         <img src="image/hero_cnc.png" alt="CNC 터닝 가공">
       </div>
       <div class="hero-slide">
@@ -265,7 +460,8 @@
       <div class="hero-tag">SINCE 1991 — PRECISION ENGINEERING</div>
       <h1 class="hero-title">정밀함은 타협하지 않는다.<br>(주)대형특수기어</h1>
       <p class="hero-desc">
-        축적된 노하우와 독보적인 기술력으로 고난이도 대형 기어 및 선회 베어링, CNC 터닝 가공 분야를 선도합니다.
+        축적된 노하우와 독보적인 기술력으로 고난이도 대형 기어 및 선회 베어링,<br> 
+        CNC 터닝 가공 분야를 선도합니다.
       </p>
       <div>
         <a href="greeting.html" class="btn-signal">회사소개 바로가기</a>
@@ -273,55 +469,98 @@
     </div>
   </section>
 
-  <!-- 주요 제품 안내 -->
+  <!-- 주요 제품 및 사이드바 섹션 -->
   <section class="biz-section">
-    <div class="section-inner">
-      <div class="sec-header">
-        <h2 class="sec-title">
-          <span>OUR PRODUCTS</span>
-          주요 사업 영역
-        </h2>
+    <div class="main-layout">
+      
+      <!-- 메인 콘텐츠 영역 -->
+      <div class="main-container">
+        <div class="sec-header">
+          <h2 class="sec-title">
+            <span>OUR PRODUCTS</span>
+            주요 사업 영역
+          </h2>
+        </div>
+
+        <div class="grid-3">
+          <a href="cnc.html" class="card-item">
+            <div class="card-img">
+              <img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝">
+            </div>
+            <div class="card-body">
+              <h3>OM CNC 터닝</h3>
+              <p>고정밀 대형 공작물 가공에 최적화된 최첨단 CNC 터닝 설비 및 가공 기술을 제공합니다.</p>
+            </div>
+          </a>
+
+          <a href="bearing.html" class="card-item">
+            <div class="card-img">
+              <img src="./image/bearing1.png" alt="선회 베어링">
+            </div>
+            <div class="card-body">
+              <h3>선회 베어링</h3>
+              <p>중장비 및 산업용 기계 핵심 부품인 대형 선회 베어링을 정밀하게 제작합니다.</p>
+            </div>
+          </a>
+
+          <a href="gear.html" class="card-item">
+            <div class="card-img">
+              <img src="./image/gear2.png" alt="특수 기어">
+            </div>
+            <div class="card-body">
+              <h3>특수 기어</h3>
+              <p>각종 산업 현장의 규격에 맞춘 고난이도 대형 특수 기어 가공 솔루션을 제공합니다.</p>
+            </div>
+          </a>
+        </div>
       </div>
 
-      <div class="grid-3">
-        <a href="cnc.html" class="card-item">
-          <div class="card-img">
-            <img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝">
-          </div>
-          <div class="card-body">
-            <h3>OM CNC 터닝</h3>
-            <p>고정밀 대형 공작물 가공에 최적화된 최첨단 CNC 터닝 설비 및 가공 기술을 제공합니다.</p>
-          </div>
-        </a>
+      <!-- 120px 슬림 사이드바 -->
+      <aside class="sticky-edge-sidebar">
+        <div class="sidebar-header">전체 메뉴</div>
 
-        <a href="bearing.html" class="card-item">
-          <div class="card-img">
-            <img src="./image/bearing1.png" alt="선회 베어링">
-          </div>
-          <div class="card-body">
-            <h3>선회 베어링</h3>
-            <p>중장비 및 산업용 기계 핵심 부품인 대형 선회 베어링을 정밀하게 제작합니다.</p>
-          </div>
-        </a>
+        <!-- 1. 회사소개 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">회사소개</div>
+          <ul class="sidebar-menu">
+            <li><a href="greeting.html">인사말씀</a></li>
+            <li><a href="history.html">회사연혁</a></li>
+            <li><a href="location.html">찾아오시는 길</a></li>
+          </ul>
+        </div>
 
-        <a href="gear.html" class="card-item">
-          <div class="card-img">
-            <img src="./image/gear2.png" alt="특수 기어">
-          </div>
-          <div class="card-body">
-            <h3>특수 기어</h3>
-            <p>각종 산업 현장의 규격에 맞춘 고난이도 대형 특수 기어 가공 솔루션을 제공합니다.</p>
-          </div>
-        </a>
-      </div>
+        <!-- 2. 제품소개 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">제품소개</div>
+          <ul class="sidebar-menu">
+            <li><a href="cnc.html">OM CNC 터닝</a></li>
+            <li><a href="bearing.html">선회 베어링</a></li>
+            <li><a href="gear.html">특수 기어</a></li>
+          </ul>
+        </div>
+
+        <!-- 3. 설비현황 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">설비현황</div>
+          <ul class="sidebar-menu">
+            <li><a href="equipment.html">보유 설비 전체</a></li>
+          </ul>
+        </div>
+
+        <!-- 4. 고객지원 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">고객지원</div>
+          <ul class="sidebar-menu">
+            <li><a href="support-center.html">고객센터</a></li>
+          </ul>
+        </div>
+      </aside>
+
     </div>
   </section>
 
-
-
-  <!-- 공통 하단 푸터 -->
+  <!-- 푸터 영역 -->
   <footer class="site-footer">
-    <!-- 1. 카테고리 선택 네비게이션 -->
     <div class="footer-nav-bar">
       <div class="footer-nav-inner">
         <a href="index.html">홈</a>
@@ -336,7 +575,6 @@
       </div>
     </div>
 
-    <!-- 2. 기업 상세 정보 및 카피라이트 -->
     <div class="footer-body">
       <div class="footer-info-text">
         <span>사업자등록번호 127-86-41052</span><span class="sep">*</span>
@@ -351,9 +589,10 @@
     </div>
   </footer>
 
-  <!-- 스크립트 -->
+  <!-- 자바스크립트 -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // 1. 모바일 드로어 제어
       var openBtn = document.getElementById('side-menu-open-btn');
       var closeBtn = document.getElementById('side-menu-close-btn');
       var overlay = document.getElementById('side-menu-overlay');
@@ -376,6 +615,18 @@
           drawer.classList.remove('is-open');
           overlay.classList.remove('is-active');
         });
+      }
+
+      // 2. 이미지 자동 전환 슬라이더 (3.5초 간격)
+      var slides = document.querySelectorAll('.hero-slide');
+      var currentSlide = 0;
+
+      if (slides.length > 1) {
+        setInterval(function() {
+          slides[currentSlide].classList.remove('active');
+          currentSlide = (currentSlide + 1) % slides.length;
+          slides[currentSlide].classList.add('active');
+        }, 3500);
       }
     });
   </script>

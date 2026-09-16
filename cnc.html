@@ -9,14 +9,14 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-  /* 로고 스타일 정의 */
+  /* 기본 브랜드 스타일 */
   .brand-logo img, .m-brand-logo img {
     max-height: 40px;
     width: auto;
     display: block;
   }
 
-  /* 서브 히어로 섹션 (좌측 정렬 및 딤 레이아웃 반영) */
+  /* 서브 히어로 섹션 */
   .sub-hero {
     position: relative;
     height: 240px;
@@ -49,7 +49,7 @@
   .sub-hero-content {
     position: relative;
     z-index: 3;
-    max-width: 1100px;
+    max-width: 1400px;
     width: 100%;
     margin: 0 auto;
     padding: 0 24px;
@@ -74,18 +74,30 @@
     color: rgba(255, 255, 255, 0.75);
   }
 
-  /* CNC 본문 레이아웃 */
+  /* CNC 본문 섹션 및 레이아웃 */
   .cnc-section {
-    padding: 80px 24px;
+    padding: 60px 24px 80px;
     background-color: var(--bg-light, #f8f9fa);
+    position: relative;
   }
-  .cnc-container {
-    max-width: 1100px;
+
+  .main-layout {
+    max-width: 1400px;
     margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    position: relative;
   }
+
+  .main-container {
+    flex: 1;
+    min-width: 0;
+  }
+
   .sec-intro {
     text-align: center;
-    margin-bottom: 56px;
+    margin-bottom: 48px;
   }
   .sec-intro .sub-tag {
     font-family: 'Noto Serif KR', serif;
@@ -108,7 +120,7 @@
     border: 1px solid var(--line, #e2e8f0);
     border-radius: 8px;
     padding: 32px;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   }
   .main-product-card h3 {
@@ -134,18 +146,16 @@
 
   .detail-grid {
     display: grid;
-    grid-template-columns: 360px 1fr;
-    gap: 32px;
+    grid-template-columns: 340px 1fr;
+    gap: 24px;
     align-items: start;
   }
   .spec-card {
     background: #ffffff;
     border: 1px solid var(--line, #e2e8f0);
     border-radius: 8px;
-    padding: 32px 28px;
+    padding: 28px 24px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    position: sticky;
-    top: 90px;
   }
   .spec-card h4 {
     font-family: 'Noto Serif KR', serif;
@@ -170,7 +180,7 @@
     align-items: center;
     padding: 12px 0;
     border-bottom: 1px solid #f1f5f9;
-    font-size: 15px;
+    font-size: 14px;
   }
   .spec-list li:last-child {
     border-bottom: none;
@@ -178,7 +188,7 @@
   .spec-list li .label {
     font-weight: 700;
     color: #111;
-    width: 120px;
+    width: 100px;
     flex-shrink: 0;
   }
   .spec-list li .value {
@@ -205,15 +215,149 @@
     border-radius: 4px;
   }
 
+  /* 타이트한 슬림 사이드바 (폭 120px) */
+  .sticky-edge-sidebar {
+    position: sticky !important;
+    top: 180px !important;
+    width: 120px !important;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    z-index: 100;
+  }
+
+  .sidebar-header {
+    background-color: #111518;
+    color: #ffffff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--signal, #b42318);
+    letter-spacing: -0.02em;
+  }
+
+  .sidebar-category-group {
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .sidebar-category-title {
+    background-color: #f8fafc;
+    padding: 7px 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #1e293b;
+    border-left: 3px solid var(--signal, #b42318);
+    letter-spacing: -0.03em;
+  }
+
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar-menu li a {
+    display: block;
+    padding: 6px 6px 6px 10px;
+    color: #475569;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    letter-spacing: -0.04em;
+  }
+
+  .sidebar-menu li a:hover {
+    background-color: #faf5f5;
+    color: var(--signal, #b42318);
+  }
+
+  .sidebar-menu li.active a {
+    color: var(--signal, #b42318);
+    font-weight: 700;
+    background-color: #fef2f2;
+  }
+
+  /* 푸터 스타일 */
+  .site-footer {
+    background-color: #111518;
+    color: #a0aec0;
+    font-size: 13px;
+  }
+
+  .footer-nav-bar {
+    border-bottom: 1px solid #2d3748;
+    padding: 16px 0;
+  }
+
+  .footer-nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .footer-nav-inner a {
+    color: #e2e8f0;
+    text-decoration: none;
+  }
+
+  .footer-nav-inner a:hover {
+    color: var(--signal, #b42318);
+  }
+
+  .footer-nav-inner .divider {
+    color: #4a5568;
+  }
+
+  .footer-body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+  }
+
+  .footer-info-text {
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  .footer-info-text .sep {
+    margin: 0 8px;
+    color: #4a5568;
+  }
+
+  .footer-copyright {
+    color: #718096;
+    font-size: 12px;
+  }
+
+  /* 반응형 처리 */
+  @media (max-width: 1024px) {
+    .main-layout {
+      flex-direction: column-reverse;
+      gap: 32px;
+    }
+    .sticky-edge-sidebar {
+      width: 100% !important;
+      position: relative !important;
+      top: 0 !important;
+    }
+  }
+
   @media (max-width: 820px) {
     .sub-hero-content {
       padding: 0 20px;
     }
     .detail-grid {
       grid-template-columns: 1fr;
-    }
-    .spec-card {
-      position: static;
     }
     .main-product-card {
       padding: 20px;
@@ -330,53 +474,95 @@
 
   <!-- CNC 본문 섹션 -->
   <section class="cnc-section">
-    <div class="cnc-container">
+    <div class="main-layout">
       
-      <div class="sec-intro">
-        <span class="sub-tag">HIGH PRECISION TURNING</span>
-        <h2>초대형 정밀 가공 기술력의 중심</h2>
-      </div>
+      <!-- 메인 콘텐츠 영역 -->
+      <div class="main-container">
+        <div class="sec-intro">
+          <span class="sub-tag">HIGH PRECISION TURNING</span>
+          <h2>초대형 정밀 가공 기술력의 중심</h2>
+        </div>
 
-      <!-- 메인 대표 이미지 카드 -->
-      <div class="main-product-card">
-        <h3>OM CNC 터닝 전경</h3>
-        <div class="main-img-wrapper">
-          <img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝 메인 장비">
+        <!-- 메인 대표 이미지 카드 -->
+        <div class="main-product-card">
+          <h3>OM CNC 터닝 전경</h3>
+          <div class="main-img-wrapper">
+            <img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝 메인 장비">
+          </div>
+        </div>
+
+        <!-- 좌측 사양 카드 + 우측 사진 -->
+        <div class="detail-grid">
+          <div class="spec-card">
+            <h4>가공 규격 및 사양</h4>
+            <p>고정밀 초대형 부품 가공이 가능한 일본 OM사의 대표 CNC 터닝 설비입니다.</p>
+            <ul class="spec-list">
+              <li>
+                <span class="label">제조국 / 모델</span>
+                <span class="value">일본 (OM CNC 터닝)</span>
+              </li>
+              <li>
+                <span class="label">가공 방식</span>
+                <span class="value">CNC 터닝가공</span>
+              </li>
+              <li>
+                <span class="label">가공 범위</span>
+                <span class="value">Ø 3000 가공</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="gallery-list">
+            <div class="gallery-item">
+              <img src="./image/machine/OM_CNC_turning1.jpg" alt="OM CNC 터닝 상세 가공부">
+            </div>
+            <div class="gallery-item">
+              <img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝 측면 전경">
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- 좌측 사양 카드 + 우측 사진 -->
-      <div class="detail-grid">
-        
-        <div class="spec-card">
-          <h4>가공 규격 및 사양</h4>
-          <p>고정밀 초대형 부품 가공이 가능한 일본 OM사의 대표 CNC 터닝 설비입니다.</p>
-          <ul class="spec-list">
-            <li>
-              <span class="label">제조국 / 모델</span>
-              <span class="value">일본 (OM CNC 터닝)</span>
-            </li>
-            <li>
-              <span class="label">가공 방식</span>
-              <span class="value">CNC 터닝가공</span>
-            </li>
-            <li>
-              <span class="label">가공 범위</span>
-              <span class="value">Ø 3000 가공</span>
-            </li>
+      <!-- 120px 슬림 사이드바 -->
+      <aside class="sticky-edge-sidebar">
+        <div class="sidebar-header">전체 메뉴</div>
+
+        <!-- 1. 회사소개 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">회사소개</div>
+          <ul class="sidebar-menu">
+            <li><a href="greeting.html">인사말씀</a></li>
+            <li><a href="history.html">회사연혁</a></li>
+            <li><a href="location.html">찾아오시는 길</a></li>
           </ul>
         </div>
 
-        <div class="gallery-list">
-          <div class="gallery-item">
-            <img src="./image/machine/OM_CNC_turning1.jpg" alt="OM CNC 터닝 상세 가공부">
-          </div>
-          <div class="gallery-item">
-            <img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝 측면 전경">
-          </div>
+        <!-- 2. 제품소개 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">제품소개</div>
+          <ul class="sidebar-menu">
+            <li class="active"><a href="cnc.html">OM CNC 터닝</a></li>
+            <li><a href="bearing.html">선회 베어링</a></li>
+            <li><a href="gear.html">특수 기어</a></li>
+          </ul>
         </div>
 
-      </div>
+        <!-- 3. 설비현황 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">설비현황</div>
+          <ul class="sidebar-menu">
+            <li><a href="equipment.html">보유 설비 전체</a></li>
+          </ul>
+        </div>
+
+        <!-- 4. 고객지원 -->
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-title">고객지원</div>
+          <ul class="sidebar-menu">
+            <li><a href="support-center.html">고객센터</a></li>
+          </ul>
+        </div>
+      </aside>
 
     </div>
   </section>
