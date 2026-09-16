@@ -200,11 +200,11 @@
     line-height: 1.6;
   }
 
-  /* 타이트한 슬림 사이드바 (폭 120px) */
-  .sticky-edge-sidebar {
-    position: sticky !important;
-    top: 180px !important;
-    width: 120px !important;
+  /* 타이트한 슬림 사이드바 (PC 전용 120px) - !important 제거 */
+  aside.sticky-edge-sidebar {
+    position: sticky;
+    top: 180px;
+    width: 120px;
     flex-shrink: 0;
     background-color: #ffffff;
     border: 1px solid var(--line, #e2e8f0);
@@ -324,16 +324,18 @@
     font-size: 12px;
   }
 
-  /* 반응형 처리 */
-  @media (max-width: 1024px) {
+  /* 반응형 모바일 (사이드바 숨김 처리) */
+  @media screen and (max-width: 1024px) {
     .main-layout {
-      flex-direction: column-reverse;
-      gap: 32px;
+      flex-direction: column;
     }
-    .sticky-edge-sidebar {
-      width: 100% !important;
-      position: relative !important;
-      top: 0 !important;
+    aside.sticky-edge-sidebar {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
     }
   }
 
