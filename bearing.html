@@ -16,7 +16,7 @@
     display: block;
   }
 
-  /* [추가/수정] equipment.html 기준 동일 서브 히어로 섹션 규격 적용 (높이 240px) */
+  /* equipment.html 기준 동일 서브 히어로 섹션 규격 적용 (높이 240px) */
   .sub-hero {
     position: relative;
     height: 240px;
@@ -333,16 +333,13 @@
     background-color: #fef2f2;
   }
 
-  /* 반응형 처리 */
+  /* [수정] 모바일/태블릿 화면 반응형 처리 - 사이드바 완전 미표시 */
   @media (max-width: 1024px) {
     .bearing-layout {
-      flex-direction: column-reverse;
-      gap: 32px;
+      flex-direction: column;
     }
     .sticky-edge-sidebar {
-      width: 100% !important;
-      position: relative !important;
-      top: 0 !important;
+      display: none !important;
     }
   }
 
