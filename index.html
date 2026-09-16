@@ -56,6 +56,13 @@
     margin-bottom: 32px;
   }
 
+  /* 로고 스타일 추가/조정 */
+  .brand-logo img, .m-brand-logo img {
+    max-height: 40px; /* 로고 높이에 맞게 조절하세요 */
+    width: auto;
+    display: block;
+  }
+
   /* 제품/사업 섹션 */
   .biz-section {
     padding: 96px 32px;
@@ -141,13 +148,60 @@
 </head>
 <body>
 
- 
+  <!-- 모바일 대응 공통 헤더 및 드로어 -->
+  <header class="m-site-header">
+    <a href="index.html" class="m-brand-logo">
+      <!-- 모바일 로고 이미지 삽입 위치 -->
+      <img src="image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR">
+    </a>
+    <button id="side-menu-open-btn" class="m-menu-btn" aria-label="메뉴 열기">☰</button>
+  </header>
+
+  <div id="side-menu-overlay" class="side-menu-overlay"></div>
+  <aside id="side-menu-drawer" class="side-menu-drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">전체메뉴</span>
+      <button id="side-menu-close-btn" class="close-btn" aria-label="메뉴 닫기">✕</button>
+    </div>
+    
+    <div class="drawer-content">
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="greeting.html">회사소개</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="greeting.html">인사말씀</a></li>
+          <li><a href="history.html">회사연혁</a></li>
+          <li><a href="location.html">찾아오시는 길</a></li>
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="cnc.html">제품소개</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="cnc.html">OM CNC 터닝</a></li>
+          <li><a href="bearing.html">선회 베어링</a></li>
+          <li><a href="gear.html">특수 기어</a></li>
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="equipment.html">설비현황</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="equipment.html">보유 설비 전체</a></li>
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="support-center.html">고객지원</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="support-center.html">고객센터</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
 
   <!-- 상단 공통 헤더 (PC) -->
   <header class="site-header">
     <div class="nav-inner">
       <a href="index.html" class="brand-logo">
-        (주)대형특수기어 <span>DAE HYUNG GEAR</span>
+        <!-- PC 로고 이미지 삽입 위치 -->
+        <img src="image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR">
       </a>
       <nav class="nav-links">
         <div class="nav-item active"><a href="index.html">홈</a></div>
@@ -262,6 +316,96 @@
       </div>
     </div>
   </section>
+
+<!-- Quick Inquiry Section -->
+<section class="inquiry-section">
+  <div class="inquiry-container">
+    
+    <!-- Left Intro Box -->
+    <div class="inquiry-info">
+      <span class="sub-title">ESTIMATE & INQUIRY</span>
+      <h2>도면 검토 및 견적 문의</h2>
+      <p class="desc">
+        대형 기어 가공, 선회 베어링, OM CNC 터닝 등 사양에 맞는 맞춤형 최적의 솔루션을 제공합니다.<br>
+        문의사항을 남겨주시면 담당자가 빠르게 연락드리겠습니다.
+      </p>
+
+      <div class="contact-card-group">
+        <div class="contact-card">
+          <div class="icon">📞</div>
+          <div>
+            <span class="label">대표 전화</span>
+            <strong>031-541-1248~9</strong>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="icon">✉️</div>
+          <div>
+            <span class="label">이메일 문의</span>
+            <strong>dehyoung@naver.com</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Form Box -->
+    <div class="inquiry-form-wrapper">
+      <form class="inquiry-form" action="#" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="company">회사/기관명 <span>*</span></label>
+            <input type="text" id="company" name="company" placeholder="(주)대형특수기어" required>
+          </div>
+          <div class="form-group">
+            <label for="name">담당자명 <span>*</span></label>
+            <input type="text" id="name" name="name" placeholder="홍길동 팀장" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">연락처 <span>*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="email">이메일 <span>*</span></label>
+            <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="category">문의 유형 <span>*</span></label>
+          <select id="category" name="category" required>
+            <option value="" disabled selected>선택해 주세요</option>
+            <option value="cnc">OM CNC 터닝 가공</option>
+            <option value="bearing">선회 베어링</option>
+            <option value="gear">특수 기어</option>
+            <option value="etc">기타/일반 문의</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">문의 상세 내용 <span>*</span></label>
+          <textarea id="message" name="message" rows="4" placeholder="가공 사양, 외경/내경 치수, 수량 등 상세 문의 내용을 입력해 주세요." required></textarea>
+        </div>
+
+        <div class="form-privacy">
+          <label class="checkbox-container">
+            <input type="checkbox" required>
+            <span class="checkmark"></span>
+            개인정보 수집 및 이용 동의 (필수)
+          </label>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <span>견적 및 기술 문의 접수하기</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
 
   <!-- 공통 하단 푸터 -->
   <footer class="site-footer">
