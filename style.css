@@ -34,13 +34,10 @@ body {
   text-rendering: optimizeLegibility;
   line-height: 1.6;
   letter-spacing: -0.02em;
-
-  /* 페이지 열릴 때 스르륵 등장하는 애니메이션 (움찔거림 은폐 및 부드러운 연출) */
   animation: pageFadeIn 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   will-change: opacity, transform;
 }
 
-/* 페이지 전체 Fade-in 효과 */
 @keyframes pageFadeIn {
   0% {
     opacity: 0;
@@ -63,13 +60,50 @@ h3, .h3-title { font-size: 20px; font-weight: 600; line-height: 1.4; }
 h4, .h4-title { font-size: 16px; font-weight: 600; }
 p, li, span, div { font-size: 15px; }
 
-/* ---------- 공통 헤더 & 네비게이션 ---------- */
-.site-header {
-  background: var(--header-bg);
+/* ---------- PC 상단 헤더 & 네비게이션 ---------- */
+.site-header, header:not(.m-site-header) {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.site-logo, .header-logo {
+  height: 42px;
+  width: auto; 
+  display: block;
+  object-fit: contain;
+}
+
+header nav a, header nav > div > a {
+  color: #1e293b !important;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+header nav a:hover, header nav > div > a:hover {
+  color: #0d1b3e !important;
+}
+
+header nav div > div {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+}
+
+header nav div > div a {
+  color: #475569 !important;
+  font-size: 14px;
+}
+
+header nav div > div a:hover {
+  background-color: #f8fafc !important;
+  color: #0d1b3e !important;
 }
 
 .nav-inner {
@@ -83,7 +117,7 @@ p, li, span, div { font-size: 15px; }
 }
 
 .brand-logo {
-  color: #ffffff;
+  color: #111518;
   font-size: 20px;
   font-weight: 700;
   text-decoration: none;
@@ -110,7 +144,7 @@ p, li, span, div { font-size: 15px; }
 }
 
 .nav-item > a {
-  color: #e1e4e8;
+  color: #1e293b;
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
@@ -121,7 +155,7 @@ p, li, span, div { font-size: 15px; }
 
 .nav-item > a:hover,
 .nav-item.active > a {
-  color: #ffffff;
+  color: #0d1b3e;
 }
 
 /* 드롭다운 메뉴 */
@@ -419,7 +453,7 @@ p, li, span, div { font-size: 15px; }
   letter-spacing: 0.05em;
 }
 
-/* ---------- 모바일 및 레이아웃 통일 ---------- */
+/* ---------- 레이아웃 기본 설정 ---------- */
 html, body {
   max-width: 100% !important;
   overflow-x: hidden !important;
@@ -431,154 +465,9 @@ html, body {
   box-sizing: border-box !important;
 }
 
-@media (max-width: 820px) {
-  .nav-inner { padding: 0 20px; }
-  .nav-links { 
-    gap: 16px; 
-    max-width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
-  .nav-item > a { font-size: 14px; padding: 12px 6px; }
-
-  .crumbs { 
-    flex-direction: column; 
-    align-items: flex-start; 
-    gap: 8px; 
-  }
-
-  .hero, .main-hero {
-    height: 380px;
-    min-height: 380px;
-  }
-
-  .sub-hero {
-    min-height: 220px !important;
-    padding: 40px 0 !important;
-  }
-
-  .sub-hero-title { font-size: 26px; }
-
-  .footer-nav-inner { gap: 10px; }
-  .footer-nav-inner a { font-size: 13px; }
-  .footer-info-text { font-size: 12px; }
-  
-  .site-header { z-index: 9999 !important; }
-  .nav-inner { position: relative; z-index: 10000; }
-  .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    transform: none !important;
-    min-width: 140px;
-    z-index: 10002 !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  .nav-item:hover .dropdown-menu,
-  .nav-item:focus-within .dropdown-menu,
-  .nav-item:active .dropdown-menu {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-  }
-}
-
-/* ---------- 모바일 서랍(Drawer) 메뉴 ---------- */
+/* ---------- 모바일 서랍(Drawer) 메뉴 기본 정의 ---------- */
 .m-site-header, .side-menu-overlay, .side-menu-drawer {
-  display: none !important;
-}
-
-@media (max-width: 820px) {
-  header:not(.m-site-header), .pc-header, .gnb, .top-nav {
-    display: none !important;
-  }
-
-  .m-site-header {
-    display: flex !important;
-    background: #ffffff;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid #e2e8f0;
-    padding: 12px 16px;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .m-brand-logo {
-    color: #111518;
-    font-size: 18px;
-    font-weight: 700;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .m-brand-logo span {
-    font-size: 11px;
-    color: #8a919a;
-    font-weight: 400;
-  }
-
-  .m-menu-btn {
-    background: none;
-    border: none;
-    color: #111518 !important;
-    font-size: 26px;
-    cursor: pointer;
-    padding: 4px 8px;
-  }
-
-  .side-menu-overlay {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 99998;
-  }
-
-  .side-menu-overlay.is-active {
-    display: block !important;
-  }
-
-  .side-menu-drawer {
-    display: flex !important;
-    position: fixed;
-    top: 0;
-    right: -300px;
-    width: 280px;
-    height: 100%;
-    background-color: #ffffff;
-    z-index: 99999;
-    box-shadow: -4px 0 16px rgba(0,0,0,0.2);
-    transition: right 0.3s ease-in-out;
-    flex-direction: column;
-  }
-
-  .side-menu-drawer.is-open {
-    right: 0 !important;
-  }
-
-  .drawer-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 20px;
-    background-color: #111518;
-    color: #ffffff;
-  }
-
-  .drawer-title { font-weight: bold; font-size: 16px; }
-  .close-btn { background: none; border: none; color: #ffffff !important; font-size: 22px; cursor: pointer; padding: 0 4px; }
-  .drawer-content { overflow-y: auto; flex: 1; padding-bottom: 30px; }
-  .m-cate-group { border-bottom: 1px solid #e2e8f0; }
-  .m-cate-title { padding: 14px 20px 6px; background-color: #faf9f6; }
-  .m-cate-title a { font-size: 13px; font-weight: 700; color: #b91d2b; text-decoration: none; display: block; }
-  .m-sub-nav { list-style: none; padding: 0; margin: 0; }
-  .m-sub-nav li a { display: block; padding: 12px 20px 12px 28px; font-size: 14px; color: #2d3748; text-decoration: none; border-top: 1px solid #f1f5f9; }
+  display: none;
 }
 
 /* ---------- Inquiry Section ---------- */
@@ -745,62 +634,20 @@ html, body {
   .inquiry-info h2 { font-size: 28px; }
 }
 
-/* ---------- [상단 헤더] 화이트 테마 ---------- */
-header {
-  background-color: #ffffff !important;
-  border-bottom: 1px solid #e2e8f0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.site-logo, .header-logo {
-  height: 42px;
-  width: auto; 
-  display: block;
-  object-fit: contain;
-}
-
-header nav a, header nav > div > a {
-  color: #1e293b !important;
-  font-weight: 600;
-  font-size: 16px;
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
-}
-
-header nav a:hover, header nav > div > a:hover {
-  color: #0d1b3e !important;
-}
-
-header nav div > div {
-  background-color: #ffffff !important;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-  border-radius: 6px;
-}
-
-header nav div > div a {
-  color: #475569 !important;
-  font-size: 14px;
-}
-
-header nav div > div a:hover {
-  background-color: #f8fafc !important;
-  color: #0d1b3e !important;
-}
-
-.m-menu-btn { color: #111518 !important; }
-
+/* ====================================
+   [최종 모바일 반응형 처리 (우선순위 최상위)]
+==================================== */
 @media (max-width: 820px) {
-  /* [핵심] 모바일 화면에서는 기존 PC용 헤더(.site-header)를 완벽히 숨김 */
+  /* 1. PC용 헤더 강제 숨김 */
   .site-header, 
-  header:not(.m-site-header) {
+  header:not(.m-site-header),
+  .pc-header, 
+  .gnb, 
+  .top-nav {
     display: none !important;
   }
 
-  /* 모바일 전용 헤더만 노출 */
+  /* 2. 모바일 전용 헤더만 단 1개만 표시 */
   .m-site-header {
     display: flex !important;
     background: #ffffff;
@@ -813,5 +660,99 @@ header nav div > div a:hover {
     align-items: center;
   }
 
-  /* 이하 모바일 메뉴 스타일은 기존과 동일... */
+  .m-brand-logo {
+    color: #111518;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .m-brand-logo span {
+    font-size: 11px;
+    color: #8a919a;
+    font-weight: 400;
+  }
+
+  .m-menu-btn {
+    background: none;
+    border: none;
+    color: #111518 !important;
+    font-size: 26px;
+    cursor: pointer;
+    padding: 4px 8px;
+  }
+
+  /* 모바일 서랍 메뉴 */
+  .side-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 99998;
+  }
+
+  .side-menu-overlay.is-active {
+    display: block !important;
+  }
+
+  .side-menu-drawer {
+    display: flex !important;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 280px;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 99999;
+    box-shadow: -4px 0 16px rgba(0,0,0,0.2);
+    transition: right 0.3s ease-in-out;
+    flex-direction: column;
+  }
+
+  .side-menu-drawer.is-open {
+    right: 0 !important;
+  }
+
+  .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    background-color: #111518;
+    color: #ffffff;
+  }
+
+  .drawer-title { font-weight: bold; font-size: 16px; }
+  .close-btn { background: none; border: none; color: #ffffff !important; font-size: 22px; cursor: pointer; padding: 0 4px; }
+  .drawer-content { overflow-y: auto; flex: 1; padding-bottom: 30px; }
+  .m-cate-group { border-bottom: 1px solid #e2e8f0; }
+  .m-cate-title { padding: 14px 20px 6px; background-color: #faf9f6; }
+  .m-cate-title a { font-size: 13px; font-weight: 700; color: #b91d2b; text-decoration: none; display: block; }
+  .m-sub-nav { list-style: none; padding: 0; margin: 0; }
+  .m-sub-nav li a { display: block; padding: 12px 20px 12px 28px; font-size: 14px; color: #2d3748; text-decoration: none; border-top: 1px solid #f1f5f9; }
+
+  /* 자잘한 모바일 간격 최적화 */
+  .crumbs { 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 8px; 
+  }
+
+  .hero, .main-hero {
+    height: 380px;
+    min-height: 380px;
+  }
+
+  .sub-hero {
+    min-height: 220px !important;
+    padding: 40px 0 !important;
+  }
+
+  .sub-hero-title { font-size: 26px; }
+
+  .footer-nav-inner { gap: 10px; }
+  .footer-nav-inner a { font-size: 13px; }
+  .footer-info-text { font-size: 12px; }
 }
