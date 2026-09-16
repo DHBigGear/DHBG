@@ -764,3 +764,17 @@ html, body {
     display: none !important;
   }
 }
+
+/* PC 화면: 모바일 헤더 숨김 */
+@media (min-width: 821px) {
+  .m-site-header {
+    display: none !important;
+  }
+}
+
+/* 모바일 화면: PC 헤더 숨김 */
+@media (max-width: 820px) {
+  .site-header {
+    display: none !important;
+  }
+}

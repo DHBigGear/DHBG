@@ -15,6 +15,16 @@
     display: block;
   }
 
+  /* 반응형 화면 제어 (상단 헤더 중복 노출 방지) */
+  @media (min-width: 821px) {
+    .m-site-header { display: none !important; }
+    .site-header { display: block !important; }
+  }
+  @media (max-width: 820px) {
+    .m-site-header { display: flex !important; }
+    .site-header { display: none !important; }
+  }
+
   /* 회사연혁 페이지 전용 스타일 */
   .history-section {
     padding: 96px 32px;
@@ -206,7 +216,7 @@
     </div>
   </aside>
 
-  <!-- 상단 헤더 -->
+  <!-- 상단 헤더 (PC 전용) -->
   <header class="site-header">
     <div class="nav-inner">
       <a href="index.html" class="brand-logo">
@@ -402,9 +412,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- 동적 메뉴 모듈 스크립트 -->
-  <script src="include-menu.js"></script>
 
   <!-- 모바일 메뉴 기본 제어 스크립트 -->
   <script>
