@@ -792,3 +792,26 @@ header nav div > div a:hover {
 }
 
 .m-menu-btn { color: #111518 !important; }
+
+@media (max-width: 820px) {
+  /* [핵심] 모바일 화면에서는 기존 PC용 헤더(.site-header)를 완벽히 숨김 */
+  .site-header, 
+  header:not(.m-site-header) {
+    display: none !important;
+  }
+
+  /* 모바일 전용 헤더만 노출 */
+  .m-site-header {
+    display: flex !important;
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 12px 16px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* 이하 모바일 메뉴 스타일은 기존과 동일... */
+}
