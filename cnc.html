@@ -339,16 +339,13 @@
     font-size: 12px;
   }
 
-  /* 반응형 처리 */
+  /* 반응형 처리 (사이드바 완전 제거 및 영역 넓힘) */
   @media (max-width: 1024px) {
     .main-layout {
-      flex-direction: column-reverse;
-      gap: 32px;
+      display: block !important;
     }
     .sticky-edge-sidebar {
-      width: 100% !important;
-      position: relative !important;
-      top: 0 !important;
+      display: none !important;
     }
   }
 
