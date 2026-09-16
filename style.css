@@ -365,3 +365,27 @@ footer.site-footer .footer-copyright {
   color: #718096 !important;
   font-size: 12px !important;
 }
+
+/* 반응형 처리 */
+@media (max-width: 1024px) {
+  .main-layout {
+    display: block; /* 사이드바 삭제 후 메인 영역 전폭 사용 */
+  }
+  
+  /* 모바일 및 태블릿(1024px 이하)에서 사이드바 숨김 */
+  .sticky-edge-sidebar {
+    display: none !important;
+  }
+}
+
+@media (max-width: 820px) {
+  .sub-hero-content {
+    padding: 0 20px;
+  }
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .main-product-card {
+    padding: 20px;
+  }
+}
