@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OM CNC 터닝 | (주)대형특수기어</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* OM CNC 터닝 페이지 전용 스타일 */
+  .cnc-section {
+    padding: 80px 24px;
+    background-color: #f8f9fa;
+  }
+  .cnc-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* 섹션 타이틀 */
+  .sec-intro {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .sec-intro .sub-tag {
+    font-family: 'Noto Serif KR', serif;
+    color: var(--signal, #b42318);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .sec-intro h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 32px;
+    color: var(--ink, #111518);
+    line-height: 1.4;
+  }
+
+  /* 메인 메이저 대표 이미지 카드 */
+  .main-product-card {
+    background: #ffffff;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
+    padding: 32px;
+    margin-bottom: 48px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  }
+  .main-product-card h3 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 24px;
+    color: var(--ink, #111518);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--signal, #b42318);
+    display: inline-block;
+  }
+  .main-img-wrapper {
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #eee;
+  }
+  .main-img-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* 하단 그리드 레이아웃 (사양 안내 + 상세 이미지) */
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  /* 제품 사양 카드 */
+  .spec-card {
+    background: #ffffff;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
+    padding: 32px 28px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    position: sticky;
+    top: 100px;
+  }
+  .spec-card h4 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    color: var(--signal, #b42318);
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .spec-card p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .spec-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .spec-list li {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 15px;
+  }
+  .spec-list li:last-child {
+    border-bottom: none;
+  }
+  .spec-list li .label {
+    font-weight: 700;
+    color: #111;
+    width: 120px;
+    flex-shrink: 0;
+  }
+  .spec-list li .value {
+    color: #333;
+    font-weight: 500;
+  }
+
+  /* 상세 이미지 갤러리 리스트 */
+  .gallery-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .gallery-item {
+    background: #ffffff;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+  }
+
+  /* 모바일 반응형 */
+  @media (max-width: 868px) {
+    .detail-grid {
+      grid-template-columns: 1fr;
+    }
+    .spec-card {
+      position: static;
+    }
+    .main-product-card {
+      padding: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+
+  <!-- 모바일 대응 공통 헤더 및 드로어 -->
+  <header class="m-site-header">
+    <a href="index.html" class="m-brand-logo">
+      (주)대형특수기어 <span>DAE HYUNG GEAR</span>
+    </a>
+    <button id="side-menu-open-btn" class="m-menu-btn" aria-label="메뉴 열기">☰</button>
+  </header>
+
+  <div id="side-menu-overlay" class="side-menu-overlay"></div>
+  <aside id="side-menu-drawer" class="side-menu-drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">전체메뉴</span>
+      <button id="side-menu-close-btn" class="close-btn" aria-label="메뉴 닫기">✕</button>
+    </div>
+    
+    <div class="drawer-content">
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="greeting.html">회사소개</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="greeting.html">인사말씀</a></li>
+          <li><a href="history.html">회사연혁</a></li>
+          <li><a href="location.html">찾아오시는 길</a></li>
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="cnc.html">제품소개</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="cnc.html">OM CNC 터닝</a></li>
+          <li><a href="bearing.html">선회 베어링</a></li>
+          <li><a href="gear.html">특수 기어</a></li>
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="equipment.html">설비현황</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="equipment.html">보유 설비 전체</a></li>
+          
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="support-center.html">고객지원</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="support-center.html">고객센터</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 기존 서브페이지 내용 본문... -->
+
+  <!-- 스크립트 (모든 서브페이지 하단 </body> 직전에 추가) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var openBtn = document.getElementById('side-menu-open-btn');
+      var closeBtn = document.getElementById('side-menu-close-btn');
+      var overlay = document.getElementById('side-menu-overlay');
+      var drawer = document.getElementById('side-menu-drawer');
+
+      if (openBtn) {
+        openBtn.addEventListener('click', function() {
+          drawer.classList.add('is-open');
+          overlay.classList.add('is-active');
+        });
+      }
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+          drawer.classList.remove('is-open');
+          overlay.classList.remove('is-active');
+        });
+      }
+      if (overlay) {
+        overlay.addEventListener('click', function() {
+          drawer.classList.remove('is-open');
+          overlay.classList.remove('is-active');
+        });
+      }
+    });
+  </script>
+
+
+  <!-- 상단 헤더 -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="brand-logo">
+        (주)대형특수기어 <span>DAE HYUNG GEAR</span>
+      </a>
+      <nav class="nav-links">
+        <div class="nav-item"><a href="index.html">홈</a></div>
+        <div class="nav-item">
+          <a href="greeting.html">회사소개</a>
+          <div class="dropdown-menu">
+            <a href="greeting.html">인사말씀</a>
+            <a href="history.html">회사연혁</a>
+            <a href="location.html">찾아오시는 길</a>
+          </div>
+        </div>
+        <div class="nav-item active">
+          <a href="cnc.html">제품소개</a>
+          <div class="dropdown-menu">
+            <a href="cnc.html">OM CNC 터닝</a>
+            <a href="bearing.html">선회 베어링</a>
+            <a href="gear.html">기어</a>
+          </div>
+        </div>
+
+        	<!-- PC 헤더 설비현황 부분 -->
+<div class="nav-item">
+  <a href="equipment.html">설비현황</a>
+  <div class="dropdown-menu">
+    <a href="equipment.html">보유 설비 전체</a>
+    
+  </div>
+</div>
+        
+
+	<div class="nav-item">
+          <a href="support-center.html">고객지원</a>
+          <div class="dropdown-menu">
+            <a href="support-center.html">고객센터</a>
+            
+          </div>
+
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 서브 히어로 -->
+  <section class="sub-hero">
+    <div class="sub-hero-bg">
+      <img src="./image/hero_cnc.png" alt="(주)대형특수기어 공장 전경">
+    </div>
+    <div class="sub-hero-overlay"></div>
+    <div class="sub-hero-content">
+      <div class="sub-hero-tag">PRODUCTS</div>
+      <h1 class="sub-hero-title">OM CNC 터닝</h1>
+      <div class="breadcrumb">홈 &gt; 제품소개 &gt; OM CNC 터닝</div>
+    </div>
+  </section>
+
+  <!-- 메인 콘텐트 섹션 -->
+  <section class="cnc-section">
+    <div class="cnc-container">
+      
+      <div class="sec-intro">
+        <span class="sub-tag">HIGH PRECISION TURNING</span>
+        <h2>초대형 정밀 가공 기술력의 중심</h2>
+      </div>
+
+      <!-- 2번 이미지: 메인 대표 이미지 카드 -->
+      <div class="main-product-card">
+        <h3>OM CNC 터닝 전경</h3>
+        <div class="main-img-wrapper">
+          <img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝 메인 장비">
+        </div>
+      </div>
+
+      <!-- 3번 이미지 기반: 좌측 사양 카드 + 우측 각도별 사진 -->
+      <div class="detail-grid">
+        
+        <!-- 좌측: 주요 기술 사양 안내 -->
+        <div class="spec-card">
+          <h4>가공 규격 및 사양</h4>
+          <p>고정밀 초대형 부품 가공이 가능한 일본 OM사의 대표 CNC 터닝 설비입니다.</p>
+          <ul class="spec-list">
+            <li>
+              <span class="label">제조국 / 모델</span>
+              <span class="value">일본 (OM CNC 터닝)</span>
+            </li>
+            <li>
+              <span class="label">가공 방식</span>
+              <span class="value">CNC 터닝가공</span>
+            </li>
+            <li>
+              <span class="label">가공 범위</span>
+              <span class="value">Ø 3000 가공</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 우측: 상세 사진 갤러리 -->
+        <div class="gallery-list">
+          <div class="gallery-item">
+            <img src="./image/machine/OM_CNC_turning1.jpg" alt="OM CNC 터닝 상세 가공부">
+          </div>
+          <div class="gallery-item">
+            <img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝 측면 전경">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="site-footer">
+    <div class="footer-nav-bar">
+      <div class="footer-nav-inner">
+        <a href="index.html">홈</a>
+        <span class="divider">|</span>
+        <a href="greeting.html">회사소개</a>
+        <span class="divider">|</span>
+        <a href="cnc.html">제품소개</a>
+        <span class="divider">|</span>
+        <a href="equipment.html">설비현황</a>
+        <span class="divider">|</span>
+        <a href="support-center.html">고객지원</a>
+      </div>
+    </div>
+    <div class="footer-body">
+      <div class="footer-info-text">
+        <span>사업자등록번호 127-86-41052</span><span class="sep">*</span>
+        <span>대표이사 박병호</span><span class="sep">*</span>
+        <span>경기도 포천시 소흘읍 호국로479번길 15</span><span class="sep">*</span>
+        <span>전화 031-541-1248~9</span><span class="sep">*</span>
+        <span>dehyoung@naver.com</span>
+      </div>
+      <div class="footer-copyright">
+        COPYRIGHT © (주)대형특수기어 ALL RIGHT RESERVED.
+      </div>
+    </div>
+  </footer>
+
+<!-- 서브페이지 어디든 이 줄만 추가하면 헤더와 메뉴가 자동으로 생성됩니다 -->
+<script src="include-menu.js"></script>
+
+</body>
+</html>

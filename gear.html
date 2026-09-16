@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기어 | (주)대형특수기어</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* 기어 페이지 전용 스타일 */
+  .gear-section {
+    padding: 80px 24px;
+    background-color: #f8f9fa;
+  }
+  .gear-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* 섹션 타이틀 */
+  .sec-intro {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .sec-intro .sub-tag {
+    font-family: 'Noto Serif KR', serif;
+    color: var(--signal, #b42318);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .sec-intro h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 32px;
+    color: var(--ink, #111518);
+    line-height: 1.4;
+  }
+
+  /* 메인 대표 제품 카드 */
+  .hero-product-card {
+    background: #ffffff;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
+    padding: 36px;
+    margin-bottom: 48px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+  .hero-product-img {
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    background: #f1f5f9;
+  }
+  .hero-product-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  .hero-product-info h3 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 26px;
+    color: var(--ink, #111518);
+    margin-bottom: 12px;
+  }
+  .hero-product-info .subtitle {
+    font-size: 16px;
+    color: var(--signal, #b42318);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .hero-product-info p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .feature-list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .feature-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--signal, #b42318);
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  /* 제품 상세 갤러리 그리드 (2열) */
+  .detail-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-bottom: 56px;
+  }
+  .gallery-card {
+    background: #ffffff;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .gallery-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .gallery-card-img {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background-color: #f1f5f9;
+  }
+  .gallery-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .gallery-card-body {
+    padding: 20px 24px;
+  }
+  .gallery-card-body h4 {
+    font-size: 18px;
+    color: #111518;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .gallery-card-body p {
+    font-size: 14px;
+    color: #666;
+  }
+
+  /* 완제품 감속기 쇼케이스 */
+  .reducer-card {
+    background: #ffffff;
+    border: 1px solid var(--line, #e2e8f0);
+    border-radius: 8px;
+    padding: 36px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 36px;
+    align-items: center;
+  }
+  .reducer-img {
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+    padding: 16px;
+    border: 1px solid #f1f5f9;
+  }
+  .reducer-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+  .reducer-info h3 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px;
+    color: var(--ink, #111518);
+    margin-bottom: 12px;
+  }
+  .reducer-info p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  /* 모바일 반응형 */
+  @media (max-width: 868px) {
+    .hero-product-card,
+    .reducer-card {
+      grid-template-columns: 1fr;
+      padding: 24px;
+    }
+    .detail-gallery-grid {
+      grid-template-columns: 1fr;
+    }
+    .gallery-card-img {
+      height: 240px;
+    }
+  }
+</style>
+</head>
+<body>
+
+
+  <!-- 모바일 대응 공통 헤더 및 드로어 -->
+  <header class="m-site-header">
+    <a href="index.html" class="m-brand-logo">
+      (주)대형특수기어 <span>DAE HYUNG GEAR</span>
+    </a>
+    <button id="side-menu-open-btn" class="m-menu-btn" aria-label="메뉴 열기">☰</button>
+  </header>
+
+  <div id="side-menu-overlay" class="side-menu-overlay"></div>
+  <aside id="side-menu-drawer" class="side-menu-drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">전체메뉴</span>
+      <button id="side-menu-close-btn" class="close-btn" aria-label="메뉴 닫기">✕</button>
+    </div>
+    
+    <div class="drawer-content">
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="greeting.html">회사소개</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="greeting.html">인사말씀</a></li>
+          <li><a href="history.html">회사연혁</a></li>
+          <li><a href="location.html">찾아오시는 길</a></li>
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="cnc.html">제품소개</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="cnc.html">OM CNC 터닝</a></li>
+          <li><a href="bearing.html">선회 베어링</a></li>
+          <li><a href="gear.html">특수 기어</a></li>
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="equipment.html">설비현황</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="equipment.html">보유 설비 전체</a></li>
+          
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="support-center.html">고객지원</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="support-center.html">고객센터</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 기존 서브페이지 내용 본문... -->
+
+  <!-- 스크립트 (모든 서브페이지 하단 </body> 직전에 추가) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var openBtn = document.getElementById('side-menu-open-btn');
+      var closeBtn = document.getElementById('side-menu-close-btn');
+      var overlay = document.getElementById('side-menu-overlay');
+      var drawer = document.getElementById('side-menu-drawer');
+
+      if (openBtn) {
+        openBtn.addEventListener('click', function() {
+          drawer.classList.add('is-open');
+          overlay.classList.add('is-active');
+        });
+      }
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+          drawer.classList.remove('is-open');
+          overlay.classList.remove('is-active');
+        });
+      }
+      if (overlay) {
+        overlay.addEventListener('click', function() {
+          drawer.classList.remove('is-open');
+          overlay.classList.remove('is-active');
+        });
+      }
+    });
+  </script>
+
+
+  <!-- 상단 헤더 -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="brand-logo">
+        (주)대형특수기어 <span>DAE HYUNG GEAR</span>
+      </a>
+      <nav class="nav-links">
+        <div class="nav-item"><a href="index.html">홈</a></div>
+        <div class="nav-item">
+          <a href="greeting.html">회사소개</a>
+          <div class="dropdown-menu">
+            <a href="greeting.html">인사말씀</a>
+            <a href="history.html">회사연혁</a>
+            <a href="location.html">찾아오시는 길</a>
+          </div>
+        </div>
+        <div class="nav-item active">
+          <a href="cnc.html">제품소개</a>
+          <div class="dropdown-menu">
+            <a href="cnc.html">OM CNC 터닝</a>
+            <a href="bearing.html">선회 베어링</a>
+            <a href="gear.html">기어</a>
+          </div>
+        </div>
+
+
+        <!-- PC 헤더 설비현황 부분 -->
+<div class="nav-item">
+  <a href="equipment.html">설비현황</a>
+  <div class="dropdown-menu">
+    <a href="equipment.html">보유 설비 전체</a>
+  </div>
+</div>
+
+
+
+
+        <div class="nav-item">
+          <a href="support-center.html">고객지원</a>
+          <div class="dropdown-menu">
+            <a href="support-center.html">고객센터</a>
+           
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 서브 히어로 -->
+  <section class="sub-hero">
+    <div class="sub-hero-bg">
+      <img src="./image/gear1.png" alt="(주)대형특수기어 공장 전경">
+    </div>
+    <div class="sub-hero-overlay"></div>
+    <div class="sub-hero-content">
+      <div class="sub-hero-tag">PRODUCTS</div>
+      <h1 class="sub-hero-title">기어 (GEAR)</h1>
+      <div class="breadcrumb">홈 &gt; 제품소개 &gt; 기어</div>
+    </div>
+  </section>
+
+  <!-- 메인 기어 제품 섹션 -->
+  <section class="gear-section">
+    <div class="gear-container">
+      
+      <div class="sec-intro">
+        <span class="sub-tag">PRECISION GEAR MANUFACTURING</span>
+        <h2>고정밀 연마 기술과 엄격한 품질의 산업용 기어</h2>
+      </div>
+
+      <!-- 1번 이미지: 대표 정밀 기어 세트 -->
+      <div class="hero-product-card">
+        <div class="hero-product-img">
+          <img src="./image/machine/gear01.jpg" alt="무소음 고속 정밀 연마 기어">
+        </div>
+        <div class="hero-product-info">
+          <h3>고속 정밀 연마 기어</h3>
+          <div class="subtitle">Precision Ground Gear Series</div>
+          <p>
+            정밀 가공 및 치형 연마 기술을 적용하여 고속 회전 시 발생하는 진동과 소음을 극소화하였습니다. 
+            다양한 산업 현장의 내구성과 신뢰성을 높여줍니다.
+          </p>
+          <ul class="feature-list">
+            <li>무소음, 고속 정밀 연마 기어 생산</li>
+            <li>산업용 감속기 및 산업용 특수기어 맞춤 제작</li>
+            <li>고하중·고내구성 열처리 및 정밀 치형 가공</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 2번 ~ 6번 이미지: 세부 기어 종류 및 가공 과정 갤러리 -->
+      <div class="detail-gallery-grid">
+        
+        <!-- 2번 이미지 -->
+        <div class="gallery-card">
+          <div class="gallery-card-img">
+            <img src="./image/machine/gear02.jpg" alt="스파이럴 베벨 기어 및 샤프트 기어 모음">
+          </div>
+          <div class="gallery-card-body">
+            <h4>스파이럴 베벨 &amp; 피니언 기어 세트</h4>
+            <p>직교 축 동력 전달을 위한 정밀 스파이럴 베벨 기어 및 맞춤형 스플라인 샤프트 가공품</p>
+          </div>
+        </div>
+
+        <!-- 3번 이미지 -->
+        <div class="gallery-card">
+          <div class="gallery-card-img">
+            <img src="./image/machine/gear03.jpg" alt="대형 링 기어">
+          </div>
+          <div class="gallery-card-body">
+            <h4>대형 내치/외치 링 기어</h4>
+            <p>산업용 회전체 및 대형 턴테이블 구동을 위한 대구경 정밀 링 기어</p>
+          </div>
+        </div>
+
+        <!-- 4번 이미지 -->
+        <div class="gallery-card">
+          <div class="gallery-card-img">
+            <img src="./image/machine/gear04.jpg" alt="헬리컬 기어 및 정밀 기어 부품">
+          </div>
+          <div class="gallery-card-body">
+            <h4>헬리컬 &amp; 스퍼 기어 시리즈</h4>
+            <p>우수한 물림율로 동력 전달 효율을 극대화한 다양한 규격의 헬리컬 기어 제품군</p>
+          </div>
+        </div>
+
+        <!-- 5번 이미지 -->
+        <div class="gallery-card">
+          <div class="gallery-card-img">
+            <img src="./image/machine/gear05.jpg" alt="대형 기어 가공 설비 작업 모습">
+          </div>
+          <div class="gallery-card-body">
+            <h4>대형 기어 절삭 및 가공 공정</h4>
+            <p>최첨단 호빙기 및 치형 연마 설비를 통한 대형 특수 기어 가공 현장</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 6번 이미지: 헬리컬 기어 및 샤프트 세트 카드 (넓은 형태) -->
+      <div class="hero-product-card" style="margin-bottom: 48px;">
+        <div class="hero-product-img">
+          <img src="./image/machine/gear06.jpg" alt="정밀 연마 헬리컬 기어와 피니언 샤프트">
+        </div>
+        <div class="hero-product-info">
+          <h3>정밀 연마 헬리컬 기어 &amp; 샤프트</h3>
+          <div class="subtitle">Helical Gear &amp; Pinion Shaft Assembly</div>
+          <p>
+            내마모성이 뛰어난 합금강 소재를 사용하고 정밀 열처리 후 연마 가공을 거쳐 
+            장시간 운전에도 뛰어난 치형 정밀도와 동력 전달 수명을 자랑합니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 7번 이미지: 완제품 감속기 하단 쇼케이스 -->
+      <div class="reducer-card">
+        <div class="reducer-img">
+          <img src="./image/machine/gear07.jpg" alt="산업용 정밀 감속기 완제품">
+        </div>
+        <div class="reducer-info">
+          <h3>산업용 감속기 완제품 (Industrial Gearbox)</h3>
+          <p>
+            각종 플랜트 및 제철, 건설 기계 등에 적용되는 고효율 산업용 감속기입니다. 
+            완벽한 치형 맞물림 설계와 견고한 케이싱 조립으로 가혹한 작동 환경에서도 최상의 성능을 발휘합니다.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="site-footer">
+    <div class="footer-nav-bar">
+      <div class="footer-nav-inner">
+        <a href="index.html">홈</a>
+        <span class="divider">|</span>
+        <a href="greeting.html">회사소개</a>
+        <span class="divider">|</span>
+        <a href="cnc.html">제품소개</a>
+        <span class="divider">|</span>
+        <a href="equipment.html">설비현황</a>
+        <span class="divider">|</span>
+        <a href="support-center.html">고객지원</a>
+      </div>
+    </div>
+    <div class="footer-body">
+      <div class="footer-info-text">
+        <span>사업자등록번호 127-86-41052</span><span class="sep">*</span>
+        <span>대표이사 박병호</span><span class="sep">*</span>
+        <span>경기도 포천시 소흘읍 호국로479번길 15</span><span class="sep">*</span>
+        <span>전화 031-541-1248~9</span><span class="sep">*</span>
+        <span>dehyoung@naver.com</span>
+      </div>
+      <div class="footer-copyright">
+        COPYRIGHT © (주)대형특수기어 ALL RIGHT RESERVED.
+      </div>
+    </div>
+  </footer>
+
+<!-- 서브페이지 어디든 이 줄만 추가하면 헤더와 메뉴가 자동으로 생성됩니다 -->
+<script src="include-menu.js"></script>
+
+</body>
+</html>
