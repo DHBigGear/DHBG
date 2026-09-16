@@ -5,6 +5,10 @@
 <!-- 모바일 화면 터치 및 비율 최적화 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>(주)대형특수기어 | DAE HYUNG GEAR (모바일)</title>
+
+<!-- 브라우저 탭 파비콘 아이콘 설정 -->
+<link rel="icon" href="image/favicon.png" type="image/png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -19,13 +23,13 @@
     overflow-x: hidden;
   }
 
-  /* 상단 모바일 통합 헤더 */
+  /* 상단 모바일 통합 헤더 (배경 흰색 변경) */
   .m-site-header {
-    background: #111518;
+    background: #ffffff; /* 흰색으로 변경 */
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #e2e8f0; /* 경계선을 밝은 색으로 변경 */
     padding: 12px 16px;
     display: flex;
     justify-content: space-between;
@@ -33,7 +37,7 @@
   }
 
   .m-brand-logo {
-    color: #ffffff;
+    color: #14171a;
     font-size: 18px;
     font-weight: 700;
     text-decoration: none;
@@ -54,10 +58,11 @@
     font-weight: 400;
   }
 
+  /* 햄버거 메뉴 버튼 (검은색으로 변경) */
   .m-menu-btn {
     background: none;
     border: none;
-    color: #ffffff;
+    color: #14171a; /* 검은색으로 변경 */
     font-size: 26px;
     cursor: pointer;
     padding: 4px 8px;
