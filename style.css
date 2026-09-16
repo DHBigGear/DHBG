@@ -295,3 +295,73 @@ body {
     display: flex !important;
   }
 }
+
+/* ====================================
+   [푸터 레이아웃 깨짐 및 겹침 수정]
+==================================== */
+footer.site-footer {
+  background-color: #111518 !important;
+  color: #a0aec0 !important;
+  font-size: 13px !important;
+  width: 100% !important;
+  clear: both !important;
+  position: relative !important;
+  z-index: 10 !important;
+  margin-top: 0 !important;
+}
+
+footer.site-footer .footer-nav-bar {
+  border-bottom: 1px solid #2d3748 !important;
+  padding: 16px 0 !important;
+  background-color: #111518 !important;
+}
+
+footer.site-footer .footer-nav-inner {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+  display: flex !important;
+  gap: 16px !important;
+  align-items: center !important;
+}
+
+/* 방문 전/후 보라색 링크 현상 방지 및 흰색 고정 */
+footer.site-footer .footer-nav-inner a,
+footer.site-footer .footer-nav-inner a:visited {
+  color: #e2e8f0 !important;
+  text-decoration: none !important;
+}
+
+footer.site-footer .footer-nav-inner a:hover {
+  color: #b91d2b !important;
+}
+
+footer.site-footer .footer-nav-inner .divider {
+  color: #4a5568 !important;
+}
+
+footer.site-footer .footer-body {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 32px 24px 48px !important;
+  background-color: #111518 !important;
+  color: #8a919a !important;
+  text-align: left !important;
+}
+
+footer.site-footer .footer-info-text {
+  line-height: 1.8 !important;
+  margin-bottom: 12px !important;
+  color: #a0a6b0 !important;
+  word-break: keep-all !important;
+}
+
+footer.site-footer .footer-info-text .sep {
+  margin: 0 8px !important;
+  color: #4a5568 !important;
+}
+
+footer.site-footer .footer-copyright {
+  color: #718096 !important;
+  font-size: 12px !important;
+}
