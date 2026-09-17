@@ -355,7 +355,7 @@
   }
 
   /* ====================================
-     [메인 콘텐츠 & 카드 그리드 섹션]
+     [메인 콘텐츠 & 카드 그리드 섹션 (4열 확장)]
   ==================================== */
   .biz-section {
     padding: 50px 24px 80px;
@@ -397,10 +397,11 @@
     margin-bottom: 8px;
   }
 
-  .grid-3 {
+  /* 3열에서 4열 그리드로 변경 (필요시 2열로 조정 가능) */
+  .grid-4 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
   }
 
   .card-item {
@@ -412,6 +413,8 @@
     color: var(--ink);
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
   }
 
   .card-item:hover {
@@ -420,7 +423,7 @@
   }
 
   .card-img {
-    height: 220px;
+    height: 190px;
     overflow: hidden;
     background-color: #f1f5f9;
   }
@@ -432,19 +435,23 @@
   }
 
   .card-body {
-    padding: 24px;
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .card-body h3 {
     font-family: 'Noto Serif KR', serif;
-    font-size: 20px;
-    margin: 0 0 10px 0;
+    font-size: 18px;
+    margin: 0 0 8px 0;
   }
 
   .card-body p {
-    font-size: 14px;
+    font-size: 13.5px;
     color: #64748b;
-    line-height: 1.6;
+    line-height: 1.5;
     margin: 0;
   }
 
@@ -603,6 +610,12 @@
   /* ====================================
      [반응형 미디어 쿼리]
   ==================================== */
+  @media screen and (max-width: 1200px) {
+    .grid-4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media screen and (max-width: 1024px) {
     .site-header {
       display: none !important;
@@ -627,7 +640,7 @@
     .main-hero { height: 320px; }
     .hero-title { font-size: 24px; }
     .hero-desc { font-size: 13px; }
-    .grid-3 { grid-template-columns: 1fr; }
+    .grid-4 { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -772,39 +785,63 @@
       <div class="main-container">
         <div class="sec-header">
           <h2 class="sec-title">
-            <span>OUR PRODUCTS</span>
-            주요 사업 영역
+            <span>OUR PRODUCTS & FACILITIES</span>
+            주요 사업 영역 및 설비현황
           </h2>
         </div>
 
-        <div class="grid-3">
+        <!-- 4개 항목을 나란히 보여주는 4열 그리드 -->
+        <div class="grid-4">
+          <!-- 1. OM CNC 터닝 -->
           <a href="cnc.html" class="card-item">
             <div class="card-img">
               <img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝">
             </div>
             <div class="card-body">
-              <h3>OM CNC 터닝</h3>
-              <p>고정밀 대형 공작물 가공에 최적화된 최첨단 CNC 터닝 설비 및 가공 기술을 제공합니다.</p>
+              <div>
+                <h3>OM CNC 터닝</h3>
+                <p>고정밀 대형 공작물 가공에 최적화된 최첨단 CNC 터닝 설비 및 가공 기술을 제공합니다.</p>
+              </div>
             </div>
           </a>
 
+          <!-- 2. 선회 베어링 -->
           <a href="bearing.html" class="card-item">
             <div class="card-img">
               <img src="./image/bearing1.png" alt="선회 베어링">
             </div>
             <div class="card-body">
-              <h3>선회 베어링</h3>
-              <p>중장비 및 산업용 기계 핵심 부품인 대형 선회 베어링을 정밀하게 제작합니다.</p>
+              <div>
+                <h3>선회 베어링</h3>
+                <p>중장비 및 산업용 기계 핵심 부품인 대형 선회 베어링을 정밀하게 제작합니다.</p>
+              </div>
             </div>
           </a>
 
+          <!-- 3. 특수 기어 -->
           <a href="gear.html" class="card-item">
             <div class="card-img">
               <img src="./image/gear2.png" alt="특수 기어">
             </div>
             <div class="card-body">
-              <h3>특수 기어</h3>
-              <p>각종 산업 현장의 규격에 맞춘 고난이도 대형 특수 기어 가공 솔루션을 제공합니다.</p>
+              <div>
+                <h3>특수 기어</h3>
+                <p>각종 산업 현장의 규격에 맞춘 고난이도 대형 특수 기어 가공 솔루션을 제공합니다.</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- 4. 보유설비 (새로 추가된 카드) -->
+          <a href="equipment.html" class="card-item">
+            <div class="card-img">
+              <!-- 이미지는 준비하신 경로로 나중에 교체하시면 됩니다 -->
+              <img src="./image/machine/공장_내부_설비현황.jpg" alt="보유설비 현황" onerror="this.src='./image/hero_cnc.png';">
+            </div>
+            <div class="card-body">
+              <div>
+                <h3>보유설비 현황</h3>
+                <p>최신 대형 공작기계 및 정밀 측정 장비를 보유하여 완벽한 품질을 보장합니다.</p>
+              </div>
             </div>
           </a>
         </div>
