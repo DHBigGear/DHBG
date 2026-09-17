@@ -10,6 +10,22 @@
 
 <style>
   /* 기본 브랜드 스타일 */
+  :root {
+    --header-bg: #ffffff;
+    --signal: #b91d2b;
+    --ink: #111518;
+    --line: #e2e8f0;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--ink);
+    background-color: #ffffff;
+    overflow-x: hidden;
+  }
+
   .brand-logo img, .m-brand-logo img {
     max-height: 40px;
     width: auto;
@@ -19,7 +35,7 @@
   /* 메인 히어로 & 슬라이더 전용 스타일 (높이 축소 적용) */
   .main-hero {
     position: relative;
-    height: 400px; /* 배너 높이 축소 */
+    height: 400px;
     background: #111518;
     overflow: hidden;
   }
@@ -72,7 +88,7 @@
 
   .hero-tag {
     font-family: 'Noto Serif KR', serif;
-    color: var(--signal, #b91d2b);
+    color: var(--signal);
     font-size: 14px;
     letter-spacing: 0.1em;
     margin-bottom: 8px;
@@ -91,23 +107,29 @@
     color: #c8c4bb;
     max-width: 600px;
     line-height: 1.6;
-    margin-bottom: 0;
+    margin-bottom: 20px;
   }
 
+  /* [추가] 히어로 배너 내 Quick Contact 버튼 */
   .btn-signal {
-    display: inline-block;
-    background-color: var(--signal, #b91d2b);
-    color: #ffffff;
-    padding: 12px 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--signal);
+    color: #ffffff !important;
+    padding: 12px 24px;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
-    border-radius: 2px;
-    transition: background-color 0.2s ease;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    width: fit-content;
+    box-shadow: 0 4px 12px rgba(185, 29, 43, 0.3);
   }
 
   .btn-signal:hover {
     background-color: #961723;
+    transform: translateY(-2px);
   }
 
   /* 메인 섹션 레이아웃 (사이드바 결합) */
@@ -145,7 +167,7 @@
     display: block;
     font-size: 13px;
     font-family: 'Noto Sans KR', sans-serif;
-    color: var(--signal, #b91d2b);
+    color: var(--signal);
     letter-spacing: 0.1em;
     margin-bottom: 8px;
   }
@@ -158,11 +180,11 @@
 
   .card-item {
     background: #ffffff;
-    border: 1px solid var(--line, #e2e8f0);
+    border: 1px solid var(--line);
     border-radius: 8px;
     overflow: hidden;
     text-decoration: none;
-    color: var(--ink, #111518);
+    color: var(--ink);
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
   }
@@ -203,11 +225,11 @@
   /* 타이트한 슬림 사이드바 (PC 전용 120px) */
   aside.sticky-edge-sidebar {
     position: sticky;
-    top: 180px;
+    top: 90px;
     width: 120px;
     flex-shrink: 0;
     background-color: #ffffff;
-    border: 1px solid var(--line, #e2e8f0);
+    border: 1px solid var(--line);
     border-radius: 8px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     overflow: hidden;
@@ -222,7 +244,7 @@
     font-weight: 700;
     text-align: center;
     padding: 10px 0;
-    border-bottom: 2px solid var(--signal, #b91d2b);
+    border-bottom: 2px solid var(--signal);
     letter-spacing: -0.02em;
   }
 
@@ -236,7 +258,7 @@
     font-size: 11.5px;
     font-weight: 700;
     color: #1e293b;
-    border-left: 3px solid var(--signal, #b91d2b);
+    border-left: 3px solid var(--signal);
     letter-spacing: -0.03em;
   }
 
@@ -260,13 +282,54 @@
 
   .sidebar-menu li a:hover {
     background-color: #faf5f5;
-    color: var(--signal, #b91d2b);
+    color: var(--signal);
   }
 
-  .sidebar-menu li.active a {
-    color: var(--signal, #b91d2b);
+  /* [추가] 사이드바 하단 Quick Contact 전용 영역 */
+  .sidebar-quick-contact {
+    background-color: var(--signal);
+    text-align: center;
+    padding: 12px 6px;
+  }
+
+  .sidebar-quick-contact a {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .sidebar-quick-contact .qc-title {
+    font-size: 10px;
     font-weight: 700;
-    background-color: #fef2f2;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+  }
+
+  .sidebar-quick-contact .qc-sub {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* 모바일 드로어 전용 Quick Contact 하단 고정 */
+  .drawer-quick-contact {
+    padding: 16px 20px;
+    background: #faf9f6;
+    border-top: 1px solid var(--line);
+  }
+
+  .drawer-quick-contact a {
+    display: block;
+    background-color: var(--signal);
+    color: #ffffff;
+    text-align: center;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
   }
 
   /* 복구된 푸터 스타일 */
@@ -296,7 +359,7 @@
   }
 
   .footer-nav-inner a:hover {
-    color: var(--signal, #b91d2b);
+    color: var(--signal);
   }
 
   .footer-nav-inner .divider {
@@ -394,6 +457,11 @@
         </ul>
       </div>
     </div>
+
+    <!-- 모바일 드로어 하단 Quick Contact 링크 -->
+    <div class="drawer-quick-contact">
+      <a href="support-center.html">✉ 빠른 견적 및 문의하기</a>
+    </div>
   </aside>
 
   <!-- PC 공통 헤더 -->
@@ -419,7 +487,7 @@
           <div class="dropdown-menu">
             <a href="cnc.html">OM CNC 터닝</a>
             <a href="bearing.html">선회 베어링</a>
-            <a href="gear.html">기어</a>
+            <a href="gear.html">특수 기어</a>
           </div>
         </div>
 
@@ -466,6 +534,12 @@
         축적된 노하우와 독보적인 기술력으로 고난이도 대형 기어 및 선회 베어링,<br> 
         CNC 터닝 가공 분야를 선도합니다.
       </p>
+
+      <!-- [위치 1] 메인 히어로 배너 내 Quick Contact 버튼 -->
+      <a href="support-center.html" class="btn-signal">
+        <span>견적 및 문의하기</span>
+        <span>→</span>
+      </a>
     </div>
   </section>
 
@@ -553,6 +627,14 @@
           <ul class="sidebar-menu">
             <li><a href="support-center.html">고객센터</a></li>
           </ul>
+        </div>
+
+        <!-- [위치 2] 사이드바 맨 하단 Quick Contact 버튼 -->
+        <div class="sidebar-quick-contact">
+          <a href="support-center.html">
+            <span class="qc-title">QUICK CONTACT</span>
+            <span class="qc-sub">견적 / 문의 ✉</span>
+          </a>
         </div>
       </aside>
 

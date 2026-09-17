@@ -23,13 +23,13 @@
     overflow-x: hidden;
   }
 
-  /* 상단 모바일 통합 헤더 (배경 흰색 변경) */
+  /* 상단 모바일 통합 헤더 */
   .m-site-header {
-    background: #ffffff; /* 흰색으로 변경 */
+    background: #ffffff;
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid #e2e8f0; /* 경계선을 밝은 색으로 변경 */
+    border-bottom: 1px solid #e2e8f0;
     padding: 12px 16px;
     display: flex;
     justify-content: space-between;
@@ -52,17 +52,11 @@
     display: block;
   }
 
-  .m-brand-logo span {
-    font-size: 11px;
-    color: #8a919a;
-    font-weight: 400;
-  }
-
-  /* 햄버거 메뉴 버튼 (검은색으로 변경) */
+  /* 햄버거 메뉴 버튼 */
   .m-menu-btn {
     background: none;
     border: none;
-    color: #14171a; /* 검은색으로 변경 */
+    color: #14171a;
     font-size: 26px;
     cursor: pointer;
     padding: 4px 8px;
@@ -125,14 +119,13 @@
   .drawer-content {
     overflow-y: auto;
     flex: 1;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
   }
 
   .m-cate-group {
     border-bottom: 1px solid #e2e8f0;
   }
 
-  /* 대분류 (빨간색 링크) 스타일 */
   .m-cate-title {
     padding: 14px 20px 6px;
     background-color: #faf9f6;
@@ -146,7 +139,6 @@
     display: block;
   }
 
-  /* 소분류 스타일 */
   .m-sub-nav {
     list-style: none;
     padding: 0;
@@ -162,8 +154,24 @@
     border-top: 1px solid #f1f5f9;
   }
 
-  .m-sub-nav li a:active {
-    background-color: #edf2f7;
+  /* [모바일 추가] 드로어 메뉴 하단 Quick Contact 버튼 */
+  .drawer-quick-contact {
+    padding: 16px 20px;
+    background: #faf9f6;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .drawer-quick-contact a {
+    display: block;
+    background-color: #b91d2b;
+    color: #ffffff;
+    text-align: center;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(185, 29, 43, 0.25);
   }
 
   /* 메인 콘텐츠 스타일 */
@@ -212,16 +220,20 @@
     font-size: 14px;
     color: #c8c4bb;
     line-height: 1.6;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     word-break: keep-all;
   }
 
+  /* [모바일 추가] 모바일 배너 내 Quick Contact 버튼 */
   .m-btn-signal {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     background: #b91d2b;
     color: #ffffff;
-    padding: 10px 22px;
+    padding: 10px 20px;
     font-size: 13px;
+    font-weight: 600;
     text-decoration: none;
     border-radius: 4px;
   }
@@ -258,7 +270,7 @@
     <button id="side-menu-open-btn" class="m-menu-btn" aria-label="메뉴 열기">☰</button>
   </header>
 
-  <!-- 2. 우측 사이드 슬라이드 메뉴 (대분류 링크 + 소분류 전체 연결) -->
+  <!-- 2. 우측 사이드 슬라이드 메뉴 -->
   <div id="side-menu-overlay" class="side-menu-overlay"></div>
   <aside id="side-menu-drawer" class="side-menu-drawer">
     <div class="drawer-header">
@@ -303,6 +315,11 @@
         </ul>
       </div>
     </div>
+
+    <!-- 모바일 드로어 하단 고정 Quick Contact 링크 -->
+    <div class="drawer-quick-contact">
+      <a href="support-center.html">✉ 빠른 견적 및 문의하기</a>
+    </div>
   </aside>
 
   <!-- 3. 메인 히어로 섹션 -->
@@ -312,7 +329,12 @@
       <div class="m-hero-tag">SINCE 1991 — PRECISION ENGINEERING</div>
       <h1 class="m-hero-title">정밀함은 타협하지 않는다.<br>(주)대형특수기어</h1>
       <p class="m-hero-desc">축적된 노하우와 독보적인 기술력으로 고난이도 대형 기어 및 선회 베어링, CNC 터닝 가공 분야를 선도합니다.</p>
-      <div><a href="greeting.html" class="m-btn-signal">회사소개 바로가기</a></div>
+      <div>
+        <a href="support-center.html" class="m-btn-signal">
+          <span>견적 및 문의하기</span>
+          <span>→</span>
+        </a>
+      </div>
     </div>
   </section>
 
