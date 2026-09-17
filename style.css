@@ -389,3 +389,77 @@ footer.site-footer .footer-copyright {
     padding: 20px;
   }
 }
+
+/* ====================================
+   [Quick Contact 공통 스타일]
+==================================== */
+
+/* 1. PC 서브 히어로 배너 내 버튼 */
+.btn-signal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--signal, #b91d2b);
+  color: #ffffff !important;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  width: fit-content;
+  box-shadow: 0 4px 12px rgba(185, 29, 43, 0.3);
+}
+
+.btn-signal:hover {
+  background-color: #961723;
+  transform: translateY(-2px);
+}
+
+/* 2. PC 오른쪽 120px 사이드바 하단 Quick Contact */
+.sidebar-quick-contact {
+  background-color: var(--signal, #b91d2b);
+  text-align: center;
+  padding: 12px 6px;
+}
+
+.sidebar-quick-contact a {
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.sidebar-quick-contact .qc-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+
+.sidebar-quick-contact .qc-sub {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* 3. 모바일 슬라이드 드로어 메뉴 하단 고정 Quick Contact */
+.drawer-quick-contact {
+  padding: 16px 20px;
+  background: #faf9f6;
+  border-top: 1px solid var(--line, #e2e8f0);
+}
+
+.drawer-quick-contact a {
+  display: block;
+  background-color: var(--signal, #b91d2b);
+  color: #ffffff !important;
+  text-align: center;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(185, 29, 43, 0.25);
+}
