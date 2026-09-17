@@ -6,9 +6,8 @@
 <title>(주)대형특수기어 | DAE HYUNG GEAR</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-<!-- 외부 CSS 연결 (style.css 및 style_3.css 호환) -->
+<!-- 외부 CSS 연결 -->
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="style_3.css">
 
 <style>
   /* ====================================
@@ -304,7 +303,7 @@
   ==================================== */
   .main-hero {
     position: relative;
-    height: 400px;
+    height: 520px;
     background: #111518;
     overflow: hidden;
   }
@@ -333,12 +332,13 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    filter: saturate(0.7) contrast(1.08) brightness(0.8);
   }
 
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.45);
+    background: linear-gradient(90deg, rgba(11, 12, 13, 0.72) 0%, rgba(11, 12, 13, 0.54) 28%, rgba(11, 12, 13, 0.22) 62%, rgba(11, 12, 13, 0.32) 100%);
     z-index: 2;
   }
 
@@ -348,7 +348,7 @@
     max-width: 1400px;
     height: 100%;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 90px 32px 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -357,26 +357,39 @@
 
   .hero-tag {
     font-family: 'Noto Serif KR', serif;
-    color: var(--signal);
-    font-size: 14px;
-    letter-spacing: 0.1em;
-    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    margin-bottom: 18px;
+    display: inline-block;
+    padding-left: 12px;
+    border-left: 2px solid #d72828;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+    background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+    backdrop-filter: blur(1px);
+    max-width: fit-content;
   }
 
   .hero-title {
     font-family: 'Noto Serif KR', serif;
-    font-size: 36px;
+    font-size: 54px;
     font-weight: 700;
-    line-height: 1.3;
-    margin: 0 0 12px 0;
+    line-height: 1.15;
+    margin: 0 0 18px 0;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.42);
+    max-width: 660px;
+    letter-spacing: -0.04em;
   }
 
   .hero-desc {
-    font-size: 15px;
-    color: #c8c4bb;
-    max-width: 600px;
-    line-height: 1.6;
-    margin: 0 0 20px 0;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 620px;
+    line-height: 1.7;
+    margin: 0 0 28px 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
   }
 
   .btn-signal {
@@ -385,8 +398,8 @@
     gap: 8px;
     background-color: var(--signal);
     color: #ffffff !important;
-    padding: 12px 24px;
-    font-size: 14px;
+    padding: 14px 26px;
+    font-size: 15px;
     font-weight: 600;
     text-decoration: none;
     border-radius: 4px;
@@ -436,11 +449,13 @@
 
   .sec-title span {
     display: block;
-    font-size: 13px;
+    font-size: 12px;
     font-family: 'Noto Sans KR', sans-serif;
-    color: var(--signal);
-    letter-spacing: 0.1em;
-    margin-bottom: 8px;
+    color: #9a3a3a;
+    letter-spacing: 0.14em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
   }
 
   .grid-4 {
@@ -451,20 +466,21 @@
 
   .card-item {
     background: #ffffff;
-    border: 1px solid var(--line);
-    border-radius: 8px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
     color: var(--ink);
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
     display: flex;
     flex-direction: column;
   }
 
   .card-item:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.10);
+    border-color: rgba(185, 29, 43, 0.18);
   }
 
   .card-img {
@@ -886,14 +902,14 @@
             </div>
           </a>
 
-          <!-- 4. 보유 설비 (새로 추가된 카드) -->
+          <!-- 4. 보유설비 (새로 추가된 카드) -->
           <a href="equipment.html" class="card-item">
             <div class="card-img">
-              <img src="./image/machine/f_inside.jpg" alt="보유 설비 현황" onerror="this.src='./image/hero_cnc.png';">
+              <img src="./image/machine/공장_내부_설비현황.jpg" alt="보유설비 현황" onerror="this.src='./image/hero_cnc.png';">
             </div>
             <div class="card-body">
               <div>
-                <h3>보유 설비 현황</h3>
+                <h3>보유설비 현황</h3>
                 <p>최신 대형 공작기계 및 정밀 측정 장비를 보유하여 완벽한 품질을 보장합니다.</p>
               </div>
             </div>
@@ -984,34 +1000,9 @@
   </footer>
 
   <!-- 자바스크립트 -->
+  <script src="mobile-menu.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // 1. 모바일 드로어 제어
-      var openBtn = document.getElementById('side-menu-open-btn');
-      var closeBtn = document.getElementById('side-menu-close-btn');
-      var overlay = document.getElementById('side-menu-overlay');
-      var drawer = document.getElementById('side-menu-drawer');
-
-      if (openBtn) {
-        openBtn.addEventListener('click', function() {
-          drawer.classList.add('is-open');
-          overlay.classList.add('is-active');
-        });
-      }
-      if (closeBtn) {
-        closeBtn.addEventListener('click', function() {
-          drawer.classList.remove('is-open');
-          overlay.classList.remove('is-active');
-        });
-      }
-      if (overlay) {
-        overlay.addEventListener('click', function() {
-          drawer.classList.remove('is-open');
-          overlay.classList.remove('is-active');
-        });
-      }
-
-      // 2. 이미지 자동 전환 슬라이더 (3.5초 간격)
       var slides = document.querySelectorAll('.hero-slide');
       var currentSlide = 0;
 

@@ -1,32 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // 1. 공통 헤더/메뉴 HTML 로드
-  fetch('m_header.html')
-    .then(response => response.text())
-    .then(data => {
-      document.body.insertAdjacentHTML('afterbegin', data);
+  if (window.__mobileMenuInitialized) return;
 
-      // 2. 메뉴 로드 완료 후 버튼 이벤트 등록
-      var openBtn = document.getElementById('side-menu-open-btn');
-      var closeBtn = document.getElementById('side-menu-close-btn');
-      var overlay = document.getElementById('side-menu-overlay');
-      var drawer = document.getElementById('side-menu-drawer');
+  const existingOpenBtn = document.getElementById('side-menu-open-btn');
+  const existingCloseBtn = document.getElementById('side-menu-close-btn');
+  const existingOverlay = document.getElementById('side-menu-overlay');
+  const existingDrawer = document.getElementById('side-menu-drawer');
 
-      function openMenu() {
-        if (drawer && overlay) {
-          drawer.classList.add('is-open');
-          overlay.classList.add('is-active');
-        }
-      }
+  if (existingOpenBtn || existingCloseBtn || existingOverlay || existingDrawer) {
+    window.__mobileMenuInitialized = true;
+    return;
+  }
 
-      function closeMenu() {
-        if (drawer && overlay) {
-          drawer.classList.remove('is-open');
-          overlay.classList.remove('is-active');
-        }
-      }
-
-      if (openBtn) openBtn.addEventListener('click', openMenu);
-      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-      if (overlay) overlay.addEventListener('click', closeMenu);
-    });
+  // This file is intentionally kept as a safe fallback only.
+  // The canonical mobile implementation lives in mobile-menu.js.
+  window.__mobileMenuInitialized = true;
 });

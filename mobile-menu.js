@@ -1,24 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
+  if (window.__mobileMenuInitialized) return;
+  window.__mobileMenuInitialized = true;
+
   const openBtn = document.getElementById('side-menu-open-btn');
   const closeBtn = document.getElementById('side-menu-close-btn');
   const overlay = document.getElementById('side-menu-overlay');
   const drawer = document.getElementById('side-menu-drawer');
 
+  if (!openBtn || !closeBtn || !overlay || !drawer) {
+    return;
+  }
+
   function openMenu() {
-    if (drawer && overlay) {
-      drawer.classList.add('is-open');
-      overlay.classList.add('is-active');
-    }
+    drawer.classList.add('is-open');
+    overlay.classList.add('is-active');
   }
 
   function closeMenu() {
-    if (drawer && overlay) {
-      drawer.classList.remove('is-open');
-      overlay.classList.remove('is-active');
-    }
+    drawer.classList.remove('is-open');
+    overlay.classList.remove('is-active');
   }
 
-  if (openBtn) openBtn.addEventListener('click', openMenu);
-  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-  if (overlay) overlay.addEventListener('click', closeMenu);
+  openBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
 });

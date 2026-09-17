@@ -11,9 +11,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-<!-- 외부 CSS 연결 (style.css 및 style_3.css 호환) -->
+<!-- 외부 CSS 연결 -->
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="style_3.css">
 
 <style>
   /* ====================================
@@ -505,32 +504,7 @@
     </div>
   </footer>
 
-  <!-- 6. 메뉴 제어 자바스크립트 -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var openBtn = document.getElementById('side-menu-open-btn');
-      var closeBtn = document.getElementById('side-menu-close-btn');
-      var overlay = document.getElementById('side-menu-overlay');
-      var drawer = document.getElementById('side-menu-drawer');
-
-      function openMenu() {
-        if (drawer && overlay) {
-          drawer.classList.add('is-open');
-          overlay.classList.add('is-active');
-        }
-      }
-
-      function closeMenu() {
-        if (drawer && overlay) {
-          drawer.classList.remove('is-open');
-          overlay.classList.remove('is-active');
-        }
-      }
-
-      if (openBtn) openBtn.addEventListener('click', openMenu);
-      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-      if (overlay) overlay.addEventListener('click', closeMenu);
-    });
-  </script>
+  <!-- 6. 모바일 메뉴 제어 스크립트: 단일 소스 유지 -->
+  <script src="mobile-menu.js"></script>
 </body>
 </html>

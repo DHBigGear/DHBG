@@ -6,9 +6,8 @@
 <title>설비현황 | (주)대형특수기어</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-<!-- 외부 CSS 연결 (style.css 및 style_3.css 호환) -->
+<!-- 외부 CSS 연결 -->
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="style_3.css">
 
 <style>
   /* ====================================
@@ -325,13 +324,13 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.6;
+    filter: saturate(0.65) contrast(1.1) brightness(0.8);
   }
 
   .sub-hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+    background: linear-gradient(90deg, rgba(15,16,18,0.8) 0%, rgba(15,16,18,0.6) 30%, rgba(15,16,18,0.28) 100%);
     z-index: 2;
   }
 
@@ -346,19 +345,26 @@
   }
 
   .sub-hero-tag {
-    font-size: 13px;
-    letter-spacing: 2px;
-    color: #ff4d4d;
-    margin-bottom: 8px;
-    font-weight: 700;
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-left: 12px;
+    border-left: 2px solid #d72828;
+    background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
   }
 
   .sub-hero-title {
     font-family: 'Noto Serif KR', serif;
-    font-size: 34px;
-    margin-bottom: 10px;
+    font-size: 38px;
+    margin-bottom: 8px;
     font-weight: 700;
+    letter-spacing: -0.03em;
     color: #ffffff;
+    text-shadow: 0 4px 18px rgba(0,0,0,0.26);
   }
 
   .breadcrumb {
@@ -1178,34 +1184,8 @@
     </div>
   </footer>
 
-  <!-- 모바일 메뉴 동작 JS -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var openBtn = document.getElementById('side-menu-open-btn');
-      var closeBtn = document.getElementById('side-menu-close-btn');
-      var overlay = document.getElementById('side-menu-overlay');
-      var drawer = document.getElementById('side-menu-drawer');
-
-      if (openBtn) {
-        openBtn.addEventListener('click', function() {
-          drawer.classList.add('is-open');
-          overlay.classList.add('is-active');
-        });
-      }
-      if (closeBtn) {
-        closeBtn.addEventListener('click', function() {
-          drawer.classList.remove('is-open');
-          overlay.classList.remove('is-active');
-        });
-      }
-      if (overlay) {
-        overlay.addEventListener('click', function() {
-          drawer.classList.remove('is-open');
-          overlay.classList.remove('is-active');
-        });
-      }
-    });
-  </script>
+  <!-- 모바일 메뉴 제어 스크립트 -->
+  <script src="mobile-menu.js"></script>
 
 </body>
 </html>
