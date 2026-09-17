@@ -6,16 +6,256 @@
 <title>설비현황 | (주)대형특수기어</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<!-- 외부 CSS 연결 (style.css 및 style_3.css 호환) -->
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style_3.css">
+
 <style>
-  /* 로고 스타일 정의 */
+  /* ====================================
+     [공통 변수 및 기본 초기화]
+  ==================================== */
+  :root {
+    --header-bg: #ffffff;
+    --signal: #b91d2b;
+    --ink: #111518;
+    --line: #e2e8f0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--ink);
+    background-color: #ffffff;
+    overflow-x: hidden;
+  }
+
+  /* 로고 공통 규격 */
   .brand-logo img, .m-brand-logo img {
     max-height: 40px;
     width: auto;
     display: block;
   }
 
-  /* 서브 히어로 섹션 */
+  /* ====================================
+     [PC 헤더 & 네비게이션]
+  ==================================== */
+  .site-header {
+    background-color: var(--header-bg);
+    height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-item > a {
+    color: #64748b;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 24px 0;
+    display: block;
+    transition: color 0.2s ease;
+  }
+
+  .nav-item.active > a {
+    color: var(--ink) !important;
+    font-weight: 700;
+  }
+
+  .nav-item:hover > a {
+    color: var(--signal) !important;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    border: 1px solid var(--line);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 140px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: #333333;
+    text-decoration: none;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .dropdown-menu a:hover {
+    background: #f8fafc;
+    color: var(--signal);
+  }
+
+  /* ====================================
+     [모바일 헤더 & 드로어 메뉴]
+  ==================================== */
+  .m-site-header {
+    display: none;
+    background: #ffffff;
+    padding: 12px 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .m-menu-btn {
+    background: none;
+    border: none;
+    color: var(--ink);
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .side-menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+  }
+
+  .side-menu-overlay.is-active {
+    display: block;
+  }
+
+  .side-menu-drawer {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 280px;
+    height: 100%;
+    background: #ffffff;
+    z-index: 2000;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    box-shadow: -4px 0 16px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .side-menu-drawer.is-open {
+    right: 0 !important;
+  }
+
+  .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: #111518;
+    color: #ffffff;
+  }
+
+  .drawer-title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .drawer-content {
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .m-cate-group {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 15px;
+  }
+
+  .m-cate-title a {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--signal);
+    text-decoration: none;
+  }
+
+  .m-sub-nav {
+    list-style: none;
+    padding: 10px 0 0 10px;
+    margin: 0;
+  }
+
+  .m-sub-nav li {
+    margin-bottom: 8px;
+  }
+
+  .m-sub-nav li a {
+    font-size: 13px;
+    color: #64748b;
+    text-decoration: none;
+  }
+
+  .drawer-quick-contact {
+    padding: 16px 20px;
+    background: #faf9f6;
+    border-top: 1px solid var(--line);
+  }
+
+  .drawer-quick-contact a {
+    display: block;
+    background-color: var(--signal);
+    color: #ffffff !important;
+    text-align: center;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(185, 29, 43, 0.25);
+  }
+
+  /* ====================================
+     [서브 히어로 배너 (높이 240px)]
+  ==================================== */
   .sub-hero {
     position: relative;
     height: 240px;
@@ -25,6 +265,7 @@
     align-items: center;
     color: #fff;
   }
+
   .sub-hero-bg {
     position: absolute;
     top: 0;
@@ -33,18 +274,21 @@
     height: 100%;
     z-index: 1;
   }
+
   .sub-hero-bg img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     opacity: 0.6;
   }
+
   .sub-hero-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
     z-index: 2;
   }
+
   .sub-hero-content {
     position: relative;
     z-index: 3;
@@ -54,6 +298,7 @@
     padding: 0 24px;
     text-align: left;
   }
+
   .sub-hero-tag {
     font-size: 13px;
     letter-spacing: 2px;
@@ -61,6 +306,7 @@
     margin-bottom: 8px;
     font-weight: 700;
   }
+
   .sub-hero-title {
     font-family: 'Noto Serif KR', serif;
     font-size: 34px;
@@ -68,12 +314,15 @@
     font-weight: 700;
     color: #ffffff;
   }
+
   .breadcrumb {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.75);
   }
 
-  /* 설비 현황 페이지 스타일 */
+  /* ====================================
+     [설비 현황 페이지 스타일]
+  ==================================== */
   .equipment-section {
     padding: 60px 24px 80px;
     background-color: #f8f9fa;
@@ -99,43 +348,49 @@
     text-align: center;
     margin-bottom: 48px;
   }
+
   .sec-intro .sub-tag {
     font-family: 'Noto Serif KR', serif;
-    color: var(--signal, #b42318);
+    color: var(--signal);
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.1em;
     margin-bottom: 12px;
     display: block;
   }
+
   .sec-intro h2 {
     font-family: 'Noto Serif KR', serif;
     font-size: 32px;
-    color: var(--ink, #111518);
+    color: var(--ink);
     line-height: 1.4;
+    margin: 0;
   }
 
   /* 공장 전경 히어로 카드 */
   .factory-hero-card {
     background: #ffffff;
-    border: 1px solid var(--line, #e2e8f0);
+    border: 1px solid var(--line);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     margin-bottom: 56px;
   }
+
   .factory-hero-img {
     width: 100%;
     max-height: 480px;
     overflow: hidden;
     background-color: #e2e8f0;
   }
+
   .factory-hero-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
+
   .factory-hero-body {
     padding: 28px 36px;
     display: flex;
@@ -144,15 +399,19 @@
     flex-wrap: wrap;
     gap: 16px;
   }
+
   .factory-hero-body h3 {
     font-family: 'Noto Serif KR', serif;
     font-size: 22px;
     color: #111518;
+    margin: 0 0 8px 0;
   }
+
   .factory-hero-body p {
     font-size: 15px;
     color: #666;
     line-height: 1.6;
+    margin: 0;
   }
 
   /* 설비 갤러리 그리드 */
@@ -161,9 +420,10 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 28px;
   }
+
   .equip-card {
     background: #ffffff;
-    border: 1px solid var(--line, #e2e8f0);
+    border: 1px solid var(--line);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
@@ -171,10 +431,12 @@
     display: flex;
     flex-direction: column;
   }
+
   .equip-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   }
+
   .equip-card-img {
     width: 100%;
     height: 280px;
@@ -182,6 +444,7 @@
     position: relative;
     overflow: hidden;
   }
+
   .equip-card-img img {
     width: 100%;
     height: 100%;
@@ -195,28 +458,31 @@
     display: flex;
     flex-direction: column;
   }
+
   .equip-card-body .num-badge {
     display: inline-block;
     font-size: 12px;
     font-weight: 700;
-    color: var(--signal, #b42318);
+    color: var(--signal);
     background: #fef2f2;
     padding: 3px 8px;
     border-radius: 4px;
     margin-bottom: 8px;
     align-self: flex-start;
   }
+
   .equip-card-body h4 {
     font-size: 18px;
     color: #111518;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin: 0 0 8px 0;
   }
+
   .equip-card-body p {
     font-size: 14px;
     color: #666;
     line-height: 1.6;
-    margin-bottom: 16px;
+    margin: 0 0 16px 0;
   }
 
   /* 설비 스펙 데이터 테이블 스타일 */
@@ -230,12 +496,14 @@
     overflow: hidden;
     border: 1px solid #edf2f7;
   }
+
   .equip-spec-table th, 
   .equip-spec-table td {
     padding: 8px 12px;
     text-align: left;
     border-bottom: 1px solid #edf2f7;
   }
+
   .equip-spec-table th {
     background-color: #f1f5f9;
     color: #334155;
@@ -243,23 +511,27 @@
     width: 32%;
     white-space: nowrap;
   }
+
   .equip-spec-table td {
     color: #475569;
     line-height: 1.5;
   }
+
   .equip-spec-table tr:last-child th,
   .equip-spec-table tr:last-child td {
     border-bottom: none;
   }
 
-  /* 우측 슬림 사이드바 기본 (PC) - !important 제거 */
+  /* ====================================
+     [120px 슬림 사이드바]
+  ==================================== */
   aside.sticky-edge-sidebar {
     position: sticky;
-    top: 180px;
+    top: 90px;
     width: 120px;
     flex-shrink: 0;
     background-color: #ffffff;
-    border: 1px solid var(--line, #e2e8f0);
+    border: 1px solid var(--line);
     border-radius: 8px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     overflow: hidden;
@@ -274,7 +546,7 @@
     font-weight: 700;
     text-align: center;
     padding: 10px 0;
-    border-bottom: 2px solid var(--signal, #b42318);
+    border-bottom: 2px solid var(--signal);
     letter-spacing: -0.02em;
   }
 
@@ -288,7 +560,7 @@
     font-size: 11.5px;
     font-weight: 700;
     color: #1e293b;
-    border-left: 3px solid var(--signal, #b42318);
+    border-left: 3px solid var(--signal);
     letter-spacing: -0.03em;
   }
 
@@ -312,28 +584,59 @@
 
   .sidebar-menu li a:hover {
     background-color: #faf5f5;
-    color: var(--signal, #b42318);
+    color: var(--signal);
   }
 
   .sidebar-menu li.active a {
-    color: var(--signal, #b42318);
+    color: var(--signal);
     font-weight: 700;
     background-color: #fef2f2;
   }
 
-  /* 푸터 스타일 */
-  .site-footer {
+  .sidebar-quick-contact {
+    background-color: var(--signal);
+    text-align: center;
+    padding: 12px 6px;
+  }
+
+  .sidebar-quick-contact a {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .sidebar-quick-contact .qc-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+  }
+
+  .sidebar-quick-contact .qc-sub {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* ====================================
+     [푸터 스타일]
+  ==================================== */
+  footer.site-footer {
     background-color: #111518;
     color: #a0aec0;
     font-size: 13px;
+    width: 100%;
+    clear: both;
   }
 
-  .footer-nav-bar {
+  footer.site-footer .footer-nav-bar {
     border-bottom: 1px solid #2d3748;
     padding: 16px 0;
   }
 
-  .footer-nav-inner {
+  footer.site-footer .footer-nav-inner {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 24px;
@@ -342,42 +645,51 @@
     align-items: center;
   }
 
-  .footer-nav-inner a {
+  footer.site-footer .footer-nav-inner a {
     color: #e2e8f0;
     text-decoration: none;
   }
 
-  .footer-nav-inner a:hover {
-    color: var(--signal, #b42318);
+  footer.site-footer .footer-nav-inner a:hover {
+    color: var(--signal);
   }
 
-  .footer-nav-inner .divider {
+  footer.site-footer .footer-nav-inner .divider {
     color: #4a5568;
   }
 
-  .footer-body {
+  footer.site-footer .footer-body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 32px 24px 48px;
   }
 
-  .footer-info-text {
+  footer.site-footer .footer-info-text {
     line-height: 1.8;
     margin-bottom: 12px;
+    color: #a0a6b0;
   }
 
-  .footer-info-text .sep {
+  footer.site-footer .footer-info-text .sep {
     margin: 0 8px;
     color: #4a5568;
   }
 
-  .footer-copyright {
+  footer.site-footer .footer-copyright {
     color: #718096;
     font-size: 12px;
   }
 
-  /* 반응형 처리 (태블릿/모바일 우측 사이드바 강제 숨김) */
+  /* ====================================
+     [반응형 미디어 쿼리]
+  ==================================== */
   @media screen and (max-width: 1024px) {
+    .site-header {
+      display: none !important;
+    }
+    .m-site-header {
+      display: flex !important;
+    }
     .main-layout {
       flex-direction: column;
     }
@@ -409,7 +721,7 @@
 </head>
 <body>
 
-  <!-- 모바일 대응 공통 헤더 및 드로어 -->
+  <!-- 모바일 헤더 -->
   <header class="m-site-header">
     <a href="index.html" class="m-brand-logo">
       <img src="./image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR">
@@ -417,6 +729,7 @@
     <button id="side-menu-open-btn" class="m-menu-btn" aria-label="메뉴 열기">☰</button>
   </header>
 
+  <!-- 모바일 사이드 드로어 메뉴 -->
   <div id="side-menu-overlay" class="side-menu-overlay"></div>
   <aside id="side-menu-drawer" class="side-menu-drawer">
     <div class="drawer-header">
@@ -454,9 +767,14 @@
         </ul>
       </div>
     </div>
+
+    <!-- 모바일 드로어 하단 Quick Contact -->
+    <div class="drawer-quick-contact">
+      <a href="support-center.html">✉ 빠른 견적 및 문의하기</a>
+    </div>
   </aside>
 
-  <!-- 상단 PC 헤더 -->
+  <!-- PC 상단 헤더 -->
   <header class="site-header">
     <div class="nav-inner">
       <a href="index.html" class="brand-logo">
@@ -477,7 +795,7 @@
           <div class="dropdown-menu">
             <a href="cnc.html">OM CNC 터닝</a>
             <a href="bearing.html">선회 베어링</a>
-            <a href="gear.html">기어</a>
+            <a href="gear.html">특수 기어</a>
           </div>
         </div>
         <div class="nav-item active">
@@ -496,7 +814,7 @@
     </div>
   </header>
 
-  <!-- 서브 히어로 -->
+  <!-- 서브 히어로 배너 -->
   <section class="sub-hero">
     <div class="sub-hero-bg">
       <img src="./image/machine/공장_내부_설비현황.jpg" alt="(주)대형특수기어 공장 전경">
@@ -720,7 +1038,7 @@
 
       </div>
 
-      <!-- 120px 슬림 사이드바 -->
+      <!-- PC 전용 120px 슬림 사이드바 -->
       <aside class="sticky-edge-sidebar">
         <div class="sidebar-header">전체 메뉴</div>
 
@@ -759,12 +1077,20 @@
             <li><a href="support-center.html">고객센터</a></li>
           </ul>
         </div>
+
+        <!-- PC 사이드바 하단 Quick Contact -->
+        <div class="sidebar-quick-contact">
+          <a href="support-center.html">
+            <span class="qc-title">QUICK CONTACT</span>
+            <span class="qc-sub">견적 / 문의 ✉</span>
+          </a>
+        </div>
       </aside>
 
     </div>
   </section>
 
-  <!-- 푸터 -->
+  <!-- 공통 푸터 -->
   <footer class="site-footer">
     <div class="footer-nav-bar">
       <div class="footer-nav-inner">

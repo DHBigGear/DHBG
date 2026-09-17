@@ -11,33 +11,58 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<!-- 외부 CSS 연결 (style.css 및 style_3.css 호환) -->
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style_3.css">
 
 <style>
+  /* ====================================
+     [공통 변수 및 기본 초기화]
+  ==================================== */
+  :root {
+    --header-bg: #ffffff;
+    --signal: #b91d2b;
+    --ink: #111518;
+    --line: #e2e8f0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
   body {
-    background: #f6f4f0;
-    color: #14171a;
+    background: #f8f9fa;
+    color: var(--ink);
     font-family: 'Noto Sans KR', sans-serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
   }
 
-  /* 상단 모바일 통합 헤더 */
+  /* 로고 공통 규격 */
+  .brand-logo img, .m-brand-logo img {
+    max-height: 40px;
+    width: auto;
+    display: block;
+  }
+
+  /* ====================================
+     [상단 모바일 통합 헤더]
+  ==================================== */
   .m-site-header {
     background: #ffffff;
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid #e2e8f0;
-    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    padding: 12px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
   .m-brand-logo {
-    color: #14171a;
+    color: var(--ink);
     font-size: 18px;
     font-weight: 700;
     text-decoration: none;
@@ -46,29 +71,24 @@
     gap: 8px;
   }
 
-  .m-brand-logo img {
-    max-height: 40px;
-    width: auto;
-    display: block;
-  }
-
-  /* 햄버거 메뉴 버튼 */
   .m-menu-btn {
     background: none;
     border: none;
-    color: #14171a;
-    font-size: 26px;
+    color: var(--ink);
+    font-size: 24px;
     cursor: pointer;
     padding: 4px 8px;
   }
 
-  /* 우측 슬라이드 드로어 메뉴 스타일 */
+  /* ====================================
+     [우측 슬라이드 드로어 메뉴]
+  ==================================== */
   .side-menu-overlay {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     display: none;
-    z-index: 99998;
+    z-index: 1999;
   }
 
   .side-menu-overlay.is-active {
@@ -82,8 +102,8 @@
     width: 280px;
     height: 100%;
     background-color: #ffffff;
-    z-index: 99999;
-    box-shadow: -4px 0 16px rgba(0,0,0,0.2);
+    z-index: 2000;
+    box-shadow: -4px 0 16px rgba(0,0,0,0.15);
     transition: right 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
@@ -97,7 +117,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 20px;
+    padding: 16px 20px;
     background-color: #111518;
     color: #ffffff;
   }
@@ -111,7 +131,7 @@
     background: none;
     border: none;
     color: #ffffff;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
     padding: 0 4px;
   }
@@ -119,52 +139,50 @@
   .drawer-content {
     overflow-y: auto;
     flex: 1;
-    padding-bottom: 20px;
+    padding: 20px;
   }
 
   .m-cate-group {
-    border-bottom: 1px solid #e2e8f0;
-  }
-
-  .m-cate-title {
-    padding: 14px 20px 6px;
-    background-color: #faf9f6;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 15px;
   }
 
   .m-cate-title a {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
-    color: #b91d2b;
+    color: var(--signal);
     text-decoration: none;
     display: block;
   }
 
   .m-sub-nav {
     list-style: none;
-    padding: 0;
+    padding: 10px 0 0 10px;
     margin: 0;
+  }
+
+  .m-sub-nav li {
+    margin-bottom: 8px;
   }
 
   .m-sub-nav li a {
     display: block;
-    padding: 12px 20px 12px 28px;
-    font-size: 14px;
-    color: #2d3748;
+    font-size: 13px;
+    color: #64748b;
     text-decoration: none;
-    border-top: 1px solid #f1f5f9;
   }
 
-  /* [모바일 추가] 드로어 메뉴 하단 Quick Contact 버튼 */
   .drawer-quick-contact {
     padding: 16px 20px;
     background: #faf9f6;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--line);
   }
 
   .drawer-quick-contact a {
     display: block;
-    background-color: #b91d2b;
-    color: #ffffff;
+    background-color: var(--signal);
+    color: #ffffff !important;
     text-align: center;
     padding: 12px;
     font-size: 14px;
@@ -174,7 +192,9 @@
     box-shadow: 0 4px 10px rgba(185, 29, 43, 0.25);
   }
 
-  /* 메인 콘텐츠 스타일 */
+  /* ====================================
+     [메인 히어로 영역]
+  ==================================== */
   .m-hero {
     position: relative;
     height: 380px;
@@ -186,7 +206,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.4;
+    opacity: 0.45;
   }
 
   .m-hero-content {
@@ -202,9 +222,10 @@
 
   .m-hero-tag {
     font-family: 'Noto Serif KR', serif;
-    color: #b91d2b;
+    color: var(--signal);
     font-size: 13px;
     margin-bottom: 8px;
+    letter-spacing: 0.05em;
   }
 
   .m-hero-title {
@@ -212,7 +233,7 @@
     font-size: 26px;
     font-weight: 700;
     line-height: 1.4;
-    margin-bottom: 14px;
+    margin: 0 0 14px 0;
     word-break: keep-all;
   }
 
@@ -220,44 +241,137 @@
     font-size: 14px;
     color: #c8c4bb;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
     word-break: keep-all;
   }
 
-  /* [모바일 추가] 모바일 배너 내 Quick Contact 버튼 */
   .m-btn-signal {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: #b91d2b;
-    color: #ffffff;
+    background: var(--signal);
+    color: #ffffff !important;
     padding: 10px 20px;
     font-size: 13px;
     font-weight: 600;
     text-decoration: none;
     border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(185, 29, 43, 0.3);
   }
 
-  .m-biz-section { padding: 48px 20px; }
-  .m-sec-header { margin-bottom: 24px; }
-  .m-sec-title { font-family: 'Noto Serif KR', serif; font-size: 24px; font-weight: 700; }
-  .m-sec-title span { display: block; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; color: #b91d2b; margin-bottom: 4px; }
+  /* ====================================
+     [주요 사업 영역 섹션]
+  ==================================== */
+  .m-biz-section { 
+    padding: 48px 20px; 
+    background-color: #f8f9fa;
+  }
 
-  .m-grid-1 { display: flex; flex-direction: column; gap: 20px; }
-  .m-card-item { background: #ffffff; border: 1px solid #ddd8cf; border-radius: 6px; overflow: hidden; text-decoration: none; color: #14171a; }
-  .m-card-img { height: 180px; overflow: hidden; }
-  .m-card-img img { width: 100%; height: 100%; object-fit: cover; }
-  .m-card-body { padding: 18px; }
-  .m-card-body h3 { font-family: 'Noto Serif KR', serif; font-size: 18px; margin-bottom: 8px; }
-  .m-card-body p { font-size: 13px; color: #454c54; line-height: 1.5; }
+  .m-sec-header { 
+    margin-bottom: 24px; 
+  }
 
-  /* 푸터 스타일 */
-  .m-site-footer { background: #0d0f11; color: #a0a6b0; font-size: 12px; border-top: 2px solid #b91d2b; }
-  .m-footer-nav { background: rgba(255, 255, 255, 0.03); padding: 12px 16px; display: flex; justify-content: center; gap: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
-  .m-footer-nav a { color: #c8c4bb; text-decoration: none; }
-  .m-footer-body { padding: 24px 20px 36px; text-align: center; line-height: 1.8; }
-  .m-footer-info { color: #8a919a; margin-bottom: 12px; word-break: keep-all; }
-  .m-footer-copy { color: #5d636b; font-size: 11px; }
+  .m-sec-title { 
+    font-family: 'Noto Serif KR', serif; 
+    font-size: 24px; 
+    font-weight: 700; 
+    margin: 0;
+  }
+
+  .m-sec-title span { 
+    display: block; 
+    font-size: 12px; 
+    font-family: 'Noto Sans KR', sans-serif; 
+    color: var(--signal); 
+    margin-bottom: 4px; 
+    letter-spacing: 0.1em;
+  }
+
+  .m-grid-1 { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+  }
+
+  .m-card-item { 
+    background: #ffffff; 
+    border: 1px solid var(--line); 
+    border-radius: 8px; 
+    overflow: hidden; 
+    text-decoration: none; 
+    color: var(--ink); 
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  }
+
+  .m-card-img { 
+    height: 180px; 
+    overflow: hidden; 
+    background-color: #f1f5f9;
+  }
+
+  .m-card-img img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+  }
+
+  .m-card-body { 
+    padding: 18px; 
+  }
+
+  .m-card-body h3 { 
+    font-family: 'Noto Serif KR', serif; 
+    font-size: 18px; 
+    margin: 0 0 8px 0; 
+  }
+
+  .m-card-body p { 
+    font-size: 13px; 
+    color: #64748b; 
+    line-height: 1.5; 
+    margin: 0;
+  }
+
+  /* ====================================
+     [모바일 푸터 스타일]
+  ==================================== */
+  .m-site-footer { 
+    background: #111518; 
+    color: #a0aec0; 
+    font-size: 12px; 
+    border-top: 2px solid var(--signal); 
+  }
+
+  .m-footer-nav { 
+    background: rgba(255, 255, 255, 0.03); 
+    padding: 12px 16px; 
+    display: flex; 
+    justify-content: center; 
+    gap: 10px; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+  }
+
+  .m-footer-nav a { 
+    color: #e2e8f0; 
+    text-decoration: none; 
+  }
+
+  .m-footer-body { 
+    padding: 24px 20px 36px; 
+    text-align: center; 
+    line-height: 1.8; 
+  }
+
+  .m-footer-info { 
+    color: #a0a6b0; 
+    margin-bottom: 12px; 
+    word-break: keep-all; 
+  }
+
+  .m-footer-copy { 
+    color: #718096; 
+    font-size: 11px; 
+  }
 </style>
 </head>
 <body>
@@ -265,12 +379,12 @@
   <!-- 1. 상단 모바일 헤더 -->
   <header class="m-site-header">
     <a href="index.html" class="m-brand-logo">
-      <img src="image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR">
+      <img src="./image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR">
     </a>
     <button id="side-menu-open-btn" class="m-menu-btn" aria-label="메뉴 열기">☰</button>
   </header>
 
-  <!-- 2. 우측 사이드 슬라이드 메뉴 -->
+  <!-- 2. 우측 사이드 슬라이드 드로어 메뉴 -->
   <div id="side-menu-overlay" class="side-menu-overlay"></div>
   <aside id="side-menu-drawer" class="side-menu-drawer">
     <div class="drawer-header">
@@ -324,7 +438,7 @@
 
   <!-- 3. 메인 히어로 섹션 -->
   <section class="m-hero">
-    <img src="image/hero_cnc.png" alt="CNC 터닝 가공" class="m-hero-img">
+    <img src="./image/hero_cnc.png" alt="CNC 터닝 가공" class="m-hero-img">
     <div class="m-hero-content">
       <div class="m-hero-tag">SINCE 1991 — PRECISION ENGINEERING</div>
       <h1 class="m-hero-title">정밀함은 타협하지 않는다.<br>(주)대형특수기어</h1>
