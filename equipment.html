@@ -493,7 +493,7 @@
 
   .equip-card-img {
     width: 100%;
-    min-height: 320px;
+    height: 578px;
     background-color: #f1f5f9;
     position: relative;
     overflow: hidden;
@@ -509,6 +509,19 @@
     max-height: 578px;
     object-fit: contain;
     display: block;
+  }
+
+  .equip-card-img-wide img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  .equip-card-img-wide {
+    height: auto;
+    min-height: 578px;
   }
 
   .equip-card-body {
@@ -777,7 +790,7 @@
       padding: 20px;
     }
     .equip-card-img {
-      min-height: 0;
+      height: auto;
     }
   }
 </style>
@@ -953,7 +966,7 @@
           </div>
 
           <div class="equip-card">
-            <div class="equip-card-img">
+            <div class="equip-card-img equip-card-img-wide">
               <img src="./image/machine/grinding1.jpg" alt="대형 기어 치연기">
             </div>
             <div class="equip-card-body">
