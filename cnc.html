@@ -442,17 +442,22 @@
     border-radius: 6px;
     overflow: hidden;
     border: 1px solid #eee;
+    display: flex;
+    justify-content: center;
   }
 
   .main-img-wrapper img {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: auto;
+    max-height: 578px;
+    object-fit: contain;
     display: block;
   }
 
   .detail-grid {
     display: grid;
-    grid-template-columns: 340px 1fr;
+    grid-template-columns: 320px minmax(0, 1fr);
     gap: 24px;
     align-items: start;
   }
@@ -514,6 +519,7 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    min-width: 0;
   }
 
   .gallery-item {
@@ -522,11 +528,17 @@
     border-radius: 8px;
     padding: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: center;
+    min-width: 0;
   }
 
   .gallery-item img {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: auto;
+    max-height: 578px;
+    object-fit: contain;
     display: block;
     border-radius: 4px;
   }
@@ -893,9 +905,6 @@
           <div class="gallery-list">
             <div class="gallery-item">
               <img src="./image/machine/OM_CNC_turning1.jpg" alt="OM CNC 터닝 상세 가공부">
-            </div>
-            <div class="gallery-item">
-              <img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝 측면 전경">
             </div>
           </div>
         </div>
