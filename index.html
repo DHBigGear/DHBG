@@ -3,37 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>(주)대형특수기어 | DAE HYUNG GEAR</title>
+<title>홈 화면 연혁 시안 | (주)대형특수기어</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-<!-- 외부 CSS 연결 -->
 <link rel="stylesheet" href="style.css">
-
 <style>
-  /* ====================================
-     [공통 변수 및 기본 초기화]
-  ==================================== */
   :root {
-    --header-bg: #ffffff;
     --signal: #b91d2b;
     --ink: #111518;
     --line: #e2e8f0;
+    --muted: #64748b;
   }
 
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
   body {
     margin: 0;
-    padding: 0;
-    font-family: 'Noto Sans KR', sans-serif;
     color: var(--ink);
-    background-color: #ffffff;
+    background: #ffffff;
+    font-family: 'Noto Sans KR', sans-serif;
     overflow-x: hidden;
   }
 
-  /* 로고 및 상단 브랜드 배너 문구 조합 스타일 */
   .brand-group {
     display: flex;
     align-items: center;
@@ -41,13 +32,8 @@
     text-decoration: none;
   }
 
-  .brand-logo img {
-    max-height: 42px;
-    width: auto;
-    display: block;
-  }
+  .brand-logo img { max-height: 42px; display: block; width: auto; }
 
-  /* 제공해주신 top-banner.jpg 내 문구 영역 구조화 */
   .brand-banner-text {
     display: flex;
     flex-direction: column;
@@ -55,966 +41,289 @@
     padding-left: 14px;
   }
 
-  .banner-top-line {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--signal);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
+  .banner-top-line, .banner-main-line { font-family: 'Noto Serif KR', serif; font-weight: 700; }
+  .banner-top-line { color: var(--signal); font-size: 11px; letter-spacing: 0.1em; }
+  .banner-main-line { color: var(--ink); font-size: 14px; letter-spacing: 0.05em; }
+  .banner-sub-line { color: var(--muted); font-size: 10px; letter-spacing: 0.03em; }
 
-  .banner-main-line {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--ink);
-    letter-spacing: 0.05em;
-  }
-
-  .banner-sub-line {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    color: #64748b;
-    letter-spacing: 0.03em;
-  }
-
-  /* ====================================
-     [PC 헤더 & 네비게이션]
-  ==================================== */
-  .site-header {
-    background-color: var(--header-bg);
-    height: 75px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .nav-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-  }
-
-  .nav-item {
-    position: relative;
-  }
-
+  .nav-links { display: flex; gap: 32px; }
+  .nav-item { position: relative; }
   .nav-item > a {
-    color: #64748b;
-    text-decoration: none;
+    display: block;
+    padding: 26px 0;
+    color: var(--muted);
     font-size: 15px;
     font-weight: 500;
-    padding: 26px 0;
-    display: block;
-    transition: color 0.2s ease;
   }
-
-  .nav-item.active > a {
-    color: var(--ink) !important;
-    font-weight: 700;
-  }
-
-  .nav-item:hover > a {
-    color: var(--signal) !important;
-  }
-
+  .nav-item.active > a { color: var(--ink); font-weight: 700; }
+  .nav-item:hover > a { color: var(--signal); }
   .dropdown-menu {
     display: none;
     position: absolute;
+    z-index: 3;
     top: 100%;
     left: 50%;
+    min-width: 140px;
     transform: translateX(-50%);
+    overflow: hidden;
     background: #ffffff;
     border: 1px solid var(--line);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    min-width: 140px;
-    border-radius: 4px;
-    overflow: hidden;
   }
+  .nav-item:hover .dropdown-menu { display: block; }
+  .dropdown-menu a { display: block; padding: 10px 16px; color: #333333; font-size: 13px; white-space: nowrap; }
+  .dropdown-menu a:hover { background: #f8fafc; color: var(--signal); }
 
-  .nav-item:hover .dropdown-menu {
-    display: block;
-  }
-
-  .dropdown-menu a {
-    display: block;
-    padding: 10px 16px;
-    color: #333333;
-    text-decoration: none;
-    font-size: 13px;
-    white-space: nowrap;
-  }
-
-  .dropdown-menu a:hover {
-    background: #f8fafc;
-    color: var(--signal);
-  }
-
-  /* ====================================
-     [모바일 헤더 & 드로어 메뉴]
-  ==================================== */
-  .m-site-header {
-    display: none;
-    background: #ffffff;
-    padding: 12px 20px;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--line);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-
-  .m-brand-logo img {
-    max-height: 36px;
-    width: auto;
-    display: block;
-  }
-
-  .m-menu-btn {
-    background: none;
-    border: none;
-    color: var(--ink);
-    font-size: 24px;
-    cursor: pointer;
-  }
-
-  .side-menu-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1999;
-  }
-
-  .side-menu-overlay.is-active {
-    display: block;
-  }
-
-  .side-menu-drawer {
-    position: fixed;
-    top: 0;
-    right: -300px;
-    width: 280px;
-    height: 100%;
-    background: #ffffff;
-    z-index: 2000;
-    transition: right 0.3s ease;
-    overflow-y: auto;
-    box-shadow: -4px 0 16px rgba(0,0,0,0.15);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .side-menu-drawer.is-open {
-    right: 0 !important;
-  }
-
-  .drawer-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-    background: #111518;
-    color: #ffffff;
-  }
-
-  .drawer-title {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .close-btn {
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 20px;
-    cursor: pointer;
-  }
-
-  .drawer-content {
-    padding: 20px;
-    flex: 1;
-    overflow-y: auto;
-  }
-
-  .m-cate-group {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #f1f5f9;
-    padding-bottom: 15px;
-  }
-
-  .m-cate-title a {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--signal);
-    text-decoration: none;
-  }
-
-  .m-sub-nav {
-    list-style: none;
-    padding: 10px 0 0 10px;
-    margin: 0;
-  }
-
-  .m-sub-nav li {
-    margin-bottom: 8px;
-  }
-
-  .m-sub-nav li a {
-    font-size: 13px;
-    color: #64748b;
-    text-decoration: none;
-  }
-
-  .drawer-quick-contact {
-    padding: 16px 20px;
-    background: #faf9f6;
-    border-top: 1px solid var(--line);
-  }
-
-  .drawer-quick-contact a {
-    display: block;
-    background-color: var(--signal);
-    color: #ffffff !important;
-    text-align: center;
-    padding: 12px;
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 4px;
-    box-shadow: 0 4px 10px rgba(185, 29, 43, 0.25);
-  }
-
-  /* ====================================
-     [메인 히어로 & 슬라이더 전용 스타일]
-  ==================================== */
   .main-hero {
     position: relative;
-    height: 520px;
-    background: #111518;
+    height: 440px;
     overflow: hidden;
+    background: #111518;
   }
-
-  .hero-slider {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .hero-slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 1.2s ease-in-out;
-    z-index: 1;
-  }
-
-  .hero-slide.active {
-    opacity: 1;
-  }
-
-  .hero-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    filter: saturate(0.7) contrast(1.08) brightness(0.8);
-  }
-
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(11, 12, 13, 0.72) 0%, rgba(11, 12, 13, 0.54) 28%, rgba(11, 12, 13, 0.22) 62%, rgba(11, 12, 13, 0.32) 100%);
-    z-index: 2;
-  }
-
+  .main-hero img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.7) contrast(1.08) brightness(0.8); }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,12,13,.72), rgba(11,12,13,.26) 68%, rgba(11,12,13,.38)); }
   .hero-content {
-    position: relative;
-    z-index: 3;
-    max-width: 1400px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 90px 32px 60px;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: #ffffff;
-  }
-
-  .hero-tag {
-    font-family: 'Noto Serif KR', serif;
-    color: rgba(255, 255, 255, 0.88);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    margin-bottom: 18px;
-    display: inline-block;
-    padding-left: 12px;
-    border-left: 2px solid #d72828;
-    text-transform: uppercase;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
-    background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
-    backdrop-filter: blur(1px);
-    max-width: fit-content;
-  }
-
-  .hero-title {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 54px;
-    font-weight: 700;
-    line-height: 1.15;
-    margin: 0 0 18px 0;
-    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.42);
-    max-width: 660px;
-    letter-spacing: -0.04em;
-  }
-
-  .hero-desc {
-    font-size: 17px;
-    color: rgba(255, 255, 255, 0.78);
-    max-width: 620px;
-    line-height: 1.7;
-    margin: 0 0 28px 0;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
-  }
-
-  .btn-signal {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: var(--signal);
-    color: #ffffff !important;
-    padding: 14px 26px;
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-    width: fit-content;
-    box-shadow: 0 4px 12px rgba(185, 29, 43, 0.3);
-  }
-
-  .btn-signal:hover {
-    background-color: #961723;
-    transform: translateY(-2px);
-  }
-
-  /* ====================================
-     [메인 콘텐츠 & 카드 그리드 섹션 (4열 확장)]
-  ==================================== */
-  .biz-section {
-    padding: 50px 24px 80px;
-    background-color: #f8f9fa;
-    position: relative;
-  }
-
-  .main-layout {
     max-width: 1400px;
     margin: 0 auto;
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    position: relative;
-  }
-
-  .main-container {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .sec-header {
-    margin-bottom: 40px;
-  }
-
-  .sec-title {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 32px;
-    font-weight: 700;
-    margin: 0;
-  }
-
-  .sec-title span {
-    display: block;
-    font-size: 12px;
-    font-family: 'Noto Sans KR', sans-serif;
-    color: #9a3a3a;
-    letter-spacing: 0.14em;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-
-  .grid-4 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-
-  .card-item {
-    background: #ffffff;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 12px;
-    overflow: hidden;
-    text-decoration: none;
-    color: var(--ink);
-    transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.2s ease;
-    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .card-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.10);
-    border-color: rgba(185, 29, 43, 0.18);
-  }
-
-  .card-img {
-    height: 190px;
-    overflow: hidden;
-    background-color: #f1f5f9;
-  }
-
-  .card-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .card-body {
-    padding: 20px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .card-body h3 {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 18px;
-    margin: 0 0 8px 0;
-  }
-
-  .card-body p {
-    font-size: 13.5px;
-    color: #64748b;
-    line-height: 1.5;
-    margin: 0;
-  }
-
-  /* ====================================
-     [120px 슬림 사이드바]
-  ==================================== */
-  aside.sticky-edge-sidebar {
-    position: sticky;
-    top: 90px;
-    width: 120px;
-    flex-shrink: 0;
-    background-color: #ffffff;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-    overflow: hidden;
-    z-index: 100;
-  }
-
-  .sidebar-header {
-    background-color: #111518;
+    padding: 60px 32px;
     color: #ffffff;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    text-align: center;
-    padding: 10px 0;
-    border-bottom: 2px solid var(--signal);
-    letter-spacing: -0.02em;
   }
+  .hero-tag { margin-bottom: 16px; padding-left: 12px; border-left: 2px solid #d72828; color: rgba(255,255,255,.86); font-family: 'Noto Serif KR', serif; font-size: 12px; letter-spacing: .18em; }
+  .hero-title { max-width: 1120px; margin: 0 0 16px; font-family: 'Noto Serif KR', serif; font-size: 48px; line-height: 1.22; letter-spacing: -.045em; text-shadow: 0 3px 16px rgba(0,0,0,.25); }
+  .hero-title-main { display: inline-block; padding: 3px 18px 5px 0; border-bottom: 2px solid var(--signal); letter-spacing: .055em; white-space: nowrap; }
+  .hero-title-company { display: inline-block; margin-top: 7px; font-size: .82em; letter-spacing: -.035em; }
+  .hero-title-company-only { font-size: 42px; letter-spacing: -.04em; }
+  .hero-desc { max-width: 620px; margin: 0 0 24px; color: rgba(255,255,255,.78); font-size: 16px; line-height: 1.7; }
+  .btn-signal, .history-link { display: inline-flex; align-items: center; gap: 8px; width: fit-content; background: var(--signal); color: #ffffff; font-weight: 600; }
+  .btn-signal { padding: 13px 24px; }
+  .btn-signal:hover, .history-link:hover { background: #961723; }
 
-  .sidebar-category-group {
-    border-bottom: 1px solid #f1f5f9;
-  }
+  .biz-section { padding: 54px 24px 64px; background: #f8f9fa; }
+  .content-width { max-width: 1400px; margin: 0 auto; }
+  .biz-section .content-width { display: grid; }
+  .sec-header { display: contents; }
+  .sec-title { margin: 0; font-family: 'Noto Serif KR', serif; font-size: 30px; line-height: 1.3; }
+  .biz-section .sec-title { grid-row: 1; margin-bottom: 32px; }
+  .sec-title span, .history-label { display: block; margin-bottom: 9px; color: #9a3a3a; font-family: 'Noto Sans KR', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .14em; }
+  .grid-4 { display: grid; grid-row: 2; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .card-item { overflow: hidden; background: #ffffff; border: 1px solid rgba(15,23,42,.08); border-radius: 10px; color: var(--ink); box-shadow: 0 8px 22px rgba(15,23,42,.04); }
+  .card-item:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(15,23,42,.1); }
+  .card-img { height: 170px; background: #f1f5f9; }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; }
+  .card-body { min-height: 142px; padding: 17px; }
+  .card-body h3 { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0 0 8px; font-family: 'Noto Serif KR', serif; font-size: 18px; }
+  .card-more { flex: 0 0 auto; padding: 4px 8px; border: 1px solid #cfe2d9; border-radius: 999px; background: #edf5f1; color: #2f6b5a; font-family: 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: -.03em; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+  .card-item:hover .card-more { border-color: #2f6b5a; background: #2f6b5a; color: #ffffff; }
+  .card-body p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
 
-  .sidebar-category-title {
-    background-color: #f8fafc;
-    padding: 7px 8px;
-    font-size: 11.5px;
-    font-weight: 700;
-    color: #1e293b;
-    border-left: 3px solid var(--signal);
-    letter-spacing: -0.03em;
-  }
+  .history-strip { display: block; grid-row: 3; width: 100%; margin-top: 34px; padding: 16px 20px 14px; background: rgba(255,255,255,.7); border: 1px solid #e2e8f0; border-radius: 10px; text-decoration: none; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+  .history-strip:hover { border-color: rgba(185,29,43,.45); box-shadow: 0 8px 18px rgba(15,23,42,.08); transform: translateY(-2px); }
+  .history-preview { display: none; }
+  .history-strip-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 11px; }
+  .history-heading-copy { display: flex; align-items: baseline; min-width: 0; }
+  .history-label { display: inline; margin: 0; font-size: 10px; }
+  .history-slogan { overflow: hidden; margin-left: auto; color: var(--ink); font-family: 'Noto Serif KR', serif; font-size: 18px; font-weight: 700; letter-spacing: -.045em; white-space: nowrap; text-overflow: ellipsis; }
+  .history-slogan strong { display: inline-block; margin-left: 5px; color: #9a3a3a; font-size: 1.06em; font-weight: 700; letter-spacing: -.035em; }
+  .history-steps { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .history-steps::before { content: ''; position: absolute; top: 5px; left: 3px; right: 3px; height: 1px; background: #d8dde5; }
+  .history-step { position: relative; padding: 15px 8px 0 0; }
+  .history-step:not(:first-child) { padding-left: 11px; }
+  .history-step::before { content: ''; position: absolute; z-index: 1; top: 1px; left: 0; width: 9px; height: 9px; border: 2px solid #ffffff; border-radius: 50%; background: #cbd5e1; box-shadow: 0 0 0 1px #cbd5e1; }
+  .history-step:nth-child(4)::before { background: #ef233c; box-shadow: 0 0 0 1px #ef233c; animation: history-current 1.1s ease-in-out infinite alternate; }
+  .history-year { display: block; color: #475569; font-family: 'Noto Serif KR', serif; font-size: 15px; font-weight: 700; }
+  .history-step p { overflow: hidden; margin: 2px 0 0; color: var(--muted); font-size: 10px; line-height: 1.35; white-space: nowrap; text-overflow: ellipsis; }
+  @keyframes history-current { from { box-shadow: 0 0 0 1px #ef233c, 0 0 4px rgba(239,35,60,.45); } to { box-shadow: 0 0 0 1px #ef233c, 0 0 12px rgba(239,35,60,.95); } }
 
-  .sidebar-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+  .site-footer { padding: 28px 24px 40px; background: #111518; color: #a0a6b0; font-size: 13px; }
+  .footer-inner { max-width: 1400px; margin: 0 auto; }
+  .footer-links { display: flex; gap: 16px; margin-bottom: 20px; }
+  .footer-links a { color: #e2e8f0; }
+  .footer-info { margin-bottom: 10px; line-height: 1.8; }
+  .footer-copy { color: #718096; font-size: 12px; }
 
-  .sidebar-menu li a {
-    display: block;
-    padding: 6px 6px 6px 10px;
-    color: #475569;
-    text-decoration: none;
-    font-size: 11px;
-    font-weight: 500;
-    transition: all 0.15s ease;
-    white-space: nowrap;
-    letter-spacing: -0.04em;
-  }
+  .home-mobile-nav { display: none; }
 
-  .sidebar-menu li a:hover {
-    background-color: #faf5f5;
-    color: var(--signal);
-  }
-
-  .sidebar-quick-contact {
-    background-color: var(--signal);
-    text-align: center;
-    padding: 12px 6px;
-  }
-
-  .sidebar-quick-contact a {
-    color: #ffffff;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .sidebar-quick-contact .qc-title {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    opacity: 0.9;
-  }
-
-  .sidebar-quick-contact .qc-sub {
-    font-size: 12px;
-    font-weight: 700;
-  }
-
-  /* ====================================
-     [푸터 스타일]
-  ==================================== */
-  footer.site-footer {
-    background-color: #111518;
-    color: #a0aec0;
-    font-size: 13px;
-    width: 100%;
-    clear: both;
-  }
-
-  footer.site-footer .footer-nav-bar {
-    border-bottom: 1px solid #2d3748;
-    padding: 16px 0;
-  }
-
-  footer.site-footer .footer-nav-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-  }
-
-  footer.site-footer .footer-nav-inner a {
-    color: #e2e8f0;
-    text-decoration: none;
-  }
-
-  footer.site-footer .footer-nav-inner a:hover {
-    color: var(--signal);
-  }
-
-  footer.site-footer .footer-nav-inner .divider {
-    color: #4a5568;
-  }
-
-  footer.site-footer .footer-body {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 32px 24px 48px;
-  }
-
-  footer.site-footer .footer-info-text {
-    line-height: 1.8;
-    margin-bottom: 12px;
-    color: #a0a6b0;
-  }
-
-  footer.site-footer .footer-info-text .sep {
-    margin: 0 8px;
-    color: #4a5568;
-  }
-
-  footer.site-footer .footer-copyright {
-    color: #718096;
-    font-size: 12px;
-  }
-
-  /* ====================================
-     [반응형 미디어 쿼리]
-  ==================================== */
-  @media screen and (max-width: 1200px) {
-    .grid-4 {
-      grid-template-columns: repeat(2, 1fr);
+  @media (max-width: 1024px) {
+    .site-header { display: none !important; }
+    .m-site-header { display: flex !important; }
+    .home-mobile-nav {
+      position: fixed;
+      z-index: 999;
+      top: 61px;
+      right: 0;
+      left: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      background: #e2e8f0;
+      box-shadow: 0 10px 18px rgba(15,23,42,.12);
+      opacity: 0;
+      transition: max-height .25s ease, padding .25s ease, opacity .2s ease;
     }
+    .home-mobile-nav.is-open { max-height: 220px; padding-top: 1px; padding-bottom: 1px; opacity: 1; }
+    .home-mobile-nav a { padding: 14px 12px; background: #ffffff; color: #334155; font-size: 14px; font-weight: 600; text-align: center; }
+    .home-mobile-nav a:hover, .home-mobile-nav a:focus { background: #edf5f1; color: #2f6b5a; }
+    .m-menu-btn[aria-expanded="true"] { color: #2f6b5a; }
   }
-
-  @media screen and (max-width: 1024px) {
-    .site-header {
-      display: none !important;
-    }
-    .m-site-header {
-      display: flex !important;
-    }
-    .main-layout {
-      flex-direction: column;
-    }
-    aside.sticky-edge-sidebar {
-      display: none !important;
-      visibility: hidden !important;
-      height: 0 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      border: none !important;
-    }
-  }
-
   @media (max-width: 820px) {
-    .main-hero { height: 320px; }
-    .hero-title { font-size: 24px; }
+    .brand-banner-text { display: none; }
+    .main-hero { height: 340px; }
+    .hero-content { padding: 40px 20px; }
+    .hero-title { font-size: 29px; }
+    .hero-title-company-only { font-size: 30px; }
+    .hero-title-main { padding-right: 0; white-space: normal; letter-spacing: -.035em; }
     .hero-desc { font-size: 13px; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .card-img { height: 150px; }
+  }
+  @media (max-width: 560px) {
     .grid-4 { grid-template-columns: 1fr; }
-    .brand-banner-text { display: none; } /* 모바일 화면에서는 좁은 공간을 위해 서브 문구 생략 */
+    .biz-section { padding-right: 20px; padding-left: 20px; }
+    .sec-title { font-size: 25px; }
+    .history-strip { margin-top: 24px; padding: 12px; }
+    .history-slogan { font-size: 15px; }
+    .history-step { padding-right: 5px; }
+    .history-step:not(:first-child) { padding-left: 7px; }
+    .history-year { font-size: 13px; }
+    .history-step p { font-size: 9px; }
+    .footer-info { word-break: keep-all; }
   }
 </style>
 </head>
 <body>
-
-  <!-- 모바일 헤더 -->
   <header class="m-site-header">
-    <a href="index.html" class="m-brand-logo">
-      <img src="./image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR">
-    </a>
-    <button id="side-menu-open-btn" class="m-menu-btn" aria-label="메뉴 열기">☰</button>
+    <a href="index.html" class="m-brand-logo"><img src="./image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR"></a>
+    <button id="home-menu-toggle" class="m-menu-btn" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="home-mobile-nav">☰</button>
   </header>
+  <nav id="home-mobile-nav" class="home-mobile-nav" aria-label="모바일 메뉴">
+    <a href="greeting.html">회사소개</a>
+    <a href="cnc.html">제품소개</a>
+    <a href="equipment.html">설비현황</a>
+    <a href="support-center.html">고객지원</a>
+    <a href="history.html">회사연혁</a>
+    <a href="location.html">찾아오시는 길</a>
+  </nav>
 
-  <!-- 모바일 사이드 드로어 메뉴 -->
-  <div id="side-menu-overlay" class="side-menu-overlay"></div>
-  <aside id="side-menu-drawer" class="side-menu-drawer">
-    <div class="drawer-header">
-      <span class="drawer-title">전체메뉴</span>
-      <button id="side-menu-close-btn" class="close-btn" aria-label="메뉴 닫기">✕</button>
-    </div>
-    
-    <div class="drawer-content">
-      <div class="m-cate-group">
-        <div class="m-cate-title"><a href="greeting.html">회사소개</a></div>
-        <ul class="m-sub-nav">
-          <li><a href="greeting.html">인사말씀</a></li>
-          <li><a href="history.html">회사연혁</a></li>
-          <li><a href="location.html">찾아오시는 길</a></li>
-        </ul>
-      </div>
-      <div class="m-cate-group">
-        <div class="m-cate-title"><a href="cnc.html">제품소개</a></div>
-        <ul class="m-sub-nav">
-          <li><a href="cnc.html">OM CNC 터닝</a></li>
-          <li><a href="bearing.html">선회 베어링</a></li>
-          <li><a href="gear.html">특수 기어</a></li>
-        </ul>
-      </div>
-      <div class="m-cate-group">
-        <div class="m-cate-title"><a href="equipment.html">설비현황</a></div>
-        <ul class="m-sub-nav">
-          <li><a href="equipment.html">보유 설비 전체</a></li>
-        </ul>
-      </div>
-      <div class="m-cate-group">
-        <div class="m-cate-title"><a href="support-center.html">고객지원</a></div>
-        <ul class="m-sub-nav">
-          <li><a href="support-center.html">고객센터</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 모바일 드로어 하단 Quick Contact -->
-    <div class="drawer-quick-contact">
-      <a href="support-center.html">✉ 빠른 견적 및 문의하기</a>
-    </div>
-  </aside>
-
-  <!-- PC 공통 헤더 -->
   <header class="site-header">
     <div class="nav-inner">
-      <!-- 로고 및 배너 텍스트 결합 영역 -->
       <a href="index.html" class="brand-group">
-        <div class="brand-logo">
-          <img src="./image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR">
-        </div>
+        <div class="brand-logo"><img src="./image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR"></div>
         <div class="brand-banner-text">
           <span class="banner-top-line">SINCE 1991</span>
           <span class="banner-main-line">DAE HYUNG GEAR Co., Ltd</span>
-          <span class="banner-sub-line">HIGH-PRECISION GEAR & SLEWING BEARING</span>
+          <span class="banner-sub-line">HIGH-PRECISION GEAR &amp; SLEWING BEARING</span>
         </div>
       </a>
-
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="주 메뉴">
         <div class="nav-item active"><a href="index.html">홈</a></div>
-        
-        <div class="nav-item">
-          <a href="greeting.html">회사소개</a>
-          <div class="dropdown-menu">
-            <a href="greeting.html">인사말씀</a>
-            <a href="history.html">회사연혁</a>
-            <a href="location.html">찾아오시는 길</a>
-          </div>
-        </div>
-
-        <div class="nav-item">
-          <a href="cnc.html">제품소개</a>
-          <div class="dropdown-menu">
-            <a href="cnc.html">OM CNC 터닝</a>
-            <a href="bearing.html">선회 베어링</a>
-            <a href="gear.html">특수 기어</a>
-          </div>
-        </div>
-
-        <div class="nav-item">
-          <a href="equipment.html">설비현황</a>
-          <div class="dropdown-menu">
-            <a href="equipment.html">보유 설비 전체</a>
-          </div>
-        </div>
-
-        <div class="nav-item">
-          <a href="support-center.html">고객지원</a>
-          <div class="dropdown-menu">
-            <a href="support-center.html">고객센터</a>
-          </div>
-        </div>
+        <div class="nav-item"><a href="greeting.html">회사소개</a><div class="dropdown-menu"><a href="greeting.html">인사말씀</a><a href="history.html">회사연혁</a><a href="location.html">찾아오시는 길</a></div></div>
+        <div class="nav-item"><a href="cnc.html">제품소개</a><div class="dropdown-menu"><a href="cnc.html">OM CNC 터닝</a><a href="bearing.html">선회 베어링</a><a href="gear.html">특수 기어</a></div></div>
+        <div class="nav-item"><a href="equipment.html">설비현황</a><div class="dropdown-menu"><a href="equipment.html">보유 설비 전체</a></div></div>
+        <div class="nav-item"><a href="support-center.html">고객지원</a><div class="dropdown-menu"><a href="support-center.html">고객센터</a></div></div>
       </nav>
     </div>
   </header>
 
-  <!-- 메인 히어로 배너 -->
-  <section class="main-hero">
-    <div class="hero-slider">
-      <div class="hero-slide active">
-        <img src="./image/hero_cnc.png" alt="CNC 터닝 가공">
+  <main>
+    <section class="main-hero">
+      <img src="./image/hero_cnc.png" alt="CNC 터닝 가공">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-tag">SINCE 1991 - PRECISION ENGINEERING</div>
+        <h1 class="hero-title hero-title-company-only">(주)대형특수기어</h1>
+        <p class="hero-desc">축적된 노하우와 독보적인 기술력으로 고난이도 대형 기어 및 선회 베어링,<br> CNC 터닝 가공 분야를 선도합니다.</p>
+        <a href="support-center.html" class="btn-signal">견적 및 문의하기 <span>→</span></a>
       </div>
-      <div class="hero-slide">
-        <img src="./image/hero_bearing.png" alt="30여년의 우수한 기술력">
-      </div>
-      <div class="hero-slide">
-        <img src="./image/hero_gear1.png" alt="정밀 선회 베어링">
-      </div>
-      <div class="hero-slide">
-        <img src="./image/hero_gear2.png" alt="고난이도 대형 기어 가공">
-      </div>
-    </div>
+    </section>
 
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-      <div class="hero-tag">SINCE 1991 — PRECISION ENGINEERING</div>
-      <h1 class="hero-title">정밀함은 타협하지 않는다.<br>(주)대형특수기어</h1>
-      <p class="hero-desc">
-        축적된 노하우와 독보적인 기술력으로 고난이도 대형 기어 및 선회 베어링,<br> 
-        CNC 터닝 가공 분야를 선도합니다.
-      </p>
-
-      <a href="support-center.html" class="btn-signal">
-        <span>견적 및 문의하기</span>
-        <span>→</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- 주요 제품 및 사이드바 섹션 -->
-  <section class="biz-section">
-    <div class="main-layout">
-      
-      <!-- 메인 콘텐츠 영역 -->
-      <div class="main-container">
+    <section class="biz-section">
+      <div class="content-width">
         <div class="sec-header">
-          <h2 class="sec-title">
-            <span>OUR PRODUCTS & FACILITIES</span>
-            주요 사업 영역 및 설비현황
-          </h2>
+          <h2 class="sec-title"><span>OUR PRODUCTS &amp; FACILITIES</span>주요 사업 영역 및 설비현황</h2>
+          <a href="history.html" class="history-strip" aria-label="회사연혁 전체 보기">
+            <div class="history-strip-top">
+              <div class="history-heading-copy">
+                <span class="history-label">OUR HISTORY</span>
+              </div>
+              <span class="history-slogan">품질과 신용으로 걸어온 <strong>30여년의 역사</strong></span>
+            </div>
+            <div class="history-steps">
+              <div class="history-step"><span class="history-year">1991</span><p>대형특수기어 설립</p></div>
+              <div class="history-step"><span class="history-year">2003</span><p>포천 공장 착공</p></div>
+              <div class="history-step"><span class="history-year">2004</span><p>포천 공장 준공</p></div>
+              <div class="history-step"><span class="history-year">2012</span><p>법인 전환</p></div>
+            </div>
+          </a>
         </div>
-
-        <!-- 4개 항목을 나란히 보여주는 4열 그리드 -->
         <div class="grid-4">
-          <!-- 1. OM CNC 터닝 -->
-          <a href="cnc.html" class="card-item">
-            <div class="card-img">
-              <img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝">
-            </div>
-            <div class="card-body">
-              <div>
-                <h3>OM CNC 터닝</h3>
-                <p>고정밀 대형 공작물 가공에 최적화된 최첨단 CNC 터닝 설비 및 가공 기술을 제공합니다.</p>
-              </div>
-            </div>
-          </a>
-
-          <!-- 2. 선회 베어링 -->
-          <a href="bearing.html" class="card-item">
-            <div class="card-img">
-              <img src="./image/bearing1.png" alt="선회 베어링">
-            </div>
-            <div class="card-body">
-              <div>
-                <h3>선회 베어링</h3>
-                <p>중장비 및 산업용 기계 핵심 부품인 대형 선회 베어링을 정밀하게 제작합니다.</p>
-              </div>
-            </div>
-          </a>
-
-          <!-- 3. 특수 기어 -->
-          <a href="gear.html" class="card-item">
-            <div class="card-img">
-              <img src="./image/gear2.png" alt="특수 기어">
-            </div>
-            <div class="card-body">
-              <div>
-                <h3>특수 기어</h3>
-                <p>각종 산업 현장의 규격에 맞춘 고난이도 대형 특수 기어 가공 솔루션을 제공합니다.</p>
-              </div>
-            </div>
-          </a>
-
-          <!-- 4. 보유설비 (새로 추가된 카드) -->
-          <a href="equipment.html" class="card-item">
-            <div class="card-img">
-              <img src="./image/machine/f_inside.jpg" alt="보유설비 현황" onerror="this.src='./image/hero_cnc.png';">
-            </div>
-            <div class="card-body">
-              <div>
-                <h3>보유설비 현황</h3>
-                <p>최신 대형 공작기계 및 정밀 측정 장비를 보유하여 완벽한 품질을 보장합니다.</p>
-              </div>
-            </div>
-          </a>
+          <a href="cnc.html" class="card-item"><div class="card-img"><img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝"></div><div class="card-body"><h3>OM CNC 터닝 <span class="card-more">보러가기 →</span></h3><p>고정밀 대형 공작물 가공에 최적화된 CNC 터닝 설비 및 가공 기술을 제공합니다.</p></div></a>
+          <a href="bearing.html" class="card-item"><div class="card-img"><img src="./image/bearing1.png" alt="선회 베어링"></div><div class="card-body"><h3>선회 베어링 <span class="card-more">보러가기 →</span></h3><p>중장비 및 산업용 기계 핵심 부품인 대형 선회 베어링을 정밀하게 제작합니다.</p></div></a>
+          <a href="gear.html" class="card-item"><div class="card-img"><img src="./image/gear2.png" alt="특수 기어"></div><div class="card-body"><h3>특수 기어 <span class="card-more">보러가기 →</span></h3><p>각종 산업 현장의 규격에 맞춘 고난이도 대형 특수 기어 가공 솔루션을 제공합니다.</p></div></a>
+          <a href="equipment.html" class="card-item"><div class="card-img"><img src="./image/machine/f_inside.jpg" alt="보유설비 현황"></div><div class="card-body"><h3>보유설비 현황 <span class="card-more">보러가기 →</span></h3><p>최신 대형 공작기계 및 정밀 측정 장비를 보유하여 완벽한 품질을 보장합니다.</p></div></a>
         </div>
       </div>
+    </section>
 
-      <!-- PC 전용 120px 슬림 사이드바 -->
-      <aside class="sticky-edge-sidebar">
-        <div class="sidebar-header">전체 메뉴</div>
-
-        <!-- 1. 회사소개 -->
-        <div class="sidebar-category-group">
-          <div class="sidebar-category-title">회사소개</div>
-          <ul class="sidebar-menu">
-            <li><a href="greeting.html">인사말씀</a></li>
-            <li><a href="history.html">회사연혁</a></li>
-            <li><a href="location.html">찾아오시는 길</a></li>
-          </ul>
+    <section class="history-preview">
+      <div class="content-width">
+        <div class="history-heading">
+          <div>
+            <span class="history-label">OUR HISTORY</span>
+            <h2>품질과 신용으로 걸어온<br>30여 년의 시간</h2>
+          </div>
+          <div>
+            <p>1991년 설립 이후 쌓아온 기술과 설비의 발전 과정을 핵심 이정표로 소개합니다.</p>
+            <a href="history.html" class="history-link">회사연혁 전체 보기 <span>→</span></a>
+          </div>
         </div>
-
-        <!-- 2. 제품소개 -->
-        <div class="sidebar-category-group">
-          <div class="sidebar-category-title">제품소개</div>
-          <ul class="sidebar-menu">
-            <li><a href="cnc.html">OM CNC 터닝</a></li>
-            <li><a href="bearing.html">선회 베어링</a></li>
-            <li><a href="gear.html">특수 기어</a></li>
-          </ul>
+        <div class="milestones">
+          <article class="milestone"><div class="milestone-year">1991</div><h3>대형특수기어 설립</h3><p>서울 성동구에서 첫걸음을 시작했습니다.</p></article>
+          <article class="milestone"><div class="milestone-year">2003</div><h3>포천 공장 착공</h3><p>1200평 규모의 생산 기반을 마련했습니다.</p></article>
+          <article class="milestone"><div class="milestone-year">2004</div><h3>포천 공장 완공</h3><p>사업지를 통합하고 생산 역량을 확장했습니다.</p></article>
+          <article class="milestone"><div class="milestone-year">2012</div><h3>법인 전환</h3><p>(주)대형특수기어로 새롭게 도약했습니다.</p></article>
         </div>
+      </div>
+    </section>
+  </main>
 
-        <!-- 3. 설비현황 -->
-        <div class="sidebar-category-group">
-          <div class="sidebar-category-title">설비현황</div>
-          <ul class="sidebar-menu">
-            <li><a href="equipment.html">보유 설비 전체</a></li>
-          </ul>
-        </div>
-
-        <!-- 4. 고객지원 -->
-        <div class="sidebar-category-group">
-          <div class="sidebar-category-title">고객지원</div>
-          <ul class="sidebar-menu">
-            <li><a href="support-center.html">고객센터</a></li>
-          </ul>
-        </div>
-
-        <!-- 사이드바 하단 Quick Contact -->
-        <div class="sidebar-quick-contact">
-          <a href="support-center.html">
-            <span class="qc-title">QUICK CONTACT</span>
-            <span class="qc-sub">견적 / 문의 ✉</span>
-          </a>
-        </div>
-      </aside>
-
-    </div>
-  </section>
-
-  <!-- 공통 푸터 -->
   <footer class="site-footer">
-    <div class="footer-nav-bar">
-      <div class="footer-nav-inner">
-        <a href="index.html">홈</a>
-        <span class="divider">|</span>
-        <a href="greeting.html">회사소개</a>
-        <span class="divider">|</span>
-        <a href="cnc.html">제품소개</a>
-        <span class="divider">|</span>
-        <a href="equipment.html">설비현황</a>
-        <span class="divider">|</span>
-        <a href="support-center.html">고객지원</a>
-      </div>
-    </div>
-
-    <div class="footer-body">
-      <div class="footer-info-text">
-        <span>사업자등록번호 127-86-41052</span><span class="sep">*</span>
-        <span>대표이사 박병호</span><span class="sep">*</span>
-        <span>경기도 포천시 소흘읍 호국로479번길 15</span><span class="sep">*</span>
-        <span>전화 031-541-1248~9</span><span class="sep">*</span>
-        <span>dehyoung@naver.com</span>
-      </div>
-      <div class="footer-copyright">
-        COPYRIGHT © (주)대형특수기어 ALL RIGHT RESERVED.
-      </div>
+    <div class="footer-inner">
+      <nav class="footer-links"><a href="index.html">홈</a><a href="greeting.html">회사소개</a><a href="cnc.html">제품소개</a><a href="equipment.html">설비현황</a><a href="support-center.html">고객지원</a></nav>
+      <div class="footer-info">사업자등록번호 127-86-41052 <span>*</span> 대표이사 박병호 <span>*</span> 경기도 포천시 소흘읍 호국로479번길 15 <span>*</span> 전화 031-541-1248~9</div>
+      <div class="footer-copy">COPYRIGHT © (주)대형특수기어 ALL RIGHT RESERVED.</div>
     </div>
   </footer>
-
-  <!-- 자바스크립트 -->
-  <script src="mobile-menu.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var slides = document.querySelectorAll('.hero-slide');
-      var currentSlide = 0;
+    const homeMenuToggle = document.getElementById('home-menu-toggle');
+    const homeMobileNav = document.getElementById('home-mobile-nav');
 
-      if (slides.length > 1) {
-        setInterval(function() {
-          slides[currentSlide].classList.remove('active');
-          currentSlide = (currentSlide + 1) % slides.length;
-          slides[currentSlide].classList.add('active');
-        }, 3500);
+    homeMenuToggle.addEventListener('click', () => {
+      const isOpen = homeMobileNav.classList.toggle('is-open');
+      homeMenuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    homeMobileNav.addEventListener('click', event => {
+      if (event.target.matches('a')) {
+        homeMobileNav.classList.remove('is-open');
+        homeMenuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        homeMobileNav.classList.remove('is-open');
+        homeMenuToggle.setAttribute('aria-expanded', 'false');
       }
     });
   </script>
-
 </body>
 </html>
