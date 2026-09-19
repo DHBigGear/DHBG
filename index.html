@@ -112,15 +112,59 @@
   .biz-section .sec-title { grid-row: 1; margin-bottom: 32px; }
   .sec-title span, .history-label { display: block; margin-bottom: 9px; color: #9a3a3a; font-family: 'Noto Sans KR', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .14em; }
   .grid-4 { display: grid; grid-row: 2; grid-template-columns: repeat(4, 1fr); align-items: start; gap: 18px; }
-  .card-item { overflow: hidden; background: #ffffff; border: 1px solid rgba(15,23,42,.08); border-radius: 10px; color: var(--ink); box-shadow: 0 8px 22px rgba(15,23,42,.04); }
-  .card-item:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(15,23,42,.1); }
-  .card-img { height: 200px; background: #f1f5f9; }
-  .card-img img { width: 100%; height: 100%; object-fit: cover; }
-  .card-body { padding: 16px 17px 18px; }
-  .card-body h3 { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0 0 8px; font-family: 'Noto Serif KR', serif; font-size: 18px; }
-  .card-more { flex: 0 0 auto; padding: 4px 8px; border: 1px solid #cfe2d9; border-radius: 999px; background: #edf5f1; color: #2f6b5a; font-family: 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: -.03em; transition: background .2s ease, border-color .2s ease, color .2s ease; }
-  .card-item:hover .card-more { border-color: #2f6b5a; background: #2f6b5a; color: #ffffff; }
-  .card-body p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+  .card-item { 
+    position: relative;
+    overflow: hidden; 
+    background: #000; 
+    border-radius: 10px; 
+    color: #fff;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.2);
+    height: 250px;
+  }
+  .card-item:hover { transform: translateY(-3px); }
+  
+  .card-img { position: absolute; inset: 0; z-index: 0; }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: opacity 0.3s; }
+  .card-item:hover .card-img img { opacity: 1; }
+  
+  .card-body { 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    padding: 20px; 
+    background: linear-gradient(to top, rgba(8, 18, 22, 0.9) 0%, rgba(8, 18, 22, 0.58) 58%, transparent 100%); 
+    z-index: 1; 
+  }
+  .card-body h3, .card-body p { 
+    color: #fff; 
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95); 
+  }
+  .card-more { 
+    display: inline-flex;
+    align-items: center;
+    margin-top: 15px;
+    padding: 6px 16px;
+    background: transparent;
+    color: #f1f7f4;
+    border: 1.2px solid rgba(220, 237, 229, 0.82);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    transition: transform 0.35s cubic-bezier(.22, .61, .36, 1), background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+    text-shadow: none !important;
+  }
+  .card-item:hover .card-more {
+    transform: translateY(-2px);
+    background: rgba(237, 245, 241, 0.14);
+    border-color: #ffffff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    color: #fff;
+  }
 
   .history-strip { display: block; grid-row: 3; width: 100%; margin-top: 34px; padding: 16px 20px 14px; background: rgba(255,255,255,.7); border: 1px solid #e2e8f0; border-radius: 10px; text-decoration: none; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
   .history-strip:hover { border-color: rgba(185,29,43,.45); box-shadow: 0 8px 18px rgba(15,23,42,.08); transform: translateY(-2px); }
@@ -147,32 +191,30 @@
   .footer-info { margin-bottom: 10px; line-height: 1.8; }
   .footer-copy { color: #718096; font-size: 12px; }
 
-  .home-mobile-nav { display: none; }
+  .m-site-header { display: none; padding: 12px 20px; align-items: center; justify-content: space-between; background: #ffffff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; }
+  .m-brand-logo img { max-height: 36px; }
+  .m-menu-btn { color: var(--ink); font-size: 24px; background: none; border: none; cursor: pointer; }
+  
+  /* 사이드 드로어 스타일 */
+  .side-menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1999; }
+  .side-menu-overlay.is-active { display: block; }
+  .side-menu-drawer { position: fixed; top: 0; right: -300px; display: flex; flex-direction: column; width: 280px; height: 100%; background: #ffffff; z-index: 2000; transition: right 0.3s ease; box-shadow: -4px 0 16px rgba(0,0,0,0.15); overflow-y: auto; }
+  .side-menu-drawer.is-open { right: 0; }
+  .drawer-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: #111518; color: #ffffff; }
+  .drawer-title { font-weight: 700; font-size: 16px; }
+  .close-btn { color: #ffffff; background: none; border: none; font-size: 20px; cursor: pointer; }
+  .drawer-content { flex: 1; padding: 20px; overflow-y: auto; }
+  .m-cate-group { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #f1f5f9; }
+  .m-cate-title a { font-weight: 700; color: var(--signal); text-decoration: none; }
+  .m-sub-nav { list-style: none; padding: 10px 0 0 10px; margin: 0; }
+  .m-sub-nav li { margin-bottom: 8px; }
+  .m-sub-nav a { color: var(--muted); text-decoration: none; font-size: 13px; }
+  .drawer-quick-contact { padding: 16px 20px; background: #faf9f6; border-top: 1px solid var(--line); }
+  .drawer-quick-contact a { display: block; padding: 12px; background: var(--signal); color: #ffffff; font-size: 14px; font-weight: 700; text-align: center; text-decoration: none; }
 
   @media (max-width: 1024px) {
     .site-header { display: none !important; }
     .m-site-header { display: flex !important; }
-    .home-mobile-nav {
-      position: fixed;
-      z-index: 999;
-      top: 61px;
-      right: 0;
-      left: 0;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1px;
-      max-height: 0;
-      overflow: hidden;
-      padding: 0 20px;
-      background: #e2e8f0;
-      box-shadow: 0 10px 18px rgba(15,23,42,.12);
-      opacity: 0;
-      transition: max-height .25s ease, padding .25s ease, opacity .2s ease;
-    }
-    .home-mobile-nav.is-open { max-height: 220px; padding-top: 1px; padding-bottom: 1px; opacity: 1; }
-    .home-mobile-nav a { padding: 14px 12px; background: #ffffff; color: #334155; font-size: 14px; font-weight: 600; text-align: center; }
-    .home-mobile-nav a:hover, .home-mobile-nav a:focus { background: #edf5f1; color: #2f6b5a; }
-    .m-menu-btn[aria-expanded="true"] { color: #2f6b5a; }
   }
   @media (max-width: 820px) {
     .brand-banner-text { display: none; }
@@ -199,22 +241,64 @@
     .history-year { font-size: 13px; }
     .history-step p { font-size: 9px; }
     .footer-info { word-break: keep-all; }
+    
+    /* 모바일 반응형 카드 스타일 - 명확하게 동일 디자인 적용 */
+    .card-item { height: 220px; }
+    .card-body { 
+        padding: 12px; 
+        background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%); 
+    }
+    .card-body h3 { font-size: 15px; }
+    .card-body p { font-size: 12px; }
   }
 </style>
 </head>
 <body>
   <header class="m-site-header">
     <a href="index.html" class="m-brand-logo"><img src="./image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR"></a>
-    <button id="home-menu-toggle" class="m-menu-btn" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="home-mobile-nav">☰</button>
+    <button id="side-menu-open-btn" class="m-menu-btn" aria-label="메뉴 열기">☰</button>
   </header>
-  <nav id="home-mobile-nav" class="home-mobile-nav" aria-label="모바일 메뉴">
-    <a href="greeting.html">회사소개</a>
-    <a href="cnc.html">제품소개</a>
-    <a href="equipment.html">설비현황</a>
-    <a href="support-center.html">고객지원</a>
-    <a href="history.html">회사연혁</a>
-    <a href="location.html">찾아오시는 길</a>
-  </nav>
+
+  <div id="side-menu-overlay" class="side-menu-overlay"></div>
+  <aside id="side-menu-drawer" class="side-menu-drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">전체메뉴</span>
+      <button id="side-menu-close-btn" class="close-btn" aria-label="메뉴 닫기">✕</button>
+    </div>
+    <div class="drawer-content">
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="greeting.html">회사소개</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="greeting.html">인사말씀</a></li>
+          <li><a href="history.html">회사연혁</a></li>
+          <li><a href="location.html">찾아오시는 길</a></li>
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="cnc.html">제품소개</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="cnc.html">OM CNC 터닝</a></li>
+          <li><a href="bearing.html">선회 베어링</a></li>
+          <li><a href="gear.html">특수 기어</a></li>
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="equipment.html">설비현황</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="equipment.html">보유 설비 전체</a></li>
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="support-center.html">고객지원</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="support-center.html">고객센터</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="drawer-quick-contact">
+      <a href="support-center.html">✉ 빠른 견적 및 문의하기</a>
+    </div>
+  </aside>
 
   <header class="site-header">
     <div class="nav-inner">
@@ -268,10 +352,10 @@
           </a>
         </div>
         <div class="grid-4">
-          <a href="cnc.html" class="card-item"><div class="card-img"><img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝"></div><div class="card-body"><h3>OM CNC 터닝 <span class="card-more">보러가기 →</span></h3><p>고정밀 대형 공작물 가공에 최적화된 CNC 터닝 설비 및 가공 기술을 제공합니다.</p></div></a>
-          <a href="bearing.html" class="card-item"><div class="card-img"><img src="./image/bearing1.png" alt="선회 베어링"></div><div class="card-body"><h3>선회 베어링 <span class="card-more">보러가기 →</span></h3><p>중장비 및 산업용 기계 핵심 부품인 대형 선회 베어링을 정밀하게 제작합니다.</p></div></a>
-          <a href="gear.html" class="card-item"><div class="card-img"><img src="./image/gear2.png" alt="특수 기어"></div><div class="card-body"><h3>특수 기어 <span class="card-more">보러가기 →</span></h3><p>각종 산업 현장의 규격에 맞춘 고난이도 대형 특수 기어 가공 솔루션을 제공합니다.</p></div></a>
-          <a href="equipment.html" class="card-item"><div class="card-img"><img src="./image/machine/f_inside.jpg" alt="보유설비 현황"></div><div class="card-body"><h3>보유설비 현황 <span class="card-more">보러가기 →</span></h3><p>최신 대형 공작기계 및 정밀 측정 장비를 보유하여 완벽한 품질을 보장합니다.</p></div></a>
+          <a href="cnc.html" class="card-item"><div class="card-img"><img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝"></div><div class="card-body"><h3>OM CNC 터닝</h3><p>고정밀 대형 공작물 가공에 최적화된 CNC 터닝 설비 및 가공 기술을 제공합니다.</p><span class="card-more">VIEW MORE →</span></div></a>
+          <a href="bearing.html" class="card-item"><div class="card-img"><img src="./image/bearing1.png" alt="선회 베어링"></div><div class="card-body"><h3>선회 베어링</h3><p>중장비 및 산업용 기계 핵심 부품인 대형 선회 베어링을 정밀하게 제작합니다.</p><span class="card-more">VIEW MORE →</span></div></a>
+          <a href="gear.html" class="card-item"><div class="card-img"><img src="./image/gear2.png" alt="특수 기어"></div><div class="card-body"><h3>특수 기어</h3><p>각종 산업 현장의 규격에 맞춘 고난이도 대형 특수 기어 가공 솔루션을 제공합니다.</p><span class="card-more">VIEW MORE →</span></div></a>
+          <a href="equipment.html" class="card-item"><div class="card-img"><img src="./image/machine/f_inside.jpg" alt="보유설비 현황"></div><div class="card-body"><h3>보유설비 현황</h3><p>최신 대형 공작기계 및 정밀 측정 장비를 보유하여 완벽한 품질을 보장합니다.</p><span class="card-more">VIEW MORE →</span></div></a>
         </div>
       </div>
     </section>
@@ -306,27 +390,20 @@
     </div>
   </footer>
   <script>
-    const homeMenuToggle = document.getElementById('home-menu-toggle');
-    const homeMobileNav = document.getElementById('home-mobile-nav');
+    // 사이드 메뉴 로직
+    const openBtn = document.getElementById('side-menu-open-btn');
+    const closeBtn = document.getElementById('side-menu-close-btn');
+    const drawer = document.getElementById('side-menu-drawer');
+    const overlay = document.getElementById('side-menu-overlay');
 
-    homeMenuToggle.addEventListener('click', () => {
-      const isOpen = homeMobileNav.classList.toggle('is-open');
-      homeMenuToggle.setAttribute('aria-expanded', String(isOpen));
-    });
+    const toggleMenu = (isOpen) => {
+      drawer.classList.toggle('is-open', isOpen);
+      overlay.style.display = isOpen ? 'block' : 'none';
+    };
 
-    homeMobileNav.addEventListener('click', event => {
-      if (event.target.matches('a')) {
-        homeMobileNav.classList.remove('is-open');
-        homeMenuToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') {
-        homeMobileNav.classList.remove('is-open');
-        homeMenuToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
+    openBtn.addEventListener('click', () => toggleMenu(true));
+    closeBtn.addEventListener('click', () => toggleMenu(false));
+    overlay.addEventListener('click', () => toggleMenu(false));
   </script>
 </body>
 </html>
