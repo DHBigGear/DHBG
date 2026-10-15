@@ -2,8 +2,9 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="./image/favicon.png" type="image/png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>홈 화면 연혁 시안 | (주)대형특수기어</title>
+<title>정밀 가공의 제조 파트너 | (주)대형특수기어</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -112,6 +113,7 @@
   .biz-section .sec-title { grid-row: 1; margin-bottom: 32px; }
   .sec-title span, .history-label { display: block; margin-bottom: 9px; color: #9a3a3a; font-family: 'Noto Sans KR', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .14em; }
   .grid-4 { display: grid; grid-row: 2; grid-template-columns: repeat(4, 1fr); align-items: start; gap: 18px; }
+    .grid-4 { display: grid; grid-row: 2; grid-template-columns: repeat(3, 1fr); align-items: start; gap: 18px; }
   .card-item { 
     position: relative;
     overflow: hidden; 
@@ -174,12 +176,12 @@
   .history-label { display: inline; margin: 0; font-size: 10px; }
   .history-slogan { overflow: hidden; margin-left: auto; color: var(--ink); font-family: 'Noto Serif KR', serif; font-size: 18px; font-weight: 700; letter-spacing: -.045em; white-space: nowrap; text-overflow: ellipsis; }
   .history-slogan strong { display: inline-block; margin-left: 5px; color: #9a3a3a; font-size: 1.06em; font-weight: 700; letter-spacing: -.035em; }
-  .history-steps { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .history-steps { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); }
   .history-steps::before { content: ''; position: absolute; top: 5px; left: 3px; right: 3px; height: 1px; background: #d8dde5; }
   .history-step { position: relative; padding: 15px 8px 0 0; }
   .history-step:not(:first-child) { padding-left: 11px; }
   .history-step::before { content: ''; position: absolute; z-index: 1; top: 1px; left: 0; width: 9px; height: 9px; border: 2px solid #ffffff; border-radius: 50%; background: #cbd5e1; box-shadow: 0 0 0 1px #cbd5e1; }
-  .history-step:nth-child(4)::before { background: #ef233c; box-shadow: 0 0 0 1px #ef233c; animation: history-current 1.1s ease-in-out infinite alternate; }
+  .history-step:last-child::before { background: #ef233c; box-shadow: 0 0 0 1px #ef233c; animation: history-current 1.1s ease-in-out infinite alternate; }
   .history-year { display: block; color: #475569; font-family: 'Noto Serif KR', serif; font-size: 15px; font-weight: 700; }
   .history-step p { overflow: hidden; margin: 2px 0 0; color: var(--muted); font-size: 10px; line-height: 1.35; white-space: nowrap; text-overflow: ellipsis; }
   @keyframes history-current { from { box-shadow: 0 0 0 1px #ef233c, 0 0 4px rgba(239,35,60,.45); } to { box-shadow: 0 0 0 1px #ef233c, 0 0 12px rgba(239,35,60,.95); } }
@@ -251,6 +253,106 @@
     .card-body h3 { font-size: 15px; }
     .card-body p { font-size: 12px; }
   }
+
+  :root {
+    --signal: #55d8df;
+    --hero-image: none;
+    --ink: #0b1720;
+    --line: #dce3e8;
+    --muted: #a8bac5;
+  }
+
+  .site-header { height: 68px; background: #fff; }
+  .nav-inner { max-width: 1440px; gap: 22px; padding: 0 24px; }
+  .brand-group { flex: 0 0 auto; }
+  .brand-logo img { max-height: 36px; }
+  .brand-banner-text { display: none; }
+  .nav-links { flex: 1; justify-content: center; gap: clamp(10px, 1.5vw, 20px); }
+  .nav-item > a { padding: 23px 0; color: #52616c; font-size: 14px; font-weight: 500; white-space: nowrap; }
+  .nav-item.active > a { color: #17242d !important; font-weight: 500; }
+  .nav-item:hover > a { color: #138e9c !important; }
+  .dropdown-menu { display: none !important; }
+  .header-contact { flex: 0 0 auto; padding: 10px 20px; border: 1px solid #d4dce1; border-radius: 24px; color: #1d2b34; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .header-contact:hover { border-color: #55d8df; background: #e8fbfc; }
+
+  .main-hero {
+    display: flex;
+    min-height: 680px;
+    height: min(680px, calc(100vh - 68px));
+    background-color: #07151b;
+    background-image: linear-gradient(90deg, rgba(5, 17, 23, .94) 0%, rgba(5, 17, 23, .72) 55%, rgba(5, 17, 23, .42) 100%), var(--hero-image);
+    background-position: center;
+    background-size: cover;
+  }
+  .main-hero > img { display: none; }
+  .hero-slideshow { position: absolute; inset: 0; overflow: hidden; }
+  .hero-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: saturate(.78) contrast(1.04) brightness(.72); transform: scale(1.015); transition: opacity 1.8s ease-in-out; }
+  .hero-slide.is-active { opacity: 1; }
+  .hero-overlay { background: linear-gradient(90deg, rgba(5, 17, 23, .68), rgba(5, 17, 23, .32) 60%, rgba(5, 17, 23, .2)), linear-gradient(0deg, rgba(3, 14, 19, .82), transparent 44%); }
+  .hero-content { position: relative; inset: auto; width: 100%; justify-content: center; max-width: 1440px; padding: 72px 28px 52px; }
+  .hero-tag { width: fit-content; margin-bottom: 20px; padding: 9px 14px; border: 1px solid rgba(85, 216, 223, .42); border-radius: 24px; background: rgba(11, 31, 39, .62); color: #63e1e6; font-family: 'Noto Sans KR', sans-serif; font-size: 11px; letter-spacing: .12em; }
+  .hero-title { max-width: 780px; margin-bottom: 18px; font-family: 'Noto Sans KR', sans-serif; font-size: 64px; font-weight: 700; line-height: 1.12; letter-spacing: 0; text-shadow: none; }
+  .hero-title-main { padding: 0; border: 0; color: #58d9e6; letter-spacing: inherit; white-space: normal; }
+  .hero-title-company { display: inline; margin: 0; font-size: inherit; letter-spacing: inherit; }
+  .hero-title-company-only { font-size: inherit; }
+  .hero-desc { max-width: 600px; margin-bottom: 24px; color: #c0cdd4; font-size: 15px; line-height: 1.8; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn-signal, .history-link { min-height: 44px; padding: 11px 20px; border-radius: 24px; background: linear-gradient(100deg, #53d8e7, #67e2cf); color: #09232a; }
+  .btn-signal:hover { background: #8af0e4; }
+  .btn-outline { display: inline-flex; min-height: 44px; align-items: center; padding: 10px 20px; border: 1px solid rgba(225, 240, 245, .42); border-radius: 24px; color: #edf6f8; font-size: 14px; font-weight: 600; }
+  .hero-stats { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .hero-stat { min-width: 150px; padding: 14px 16px; border: 1px solid rgba(174, 202, 214, .2); border-radius: 14px; background: rgba(13, 31, 40, .76); }
+  .hero-stat strong { display: block; color: #f2f8fa; font-size: 23px; line-height: 1.2; }
+  .hero-stat span { display: block; margin-top: 5px; color: #a9bdc7; font-size: 12px; }
+
+  .biz-section { padding: 82px 28px 90px; background: #07151b; color: #f1f6f8; }
+  .content-width { max-width: 1320px; }
+  .biz-section .content-width { display: block; }
+  .sec-header { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 32px; margin-bottom: 34px; }
+  .sec-title { margin: 0; color: #f1f6f8; font-family: 'Noto Sans KR', sans-serif; font-size: 42px; line-height: 1.25; }
+  .biz-section .sec-title { margin: 0; }
+  .sec-title span, .history-label { margin-bottom: 16px; color: #5fe1d6; font-family: 'Noto Sans KR', sans-serif; font-size: 12px; letter-spacing: .13em; }
+  .section-desc { max-width: 590px; justify-self: end; margin: 0 0 4px; color: #aec0ca; font-size: 15px; line-height: 1.8; }
+  .grid-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .card-item { height: auto; min-height: 350px; border: 1px solid rgba(162, 190, 201, .18); border-radius: 20px 20px 10px 10px; background: #0c1c24; box-shadow: none; transition: transform .25s ease, border-color .25s ease; }
+  .card-item:hover { transform: translateY(-5px); border-color: rgba(85, 216, 223, .55); }
+  .card-img { position: relative; height: 220px; }
+  .card-img img { opacity: .92; }
+  .card-body { position: static; padding: 20px 22px 22px; background: none; }
+  .card-body h3 { margin-bottom: 8px; color: #f4f8fa; font-size: 20px; text-shadow: none; }
+  .card-body p { color: #a9bbc4; font-size: 13px; line-height: 1.7; text-shadow: none; }
+  .card-more { display: inline-flex; align-items: center; margin-top: 12px; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: #62dedc; font-size: 13px; font-weight: 700; letter-spacing: 0; text-transform: none; transition: color .2s ease; }
+  .card-item:hover .card-more { transform: none; border-color: transparent; background: none; box-shadow: none; color: #a0f2e8; }
+  .site-footer { background: #040d11; }
+
+  .m-site-header { padding: 10px 20px; }
+  .drawer-content { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  .drawer-content .m-cate-group { margin: 0; padding: 14px 0; }
+  .drawer-content .m-cate-title a { color: #22343e; }
+  .drawer-content .m-sub-nav { display: none; }
+
+  @media (max-width: 900px) {
+    .site-header { display: none !important; }
+    .m-site-header { display: flex !important; }
+  }
+  @media (max-width: 700px) {
+    .main-hero { min-height: 620px; height: auto; }
+    .hero-content { padding: 68px 22px 38px; }
+    .hero-title { font-size: 43px; }
+    .hero-desc { font-size: 14px; }
+    .hero-stat { min-width: 0; flex: 1 1 30%; padding: 12px; }
+    .hero-stat strong { font-size: 19px; }
+    .biz-section { padding: 62px 20px 68px; }
+    .sec-header { grid-template-columns: 1fr; gap: 16px; margin-bottom: 26px; }
+    .sec-title { font-size: 32px; }
+    .section-desc { justify-self: start; font-size: 14px; }
+    .grid-4 { grid-template-columns: 1fr; gap: 16px; }
+    .card-item { min-height: 0; }
+    .card-img { height: 220px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-slide { transition: none; }
+  }
 </style>
 </head>
 <body>
@@ -266,34 +368,13 @@
       <button id="side-menu-close-btn" class="close-btn" aria-label="메뉴 닫기">✕</button>
     </div>
     <div class="drawer-content">
-      <div class="m-cate-group">
-        <div class="m-cate-title"><a href="greeting.html">회사소개</a></div>
-        <ul class="m-sub-nav">
-          <li><a href="greeting.html">인사말씀</a></li>
-          <li><a href="history.html">회사연혁</a></li>
-          <li><a href="location.html">찾아오시는 길</a></li>
-        </ul>
-      </div>
-      <div class="m-cate-group">
-        <div class="m-cate-title"><a href="cnc.html">제품소개</a></div>
-        <ul class="m-sub-nav">
-          <li><a href="cnc.html">OM CNC 터닝</a></li>
-          <li><a href="bearing.html">선회 베어링</a></li>
-          <li><a href="gear.html">특수 기어</a></li>
-        </ul>
-      </div>
-      <div class="m-cate-group">
-        <div class="m-cate-title"><a href="equipment.html">설비현황</a></div>
-        <ul class="m-sub-nav">
-          <li><a href="equipment.html">보유 설비 전체</a></li>
-        </ul>
-      </div>
-      <div class="m-cate-group">
-        <div class="m-cate-title"><a href="support-center.html">고객지원</a></div>
-        <ul class="m-sub-nav">
-          <li><a href="support-center.html">고객센터</a></li>
-        </ul>
-      </div>
+      <div class="m-cate-group"><div class="m-cate-title"><a href="index.html">홈</a></div></div>
+      <div class="m-cate-group"><div class="m-cate-title"><a href="greeting.html">회사소개</a></div></div>
+      <div class="m-cate-group"><div class="m-cate-title"><a href="gear.html">특수기어</a></div></div>
+      <div class="m-cate-group"><div class="m-cate-title"><a href="bearing.html">베어링</a></div></div>
+      <div class="m-cate-group"><div class="m-cate-title"><a href="equipment.html">설비</a></div></div>
+      <div class="m-cate-group"><div class="m-cate-title"><a href="history.html">연혁</a></div></div>
+      <div class="m-cate-group"><div class="m-cate-title"><a href="support-center.html">고객지원</a></div></div>
     </div>
     <div class="drawer-quick-contact">
       <a href="support-center.html">✉ 빠른 견적 및 문의하기</a>
@@ -311,51 +392,52 @@
         </div>
       </a>
       <nav class="nav-links" aria-label="주 메뉴">
-        <div class="nav-item active"><a href="index.html">홈</a></div>
-        <div class="nav-item"><a href="greeting.html">회사소개</a><div class="dropdown-menu"><a href="greeting.html">인사말씀</a><a href="history.html">회사연혁</a><a href="location.html">찾아오시는 길</a></div></div>
-        <div class="nav-item"><a href="cnc.html">제품소개</a><div class="dropdown-menu"><a href="cnc.html">OM CNC 터닝</a><a href="bearing.html">선회 베어링</a><a href="gear.html">특수 기어</a></div></div>
-        <div class="nav-item"><a href="equipment.html">설비현황</a><div class="dropdown-menu"><a href="equipment.html">보유 설비 전체</a></div></div>
-        <div class="nav-item"><a href="support-center.html">고객지원</a><div class="dropdown-menu"><a href="support-center.html">고객센터</a></div></div>
+        <div class="nav-item active"><a href="index.html">Home</a></div>
+        <div class="nav-item"><a href="greeting.html">회사소개</a></div>
+        <div class="nav-item"><a href="gear.html">특수기어</a></div>
+        <div class="nav-item"><a href="bearing.html">베어링</a></div>
+        <div class="nav-item"><a href="equipment.html">설비</a></div>
+        <div class="nav-item"><a href="history.html">연혁</a></div>
+        <div class="nav-item"><a href="support-center.html">고객지원</a></div>
       </nav>
+      <a class="header-contact" href="support-center.html">문의하기</a>
     </div>
   </header>
 
   <main>
     <section class="main-hero">
-      <img src="./image/hero_cnc.png" alt="CNC 터닝 가공">
+      <div class="hero-slideshow" aria-hidden="true">
+        <img class="hero-slide is-active" src="./image/HM01.png" alt="" fetchpriority="high">
+        <img class="hero-slide" src="./image/HM02.png" alt="" loading="eager">
+        <img class="hero-slide" src="./image/HM03.png" alt="" loading="eager">
+      </div>
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <div class="hero-tag">SINCE 1991 - PRECISION ENGINEERING</div>
-        <h1 class="hero-title hero-title-company-only">(주)대형특수기어</h1>
-        <p class="hero-desc">축적된 노하우와 독보적인 기술력으로 고난이도 대형 기어 및 선회 베어링,<br> CNC 터닝 가공 분야를 선도합니다.</p>
-        <a href="support-center.html" class="btn-signal">견적 및 문의하기 <span>→</span></a>
+        <div class="hero-tag">PRECISION ENGINEERING</div>
+        <h1 class="hero-title">정밀 가공의 <span class="hero-title-main">새 기준</span><br>현장 중심의 제조 파트너</h1>
+        <p class="hero-desc">대형 특수기어, 고정밀 베어링, CNC 가공, 설비 제작까지 산업 현장의 조건과 요구를 정확히 이해하고 설계부터 제작, 검사, 납품, 사후 지원까지 함께 책임지는 제조 솔루션을 제공합니다.</p>
+        <div class="hero-actions">
+          <a href="#business" class="btn-signal">제품 살펴보기</a>
+          <a href="support-center.html" class="btn-outline">견적 문의</a>
+        </div>
+        <div class="hero-stats" aria-label="주요 실적">
+          <div class="hero-stat"><strong>30+</strong><span>년 축적 기술</span></div>
+          <div class="hero-stat"><strong>1000+</strong><span>프로젝트 실적</span></div>
+          <div class="hero-stat"><strong>99.2%</strong><span>품질 만족도</span></div>
+        </div>
       </div>
     </section>
 
-    <section class="biz-section">
+    <section class="biz-section" id="business">
       <div class="content-width">
         <div class="sec-header">
-          <h2 class="sec-title"><span>OUR PRODUCTS &amp; FACILITIES</span>주요 사업 영역 및 설비현황</h2>
-          <a href="history.html" class="history-strip" aria-label="회사연혁 전체 보기">
-            <div class="history-strip-top">
-              <div class="history-heading-copy">
-                <span class="history-label">OUR HISTORY</span>
-              </div>
-              <span class="history-slogan">품질과 신용으로 걸어온 <strong>30여년의 역사</strong></span>
-            </div>
-            <div class="history-steps">
-              <div class="history-step"><span class="history-year">1991</span><p>대형특수기어 설립</p></div>
-              <div class="history-step"><span class="history-year">2003</span><p>포천 공장 착공</p></div>
-              <div class="history-step"><span class="history-year">2004</span><p>포천 공장 준공</p></div>
-              <div class="history-step"><span class="history-year">2012</span><p>법인 전환</p></div>
-            </div>
-          </a>
+          <h2 class="sec-title"><span>CORE BUSINESS</span>현장 요구에 맞춘 기술력</h2>
+          <p class="section-desc">설계, 제작, 검사, 납품, 사후 지원까지 연결되는 완성형 제조 역량으로 산업 현장의 고난도 요구를 안정적이고 정확하게 해결하는 전문 제조 파트너입니다.</p>
         </div>
         <div class="grid-4">
-          <a href="cnc.html" class="card-item"><div class="card-img"><img src="./image/machine/OM_CNC_turning.jpg" alt="OM CNC 터닝"></div><div class="card-body"><h3>OM CNC 터닝</h3><p>고정밀 대형 공작물 가공에 최적화된 CNC 터닝 설비 및 가공 기술을 제공합니다.</p><span class="card-more">VIEW MORE →</span></div></a>
-          <a href="bearing.html" class="card-item"><div class="card-img"><img src="./image/bearing1.png" alt="선회 베어링"></div><div class="card-body"><h3>선회 베어링</h3><p>중장비 및 산업용 기계 핵심 부품인 대형 선회 베어링을 정밀하게 제작합니다.</p><span class="card-more">VIEW MORE →</span></div></a>
-          <a href="gear.html" class="card-item"><div class="card-img"><img src="./image/gear2.png" alt="특수 기어"></div><div class="card-body"><h3>특수 기어</h3><p>각종 산업 현장의 규격에 맞춘 고난이도 대형 특수 기어 가공 솔루션을 제공합니다.</p><span class="card-more">VIEW MORE →</span></div></a>
-          <a href="equipment.html" class="card-item"><div class="card-img"><img src="./image/machine/f_inside.jpg" alt="보유설비 현황"></div><div class="card-body"><h3>보유설비 현황</h3><p>최신 대형 공작기계 및 정밀 측정 장비를 보유하여 완벽한 품질을 보장합니다.</p><span class="card-more">VIEW MORE →</span></div></a>
+          <a href="gear.html" class="card-item"><div class="card-img"><img src="./image/gear2.png" alt="특수 기어"></div><div class="card-body"><h3>특수기어 제작</h3><p>산업 현장과 장비 규격에 맞춘 대형 특수기어를 정밀하게 제작합니다.</p><span class="card-more">자세히 보기 →</span></div></a>
+          <a href="bearing.html" class="card-item"><div class="card-img"><img src="./image/bearing1.png" alt="고정밀 베어링"></div><div class="card-body"><h3>고정밀 베어링</h3><p>중장비와 산업용 기계에 필요한 대형 베어링을 안정적으로 공급합니다.</p><span class="card-more">자세히 보기 →</span></div></a>
+          <a href="equipment.html" class="card-item"><div class="card-img"><img src="./image/machine/gleasonpfauter600.png" alt="최첨단 생산 설비"></div><div class="card-body"><h3>최첨단 생산 설비</h3><p>대형 공작기계와 정밀 측정 장비로 까다로운 가공 요구를 구현합니다.</p><span class="card-more">자세히 보기 →</span></div></a>
         </div>
       </div>
     </section>
@@ -377,6 +459,7 @@
           <article class="milestone"><div class="milestone-year">2003</div><h3>포천 공장 착공</h3><p>1200평 규모의 생산 기반을 마련했습니다.</p></article>
           <article class="milestone"><div class="milestone-year">2004</div><h3>포천 공장 완공</h3><p>사업지를 통합하고 생산 역량을 확장했습니다.</p></article>
           <article class="milestone"><div class="milestone-year">2012</div><h3>법인 전환</h3><p>(주)대형특수기어로 새롭게 도약했습니다.</p></article>
+          <article class="milestone"><div class="milestone-year">2026.03</div><h3>시화공단 공장 사업확장</h3><p>경기도 안산시 단원구 원시로30</p></article>
         </div>
       </div>
     </section>
@@ -384,12 +467,24 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <nav class="footer-links"><a href="index.html">홈</a><a href="greeting.html">회사소개</a><a href="cnc.html">제품소개</a><a href="equipment.html">설비현황</a><a href="support-center.html">고객지원</a></nav>
+      <nav class="footer-links"><a href="index.html">홈</a><a href="greeting.html">회사소개</a><a href="bearing.html">제품소개</a><a href="equipment.html">설비현황</a><a href="support-center.html">고객지원</a></nav>
       <div class="footer-info">사업자등록번호 127-86-41052 <span>*</span> 대표이사 박병호 <span>*</span> 경기도 포천시 소흘읍 호국로479번길 15 <span>*</span> 전화 031-541-1248~9</div>
       <div class="footer-copy">COPYRIGHT © (주)대형특수기어 ALL RIGHT RESERVED.</div>
     </div>
   </footer>
   <script>
+    const heroSlides = [...document.querySelectorAll('.hero-slide')];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let activeHeroSlide = 0;
+
+    if (heroSlides.length > 1 && !reduceMotion) {
+      window.setInterval(() => {
+        heroSlides[activeHeroSlide].classList.remove('is-active');
+        activeHeroSlide = (activeHeroSlide + 1) % heroSlides.length;
+        heroSlides[activeHeroSlide].classList.add('is-active');
+      }, 7000);
+    }
+
     // 사이드 메뉴 로직
     const openBtn = document.getElementById('side-menu-open-btn');
     const closeBtn = document.getElementById('side-menu-close-btn');

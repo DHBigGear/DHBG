@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="./image/favicon.png" type="image/png">
 <!-- 모바일 화면 터치 및 비율 최적화 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>고객센터 | (주)대형특수기어</title>
@@ -437,8 +438,55 @@
   /* 연락처 카드 그리드 */
   .contact-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+  }
+
+  .contact-card-location {
+    grid-column: 1 / -1;
+  }
+
+  .location-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    width: 100%;
+  }
+
+  .location-item {
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: #f8fafc;
+    text-align: center;
+  }
+
+  .location-name {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--signal);
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .location-address {
+    min-height: 48px;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+
+  .location-item .map-link-btn {
+    margin-top: 14px;
+    padding: 9px 14px;
+    font-size: 13px;
+  }
+
+  .contact-card-location > .contact-subtext {
+    align-self: center;
+    margin-top: 16px;
   }
 
   .contact-card {
@@ -720,8 +768,11 @@
     .contact-intro p { font-size: 14px; }
     .contact-grid { grid-template-columns: 1fr; gap: 20px; }
     .contact-card { padding: 32px 20px; }
+    .location-list { grid-template-columns: 1fr; }
+    .location-address { min-height: 0; }
   }
 </style>
+<link rel="stylesheet" href="subpage-theme.css">
 </head>
 
 <body>
@@ -742,18 +793,25 @@
     </div>
     
     <div class="drawer-content">
+      <nav class="drawer-quick-links" aria-label="전체 메뉴">
+        <a href="index.html">홈</a>
+        <a href="greeting.html">회사소개</a>
+        <a href="gear.html">특수기어</a>
+        <a href="bearing.html">베어링</a>
+        <a href="equipment.html">설비</a>
+        <a href="history.html">연혁</a>
+        <a href="support-center.html">고객지원</a>
+      </nav>
       <div class="m-cate-group">
         <div class="m-cate-title"><a href="greeting.html">회사소개</a></div>
         <ul class="m-sub-nav">
           <li><a href="greeting.html">인사말씀</a></li>
           <li><a href="history.html">회사연혁</a></li>
-          <li><a href="location.html">찾아오시는 길</a></li>
         </ul>
       </div>
       <div class="m-cate-group">
-        <div class="m-cate-title"><a href="cnc.html">제품소개</a></div>
+        <div class="m-cate-title"><a href="bearing.html">제품소개</a></div>
         <ul class="m-sub-nav">
-          <li><a href="cnc.html">OM CNC 터닝</a></li>
           <li><a href="bearing.html">선회 베어링</a></li>
           <li><a href="gear.html">특수 기어</a></li>
         </ul>
@@ -793,37 +851,16 @@
         </div>
       </a>
 
-      <nav class="nav-links">
-        <div class="nav-item"><a href="index.html">홈</a></div>
-        <div class="nav-item">
-          <a href="greeting.html">회사소개</a>
-          <div class="dropdown-menu">
-            <a href="greeting.html">인사말씀</a>
-            <a href="history.html">회사연혁</a>
-            <a href="location.html">찾아오시는 길</a>
-          </div>
-        </div>
-        <div class="nav-item">
-          <a href="cnc.html">제품소개</a>
-          <div class="dropdown-menu">
-            <a href="cnc.html">OM CNC 터닝</a>
-            <a href="bearing.html">선회 베어링</a>
-            <a href="gear.html">특수 기어</a>
-          </div>
-        </div>
-        <div class="nav-item">
-          <a href="equipment.html">설비현황</a>
-          <div class="dropdown-menu">
-            <a href="equipment.html">보유 설비 전체</a>
-          </div>
-        </div>
-        <div class="nav-item active">
-          <a href="support-center.html">고객지원</a>
-          <div class="dropdown-menu">
-            <a href="support-center.html">고객센터</a>
-          </div>
-        </div>
+      <nav class="nav-links" aria-label="주 메뉴">
+        <div class="nav-item"><a href="index.html">Home</a></div>
+        <div class="nav-item"><a href="greeting.html">회사소개</a></div>
+        <div class="nav-item"><a href="gear.html">특수기어</a></div>
+        <div class="nav-item"><a href="bearing.html">베어링</a></div>
+        <div class="nav-item"><a href="equipment.html">설비</a></div>
+        <div class="nav-item"><a href="history.html">연혁</a></div>
+        <div class="nav-item active"><a href="support-center.html">고객지원</a></div>
       </nav>
+      <a class="header-contact" href="support-center.html">문의하기</a>
     </div>
   </header>
 
@@ -883,21 +920,32 @@
             </div>
 
             <!-- 위치 카드 -->
-            <div class="contact-card">
+            <div class="contact-card contact-card-location">
               <div class="contact-icon">📍</div>
-              <h3>본사 / 공장 위치</h3>
-              <div class="contact-info-list">
-                <div style="font-size: 14px; word-break: keep-all;">경기도 포천시 소흘읍 호국로479번길 15</div>
+              <h3>본사 / 지사 공장 위치</h3>
+              <div class="location-list">
+                <div class="location-item">
+                  <strong class="location-name">본사 · 포천 공장</strong>
+                  <div class="location-address">경기도 포천시 소흘읍 호국로479번길 15</div>
+                  <a href="https://naver.me/xhPFZDhp" target="_blank" rel="noopener noreferrer" class="map-link-btn">
+                    <svg class="naver-icon" viewBox="0 0 24 24" width="14" height="14">
+                      <path fill="currentColor" d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/>
+                    </svg>
+                    본사 지도 보기
+                  </a>
+                </div>
+                <div class="location-item">
+                  <strong class="location-name">지사 · 안산 공장</strong>
+                  <div class="location-address">경기도 안산시 단원구 원시로30</div>
+                  <a href="https://naver.me/FNt4XVon" target="_blank" rel="noopener noreferrer" class="map-link-btn">
+                    <svg class="naver-icon" viewBox="0 0 24 24" width="14" height="14">
+                      <path fill="currentColor" d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/>
+                    </svg>
+                    지사 지도 보기
+                  </a>
+                </div>
               </div>
               <div class="contact-subtext">사업자등록번호: 127-86-41052</div>
-              
-              <!-- 네이버 지도 바로가기 버튼 -->
-              <a href="https://naver.me/xhPFZDhp" target="_blank" rel="noopener noreferrer" class="map-link-btn">
-                <svg class="naver-icon" viewBox="0 0 24 24" width="14" height="14">
-                  <path fill="currentColor" d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/>
-                </svg>
-                네이버 지도 보기
-              </a>
             </div>
 
           </div>
@@ -909,41 +957,15 @@
       <aside class="sticky-edge-sidebar">
         <div class="sidebar-header">전체 메뉴</div>
 
-        <!-- 1. 회사소개 -->
-        <div class="sidebar-category-group">
-          <div class="sidebar-category-title">회사소개</div>
-          <ul class="sidebar-menu">
-            <li><a href="greeting.html">인사말씀</a></li>
-            <li><a href="history.html">회사연혁</a></li>
-            <li><a href="location.html">찾아오시는 길</a></li>
-          </ul>
-        </div>
-
-        <!-- 2. 제품소개 -->
-        <div class="sidebar-category-group">
-          <div class="sidebar-category-title">제품소개</div>
-          <ul class="sidebar-menu">
-            <li><a href="cnc.html">OM CNC 터닝</a></li>
-            <li><a href="bearing.html">선회 베어링</a></li>
-            <li><a href="gear.html">특수 기어</a></li>
-          </ul>
-        </div>
-
-        <!-- 3. 설비현황 -->
-        <div class="sidebar-category-group">
-          <div class="sidebar-category-title">설비현황</div>
-          <ul class="sidebar-menu">
-            <li><a href="equipment.html">보유 설비 전체</a></li>
-          </ul>
-        </div>
-
-        <!-- 4. 고객지원 -->
-        <div class="sidebar-category-group">
-          <div class="sidebar-category-title">고객지원</div>
-          <ul class="sidebar-menu">
-            <li class="active"><a href="support-center.html">고객센터</a></li>
-          </ul>
-        </div>
+        <ul class="sidebar-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="greeting.html">회사소개</a></li>
+          <li><a href="gear.html">특수기어</a></li>
+          <li><a href="bearing.html">베어링</a></li>
+          <li><a href="equipment.html">설비</a></li>
+          <li><a href="history.html">연혁</a></li>
+          <li class="active"><a href="support-center.html">고객지원</a></li>
+        </ul>
 
         <!-- PC 사이드바 하단 Quick Contact -->
         <div class="sidebar-quick-contact">
@@ -965,7 +987,7 @@
         <span class="divider">|</span>
         <a href="greeting.html">회사소개</a>
         <span class="divider">|</span>
-        <a href="cnc.html">제품소개</a>
+        <a href="bearing.html">제품소개</a>
         <span class="divider">|</span>
         <a href="equipment.html">설비현황</a>
         <span class="divider">|</span>
