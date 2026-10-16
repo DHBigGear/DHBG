@@ -304,6 +304,10 @@
   .hero-stat { min-width: 150px; padding: 14px 16px; border: 1px solid rgba(174, 202, 214, .2); border-radius: 14px; background: rgba(13, 31, 40, .76); }
   .hero-stat strong { display: block; color: #f2f8fa; font-size: 23px; line-height: 1.2; }
   .hero-stat span { display: block; margin-top: 5px; color: #a9bdc7; font-size: 12px; }
+  .hero-pagination { position: absolute; z-index: 2; right: 0; bottom: 22px; left: 0; display: flex; justify-content: center; gap: 10px; }
+  .hero-pagination button { width: 10px; height: 10px; padding: 0; border: 1px solid rgba(255,255,255,.85); border-radius: 50%; background: rgba(255,255,255,.45); cursor: pointer; transition: width .2s ease, background-color .2s ease; }
+  .hero-pagination button[aria-pressed="true"] { width: 28px; border-color: #5bdde0; border-radius: 8px; background: #5bdde0; }
+  .hero-pagination button:focus-visible { outline: 2px solid #ffffff; outline-offset: 4px; }
 
   .biz-section { padding: 82px 28px 90px; background: #07151b; color: #f1f6f8; }
   .content-width { max-width: 1320px; }
@@ -427,6 +431,11 @@
           <div class="hero-stat"><strong>99.2%</strong><span>품질 만족도</span></div>
         </div>
       </div>
+      <div class="hero-pagination" role="group" aria-label="메인 이미지 선택">
+        <button type="button" aria-label="첫 번째 이미지 보기" aria-pressed="true"></button>
+        <button type="button" aria-label="두 번째 이미지 보기" aria-pressed="false"></button>
+        <button type="button" aria-label="세 번째 이미지 보기" aria-pressed="false"></button>
+      </div>
     </section>
 
     <section class="biz-section" id="business">
@@ -475,15 +484,26 @@
   </footer>
   <script>
     const heroSlides = [...document.querySelectorAll('.hero-slide')];
+    const heroPaginationButtons = [...document.querySelectorAll('.hero-pagination button')];
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let activeHeroSlide = 0;
 
+    const showHeroSlide = (index) => {
+      heroSlides[activeHeroSlide].classList.remove('is-active');
+      heroPaginationButtons[activeHeroSlide].setAttribute('aria-pressed', 'false');
+      activeHeroSlide = index;
+      heroSlides[activeHeroSlide].classList.add('is-active');
+      heroPaginationButtons[activeHeroSlide].setAttribute('aria-pressed', 'true');
+    };
+
+    heroPaginationButtons.forEach((button, index) => {
+      button.addEventListener('click', () => showHeroSlide(index));
+    });
+
     if (heroSlides.length > 1 && !reduceMotion) {
       window.setInterval(() => {
-        heroSlides[activeHeroSlide].classList.remove('is-active');
-        activeHeroSlide = (activeHeroSlide + 1) % heroSlides.length;
-        heroSlides[activeHeroSlide].classList.add('is-active');
-      }, 7000);
+        showHeroSlide((activeHeroSlide + 1) % heroSlides.length);
+      }, 5000);
     }
 
     // 사이드 메뉴 로직
