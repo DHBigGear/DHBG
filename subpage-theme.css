@@ -237,6 +237,85 @@ aside.sticky-edge-sidebar {
   display: none !important;
 }
 
+:root {
+  --font-body: 'Noto Sans KR', sans-serif;
+  --font-heading: 'Noto Serif KR', serif;
+  --font-size-body: 15px;
+  --font-size-section-title: 32px;
+}
+
+body {
+  font-family: var(--font-body) !important;
+  font-size: var(--font-size-body) !important;
+  line-height: 1.7;
+}
+
+main p,
+main li {
+  font-family: var(--font-body) !important;
+  font-size: var(--font-size-body) !important;
+  line-height: 1.75 !important;
+}
+
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
+  font-family: var(--font-heading) !important;
+}
+
+main h3 {
+  font-size: 22px !important;
+  line-height: 1.4 !important;
+}
+
+main h4 {
+  font-size: 18px !important;
+  line-height: 1.45 !important;
+}
+
+.sec-intro .sub-tag,
+.contact-intro .sub-tag,
+.greeting-text .subtitle {
+  font-size: 14px !important;
+}
+
+.sub-hero-title {
+  font-size: 36px !important;
+  line-height: 1.35 !important;
+}
+
+.sec-intro h2,
+.greeting-text h2,
+.contact-intro h2 {
+  font-size: var(--font-size-section-title) !important;
+  line-height: 1.4 !important;
+}
+
+.bearing-section .sec-intro h2 {
+  font-size: 34px !important;
+}
+
+.bearing-section .sec-intro .sub-tag {
+  font-size: 14px !important;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --font-size-section-title: 26px;
+  }
+
+  .bearing-section .sec-intro h2 {
+    font-size: 28px !important;
+  }
+
+  .sub-hero-title {
+    font-size: 30px !important;
+  }
+}
+
 @media (max-width: 900px) {
   .site-header {
     display: none !important;
