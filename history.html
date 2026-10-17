@@ -541,12 +541,17 @@
   .bd {
     opacity: 0;
     transform: translateY(-8px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: opacity 0.9s ease, transform 0.4s ease;
   }
 
   .bd.on {
     opacity: 1;
     transform: none;
+  }
+
+  .bd.is-faded {
+    opacity: 0;
+    filter: none;
   }
 
   .bd .tp { fill: #d8ebed; }
@@ -1477,15 +1482,15 @@
 
       const buildings = [
         { stage: 0, x: 1, y: 1, w: 2, d: 2, h: 1.1, windows: 2, label: '서울 성수' },
-        { stage: 1, x: 3.4, y: 1, w: 1.6, d: 2, h: 0.9, windows: 1 },
-        { stage: 2, x: 1, y: 3.4, w: 2, d: 1.6, h: 0.9, windows: 2 },
+        { stage: 1, x: 3.4, y: 1, w: 1.6, d: 2, h: 0.9, windows: 1, label: '성수 공장 이전' },
+        { stage: 2, x: 1, y: 3.4, w: 2, d: 1.6, h: 0.9, windows: 2, label: '공장 부지 확장' },
         { stage: 2, x: 3.6, y: 3.6, w: 0.6, d: 0.6, h: 0.45, machine: true },
         { stage: 2, x: 4.4, y: 3.6, w: 0.6, d: 0.6, h: 0.45, machine: true },
         { stage: 2, x: 3.6, y: 4.4, w: 0.6, d: 0.6, h: 0.45, machine: true },
         { stage: 3, x: 6, y: 1, w: 2, d: 2, h: 1.4, windows: 2, label: '포천 제2공장' },
         { stage: 4, x: 5.5, y: 4, w: 4, d: 3.4, h: 2, windows: 4, label: '포천공장', roofUnits: true, largeLabel: true },
         { stage: 4, x: 8.6, y: 4.3, w: 0.5, d: 0.5, h: 3, smoke: true },
-        { stage: 5, x: 3.9, y: 6.1, w: 1.4, d: 1.4, h: 3.2, windows: 1, label: '(주)대형특수기어', labelOffset: -52, flag: true, brand: true },
+        { stage: 5, x: 3.9, y: 6.1, w: 1.4, d: 1.4, h: 3.2, windows: 1, label: '(주)대형특수기어 법인 전환', labelOffset: -52, flag: true, brand: true },
         { stage: 6, x: 0.7, y: 6.5, w: 2.8, d: 2.8, h: 1.8, windows: 3, label: '안산 시화공단 추가 공장', plate: true, largeLabel: true, finalLabel: true }
       ];
 
@@ -1584,11 +1589,13 @@
 
       historySceneStages.forEach((stage) => {
         const stageIndex = Number(stage.dataset.stage);
+        const keepAtFinal = index === historyMilestones.length - 1 && stageIndex === 4;
         stage.classList.toggle('is-future', stageIndex > index);
         stage.classList.toggle('is-active', stageIndex === index);
         stage.classList.toggle('on', stageIndex <= index);
+        stage.classList.toggle('is-faded', stageIndex < index && !keepAtFinal);
         stage.classList.toggle('hot', stageIndex === index);
-        stage.classList.toggle('pair', index === historyMilestones.length - 1 && stageIndex === 4);
+        stage.classList.toggle('pair', keepAtFinal);
       });
 
       historyTimelineItems.forEach((item) => {
