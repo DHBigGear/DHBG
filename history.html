@@ -1494,6 +1494,7 @@
       markup += `<g transform="translate(${gearCenter[0]},${gearCenter[1]}) scale(1,.58)"><g>${reduceMotion ? '' : '<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="16s" repeatCount="indefinite"/>'}<polygon class="gear-t" points="${gearPoints(30, 38, 12)}"/><circle r="11" fill="#d7ebed"/></g></g>`;
 
       buildings.sort((first, second) => first.x + first.w / 2 + first.y + first.d / 2 - (second.x + second.w / 2 + second.y + second.d / 2));
+      let labelMarkup = '';
       buildings.forEach((building) => {
         let contents = makeBuilding(building);
         const top = project(building.x + building.w / 2, building.y + building.d / 2, (building.z || 0) + building.h);
@@ -1518,12 +1519,13 @@
           const labelWidth = building.label.length * 15 + 28;
           const labelY = top[1] - 30 + (building.labelOffset || 0);
           const labelClass = building.brand ? 'lab scene-label brand-label' : 'lab scene-label';
-          contents += `<g class="${labelClass}"><rect x="${top[0] - labelWidth / 2}" y="${labelY}" width="${labelWidth}" height="26" rx="13"/><text x="${top[0]}" y="${labelY + 18}">${building.label}</text></g>`;
+          labelMarkup += `<g class="scene-stage bd${building.machine ? ' m' : ''}" data-stage="${building.stage}"><g class="${labelClass}"><rect x="${top[0] - labelWidth / 2}" y="${labelY}" width="${labelWidth}" height="26" rx="13"/><text x="${top[0]}" y="${labelY + 18}">${building.label}</text></g></g>`;
         }
 
         markup += `<g class="scene-stage bd${building.machine ? ' m' : ''}" data-stage="${building.stage}">${contents}</g>`;
       });
 
+      markup += labelMarkup;
       svg.innerHTML = markup;
     }
 
