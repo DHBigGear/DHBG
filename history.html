@@ -415,7 +415,8 @@
   }
 
   .history-container {
-    max-width: 1180px;
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
   }
 
@@ -431,11 +432,12 @@
 
   .history-eyebrow {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     color: var(--signal);
-    font-size: 12px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.05em;
   }
 
   .history-overview h2 {
@@ -587,6 +589,27 @@
     fill: #123b42;
     font: 700 14px 'Noto Sans KR', sans-serif;
     text-anchor: middle;
+  }
+
+  .lab.large-label rect {
+    stroke: #087d88;
+    stroke-width: 1.5;
+  }
+
+  .lab.large-label text {
+    font-size: 17px;
+  }
+
+  .lab.final-label rect {
+    fill: #087d88;
+    stroke: #ffffff;
+    stroke-width: 2;
+    filter: drop-shadow(0 3px 5px rgba(7, 91, 100, 0.35));
+  }
+
+  .lab.final-label text {
+    fill: #ffffff;
+    font-size: 18px;
   }
 
   .smk {
@@ -1220,7 +1243,7 @@
           <div class="history-grid">
             <aside class="history-visual" aria-label="연혁 미니어처">
               <div class="history-scene-frame">
-                <svg id="factory-scene" viewBox="0 0 800 440" role="img" aria-label="연혁에 따라 성장하는 공장 미니어처"></svg>
+                <svg id="factory-scene" viewBox="55 0 690 440" role="img" aria-label="연혁에 따라 성장하는 공장 미니어처"></svg>
                 <div class="history-caption" aria-live="polite">
                   <strong class="history-caption-year" id="history-caption-year">2026</strong>
                   <div>
@@ -1358,14 +1381,9 @@
         <div class="sidebar-header">전체 메뉴</div>
 
         <ul class="sidebar-menu">
-          <li><a href="index.html">HOME</a></li>
-          <li class="sidebar-category-group">
-            <div class="sidebar-category-title">회사소개</div>
-            <ul class="sidebar-menu">
-              <li><a href="greeting.html">인사말씀</a></li>
-              <li class="active"><a href="history.html" aria-current="page">연혁</a></li>
-            </ul>
-          </li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="greeting.html">회사소개</a></li>
+          <li class="active"><a href="history.html" aria-current="page">연혁</a></li>
           <li><a href="gear.html">특수기어</a></li>
           <li><a href="bearing.html">베어링</a></li>
           <li><a href="equipment.html">설비현황</a></li>
@@ -1417,8 +1435,8 @@
     function buildHistoryMiniature() {
       const svg = document.getElementById('factory-scene');
       const originX = 400;
-      const originY = 70;
-      const unit = 34;
+      const originY = 45;
+      const unit = 36;
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       function project(x, y, z) {
@@ -1465,10 +1483,10 @@
         { stage: 2, x: 4.4, y: 3.6, w: 0.6, d: 0.6, h: 0.45, machine: true },
         { stage: 2, x: 3.6, y: 4.4, w: 0.6, d: 0.6, h: 0.45, machine: true },
         { stage: 3, x: 6, y: 1, w: 2, d: 2, h: 1.4, windows: 2, label: '포천 제2공장' },
-        { stage: 4, x: 5.5, y: 4, w: 4, d: 3.4, h: 2, windows: 4, label: '포천 공장', roofUnits: true },
+        { stage: 4, x: 5.5, y: 4, w: 4, d: 3.4, h: 2, windows: 4, label: '포천공장', roofUnits: true, largeLabel: true },
         { stage: 4, x: 8.6, y: 4.3, w: 0.5, d: 0.5, h: 3, smoke: true },
         { stage: 5, x: 3.9, y: 6.1, w: 1.4, d: 1.4, h: 3.2, windows: 1, label: '(주)대형특수기어', labelOffset: -52, flag: true, brand: true },
-        { stage: 6, x: 0.7, y: 6.5, w: 2.8, d: 2.8, h: 1.8, windows: 3, label: '안산 시화공단 · 추가 공장', plate: true }
+        { stage: 6, x: 0.7, y: 6.5, w: 2.8, d: 2.8, h: 1.8, windows: 3, label: '안산 시화공단 추가 공장', plate: true, largeLabel: true, finalLabel: true }
       ];
 
       let markup = `<polygon class="sf" points="${polygonPoints([project(0, 10, -0.7), project(10, 10, -0.7), project(10, 10, 0), project(0, 10, 0)])}"/>`;
@@ -1516,10 +1534,21 @@
           });
         }
         if (building.label) {
-          const labelWidth = building.label.length * 15 + 28;
+          const labelFontSize = building.finalLabel ? 18 : building.largeLabel ? 17 : 14;
+          const labelHeight = building.largeLabel ? 34 : 26;
+          const labelWidth = building.largeLabel
+            ? building.label.length * (labelFontSize + 1) + 32
+            : building.label.length * 15 + 28;
           const labelY = top[1] - 30 + (building.labelOffset || 0);
-          const labelClass = building.brand ? 'lab scene-label brand-label' : 'lab scene-label';
-          labelMarkup += `<g class="scene-stage bd${building.machine ? ' m' : ''}" data-stage="${building.stage}"><g class="${labelClass}"><rect x="${top[0] - labelWidth / 2}" y="${labelY}" width="${labelWidth}" height="26" rx="13"/><text x="${top[0]}" y="${labelY + 18}">${building.label}</text></g></g>`;
+          const labelClass = [
+            'lab',
+            'scene-label',
+            building.brand ? 'brand-label' : '',
+            building.largeLabel ? 'large-label' : '',
+            building.finalLabel ? 'final-label' : ''
+          ].filter(Boolean).join(' ');
+          const textY = labelY + (building.largeLabel ? 23 : 18);
+          labelMarkup += `<g class="scene-stage bd${building.machine ? ' m' : ''}" data-stage="${building.stage}"><g class="${labelClass}"><rect x="${top[0] - labelWidth / 2}" y="${labelY}" width="${labelWidth}" height="${labelHeight}" rx="${labelHeight / 2}"/><text x="${top[0]}" y="${textY}">${building.label}</text></g></g>`;
         }
 
         markup += `<g class="scene-stage bd${building.machine ? ' m' : ''}" data-stage="${building.stage}">${contents}</g>`;
