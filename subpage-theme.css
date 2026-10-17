@@ -143,23 +143,23 @@ aside.sticky-edge-sidebar {
 }
 
 .m-biz-section {
-  color: #edf5f7;
-  background-color: #07151b;
+  color: var(--ink);
+  background-color: #f3f7f8;
 }
 
 .m-sec-title {
-  color: #edf5f7;
+  color: var(--ink);
 }
 
 .m-card-item {
-  color: #edf5f7;
-  background: #0c1c24;
-  border-color: rgba(162, 190, 201, .2);
-  box-shadow: none;
+  color: var(--ink);
+  background: #ffffff;
+  border-color: var(--line);
+  box-shadow: 0 4px 16px rgba(9, 39, 49, .05);
 }
 
 .m-card-body p {
-  color: #afc1ca;
+  color: #607078;
 }
 
 .m-site-footer {

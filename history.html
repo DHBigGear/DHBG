@@ -369,8 +369,26 @@
   }
 
   .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-size: 13px;
     color: rgba(255, 255, 255, 0.75);
+  }
+
+  .breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+
+  .breadcrumb [aria-current="page"] {
+    color: #ffffff;
+    font-weight: 700;
   }
 
   /* ====================================
@@ -397,53 +415,349 @@
   }
 
   .history-container {
-    max-width: 900px;
+    max-width: 1180px;
     margin: 0 auto;
+  }
+
+  .history-overview {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 32px;
+    align-items: end;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .history-eyebrow {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--signal);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+  }
+
+  .history-overview h2 {
+    margin: 0 0 8px;
+    color: var(--ink);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.4;
+    word-break: keep-all;
+  }
+
+  .history-overview h2 em {
+    color: var(--signal);
+    font-style: normal;
+  }
+
+  .history-summary {
+    max-width: 640px;
+    margin: 0;
+    color: #64777e;
+    font-size: 14px;
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+
+  .history-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(86px, 1fr));
+    gap: 10px;
+  }
+
+  .history-stat {
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  .history-stat strong {
+    display: block;
+    color: var(--signal);
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.25;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .history-stat span {
+    display: block;
+    margin-top: 3px;
+    color: #63767d;
+    font-size: 11px;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .history-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+  }
+
+  .history-visual {
+    position: sticky;
+    top: 88px;
+    min-width: 0;
+  }
+
+  .history-scene-frame {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: linear-gradient(145deg, #f8fcfc, #eaf5f6);
+  }
+
+  #factory-scene {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .sf,
+  .sx,
+  .sp {
+    stroke: #b8d7dc;
+    stroke-width: 1.2;
+  }
+
+  .sf { fill: #deecee; }
+  .sx { fill: #d1e5e8; }
+  .sp { fill: #edf6f7; }
+
+  .gl {
+    stroke: rgba(8, 125, 136, 0.14);
+    stroke-width: 1;
+  }
+
+  .bd {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .bd.on {
+    opacity: 1;
+    transform: none;
+  }
+
+  .bd .tp { fill: #d8ebed; }
+  .bd .fy { fill: #91c4ca; }
+  .bd .fx { fill: #70aeb6; }
+  .bd .tp,
+  .bd .fy,
+  .bd .fx {
+    stroke: #438b94;
+    stroke-width: 1;
+    stroke-linejoin: round;
+  }
+
+  .bd .win { fill: rgba(8, 125, 136, 0.34); }
+  .bd.hot { filter: drop-shadow(0 0 8px rgba(8, 125, 136, 0.22)); }
+  .bd.hot .tp { fill: #b9e1e4; }
+  .bd.hot .fy { fill: #70bbc2; }
+  .bd.hot .fx { fill: #4d9da5; }
+  .bd.hot .win { fill: rgba(8, 125, 136, 0.58); }
+  .bd.m .tp { fill: #a9d4d8; }
+  .bd.m .fy { fill: #83bcc2; }
+  .bd.m .fx { fill: #639fa7; }
+  .bd.pair .tp { fill: #c4e3e5; }
+  .bd.pair .fy { fill: #83bdc3; }
+  .bd.pair .fx { fill: #649fa7; }
+
+  .flag { fill: var(--signal); }
+  .lab {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .bd.hot .lab,
+  .bd.pair .lab { opacity: 1; }
+  .lab rect {
+    fill: rgba(255, 255, 255, 0.96);
+    stroke: #79b9c0;
+    stroke-width: 1;
+  }
+  .lab text {
+    fill: #123b42;
+    font: 700 14px 'Noto Sans KR', sans-serif;
+    text-anchor: middle;
+  }
+
+  .smk {
+    fill: rgba(8, 125, 136, 0.24);
+    animation: scene-smoke 3s ease-out infinite;
+  }
+
+  @keyframes scene-smoke {
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 0.55; }
+    100% { transform: translateY(-36px); opacity: 0; }
+  }
+
+  .gear-t { fill: #42aeb7; stroke: #087d88; stroke-width: 1; }
+  .gear-b { fill: #c8e3e6; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bd,
+    .lab { transition: none; }
+    .smk { animation: none; }
+  }
+
+  .history-caption {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 82px;
+    padding: 14px 18px;
+    border-top: 1px solid var(--line);
+    background: #ffffff;
+  }
+
+  .history-caption-year {
+    flex: 0 0 auto;
+    color: var(--signal);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .history-caption strong,
+  .history-caption span {
+    display: block;
+  }
+
+  .history-caption strong {
+    color: var(--ink);
+    font-size: 14px;
+  }
+
+  .history-caption span {
+    margin-top: 3px;
+    color: #64777e;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .history-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .history-play {
+    min-height: 40px;
+    padding: 0 16px;
+    border: 1px solid var(--signal);
+    border-radius: 6px;
+    background: var(--signal);
+    color: #ffffff;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .history-years-list {
+    display: flex;
+    flex: 1 1 220px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .history-year-button {
+    min-height: 34px;
+    padding: 0 10px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    background: #ffffff;
+    color: #60747b;
+    font: inherit;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    cursor: pointer;
+  }
+
+  .history-year-button[aria-pressed="true"] {
+    border-color: #77bcc3;
+    background: #e8f5f6;
+    color: #075b64;
+    font-weight: 700;
   }
 
   .sec-intro {
     text-align: center;
-    margin-bottom: 64px;
+    margin: 0 auto 38px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
   }
 
-  .sec-intro .sub-tag {
-    font-family: 'Noto Serif KR', serif;
+  .history-years {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 6px;
     color: var(--signal);
-    font-size: 15px;
+    font-family: 'Noto Serif KR', serif;
+    line-height: 1;
+  }
+
+  .history-years strong {
+    font-size: 64px;
     font-weight: 700;
-    letter-spacing: 0.1em;
-    margin-bottom: 12px;
-    display: block;
+  }
+
+  .history-years span {
+    color: #51666d;
+    font-size: 17px;
+    font-weight: 700;
   }
 
   .sec-intro h2 {
     font-family: 'Noto Serif KR', serif;
-    font-size: 32px;
+    font-size: 25px;
     color: var(--ink);
-    line-height: 1.4;
+    line-height: 1.45;
+    margin: 0 0 7px;
+  }
+
+  .history-summary {
     margin: 0;
+    color: #64777e;
+    font-size: 13px;
+    line-height: 1.6;
   }
 
   /* 세로 타임라인 트랙 */
   .timeline {
     position: relative;
-    padding-left: 180px;
+    min-width: 0;
+    padding-left: 92px;
   }
 
   .timeline::before {
     content: '';
     position: absolute;
-    left: 140px;
-    top: 10px;
-    bottom: 10px;
-    width: 2px;
-    background: var(--line);
+    left: 70px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: #b7d4d9;
   }
 
   /* 타임라인 각 항목 */
   .timeline-item {
     position: relative;
-    margin-bottom: 48px;
+    margin-bottom: 10px;
   }
 
   .timeline-item:last-child {
@@ -453,69 +767,79 @@
   /* 연도 및 월 표시 */
   .timeline-date {
     position: absolute;
-    left: -180px;
-    top: 0;
-    width: 120px;
+    left: -92px;
+    top: 14px;
+    width: 68px;
     text-align: right;
+    padding-right: 8px;
     font-family: 'Noto Serif KR', serif;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--ink);
   }
 
   .timeline-date span {
     display: block;
-    font-size: 14px;
+    font-size: 11px;
     color: var(--signal);
     font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 500;
+    font-weight: 700;
   }
 
   /* 타임라인 포인트 아이콘 */
   .timeline-marker {
     position: absolute;
-    left: -46px;
-    top: 6px;
-    width: 14px;
-    height: 14px;
+    left: -28px;
+    top: 17px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: #ffffff;
-    border: 3px solid var(--ink);
-    transition: background-color 0.2s, border-color 0.2s;
+    border: 2px solid #6daeb5;
+    box-shadow: 0 0 0 4px #f3f7f8;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
   }
 
-  .timeline-item:first-child .timeline-marker {
+  .timeline-item.is-selected .timeline-marker {
     border-color: var(--signal);
     background: var(--signal);
+    transform: scale(1.15);
   }
 
   /* 타임라인 내용 카드 */
   .timeline-content {
-    background: #f8f9fa;
+    background: #ffffff;
     border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 24px 28px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 8px;
+    padding: 17px 21px;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
   }
 
   .timeline-item:hover .timeline-content {
-    transform: translateX(4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    border-color: #b4d7dc;
+    transform: translateX(3px);
+    box-shadow: 0 6px 16px rgba(9, 39, 49, 0.06);
+  }
+
+  .timeline-item.is-selected .timeline-content {
+    background: #eaf6f7;
+    border-color: #72bdc4;
   }
 
   .timeline-content h3 {
     font-family: 'Noto Serif KR', serif;
-    font-size: 19px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--ink);
-    margin: 0 0 8px 0;
+    margin: 0 0 4px;
   }
 
   .timeline-content p {
-    font-size: 15px;
-    color: #555555;
-    line-height: 1.6;
+    font-size: 13px;
+    color: #5e7279;
+    line-height: 1.55;
     margin: 0;
+    word-break: keep-all;
   }
 
   /* ====================================
@@ -703,26 +1027,57 @@
     .brand-banner-text { display: none; }
   }
 
+  @media (max-width: 900px) {
+    .history-overview { grid-template-columns: 1fr; gap: 20px; }
+    .history-stats { max-width: 500px; }
+    .history-grid { grid-template-columns: 1fr; gap: 24px; }
+    .history-visual { position: static; }
+  }
+
   @media (max-width: 768px) {
+    .history-section { padding: 42px 18px 60px; }
+    .history-overview { margin-bottom: 24px; padding-bottom: 22px; }
+    .history-overview h2 { font-size: 24px; }
+    .history-summary { font-size: 13px; }
+    .history-stats { gap: 7px; }
+    .history-stat { padding: 11px 10px; }
+    .history-stat strong { font-size: 19px; }
+    .history-stat span { font-size: 10px; }
+    .history-grid { gap: 22px; }
+    .history-controls { gap: 8px; }
+    .history-play { min-height: 38px; padding: 0 12px; }
+    .history-year-button { min-height: 32px; padding: 0 8px; }
     .timeline {
-      padding-left: 28px;
+      padding-left: 56px;
     }
     .timeline::before {
-      left: 6px;
+      left: 41px;
     }
     .timeline-date {
-      position: static;
-      width: auto;
-      text-align: left;
-      margin-bottom: 6px;
+      left: -60px;
+      top: 12px;
+      width: 42px;
+      text-align: right;
+      padding-right: 8px;
+      font-size: 9px;
     }
     .timeline-date span {
-      display: inline-block;
-      margin-left: 6px;
+      display: block;
+      margin-left: 0;
+      font-size: 8px;
     }
     .timeline-marker {
-      left: -28px;
-      top: 8px;
+      left: -20px;
+      top: 16px;
+    }
+    .timeline-content {
+      padding: 14px 15px;
+    }
+    .timeline-content h3 {
+      font-size: 14px;
+    }
+    .timeline-content p {
+      font-size: 12px;
     }
     .sub-hero-content {
       padding: 0 20px;
@@ -753,10 +1108,10 @@
       <nav class="drawer-quick-links" aria-label="전체 메뉴">
         <a href="index.html">홈</a>
         <a href="greeting.html">회사소개</a>
+        <a href="history.html">연혁</a>
         <a href="gear.html">특수기어</a>
         <a href="bearing.html">베어링</a>
         <a href="equipment.html">설비현황</a>
-        <a href="history.html">연혁</a>
         <a href="support-center.html">고객지원</a>
       </nav>
       <div class="m-cate-group">
@@ -812,10 +1167,10 @@
       <nav class="nav-links" aria-label="주 메뉴">
         <div class="nav-item"><a href="index.html">Home</a></div>
         <div class="nav-item"><a href="greeting.html">회사소개</a></div>
+        <div class="nav-item active"><a href="history.html">연혁</a></div>
         <div class="nav-item"><a href="gear.html">특수기어</a></div>
         <div class="nav-item"><a href="bearing.html">베어링</a></div>
         <div class="nav-item"><a href="equipment.html">설비현황</a></div>
-        <div class="nav-item active"><a href="history.html">연혁</a></div>
         <div class="nav-item"><a href="support-center.html">고객지원</a></div>
       </nav>
       <a class="header-contact" href="support-center.html">문의하기</a>
@@ -831,7 +1186,13 @@
     <div class="sub-hero-content">
       <div class="sub-hero-tag">HISTORY</div>
       <h1 class="sub-hero-title">회사연혁</h1>
-      <div class="breadcrumb">홈 &gt; 회사연혁</div>
+      <nav class="breadcrumb" aria-label="현재 위치">
+        <a href="index.html">HOME</a>
+        <span aria-hidden="true">&gt;</span>
+        <a href="greeting.html">회사소개</a>
+        <span aria-hidden="true">&gt;</span>
+        <span aria-current="page">연혁</span>
+      </nav>
     </div>
   </section>
 
@@ -843,16 +1204,42 @@
       <div class="main-container">
         <div class="history-container">
           
-          <div class="sec-intro">
-            <span class="sub-tag">GROWTH &amp; CHALLENGE</span>
-            <h2>품질과 신용으로 걸어온 30여 년의 역사</h2>
+          <div class="history-overview">
+            <div>
+              <span class="history-eyebrow">HISTORY</span>
+              <h2>품질과 신용으로 걸어온 <em>30여 년의 역사</em></h2>
+              <p class="history-summary">작은 작업장에서 시작해 포천과 안산의 두 공장으로 성장한 발자취를 연혁과 미니어처로 만나보세요.</p>
+            </div>
+            <div class="history-stats" aria-label="회사 주요 연혁">
+              <div class="history-stat"><strong>1991</strong><span>창사</span></div>
+              <div class="history-stat"><strong>2012</strong><span>법인 전환</span></div>
+              <div class="history-stat"><strong>2곳</strong><span>포천 · 안산</span></div>
+            </div>
           </div>
 
-          <div class="timeline">
+          <div class="history-grid">
+            <aside class="history-visual" aria-label="연혁 미니어처">
+              <div class="history-scene-frame">
+                <svg id="factory-scene" viewBox="0 0 800 440" role="img" aria-label="연혁에 따라 성장하는 공장 미니어처"></svg>
+                <div class="history-caption" aria-live="polite">
+                  <strong class="history-caption-year" id="history-caption-year">2026</strong>
+                  <div>
+                    <strong id="history-caption-title">시화공단 공장 사업확장</strong>
+                    <span id="history-caption-description">경기도 안산시 단원구 원시로30</span>
+                  </div>
+                </div>
+              </div>
+              <div class="history-controls">
+                <button class="history-play" id="history-play" type="button">연혁 흐름 재생</button>
+                <div class="history-years-list" id="history-years" role="group" aria-label="연도 선택"></div>
+              </div>
+            </aside>
+
+            <div class="timeline" id="history-list">
 
             <!-- 2012년 7월 -->
             <!-- 2026년 3월 -->
-            <div class="timeline-item">
+            <div class="timeline-item is-selected" data-year="2026" aria-current="step">
               <div class="timeline-date">2026년 <span>3월</span></div>
               <div class="timeline-marker"></div>
               <div class="timeline-content">
@@ -862,7 +1249,7 @@
             </div>
 
             <!-- 2012년 7월 -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-year="2012">
               <div class="timeline-date">2012년 <span>7월</span></div>
               <div class="timeline-marker"></div>
               <div class="timeline-content">
@@ -872,7 +1259,7 @@
             </div>
 
             <!-- 2004년 9월 -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-year="2004">
               <div class="timeline-date">2004년 <span>9월</span></div>
               <div class="timeline-marker"></div>
               <div class="timeline-content">
@@ -882,7 +1269,7 @@
             </div>
 
             <!-- 2003년 5월 -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-year="2003">
               <div class="timeline-date">2003년 <span>5월</span></div>
               <div class="timeline-marker"></div>
               <div class="timeline-content">
@@ -892,7 +1279,7 @@
             </div>
 
             <!-- 2001년 6월 (연마기) -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-year="2001">
               <div class="timeline-date">2001년 <span>6월</span></div>
               <div class="timeline-marker"></div>
               <div class="timeline-content">
@@ -902,7 +1289,7 @@
             </div>
 
             <!-- 2001년 6월 (터닝) -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-year="2001">
               <div class="timeline-date">2001년 <span>6월</span></div>
               <div class="timeline-marker"></div>
               <div class="timeline-content">
@@ -912,7 +1299,7 @@
             </div>
 
             <!-- 1999년 10월 -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-year="1999">
               <div class="timeline-date">1999년 <span>10월</span></div>
               <div class="timeline-marker"></div>
               <div class="timeline-content">
@@ -922,7 +1309,7 @@
             </div>
 
             <!-- 1996년 9월 -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-year="1996">
               <div class="timeline-date">1996년 <span>9월</span></div>
               <div class="timeline-marker"></div>
               <div class="timeline-content">
@@ -932,7 +1319,7 @@
             </div>
 
             <!-- 1994년 7월 -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-year="1994">
               <div class="timeline-date">1994년 <span>7월</span></div>
               <div class="timeline-marker"></div>
               <div class="timeline-content">
@@ -942,7 +1329,7 @@
             </div>
 
             <!-- 1993년 3월 -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-year="1993">
               <div class="timeline-date">1993년 <span>3월</span></div>
               <div class="timeline-marker"></div>
               <div class="timeline-content">
@@ -952,7 +1339,7 @@
             </div>
 
             <!-- 1991년 10월 -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-year="1991">
               <div class="timeline-date">1991년 <span>10월</span></div>
               <div class="timeline-marker"></div>
               <div class="timeline-content">
@@ -961,6 +1348,7 @@
               </div>
             </div>
 
+            </div>
           </div>
         </div>
       </div>
@@ -970,12 +1358,17 @@
         <div class="sidebar-header">전체 메뉴</div>
 
         <ul class="sidebar-menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="greeting.html">회사소개</a></li>
+          <li><a href="index.html">HOME</a></li>
+          <li class="sidebar-category-group">
+            <div class="sidebar-category-title">회사소개</div>
+            <ul class="sidebar-menu">
+              <li><a href="greeting.html">인사말씀</a></li>
+              <li class="active"><a href="history.html" aria-current="page">연혁</a></li>
+            </ul>
+          </li>
           <li><a href="gear.html">특수기어</a></li>
           <li><a href="bearing.html">베어링</a></li>
           <li><a href="equipment.html">설비현황</a></li>
-          <li class="active"><a href="history.html">연혁</a></li>
           <li><a href="support-center.html">고객지원</a></li>
         </ul>
 
@@ -1019,6 +1412,244 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    function buildHistoryMiniature() {
+      const svg = document.getElementById('factory-scene');
+      const originX = 400;
+      const originY = 70;
+      const unit = 34;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function project(x, y, z) {
+        return [originX + (x - y) * 0.866 * unit, originY + (x + y) * 0.5 * unit - z * unit];
+      }
+
+      function polygonPoints(points) {
+        return points.map((point) => `${point[0].toFixed(1)},${point[1].toFixed(1)}`).join(' ');
+      }
+
+      function makeBuilding(building) {
+        const { x, y, w, d, h } = building;
+        const base = building.z || 0;
+        const top = base + h;
+        let markup = `<polygon class="fy" points="${polygonPoints([project(x, y + d, base), project(x + w, y + d, base), project(x + w, y + d, top), project(x, y + d, top)])}"/>`;
+        markup += `<polygon class="fx" points="${polygonPoints([project(x + w, y, base), project(x + w, y + d, base), project(x + w, y + d, top), project(x + w, y, top)])}"/>`;
+        markup += `<polygon class="tp" points="${polygonPoints([project(x, y, top), project(x + w, y, top), project(x + w, y + d, top), project(x, y + d, top)])}"/>`;
+
+        for (let index = 1; index <= (building.windows || 0); index += 1) {
+          const windowX = x + w * index / (building.windows + 1);
+          markup += `<polygon class="win" points="${polygonPoints([project(windowX - 0.14, y + d, base + h * 0.4), project(windowX + 0.14, y + d, base + h * 0.4), project(windowX + 0.14, y + d, base + h * 0.7), project(windowX - 0.14, y + d, base + h * 0.7)])}"/>`;
+        }
+        return markup;
+      }
+
+      function gearPoints(innerRadius, outerRadius, teeth) {
+        const points = [];
+        const step = Math.PI * 2 / teeth;
+        for (let index = 0; index < teeth; index += 1) {
+          const angle = index * step;
+          [[innerRadius, -0.3], [outerRadius, -0.16], [outerRadius, 0.16], [innerRadius, 0.3]].forEach(([radius, offset]) => {
+            const pointAngle = angle + offset * step;
+            points.push(`${(Math.cos(pointAngle) * radius).toFixed(1)},${(Math.sin(pointAngle) * radius).toFixed(1)}`);
+          });
+        }
+        return points.join(' ');
+      }
+
+      const buildings = [
+        { stage: 0, x: 1, y: 1, w: 2, d: 2, h: 1.1, windows: 2, label: '서울 성수' },
+        { stage: 1, x: 3.4, y: 1, w: 1.6, d: 2, h: 0.9, windows: 1 },
+        { stage: 2, x: 1, y: 3.4, w: 2, d: 1.6, h: 0.9, windows: 2 },
+        { stage: 2, x: 3.6, y: 3.6, w: 0.6, d: 0.6, h: 0.45, machine: true },
+        { stage: 2, x: 4.4, y: 3.6, w: 0.6, d: 0.6, h: 0.45, machine: true },
+        { stage: 2, x: 3.6, y: 4.4, w: 0.6, d: 0.6, h: 0.45, machine: true },
+        { stage: 3, x: 6, y: 1, w: 2, d: 2, h: 1.4, windows: 2, label: '포천 제2공장' },
+        { stage: 4, x: 5.5, y: 4, w: 4, d: 3.4, h: 2, windows: 4, label: '포천 공장', roofUnits: true },
+        { stage: 4, x: 8.6, y: 4.3, w: 0.5, d: 0.5, h: 3, smoke: true },
+        { stage: 5, x: 3.9, y: 6.1, w: 1.4, d: 1.4, h: 3.2, windows: 1, label: '(주)대형특수기어', labelOffset: -52, flag: true, brand: true },
+        { stage: 6, x: 0.7, y: 6.5, w: 2.8, d: 2.8, h: 1.8, windows: 3, label: '안산 시화공단 · 추가 공장', plate: true }
+      ];
+
+      let markup = `<polygon class="sf" points="${polygonPoints([project(0, 10, -0.7), project(10, 10, -0.7), project(10, 10, 0), project(0, 10, 0)])}"/>`;
+      markup += `<polygon class="sx" points="${polygonPoints([project(10, 0, -0.7), project(10, 10, -0.7), project(10, 10, 0), project(10, 0, 0)])}"/>`;
+      markup += `<polygon class="sp" points="${polygonPoints([project(0, 0, 0), project(10, 0, 0), project(10, 10, 0), project(0, 10, 0)])}"/>`;
+
+      for (let index = 2; index <= 8; index += 2) {
+        const firstStart = project(index, 0, 0);
+        const firstEnd = project(index, 10, 0);
+        const secondStart = project(0, index, 0);
+        const secondEnd = project(10, index, 0);
+        markup += `<line class="gl" x1="${firstStart[0]}" y1="${firstStart[1]}" x2="${firstEnd[0]}" y2="${firstEnd[1]}"/>`;
+        markup += `<line class="gl" x1="${secondStart[0]}" y1="${secondStart[1]}" x2="${secondEnd[0]}" y2="${secondEnd[1]}"/>`;
+      }
+
+      [[9.3, 0.7], [9.3, 3.5], [5.3, 9.3], [9.4, 9.4], [0.5, 4.2], [4.6, 9.4]].forEach(([x, y]) => {
+        const point = project(x, y, 0);
+        markup += `<polygon points="${point[0]},${point[1] - 24} ${point[0] - 9},${point[1]} ${point[0] + 9},${point[1]}" fill="#6fae9d" opacity="0.68"/>`;
+      });
+
+      const gearCenter = project(7.6, 8.8, 0);
+      markup += `<g transform="translate(${gearCenter[0]},${gearCenter[1] + 6}) scale(1,.58)"><polygon class="gear-b" points="${gearPoints(30, 38, 12)}"/></g>`;
+      markup += `<g transform="translate(${gearCenter[0]},${gearCenter[1]}) scale(1,.58)"><g>${reduceMotion ? '' : '<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="16s" repeatCount="indefinite"/>'}<polygon class="gear-t" points="${gearPoints(30, 38, 12)}"/><circle r="11" fill="#d7ebed"/></g></g>`;
+
+      buildings.sort((first, second) => first.x + first.w / 2 + first.y + first.d / 2 - (second.x + second.w / 2 + second.y + second.d / 2));
+      buildings.forEach((building) => {
+        let contents = makeBuilding(building);
+        const top = project(building.x + building.w / 2, building.y + building.d / 2, (building.z || 0) + building.h);
+
+        if (building.plate) {
+          contents = `<g class="pl">${makeBuilding({ x: 0.2, y: 6, w: 3.8, d: 3.8, h: 0.15 })}</g>${contents}`;
+        }
+        if (building.roofUnits) {
+          for (let index = 0; index < 3; index += 1) {
+            contents += makeBuilding({ x: 6 + index, y: 5, w: 0.7, d: 0.6, h: 0.25, z: 2 });
+          }
+        }
+        if (building.flag) {
+          contents += `<line x1="${top[0]}" y1="${top[1]}" x2="${top[0]}" y2="${top[1] - 44}" stroke="#438b94" stroke-width="1.5"/><polygon class="flag" points="${top[0]},${top[1] - 44} ${top[0] + 22},${top[1] - 38} ${top[0]},${top[1] - 32}"/>`;
+        }
+        if (building.smoke && !reduceMotion) {
+          [0, 1, 2].forEach((index) => {
+            contents += `<circle class="smk" cx="${top[0]}" cy="${top[1] - 4}" r="${6 + index * 1.5}" style="animation-delay:${index}s"/>`;
+          });
+        }
+        if (building.label) {
+          const labelWidth = building.label.length * 15 + 28;
+          const labelY = top[1] - 30 + (building.labelOffset || 0);
+          const labelClass = building.brand ? 'lab scene-label brand-label' : 'lab scene-label';
+          contents += `<g class="${labelClass}"><rect x="${top[0] - labelWidth / 2}" y="${labelY}" width="${labelWidth}" height="26" rx="13"/><text x="${top[0]}" y="${labelY + 18}">${building.label}</text></g>`;
+        }
+
+        markup += `<g class="scene-stage bd${building.machine ? ' m' : ''}" data-stage="${building.stage}">${contents}</g>`;
+      });
+
+      svg.innerHTML = markup;
+    }
+
+    buildHistoryMiniature();
+
+    const historyMilestones = [
+      { year: 1991, title: '대형특수기어 설립', description: '서울시 성동구 성수1가에서 첫 사업을 시작했습니다.' },
+      { year: 1993, title: '사업장 이전 및 장비 증설', description: '성수1가 내 공장 이전과 함께 생산 설비를 확충했습니다.' },
+      { year: 1999, title: '사업부지 확장', description: '공장 증설과 정밀 가공 설비 도입으로 생산 기반을 넓혔습니다.' },
+      { year: 2001, title: '포천 제2공장 및 장비 증설', description: '제2공장 설립과 수직선반 도입으로 생산 역량을 키웠습니다.' },
+      { year: 2004, title: '포천 공장 완공', description: '1200평 규모 공장을 완공해 사업지를 통합했습니다.' },
+      { year: 2012, title: '법인 전환', description: '(주)대형특수기어로 새롭게 도약했습니다.' },
+      { year: 2026, title: '시화공단 공장 사업확장', description: '경기도 안산시 단원구 원시로30' }
+    ];
+    const historyYearList = document.getElementById('history-years');
+    const historyPlayButton = document.getElementById('history-play');
+    const historyTimelineItems = Array.from(document.querySelectorAll('.timeline-item'));
+    const historySceneStages = Array.from(document.querySelectorAll('.scene-stage'));
+    let selectedHistoryIndex = historyMilestones.length - 1;
+    let historyPlaybackTimer = null;
+    let historyHasAutoPlayed = false;
+
+    function selectHistoryMilestone(index) {
+      selectedHistoryIndex = index;
+      const milestone = historyMilestones[index];
+      let currentItemSet = false;
+
+      historySceneStages.forEach((stage) => {
+        const stageIndex = Number(stage.dataset.stage);
+        stage.classList.toggle('is-future', stageIndex > index);
+        stage.classList.toggle('is-active', stageIndex === index);
+        stage.classList.toggle('on', stageIndex <= index);
+        stage.classList.toggle('hot', stageIndex === index);
+        stage.classList.toggle('pair', index === historyMilestones.length - 1 && stageIndex === 4);
+      });
+
+      historyTimelineItems.forEach((item) => {
+        const isSelected = Number(item.dataset.year) === milestone.year;
+        item.classList.toggle('is-selected', isSelected);
+        item.removeAttribute('aria-current');
+        if (isSelected && !currentItemSet) {
+          item.setAttribute('aria-current', 'step');
+          currentItemSet = true;
+        }
+      });
+
+      historyYearList.querySelectorAll('button').forEach((button, buttonIndex) => {
+        button.setAttribute('aria-pressed', String(buttonIndex === index));
+      });
+
+      document.getElementById('history-caption-year').textContent = milestone.year;
+      document.getElementById('history-caption-title').textContent = milestone.title;
+      document.getElementById('history-caption-description').textContent = milestone.description;
+      document.getElementById('factory-scene').setAttribute('aria-label', `${milestone.year}년 ${milestone.title}`);
+    }
+
+    historyMilestones.forEach((milestone, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'history-year-button';
+      button.textContent = milestone.year;
+      button.setAttribute('aria-pressed', 'false');
+      button.addEventListener('click', () => {
+        historyHasAutoPlayed = true;
+        if (historyPlaybackTimer !== null) {
+          window.clearInterval(historyPlaybackTimer);
+          historyPlaybackTimer = null;
+          historyPlayButton.textContent = '연혁 흐름 재생';
+        }
+        selectHistoryMilestone(index);
+      });
+      historyYearList.appendChild(button);
+    });
+
+    function stopHistoryPlayback() {
+      if (historyPlaybackTimer !== null) {
+        window.clearInterval(historyPlaybackTimer);
+        historyPlaybackTimer = null;
+      }
+      historyPlayButton.textContent = '연혁 흐름 재생';
+    }
+
+    function startHistoryPlayback() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        selectHistoryMilestone(historyMilestones.length - 1);
+        return;
+      }
+
+      selectHistoryMilestone(0);
+      historyPlayButton.textContent = '재생 중지';
+      historyPlaybackTimer = window.setInterval(() => {
+        if (selectedHistoryIndex >= historyMilestones.length - 1) {
+          window.clearInterval(historyPlaybackTimer);
+          historyPlaybackTimer = null;
+          historyPlayButton.textContent = '연혁 흐름 재생';
+          return;
+        }
+        selectHistoryMilestone(selectedHistoryIndex + 1);
+        if (selectedHistoryIndex >= historyMilestones.length - 1) {
+          stopHistoryPlayback();
+        }
+      }, 1400);
+    }
+
+    historyPlayButton.addEventListener('click', () => {
+      historyHasAutoPlayed = true;
+      if (historyPlaybackTimer !== null) {
+        stopHistoryPlayback();
+        return;
+      }
+      startHistoryPlayback();
+    });
+
+    selectHistoryMilestone(selectedHistoryIndex);
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      const historyObserver = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting) && !historyHasAutoPlayed) {
+          historyHasAutoPlayed = true;
+          historyObserver.disconnect();
+          startHistoryPlayback();
+        }
+      }, { threshold: 0.3 });
+      historyObserver.observe(document.querySelector('.history-visual'));
+    }
+  </script>
 
   <!-- 모바일 메뉴 제어 스크립트 -->
   <script src="mobile-menu.js"></script>
