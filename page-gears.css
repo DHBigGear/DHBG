@@ -1,0 +1,67 @@
+html {
+  background: #eef5f5;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  background: transparent !important;
+}
+
+body::before {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  background: #eef5f5 url("./image/page-gears.svg") right center / cover no-repeat;
+  content: "";
+  pointer-events: none;
+}
+
+.sub-hero {
+  background: linear-gradient(90deg, rgba(4, 24, 31, .97), rgba(4, 24, 31, .9) 45%, rgba(4, 24, 31, .72));
+}
+
+.sub-hero-bg,
+.sub-hero-overlay {
+  display: none;
+}
+
+.sub-hero-tag {
+  border-left-color: #6fd8d4;
+  background: none;
+  color: #6fd8d4;
+}
+
+.sub-hero-title {
+  margin: 10px 0 14px;
+  font-size: 40px;
+}
+
+.breadcrumb {
+  color: rgba(255, 255, 255, .7);
+}
+
+.breadcrumb [aria-current="page"] {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.greeting-section,
+.history-section,
+.gear-section,
+.bearing-section,
+.equipment-section,
+.contact-section,
+.location-section {
+  background-color: rgba(243, 247, 248, .70) !important;
+}
+
+@media (max-width: 700px) {
+  body::before {
+    background-position: 72% center;
+  }
+
+  .sub-hero-title {
+    font-size: 34px;
+  }
+}
