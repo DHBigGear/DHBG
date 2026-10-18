@@ -112,6 +112,29 @@ aside.sticky-edge-sidebar {
   font-size: 13.5px;
 }
 
+aside.sticky-edge-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: min(430px, calc(100vh - 120px));
+}
+
+.sidebar-menu {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.sidebar-menu li {
+  flex: 1;
+}
+
+.sidebar-menu li a {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 8px 0 12px;
+}
+
 .sidebar-quick-contact,
 .sidebar-quick-contact:hover {
   background: linear-gradient(135deg, #138b96, #086d78);
