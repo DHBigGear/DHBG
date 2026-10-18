@@ -319,6 +319,18 @@ aside.sticky-edge-sidebar {
 
 .m-site-header {
   display: none !important;
+  min-height: 57px;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.m-brand-logo img {
+  max-height: 36px !important;
+}
+
+.m-menu-btn {
+  height: 36px !important;
+  line-height: 1 !important;
 }
 
 :root {
@@ -362,8 +374,16 @@ main h4 {
 
 .sec-intro .sub-tag,
 .contact-intro .sub-tag,
-.greeting-text .subtitle {
+.greeting-text .subtitle,
+.history-eyebrow {
   font-size: 14px !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.08em !important;
+  margin-bottom: 12px !important;
+}
+
+.sub-hero-tag {
+  margin-bottom: 8px !important;
 }
 
 .sub-hero-title {
@@ -373,17 +393,28 @@ main h4 {
 
 .sec-intro h2,
 .greeting-text h2,
+.history-overview h2,
 .contact-intro h2 {
+  font-family: var(--font-heading) !important;
   font-size: var(--font-size-section-title) !important;
   line-height: 1.4 !important;
 }
 
-.bearing-section .sec-intro h2 {
-  font-size: 34px !important;
+.greeting-body p,
+.history-summary,
+.gear-section .hero-product-info p,
+.bearing-section .hero-product-info p,
+.equipment-section .equip-card-body > p,
+.contact-intro p {
+  font-size: var(--font-size-body) !important;
+  line-height: 1.75 !important;
 }
 
-.bearing-section .sec-intro .sub-tag {
-  font-size: 14px !important;
+@media (min-width: 769px) {
+  .gear-section .hero-product-card,
+  .bearing-section .hero-product-card {
+    gap: 32px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -391,12 +422,13 @@ main h4 {
     --font-size-section-title: 26px;
   }
 
-  .bearing-section .sec-intro h2 {
-    font-size: 28px !important;
-  }
-
   .sub-hero-title {
     font-size: 30px !important;
+  }
+
+  .equipment-section .sec-intro .sub-tag {
+    letter-spacing: 0.04em !important;
+    white-space: nowrap;
   }
 }
 

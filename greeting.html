@@ -430,6 +430,7 @@
     line-height: 1.8;
     color: #4f6269;
     margin-bottom: 28px;
+    word-break: keep-all;
   }
 
   .greeting-body p {
@@ -644,13 +645,8 @@
     .brand-banner-text { display: none; }
   }
 
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .greeting-section .greeting-text h2 { font-size: 26px !important; }
-  }
-
   @media (max-width: 768px) {
     .greeting-container { grid-template-columns: 1fr; gap: 32px; }
-    .greeting-section .greeting-text h2 { font-size: 24px !important; }
     .greeting-body { font-size: 14px; }
   }
 
