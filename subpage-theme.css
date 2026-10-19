@@ -226,7 +226,7 @@ aside.sticky-edge-sidebar {
 .nav-links {
   flex: 1;
   justify-content: center;
-  gap: clamp(10px, 1.5vw, 20px);
+  gap: clamp(16px, 2vw, 26px);
 }
 
 .nav-item > a {

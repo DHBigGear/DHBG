@@ -141,7 +141,7 @@ ul, ol, li {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: clamp(16px, 2vw, 26px);
 }
 
 .nav-item {
@@ -201,18 +201,20 @@ ul, ol, li {
 
 .nav-links .mega-menu {
   position: absolute;
-  top: calc(100% - 8px);
-  left: calc(50% - 50px);
-  width: min(430px, calc(100vw - 32px));
-  padding: 22px 24px 24px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, .98);
-  box-shadow: 0 16px 28px rgba(17, 36, 43, .14);
+  top: 100%;
+  left: 50%;
+  width: min(600px, calc(100vw - 32px));
+  max-width: calc(100vw - 32px);
+  padding: 20px 24px 22px;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--signal);
+  border-radius: 0 0 8px 8px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(17, 21, 24, .12);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateY(8px);
+  transform: translate(-50%, 8px);
   transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
 }
 
@@ -220,21 +222,22 @@ ul, ol, li {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateY(0);
+  transform: translate(-50%, 0);
 }
 
 .mega-menu-inner {
   display: grid;
-  grid-template-columns: 140px minmax(0, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
 }
 
 .mega-menu-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 9px;
-  padding-left: 18px;
+  gap: 7px;
+  min-width: 0;
+  padding-left: 16px;
   border-left: 1px solid var(--line);
 }
 
@@ -243,22 +246,20 @@ ul, ol, li {
   border-left: 0;
 }
 
-.mega-menu-heading {
-  margin-bottom: 3px;
-  color: var(--ink);
-  font-size: 15px;
-  font-weight: 700;
-}
-
+.mega-menu-heading,
 .mega-menu-category {
-  margin-top: 4px;
+  margin: 0 0 4px;
   color: var(--ink);
   font-size: 14px;
   font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
 }
 
 .mega-menu-sub-link {
-  padding-left: 12px;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 13px;
 }
 
 .mega-menu-sub-link::before {
@@ -276,6 +277,7 @@ ul, ol, li {
 .mega-menu-group a:hover,
 .mega-menu-group a:focus-visible {
   color: var(--signal);
+  background: #f3f7f8;
 }
 
 @media (prefers-reduced-motion: reduce) {

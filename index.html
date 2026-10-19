@@ -58,7 +58,7 @@
   .banner-main-line { color: var(--ink); font-size: 14px; letter-spacing: 0.05em; }
   .banner-sub-line { color: var(--muted); font-size: 10px; letter-spacing: 0.03em; }
 
-  .nav-links { display: flex; gap: 32px; }
+  .nav-links { display: flex; gap: clamp(16px, 2vw, 26px); }
   .nav-item { position: relative; }
   .nav-item > a {
     display: block;
@@ -278,7 +278,7 @@
   .brand-group { flex: 0 0 auto; }
   .brand-logo img { max-height: 36px; }
   .brand-banner-text { display: none; }
-  .nav-links { flex: 1; justify-content: center; gap: clamp(10px, 1.5vw, 20px); }
+  .nav-links { flex: 1; justify-content: center; gap: clamp(16px, 2vw, 26px); }
   .nav-item > a { padding: 23px 0; color: #52616c; font-size: 14px; font-weight: 500; white-space: nowrap; }
   .nav-item.active > a { color: #17242d !important; font-weight: 500; }
   .nav-item:hover > a { color: #138e9c !important; }
@@ -461,8 +461,8 @@
         <div class="nav-item active"><a href="index.html">HOME</a></div>
         <div class="nav-item has-mega-menu"><a href="company.html">회사소개</a></div>
         <div class="nav-item has-mega-menu"><a href="gear.html">제품소개</a></div>
-        <div class="nav-item"><a href="equipment.html">설비현황</a></div>
-        <div class="nav-item"><a href="support-center.html">고객지원</a></div>
+        <div class="nav-item has-mega-menu"><a href="equipment.html">설비현황</a></div>
+        <div class="nav-item has-mega-menu"><a href="support-center.html">고객지원</a></div>
         <div class="mega-menu">
           <div class="mega-menu-inner">
             <div class="mega-menu-group">
@@ -475,6 +475,14 @@
               <a class="mega-menu-heading" href="gear.html">제품소개</a>
               <a class="mega-menu-sub-link" href="gear.html">특수기어</a>
               <a class="mega-menu-sub-link" href="bearing.html">베어링</a>
+            </div>
+            <div class="mega-menu-group">
+              <a class="mega-menu-heading" href="equipment.html">설비현황</a>
+              <a class="mega-menu-sub-link" href="equipment.html">보유 설비 전체</a>
+            </div>
+            <div class="mega-menu-group">
+              <a class="mega-menu-heading" href="support-center.html">고객지원</a>
+              <a class="mega-menu-sub-link" href="support-center.html">고객센터</a>
             </div>
           </div>
         </div>
