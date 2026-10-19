@@ -29,7 +29,7 @@ function initPageMotion() {
     const parent = target.parentElement;
     const order = siblingOrder.get(parent) || 0;
     target.dataset.pageMotion = '';
-    target.style.setProperty('--page-motion-delay', `${(order % 5) * 90}ms`);
+    target.style.setProperty('--page-motion-delay', `${(order % 5) * 70}ms`);
     siblingOrder.set(parent, order + 1);
   });
 
