@@ -29,7 +29,7 @@ function initPageMotion() {
     const parent = target.parentElement;
     const order = siblingOrder.get(parent) || 0;
     target.dataset.pageMotion = '';
-    target.style.setProperty('--page-motion-delay', `${(order % 5) * 70}ms`);
+    target.style.setProperty('--page-motion-delay', `${(order % 5) * 20}ms`);
     siblingOrder.set(parent, order + 1);
   });
 
@@ -39,7 +39,7 @@ function initPageMotion() {
       entry.target.classList.add('is-page-visible');
       observer.unobserve(entry.target);
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.01 });
 
   targets.forEach((target) => observer.observe(target));
   heroBanners.forEach((banner) => observer.observe(banner));

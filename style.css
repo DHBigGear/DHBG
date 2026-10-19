@@ -28,6 +28,40 @@ a {
   color: inherit;
 }
 
+.card-item .card-img img,
+.gallery-card .gallery-card-img img,
+.equip-card .equip-card-img img,
+.hero-product-img img,
+.reducer-img img {
+  transition: transform 0.55s cubic-bezier(.2, .7, .2, 1), opacity 0.35s ease;
+}
+
+.card-item:hover .card-img img,
+.gallery-card:hover .gallery-card-img img,
+.equip-card:hover .equip-card-img img,
+.hero-product-img:hover img,
+.reducer-img:hover img {
+  transform: scale(1.035);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-item .card-img img,
+  .gallery-card .gallery-card-img img,
+  .equip-card .equip-card-img img,
+  .hero-product-img img,
+  .reducer-img img {
+    transition: none;
+  }
+
+  .card-item:hover .card-img img,
+  .gallery-card:hover .gallery-card-img img,
+  .equip-card:hover .equip-card-img img,
+  .hero-product-img:hover img,
+  .reducer-img:hover img {
+    transform: none;
+  }
+}
+
 ul, ol, li {
   list-style: none;
 }
