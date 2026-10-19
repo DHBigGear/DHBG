@@ -53,7 +53,7 @@ body::before {
 .equipment-section,
 .contact-section,
 .location-section {
-  background-color: rgba(243, 247, 248, .70) !important;
+  background-color: rgba(243, 247, 248, .60) !important;
 }
 
 @media (max-width: 700px) {
