@@ -214,15 +214,15 @@ ul, ol, li {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translate(-50%, 8px);
-  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+  transform: translateX(-50%);
+  transition: opacity .18s ease, visibility .18s ease;
 }
 
-.nav-links:has(.has-mega-menu:hover, .mega-menu:hover, .has-mega-menu:focus-within, .mega-menu:focus-within) .mega-menu {
+.nav-links:hover .mega-menu,
+.nav-links:focus-within .mega-menu {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translate(-50%, 0);
 }
 
 .mega-menu-inner {
