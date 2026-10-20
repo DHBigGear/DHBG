@@ -472,3 +472,29 @@ main h4 {
 @media (min-width: 901px) {
   .m-header-contact { display: none; }
 }
+
+/* Shared footer layout copied from index.html */
+.site-footer {
+  padding: 36px 24px 30px;
+  background: #040d11;
+  color: #a0a6b0;
+  font-size: 13px;
+}
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.footer-links a { color: #e2e8f0; }
+.footer-links a:hover { color: #58d9d3; }
+.footer-info { margin-bottom: 10px; line-height: 1.8; }
+.footer-copy { color: #718096; font-size: 12px; }
+@media (max-width: 560px) {
+  .site-footer { padding: 30px 20px 26px; }
+  .footer-links { gap: 12px; }
+}
