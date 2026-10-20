@@ -1,0 +1,908 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="./image/favicon.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>찾아오시는 길 | (주)대형특수기어</title>
+<!-- 외부 CSS 연결 -->
+<link rel="stylesheet" href="style.css">
+
+<style>
+  /* ====================================
+     [공통 변수 및 기본 초기화]
+  ==================================== */
+  :root {
+    --header-bg: #ffffff;
+    --signal: #b91d2b;
+    --ink: #111518;
+    --line: #e2e8f0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--ink);
+    background-color: #ffffff;
+    overflow-x: hidden;
+  }
+
+  /* 로고 및 상단 브랜드 배너 문구 조합 스타일 */
+  .brand-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+  }
+
+  .brand-logo img {
+    max-height: 42px;
+    width: auto;
+    display: block;
+  }
+
+  .m-brand-logo img {
+    max-height: 36px;
+    width: auto;
+    display: block;
+  }
+
+  /* 상단 배너 내 문구 영역 구조화 */
+  .brand-banner-text {
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid var(--line);
+    padding-left: 14px;
+  }
+
+  .banner-top-line {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--signal);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .banner-main-line {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+  }
+
+  .banner-sub-line {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: #64748b;
+    letter-spacing: 0.03em;
+  }
+
+  /* ====================================
+     [PC 헤더 & 네비게이션]
+  ==================================== */
+  .site-header {
+    background-color: var(--header-bg);
+    height: 75px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-item > a {
+    color: #64748b;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 26px 0;
+    display: block;
+    transition: color 0.2s ease;
+  }
+
+  .nav-item.active > a {
+    color: var(--ink) !important;
+    font-weight: 700;
+  }
+
+  .nav-item:hover > a {
+    color: var(--signal) !important;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    border: 1px solid var(--line);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 140px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: #333333;
+    text-decoration: none;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .dropdown-menu a:hover {
+    background: #f8fafc;
+    color: var(--signal);
+  }
+
+  /* ====================================
+     [모바일 헤더 & 드로어 메뉴]
+  ==================================== */
+  .m-site-header {
+    display: none;
+    background: #ffffff;
+    padding: 12px 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .m-menu-btn {
+    background: none;
+    border: none;
+    color: var(--ink);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 4px 8px;
+  }
+
+  .side-menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+  }
+
+  .side-menu-overlay.is-active {
+    display: block;
+  }
+
+  .side-menu-drawer {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 280px;
+    height: 100%;
+    background: #ffffff;
+    z-index: 2000;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    box-shadow: -4px 0 16px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .side-menu-drawer.is-open {
+    right: 0 !important;
+  }
+
+  .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: #111518;
+    color: #ffffff;
+  }
+
+  .drawer-title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .drawer-content {
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .m-cate-group {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 15px;
+  }
+
+  .m-cate-title a {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--signal);
+    text-decoration: none;
+  }
+
+  .m-sub-nav {
+    list-style: none;
+    padding: 10px 0 0 10px;
+    margin: 0;
+  }
+
+  .m-sub-nav li {
+    margin-bottom: 8px;
+  }
+
+  .m-sub-nav li a {
+    font-size: 13px;
+    color: #64748b;
+    text-decoration: none;
+  }
+
+  .drawer-quick-contact {
+    padding: 16px 20px;
+    background: #faf9f6;
+    border-top: 1px solid var(--line);
+  }
+
+  .drawer-quick-contact a {
+    display: block;
+    background-color: var(--signal);
+    color: #ffffff !important;
+    text-align: center;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(185, 29, 43, 0.25);
+  }
+
+  /* ====================================
+     [서브 히어로 배너 (높이 240px)]
+  ==================================== */
+  .sub-hero {
+    position: relative;
+    height: 240px;
+    background: #111;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: #fff;
+  }
+
+  .sub-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .sub-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.65) contrast(1.1) brightness(0.8);
+  }
+
+  .sub-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(15,16,18,0.8) 0%, rgba(15,16,18,0.6) 30%, rgba(15,16,18,0.28) 100%);
+    z-index: 2;
+  }
+
+  .sub-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: left;
+  }
+
+  .sub-hero-tag {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-left: 12px;
+    border-left: 2px solid #d72828;
+    background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+  }
+
+  .sub-hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 38px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    text-shadow: 0 4px 18px rgba(0,0,0,0.26);
+  }
+
+  .breadcrumb {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  /* ====================================
+     [인사말 메인 섹션 스타일]
+  ==================================== */
+  .greeting-section {
+    padding: 60px 24px 80px;
+    background: #ffffff;
+    position: relative;
+    min-height: calc(100vh - 300px);
+  }
+
+  .main-layout {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .main-container {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .greeting-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: center;
+  }
+
+  .greeting-text .subtitle {
+    font-family: 'Noto Serif KR', serif;
+    color: var(--signal);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .greeting-text h2 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 32px;
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0 0 24px;
+  }
+
+  .greeting-text h2 span {
+    color: var(--signal);
+  }
+
+  .greeting-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #4f6269;
+    margin-bottom: 28px;
+    word-break: keep-all;
+  }
+
+  .greeting-body p {
+    margin: 0 0 14px;
+  }
+
+  .signature-box {
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+    text-align: right;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .greeting-image-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(9, 39, 49, 0.1);
+  }
+
+  .greeting-image-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ====================================
+     [120px 슬림 사이드바]
+  ==================================== */
+  aside.sticky-edge-sidebar {
+    position: sticky;
+    top: 90px;
+    width: 120px;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    z-index: 100;
+  }
+
+  .sidebar-header {
+    background-color: #111518;
+    color: #ffffff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--signal);
+    letter-spacing: -0.02em;
+  }
+
+  .sidebar-category-group {
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .sidebar-category-title {
+    background-color: #f8fafc;
+    padding: 7px 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #1e293b;
+    border-left: 3px solid var(--signal);
+    letter-spacing: -0.03em;
+  }
+
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar-menu li a {
+    display: block;
+    padding: 6px 6px 6px 10px;
+    color: #475569;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    letter-spacing: -0.04em;
+  }
+
+  .sidebar-menu li a:hover {
+    background-color: #faf5f5;
+    color: var(--signal);
+  }
+
+  .sidebar-menu li.active a {
+    color: var(--signal);
+    font-weight: 700;
+    background-color: #fef2f2;
+  }
+
+  .sidebar-quick-contact {
+    background-color: var(--signal);
+    text-align: center;
+    padding: 12px 6px;
+  }
+
+  .sidebar-quick-contact a {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .sidebar-quick-contact .qc-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+  }
+
+  .sidebar-quick-contact .qc-sub {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* ====================================
+     [푸터 스타일]
+  ==================================== */
+  footer.site-footer {
+    background-color: #111518;
+    color: #a0aec0;
+    font-size: 13px;
+    width: 100%;
+    clear: both;
+  }
+
+  footer.site-footer .footer-nav-bar {
+    border-bottom: 1px solid #2d3748;
+    padding: 16px 0;
+  }
+
+  footer.site-footer .footer-nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  footer.site-footer .footer-nav-inner a {
+    color: #e2e8f0;
+    text-decoration: none;
+  }
+
+  footer.site-footer .footer-nav-inner a:hover {
+    color: var(--signal);
+  }
+
+  footer.site-footer .footer-nav-inner .divider {
+    color: #4a5568;
+  }
+
+  footer.site-footer .footer-body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+  }
+
+  footer.site-footer .footer-info-text {
+    line-height: 1.8;
+    margin-bottom: 12px;
+    color: #a0a6b0;
+  }
+
+  footer.site-footer .footer-info-text .sep {
+    margin: 0 8px;
+    color: #4a5568;
+  }
+
+  footer.site-footer .footer-copyright {
+    color: #718096;
+    font-size: 12px;
+  }
+
+  /* ====================================
+     [반응형 미디어 쿼리]
+  ==================================== */
+  @media screen and (max-width: 1024px) {
+    .site-header {
+      display: none !important;
+    }
+    .m-site-header {
+      display: flex !important;
+    }
+    .main-layout {
+      flex-direction: column;
+    }
+    aside.sticky-edge-sidebar {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+    }
+  }
+
+  @media (max-width: 820px) {
+    .brand-banner-text { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    .greeting-container { grid-template-columns: 1fr; gap: 32px; }
+    .greeting-body { font-size: 14px; }
+  }
+
+  @media (max-width: 768px) {
+    .sub-hero-content {
+      padding: 0 20px;
+    }
+  }
+</style>
+<link rel="stylesheet" href="subpage-theme.css">
+<link rel="stylesheet" href="page-motion.css">
+<link rel="stylesheet" href="page-gears.css">
+</head>
+<body>
+
+  <!-- 모바일 헤더 -->
+  <header class="m-site-header">
+    <a href="index.html" class="m-brand-logo">
+      <img src="./image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR">
+    </a>
+    <a class="m-header-contact" href="tel:0315411248">031-541-1248</a>
+    <button id="side-menu-open-btn" class="m-menu-btn" aria-label="메뉴 열기">☰</button>
+  </header>
+
+  <!-- 모바일 사이드 드로어 메뉴 -->
+  <div id="side-menu-overlay" class="side-menu-overlay"></div>
+  <aside id="side-menu-drawer" class="side-menu-drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">전체메뉴</span>
+      <button id="side-menu-close-btn" class="close-btn" aria-label="메뉴 닫기">✕</button>
+    </div>
+    
+    <div class="drawer-content">
+      <nav class="drawer-quick-links" aria-label="전체 메뉴">
+        <a href="index.html">홈</a>
+        <a href="greeting.html">인사말씀</a>
+        <a href="history.html">회사연혁</a>
+        <a href="company.html">회사개요</a>
+        <a href="location.html">찾아오시는 길</a>
+
+        <a href="gear.html">특수기어</a>
+        <a href="bearing.html">선회 베어링</a>
+        <a href="equipment.html">설비현황</a>
+        <a href="support-center.html">고객지원</a>
+      </nav>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="company.html">회사소개</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="greeting.html">인사말씀</a></li>
+          <li><a href="history.html">회사연혁</a></li>
+          <li><a href="company.html">회사개요</a></li>
+          <li><a href="location.html">찾아오시는 길</a></li>
+
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="bearing.html">제품소개</a></div>
+        <ul class="m-sub-nav">
+          
+          <li><a href="gear.html">특수기어</a></li>
+          <li><a href="bearing.html">선회 베어링</a></li>
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="equipment.html">설비현황</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="equipment.html">보유 설비 전체</a></li>
+        </ul>
+      </div>
+      <div class="m-cate-group">
+        <div class="m-cate-title"><a href="support-center.html">고객지원</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="support-center.html">고객센터</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 모바일 드로어 하단 Quick Contact -->
+    <div class="drawer-quick-contact">
+      <a href="support-center.html">✉ 빠른 견적 및 문의하기</a>
+    </div>
+  </aside>
+
+  <!-- PC 상단 헤더 -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <!-- 로고 및 배너 텍스트 결합 영역 -->
+      <a href="index.html" class="brand-group">
+        <div class="brand-logo">
+          <img src="./image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR">
+        </div>
+        <div class="brand-banner-text">
+          <span class="banner-top-line">SINCE 1991</span>
+          <span class="banner-main-line">DAE HYUNG GEAR Co., Ltd</span>
+          <span class="banner-sub-line">HIGH-PRECISION GEAR & SLEWING BEARING</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="주 메뉴">
+        <div class="nav-item active has-mega-menu"><a href="company.html">회사소개</a></div>
+        <div class="nav-item has-mega-menu"><a href="gear.html">제품소개</a></div>
+        <div class="nav-item has-mega-menu"><a href="equipment.html">설비현황</a></div>
+        <div class="nav-item has-mega-menu"><a href="support-center.html">고객지원</a></div>
+        <div class="mega-menu">
+          <div class="mega-menu-inner">
+            <div class="mega-menu-brand">
+              <small>DAEHYUNG SPECIAL GEAR</small>
+              <strong>정밀을 가공하는<br>1991년부터의 기업</strong>
+              <span>대형 특수기어 · 정밀 선회 베어링 · CNC 가공</span>
+            </div>
+            <div class="mega-menu-columns">
+              <div class="mega-menu-group">
+                <a class="mega-menu-category" href="company.html">회사소개</a>
+                <a class="mega-menu-sub-link" href="greeting.html">인사말씀</a>
+                <a class="mega-menu-sub-link" href="history.html">회사연혁</a>
+                <a class="mega-menu-sub-link" href="company.html">회사개요</a>
+                <a class="mega-menu-sub-link" href="location.html">찾아오시는 길</a>
+
+              </div>
+              <div class="mega-menu-group">
+                <a class="mega-menu-heading" href="gear.html">제품소개</a>
+                <a class="mega-menu-sub-link" href="gear.html">특수기어</a>
+                <a class="mega-menu-sub-link" href="bearing.html">선회 베어링</a>
+              </div>
+              <div class="mega-menu-group">
+                <a class="mega-menu-heading" href="equipment.html">설비현황</a>
+                <a class="mega-menu-sub-link" href="equipment.html">보유 설비 전체</a>
+              </div>
+              <div class="mega-menu-group">
+                <a class="mega-menu-heading" href="support-center.html">고객지원</a>
+                <a class="mega-menu-sub-link" href="support-center.html">고객센터</a>
+              </div>
+            </div>
+            <div class="mega-menu-contact">
+              <small>견적 · 문의</small>
+              <strong>가공 사양 상담</strong>
+              <a href="support-center.html">문의하기</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <a class="header-contact" href="tel:0315411248">031-541-1248</a>
+    </div>
+  </header>
+
+  <!-- 서브 히어로 배너 -->
+  <section class="sub-hero">
+    <div class="sub-hero-bg">
+      <img src="./image/factory_front.jpg" alt="(주)대형특수기어 공장 전경">
+    </div>
+    <div class="sub-hero-overlay"></div>
+    <div class="sub-hero-content">
+      <div class="sub-hero-tag">ABOUT US</div>
+      <h1 class="sub-hero-title">찾아오시는 길</h1>
+      <div class="breadcrumb">HOME &gt; 회사소개 &gt; <span aria-current="page">찾아오시는 길</span></div>
+    </div>
+  </section>
+
+  <style>
+    .directions-section { padding-top: 60px; padding-bottom: 80px; }
+    .directions-page { width: 100%; }
+    .directions-intro { margin: 0 0 26px; }
+    .directions-eyebrow { display: block; margin-bottom: 12px; color: var(--signal); font-family: 'Noto Serif KR', serif; font-size: 15px; font-weight: 700; letter-spacing: .1em; }
+    .directions-title { margin: 0 0 6px; color: #102a33; font-family: 'Noto Serif KR', serif; font-size: 30px; line-height: 1.3; }
+    .directions-description { margin: 0; color: #586a71; font-size: 15px; line-height: 1.6; }
+    .directions-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .directions-card { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: 0 5px 18px rgba(9, 39, 49, .045); }
+    .directions-map { position: relative; display: flex; height: 210px; align-items: center; justify-content: center; overflow: hidden; background: linear-gradient(135deg, #e9f0ef, #f3f7f4 55%, #e4eeee); color: #087d88; text-decoration: none; }
+    .directions-map::before, .directions-map::after { position: absolute; content: ''; height: 14px; width: 130%; background: rgba(255,255,255,.8); transform: rotate(-18deg); }
+    .directions-map::before { top: 32%; left: -12%; }
+    .directions-map::after { top: 67%; left: -10%; transform: rotate(22deg); }
+    .directions-map-content { position: relative; z-index: 1; display: grid; justify-items: center; gap: 7px; padding: 17px 24px; border: 1px solid rgba(255,255,255,.8); border-radius: 9px; background: rgba(255,255,255,.9); box-shadow: 0 8px 24px rgba(15,39,48,.09); text-align: center; }
+    .directions-map-pin { width: 27px; height: 27px; fill: #087d88; }
+    .directions-map-content strong { color: #102a33; font-size: 15px; }
+    .directions-map-content span { color: #60747a; font-size: 12px; }
+    .directions-card-content { padding: 24px 20px; }
+    .directions-card-label { color: #087d88; font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+    .directions-card h3 { margin: 0 0 9px; color: #102a33; font-family: 'Noto Serif KR', serif; font-size: 17px; }
+    .directions-address { min-height: 48px; margin: 0; color: #586b71; font-size: 14px; line-height: 1.7; word-break: keep-all; }
+    .directions-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .directions-button { display: inline-flex; align-items: center; justify-content: center; min-height: 43px; padding: 0 17px; border: 1px solid #087d88; border-radius: 5px; background: #087d88; color: #fff; font-size: 13px; font-weight: 700; text-decoration: none; transition: background .2s ease, transform .2s ease; }
+    .directions-button:hover { transform: translateY(-2px); background: #066a73; }
+    .kakao-map-button:focus-visible { outline: 3px solid rgba(8, 125, 136, .35); outline-offset: 3px; }
+    @media (max-width: 820px) { .directions-section { padding: 48px 20px; } .directions-title { font-size: 26px; } .directions-description { font-size: 14px; } .directions-grid { grid-template-columns: 1fr; gap: 14px; } .directions-map { height: 190px; } .directions-card-content { padding: 24px 22px; } }
+    @media (max-width: 420px) { .directions-map { height: 170px; } .directions-address { min-height: 0; } }
+  </style>
+  <section class="greeting-section directions-section">
+    <div class="main-layout">
+      <div class="main-container">
+        <main class="directions-page">
+          <header class="directions-intro">
+            <div class="directions-eyebrow">VISIT US</div>
+            <h2 class="directions-title">공장의 위치를 안내해 드립니다</h2>
+            <p class="directions-description">방문하실 공장을 확인하신 뒤 카카오맵에서 상세 위치와 길찾기를 확인해 주세요.</p>
+          </header>
+          <div class="directions-grid">
+            <article class="directions-card" aria-labelledby="pocheon-heading">
+              <a class="directions-map" href="https://map.kakao.com/link/search/%ED%8F%AC%EC%B2%9C%EC%8B%9C%20%EC%86%8C%ED%9D%98%EC%9D%8D%20%ED%98%B8%EA%B5%AD%EB%A1%9C479%EB%B2%88%EA%B8%B8%2015" target="_blank" rel="noopener noreferrer" aria-label="포천 공장을 카카오맵에서 확인">
+                <span class="directions-map-content"><svg class="directions-map-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/></svg><strong>포천 공장 위치</strong><span>카카오맵에서 확인 ↗</span></span>
+              </a>
+              <div class="directions-card-content">
+                <div class="directions-card-label">POCHEON FACTORY</div>
+                <h3 id="pocheon-heading">포천 공장</h3>
+                <p class="directions-address">경기도 포천시 소흘읍 호국로479번길 15</p>
+                <div class="directions-actions">
+                  <a class="directions-button kakao-map-button" href="https://map.kakao.com/link/search/%ED%8F%AC%EC%B2%9C%EC%8B%9C%20%EC%86%8C%ED%9D%98%EC%9D%8D%20%ED%98%B8%EA%B5%AD%EB%A1%9C479%EB%B2%88%EA%B8%B8%2015" target="_blank" rel="noopener noreferrer">카카오맵에서 위치 확인 ↗</a>
+                </div>
+              </div>
+            </article>
+            <article class="directions-card" aria-labelledby="ansan-heading">
+              <a class="directions-map" href="https://map.kakao.com/link/search/%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%8B%A8%EC%9B%90%EA%B5%AC%20%EC%9B%90%EC%8B%9C%EB%A1%9C%2030" target="_blank" rel="noopener noreferrer" aria-label="안산 공장을 카카오맵에서 확인">
+                <span class="directions-map-content"><svg class="directions-map-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/></svg><strong>안산 공장 위치</strong><span>카카오맵에서 확인 ↗</span></span>
+              </a>
+              <div class="directions-card-content">
+                <div class="directions-card-label">ANSAN FACTORY · SIHWA</div>
+                <h3 id="ansan-heading">안산 공장 <small>(시화공단)</small></h3>
+                <p class="directions-address">경기도 안산시 단원구 원시로 30</p>
+                <div class="directions-actions">
+                  <a class="directions-button kakao-map-button" href="https://map.kakao.com/link/search/%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%8B%A8%EC%9B%90%EA%B5%AC%20%EC%9B%90%EC%8B%9C%EB%A1%9C%2030" target="_blank" rel="noopener noreferrer">카카오맵에서 위치 확인 ↗</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </main>
+      </div>
+      <aside class="sticky-edge-sidebar">
+        <div class="sidebar-header">전체 메뉴</div>
+        <ul class="sidebar-menu">
+          <li><a href="greeting.html">인사말씀</a></li>
+          <li><a href="history.html">회사연혁</a></li>
+          <li><a href="company.html">회사개요</a></li>
+          <li class="active"><a href="location.html">찾아오시는 길</a></li>
+          <li><a href="gear.html">특수기어</a></li>
+          <li><a href="bearing.html">선회 베어링</a></li>
+          <li><a href="equipment.html">설비현황</a></li>
+          <li><a href="support-center.html">고객지원</a></li>
+        </ul>
+        <div class="sidebar-quick-contact">
+          <a href="support-center.html"><span class="qc-title">QUICK CONTACT</span><span class="qc-sub">견적 / 문의 ✉</span></a>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <!-- 공통 푸터 -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <nav class="footer-links"><a href="index.html">홈</a><a href="company.html">회사소개</a><a href="bearing.html">제품소개</a><a href="equipment.html">설비현황</a><a href="support-center.html">고객지원</a></nav>
+      <div class="footer-info">사업자등록번호 127-86-41052 <span>*</span> 대표이사 박병호 <span>*</span> 경기도 포천시 소흘읍 호국로479번길 15</div>
+      <div class="footer-copy">COPYRIGHT © (주)대형특수기어 ALL RIGHT RESERVED.</div>
+    </div>
+  </footer>
+
+  <!-- 모바일 메뉴 제어 스크립트 -->
+  <script src="mobile-menu.js"></script>
+
+</body>
+</html>

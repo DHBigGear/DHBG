@@ -555,92 +555,6 @@
     color: #ffffff;
   }
 
-  .location-block {
-    margin-top: 32px;
-  }
-
-  .location-section-title {
-    margin: 0 0 16px;
-    color: var(--ink);
-    font-family: 'Noto Serif KR', serif;
-    font-size: 22px;
-    line-height: 1.35;
-  }
-
-  .location-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-    width: 100%;
-  }
-
-  .location-item {
-    min-width: 0;
-    min-height: 168px;
-    padding: 24px 26px;
-    border: 1px solid var(--line);
-    border-left: 5px solid #35b8c2;
-    border-radius: 8px;
-    background: #ffffff;
-    display: grid;
-    align-content: center;
-    justify-items: start;
-  }
-
-  .location-name {
-    margin-bottom: 8px;
-    color: #102a33;
-    font-size: 19px;
-    font-weight: 700;
-  }
-
-  .location-name span {
-    margin-left: 4px;
-    color: #71858b;
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  .location-address {
-    color: #4f6269;
-    font-size: 14px;
-    line-height: 1.65;
-    word-break: keep-all;
-  }
-
-  .location-item .map-link-btn {
-    margin-top: 18px;
-    padding: 9px 14px;
-    font-size: 13px;
-  }
-
-  .map-link-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 20px;
-    background-color: #03c75a;
-    color: #ffffff !important;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 6px;
-    text-decoration: none !important;
-    white-space: nowrap;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    box-shadow: 0 4px 12px rgba(3, 199, 90, 0.2);
-  }
-
-  .map-link-btn:hover {
-    background-color: #02b150;
-    transform: translateY(-2px);
-  }
-
-  .naver-icon {
-    fill: #ffffff;
-    flex-shrink: 0;
-  }
 
   /* ====================================
      [120px 슬림 사이드바]
@@ -837,11 +751,6 @@
     .phone-action,
     .copy-email-button { min-height: 38px; padding: 0 12px; }
     .email-actions { padding-top: 20px; }
-    .location-block { margin-top: 26px; }
-    .location-section-title { font-size: 20px; }
-    .location-list { grid-template-columns: 1fr; }
-    .location-item { min-height: 0; }
-    .location-address { width: 100%; min-height: 0; font-size: 14px; }
   }
 
   @media (max-width: 360px) {
@@ -876,9 +785,11 @@
     <div class="drawer-content">
       <nav class="drawer-quick-links" aria-label="전체 메뉴">
         <a href="index.html">홈</a>
-        <a href="company.html">회사개요</a>
-        <a href="history.html">회사연혁</a>
         <a href="greeting.html">인사말씀</a>
+        <a href="history.html">회사연혁</a>
+        <a href="company.html">회사개요</a>
+        <a href="location.html">찾아오시는 길</a>
+
         <a href="gear.html">특수기어</a>
         <a href="bearing.html">선회 베어링</a>
         <a href="equipment.html">설비현황</a>
@@ -887,9 +798,11 @@
       <div class="m-cate-group">
         <div class="m-cate-title"><a href="company.html">회사소개</a></div>
         <ul class="m-sub-nav">
-          <li><a href="company.html">회사개요</a></li>
-          <li><a href="history.html">회사연혁</a></li>
           <li><a href="greeting.html">인사말씀</a></li>
+          <li><a href="history.html">회사연혁</a></li>
+          <li><a href="company.html">회사개요</a></li>
+          <li><a href="location.html">찾아오시는 길</a></li>
+
         </ul>
       </div>
       <div class="m-cate-group">
@@ -949,9 +862,11 @@
             <div class="mega-menu-columns">
               <div class="mega-menu-group">
                 <a class="mega-menu-category" href="company.html">회사소개</a>
-                <a class="mega-menu-sub-link" href="company.html">회사개요</a>
-                <a class="mega-menu-sub-link" href="history.html">회사연혁</a>
                 <a class="mega-menu-sub-link" href="greeting.html">인사말씀</a>
+                <a class="mega-menu-sub-link" href="history.html">회사연혁</a>
+                <a class="mega-menu-sub-link" href="company.html">회사개요</a>
+                <a class="mega-menu-sub-link" href="location.html">찾아오시는 길</a>
+
               </div>
               <div class="mega-menu-group">
                 <a class="mega-menu-heading" href="gear.html">제품소개</a>
@@ -1035,32 +950,6 @@
             </div>
           </div>
 
-          <div class="location-block" aria-labelledby="location-heading">
-            <h2 class="location-section-title" id="location-heading">공장 위치</h2>
-            <div class="location-list">
-              <div class="location-item">
-                <strong class="location-name">포천 공장</strong>
-                <div class="location-address">경기도 포천시 소흘읍 호국로479번길 15</div>
-                <a href="https://naver.me/xhPFZDhp" target="_blank" rel="noopener noreferrer" class="map-link-btn">
-                  <svg class="naver-icon" viewBox="0 0 24 24" width="14" height="14">
-                    <path fill="currentColor" d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/>
-                  </svg>
-                  포천공장 지도 보기
-                </a>
-              </div>
-              <div class="location-item">
-                <strong class="location-name">안산 공장<span>시화공단</span></strong>
-                <div class="location-address">경기도 안산시 단원구 원시로30</div>
-                <a href="https://naver.me/FNt4XVon" target="_blank" rel="noopener noreferrer" class="map-link-btn">
-                  <svg class="naver-icon" viewBox="0 0 24 24" width="14" height="14">
-                    <path fill="currentColor" d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/>
-                  </svg>
-                  안산공장 지도 보기
-                </a>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
 
@@ -1069,9 +958,11 @@
         <div class="sidebar-header">전체 메뉴</div>
 
         <ul class="sidebar-menu">
-          <li><a href="company.html">회사개요</a></li>
-          <li><a href="history.html">회사연혁</a></li>
           <li><a href="greeting.html">인사말씀</a></li>
+          <li><a href="history.html">회사연혁</a></li>
+          <li><a href="company.html">회사개요</a></li>
+          <li><a href="location.html">찾아오시는 길</a></li>
+
           <li><a href="gear.html">특수기어</a></li>
           <li><a href="bearing.html">선회 베어링</a></li>
           <li><a href="equipment.html">설비현황</a></li>
