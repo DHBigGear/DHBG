@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --header-bg: #ffffff;
   --signal: #087d88;
   --ink: #0b1720;
@@ -497,4 +497,82 @@ main h4 {
 @media (max-width: 560px) {
   .site-footer { padding: 30px 20px 26px; }
   .footer-links { gap: 12px; }
+}
+
+.drawer-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 6px;
+}
+
+.drawer-quick-links {
+  display: none !important;
+}
+
+.drawer-content .m-cate-group {
+  display: block !important;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.drawer-content .m-cate-title {
+  display: flex;
+  flex: 1;
+}
+
+.drawer-content .m-cate-title a {
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border: 1px solid #e0eaed;
+  border-radius: 5px;
+  background: #f7fafb;
+  color: #22343e;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.drawer-content .m-cate-title a::after {
+  content: '\203A';
+  color: #7f9da4;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.drawer-content .m-cate-title a:hover,
+.drawer-content .m-cate-title a:focus-visible {
+  border-color: #8bcbd0;
+  background: #eaf6f7;
+  color: #075b64;
+}
+
+.drawer-content .m-cate-group.has-submenu {
+  display: block !important;
+}
+
+.drawer-content .m-cate-group.has-submenu .m-sub-nav {
+  display: block;
+  padding: 4px 12px 8px;
+}
+
+.drawer-content .m-cate-group.has-submenu .m-sub-nav a {
+  display: block;
+  padding: 8px 10px;
+  color: #62767d;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.drawer-content .m-cate-group.has-submenu .m-sub-nav a:hover {
+  color: #087f83;
 }
