@@ -52,7 +52,9 @@ body::before {
 .bearing-section,
 .equipment-section,
 .contact-section,
-.location-section {
+.location-section,
+.biz-section,
+.history-preview {
   background-color: rgba(243, 247, 248, .80) !important;
 }
 
