@@ -139,6 +139,7 @@ ul, ol, li {
 }
 
 .nav-links {
+  position: relative;
   display: flex;
   align-items: center;
   gap: clamp(16px, 2vw, 26px);
@@ -202,19 +203,19 @@ ul, ol, li {
 .nav-links .mega-menu {
   position: absolute;
   top: 100%;
-  left: 50%;
-  width: min(600px, calc(100vw - 32px));
-  max-width: calc(100vw - 32px);
-  padding: 20px 24px 22px;
-  border: 1px solid var(--line);
-  border-top: 3px solid var(--signal);
-  border-radius: 0 0 8px 8px;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  padding: 18px 0 21px;
+  border: 1px solid #e5edef;
+  border-top: 2px solid #45cbd0;
+  border-radius: 0 0 7px 7px;
   background: #ffffff;
-  box-shadow: 0 12px 28px rgba(17, 21, 24, .12);
+  box-shadow: 0 10px 24px rgba(22, 48, 56, .09);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateX(-50%);
+  transform: none;
   transition: opacity .18s ease, visibility .18s ease;
 }
 
@@ -226,58 +227,65 @@ ul, ol, li {
 }
 
 .mega-menu-inner {
+  width: 100%;
+  margin: 0;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0;
+}
+
+.mega-menu-inner::before {
+  content: "";
 }
 
 .mega-menu-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 7px;
+  gap: 6px;
   min-width: 0;
-  padding-left: 16px;
-  border-left: 1px solid var(--line);
+  padding: 2px 10px 2px 14px;
+  border-left: 1px solid #e7eff0;
 }
 
 .mega-menu-group:first-child {
-  padding-left: 0;
+  padding-left: 8px;
   border-left: 0;
 }
 
 .mega-menu-heading,
 .mega-menu-category {
   margin: 0 0 4px;
-  color: var(--ink);
-  font-size: 14px;
+  color: #243640;
+  font-size: 13px;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.6;
   white-space: nowrap;
 }
 
 .mega-menu-sub-link {
-  padding: 2px 4px;
-  border-radius: 3px;
+  padding: 3px 6px;
+  border-radius: 4px;
   font-size: 13px;
+  line-height: 1.5;
 }
 
 .mega-menu-sub-link::before {
   content: "\203A";
   margin-right: 7px;
-  color: #8ba0a7;
+  color: #49bfc5;
 }
 
 .mega-menu-group a {
-  color: #64748b;
+  color: #667983;
   font-size: 13px;
-  transition: color .18s ease;
+  transition: color .18s ease, background-color .18s ease;
 }
 
 .mega-menu-group a:hover,
 .mega-menu-group a:focus-visible {
-  color: var(--signal);
-  background: #f3f7f8;
+  color: #087d88;
+  background: #edf9f9;
 }
 
 @media (prefers-reduced-motion: reduce) {
