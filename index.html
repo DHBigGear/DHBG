@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <link rel="icon" href="./image/favicon.png" type="image/png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <title>정밀 가공의 제조 파트너 | (주)대형특수기어</title>
 <meta property="og:site_name" content="(주) 대형특수기어">
 <script type="application/ld+json">
@@ -15,8 +17,6 @@
   "url": "https://dehyoung.com/"
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="page-motion.css">
 <style>
@@ -266,12 +266,24 @@
   }
 
   :root {
-    --signal: #55d8df;
+    --signal: #58d9d3;
     --hero-image: none;
-    --ink: #0b1720;
-    --line: #dce3e8;
-    --muted: #a8bac5;
+    --ink: #10191d;
+    --line: #29363b;
+    --muted: #9aa8ad;
+    --color-bg: #071216;
+    --color-surface: #0d1a1f;
+    --color-text: #f1f5f5;
+    --color-text-muted: #b3c0c3;
+    --color-accent: #58d9d3;
+    --font-sans: 'Noto Sans KR', sans-serif;
+    --font-heading: 'Noto Serif KR', serif;
+    --font-size-body: 16px;
+    --space-section: clamp(112px, 13vw, 176px);
+    --space-gutter: clamp(20px, 4vw, 56px);
   }
+
+  body { color: var(--color-text); background: var(--color-bg); font-family: var(--font-sans); font-size: var(--font-size-body); }
 
   .site-header { height: 68px; background: #fff; }
   .nav-inner { max-width: 1440px; gap: 22px; padding: 0 24px; }
@@ -301,21 +313,22 @@
   .hero-slide.is-active { opacity: 1; transform: scale(1.08); transition-duration: 1.8s, 5s, .35s; }
   .hero-overlay { background: linear-gradient(90deg, rgba(5, 17, 23, .68), rgba(5, 17, 23, .32) 60%, rgba(5, 17, 23, .2)), linear-gradient(0deg, rgba(3, 14, 19, .82), transparent 44%); }
   .hero-content { position: relative; inset: auto; width: 100%; justify-content: center; max-width: 1440px; padding: 0 28px 48px; }
-  .hero-tag { width: fit-content; margin-bottom: 24px; padding: 10px 16px; border: 1px solid rgba(85, 216, 223, .42); border-radius: 24px; background: rgba(11, 31, 39, .62); color: #63e1e6; font-family: 'Noto Sans KR', sans-serif; font-size: 12px; letter-spacing: .12em; }
-  .hero-title { max-width: 960px; margin-bottom: 22px; font-family: 'Noto Sans KR', sans-serif; font-size: 82px; font-weight: 700; line-height: 1.16; letter-spacing: 0; text-shadow: none; }
-  .hero-title-main { padding: 0; border: 0; color: #58d9e6; letter-spacing: inherit; white-space: normal; }
+  .hero-tag { width: fit-content; margin-bottom: 24px; padding: 0 0 0 14px; border: 0; border-left: 1px solid var(--color-accent); border-radius: 0; background: transparent; color: var(--color-accent); font-family: var(--font-sans); font-size: 12px; letter-spacing: .2em; }
+  .hero-title { max-width: 1100px; margin-bottom: 22px; font-family: var(--font-heading); font-size: clamp(40px, 4.2vw, 62px); font-weight: 700; line-height: 1.2; letter-spacing: -.055em; text-shadow: none; white-space: nowrap; }
+  .hero-title-main { padding: 0; border: 0; color: var(--color-accent); letter-spacing: inherit; white-space: inherit; }
   .hero-title-company { display: inline; margin: 0; font-size: inherit; letter-spacing: inherit; }
   .hero-title-company-only { font-size: inherit; }
-  .hero-desc { max-width: 700px; margin-bottom: 40px; color: #c0cdd4; font-size: 18px; line-height: 1.85; }
+  .hero-desc { max-width: 650px; margin-bottom: 32px; color: var(--color-text-muted); font-size: 17px; line-height: 1.8; }
   .hero-desc .keep-word { white-space: nowrap; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .btn-signal, .history-link { min-height: 50px; padding: 13px 24px; border-radius: 26px; background: linear-gradient(100deg, #53d8e7, #67e2cf); color: #09232a; }
   .btn-signal:hover { background: #8af0e4; }
   .btn-outline { display: inline-flex; min-height: 44px; align-items: center; padding: 10px 20px; border: 1px solid rgba(225, 240, 245, .42); border-radius: 24px; color: #edf6f8; font-size: 14px; font-weight: 600; }
-  .hero-stats { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 50px; }
-  .hero-stat { min-width: 174px; padding: 18px 20px; border: 1px solid rgba(174, 202, 214, .2); border-radius: 14px; background: rgba(13, 31, 40, .76); }
-  .hero-stat strong { display: block; color: #f2f8fa; font-size: 27px; line-height: 1.2; }
-  .hero-stat span { display: block; margin-top: 5px; color: #a9bdc7; font-size: 12px; }
+  .hero-stats { display: flex; flex-wrap: wrap; gap: 0; margin-top: 44px; }
+  .hero-stat { min-width: 174px; padding: 8px 28px 8px 0; margin-right: 28px; border: 0; border-right: 1px solid rgba(179, 192, 195, .22); border-radius: 0; background: transparent; }
+  .hero-stat:last-child { border-right: 0; }
+  .hero-stat strong { display: block; color: var(--color-accent); font-size: 25px; font-weight: 600; line-height: 1.2; letter-spacing: -.04em; }
+  .hero-stat span { display: block; margin-top: 8px; color: #a9b5b8; font-size: 12px; letter-spacing: .04em; }
   .hero-pagination { position: absolute; z-index: 2; right: 0; bottom: 22px; left: 0; display: flex; justify-content: center; gap: 10px; }
   .hero-pagination button { width: 10px; height: 10px; padding: 0; border: 1px solid rgba(255,255,255,.85); border-radius: 50%; background: rgba(255,255,255,.45); cursor: pointer; transition: width .2s ease, background-color .2s ease; }
   .hero-pagination button[aria-pressed="true"] { width: 28px; border-color: #5bdde0; border-radius: 8px; background: #5bdde0; }
@@ -335,14 +348,7 @@
   .main-hero.is-entering .hero-stat:nth-child(1) { animation-delay: .67s; }
   .main-hero.is-entering .hero-stat:nth-child(2) { animation-delay: .8s; }
   .main-hero.is-entering .hero-stat:nth-child(3) { animation-delay: .93s; }
-  .main-hero.is-entering .hero-title-main {
-    background: linear-gradient(100deg, #58d9e6 0 40%, #e9ffff 50%, #58d9e6 60% 100%) 100% 0 / 250% 100%;
-    background-clip: text;
-    color: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: hero-shine 1.8s ease-in-out 1.1s 1 both;
-  }
+  .main-hero.is-entering .hero-title-main { color: var(--color-accent); }
   @keyframes hero-rise {
     from { opacity: 0; transform: translateY(26px); }
     to { opacity: 1; transform: none; }
@@ -352,61 +358,101 @@
     to { background-position: 0 0; }
   }
 
-  .biz-section { padding: 82px 28px 90px; background: #07151b; color: #f1f6f8; }
+  .biz-section { padding: var(--space-section) var(--space-gutter); background: var(--color-bg); color: var(--color-text); }
   .content-width { max-width: 1320px; }
   .biz-section .content-width { display: block; }
   .sec-header { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 32px; margin-bottom: 34px; }
-  .sec-title { margin: 0; color: #f1f6f8; font-family: 'Noto Sans KR', sans-serif; font-size: 42px; line-height: 1.25; }
+  .sec-title { margin: 0; color: #f1f6f8; font-family: var(--font-heading); font-size: 42px; line-height: 1.25; }
   .biz-section .sec-title { margin: 0; }
   .sec-title span, .history-label { margin-bottom: 16px; color: #5fe1d6; font-family: 'Noto Sans KR', sans-serif; font-size: 12px; letter-spacing: .13em; }
   .section-desc { max-width: 590px; justify-self: end; margin: 0 0 4px; color: #aec0ca; font-size: 15px; line-height: 1.8; }
-  .grid-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-  .card-item { height: auto; min-height: 350px; border: 1px solid rgba(162, 190, 201, .18); border-radius: 20px 20px 10px 10px; background: #0c1c24; box-shadow: none; transition: transform .5s cubic-bezier(.2, .7, .2, 1), border-color .35s ease; }
-  .card-item:hover { transform: translateY(-5px); border-color: rgba(85, 216, 223, .55); }
-  .card-img { position: relative; height: 220px; }
-  .card-img img { opacity: .92; }
-  .card-body { position: static; padding: 20px 22px 22px; background: none; }
-  .card-body h3 { margin-bottom: 8px; color: #f4f8fa; font-size: 20px; text-shadow: none; }
-  .card-body p { color: #a9bbc4; font-size: 13px; line-height: 1.7; text-shadow: none; }
-  .card-more { display: inline-flex; align-items: center; margin-top: 12px; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: #62dedc; font-size: 13px; font-weight: 700; letter-spacing: 0; text-transform: none; transition: color .2s ease; }
-  .card-item:hover .card-more { transform: none; border-color: transparent; background: none; box-shadow: none; color: #a0f2e8; }
-  .site-footer { background: #040d11; }
+  .grid-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .card-item { height: auto; min-height: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; transition: opacity .35s ease; }
+  .card-item:hover { transform: none; opacity: .88; }
+  .card-img { position: relative; height: clamp(250px, 25vw, 360px); overflow: hidden; background: var(--color-surface); }
+  .card-img img { opacity: .94; transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
+  .card-item:hover .card-img img { opacity: .94; transform: scale(1.025); }
+  .card-body { position: relative; padding: 18px 0 0; border-top: 1px solid rgba(179, 192, 195, .35); margin-top: 14px; background: none; }
+  .card-body h3 { margin: 0; color: var(--color-text); font-size: 19px; font-weight: 500; letter-spacing: -.035em; text-shadow: none; }
+  .card-body p { margin-top: 7px; color: #9ba9ad; font-size: 13px; line-height: 1.65; text-shadow: none; }
+  .card-more { display: none; }
+
+  .history-preview { display: block; padding: var(--space-section) var(--space-gutter); background: #0b171b; color: var(--color-text); }
+  .history-preview .content-width { max-width: 1320px; }
+  .history-heading { display: grid; grid-template-columns: 1fr .8fr; align-items: end; gap: 48px; margin-bottom: 60px; }
+  .history-label { display: block; margin: 0 0 18px; color: var(--color-accent); font-size: 11px; letter-spacing: .2em; }
+  .history-heading h2 { margin: 0; color: var(--color-text); font-family: var(--font-heading); font-size: clamp(32px, 4vw, 48px); font-weight: 600; line-height: 1.3; letter-spacing: -.05em; }
+  .history-heading p { max-width: 430px; margin: 0 0 18px; color: var(--color-text-muted); font-size: 14px; line-height: 1.8; }
+  .history-link { min-height: 0; padding: 0; background: transparent; color: var(--color-accent); font-size: 13px; }
+  .history-link:hover { background: transparent; color: #a5ebe6; }
+  .milestones { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid rgba(179, 192, 195, .28); }
+  .milestone { position: relative; padding: 28px 20px 0 0; }
+  .milestone::before { content: ''; position: absolute; top: -4px; left: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); }
+  .milestone-year { margin-bottom: 18px; color: var(--color-accent); font-size: 14px; letter-spacing: .04em; }
+  .milestone h3 { margin: 0 0 8px; color: #eaf0f1; font-size: 15px; font-weight: 500; }
+  .milestone p { margin: 0; color: #8f9da1; font-size: 12px; line-height: 1.7; }
+
+  .site-footer { padding: 36px 24px 30px; background: #040d11; }
+  .footer-info { color: #778489; font-size: 11px; line-height: 1.8; }
+  .footer-copy { color: #657277; font-size: 10px; letter-spacing: .03em; }
 
   .m-site-header { padding: 10px 20px; }
+  .m-header-contact { margin-left: auto; margin-right: 14px; color: #123f45; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .m-header-contact::before { content: '문의 '; color: #74878b; font-size: 11px; font-weight: 400; }
+  .header-contact { flex: 0 0 auto; margin-left: 24px; padding: 10px 16px; border: 1px solid rgba(88, 217, 211, .6); color: #12434a; font-size: 14px; font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
+  .header-contact::before { content: '문의 '; color: #718187; font-size: 11px; font-weight: 400; }
+  .header-contact:hover, .m-header-contact:hover { color: #00898b; }
   .drawer-content { display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 6px; }
   .drawer-content .m-cate-group { display: flex; min-width: 0; margin: 0; padding: 0; border: 0; }
   .drawer-content .m-cate-title { display: flex; flex: 1; }
   .drawer-content .m-cate-title a { display: flex; width: 100%; min-height: 52px; align-items: center; justify-content: space-between; padding: 10px 14px; border: 1px solid #e0eaed; border-radius: 5px; background: #f7fafb; color: #22343e; font-size: 15px; font-weight: 700; line-height: 1.35; text-decoration: none; transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease; }
   .drawer-content .m-cate-title a::after { content: '\203A'; color: #7f9da4; font-size: 20px; font-weight: 400; line-height: 1; }
   .drawer-content .m-cate-title a:hover, .drawer-content .m-cate-title a:focus-visible { border-color: #8bcbd0; background: #eaf6f7; color: #075b64; }
-  .drawer-content .m-sub-nav { display: none; }
+  .drawer-content .m-cate-group.has-submenu { display: block; }
+  .drawer-content .m-cate-group.has-submenu .m-sub-nav { display: block; padding: 4px 12px 8px; }
+  .drawer-content .m-cate-group.has-submenu .m-sub-nav a { display: block; padding: 8px 10px; color: #62767d; font-size: 13px; text-decoration: none; }
+  .drawer-content .m-cate-group.has-submenu .m-sub-nav a:hover { color: #087f83; }
+
+  main h1,
+  main h2,
+  main h3,
+  main h4,
+  main h5,
+  main h6 { font-family: var(--font-heading); }
 
   @media (max-width: 900px) {
     .site-header { display: none !important; }
     .m-site-header { display: flex !important; }
   }
+  @media (min-width: 901px) {
+    .m-header-contact { display: none; }
+  }
   @media (max-width: 700px) {
-    .main-hero { min-height: 620px; height: auto; }
+    .main-hero { min-height: 690px; height: auto; }
     .hero-content { padding: 68px 22px 38px; }
-    .hero-title { font-size: clamp(32px, 8vw, 40px); }
+    .hero-title { font-size: clamp(30px, 7.2vw, 48px); white-space: normal; }
     .hero-tag { margin-bottom: 20px; padding: 9px 14px; font-size: 11px; }
     .hero-title { margin-bottom: 18px; }
     .hero-desc { font-size: 14px; }
     .btn-signal { min-height: 44px; padding: 11px 20px; }
     .hero-stats { gap: 12px; margin-top: 34px; }
-    .hero-stat { min-width: 0; flex: 1 1 30%; padding: 12px; }
-    .hero-stat strong { font-size: 19px; }
-    .biz-section { padding: 62px 20px 68px; }
+    .hero-stat { min-width: 0; flex: 1 1 30%; margin-right: 12px; padding: 12px 10px 12px 0; }
+    .hero-stat strong { font-size: 18px; }
+    .hero-stat span { font-size: 11px; }
+    .biz-section { padding: var(--space-section) 20px; }
     .sec-header { grid-template-columns: 1fr; gap: 16px; margin-bottom: 26px; }
     .sec-title { font-size: 30px; }
     .section-desc { justify-self: start; font-size: 14px; }
-    .grid-4 { grid-template-columns: 1fr; gap: 16px; }
-    .card-item { min-height: 0; }
-    .card-img { height: 220px; }
+    .grid-4 { grid-template-columns: 1fr; gap: 36px; }
+    .card-img { height: min(72vw, 360px); }
+    .history-heading { grid-template-columns: 1fr; gap: 22px; margin-bottom: 42px; }
+    .milestones { grid-template-columns: 1fr; gap: 0; border-top: 0; border-left: 1px solid rgba(179, 192, 195, .28); margin-left: 4px; }
+    .milestone { padding: 0 0 30px 24px; }
+    .milestone::before { top: 5px; left: -4px; }
   }
   @media (max-width: 560px) {
     .hero-title,
-    .hero-title-company-only { font-size: 34px; }
+    .hero-title-company-only { font-size: clamp(28px, 7vw, 36px); }
     .sec-title { font-size: 25px; }
     .hero-content { padding-right: 20px; padding-left: 20px; }
   }
@@ -422,13 +468,14 @@
     .main-hero.is-entering .hero-stat,
     .main-hero.is-entering .hero-slide.is-active,
     .main-hero.is-entering .hero-title-main { animation: none; }
-    .main-hero.is-entering .hero-title-main { background: none; color: #58d9e6; -webkit-text-fill-color: #58d9e6; }
+    .main-hero.is-entering .hero-title-main { background: none; color: var(--color-accent); -webkit-text-fill-color: var(--color-accent); }
   }
 </style>
 </head>
 <body>
   <header class="m-site-header">
     <a href="index.html" class="m-brand-logo"><img src="./image/logo.png" alt="(주)대형특수기어 DAE HYUNG GEAR"></a>
+    <a class="m-header-contact" href="tel:0315411248">031-541-1248</a>
     <button id="side-menu-open-btn" class="m-menu-btn" aria-label="메뉴 열기">☰</button>
   </header>
 
@@ -440,11 +487,21 @@
     </div>
     <div class="drawer-content">
       <div class="m-cate-group"><div class="m-cate-title"><a href="index.html">홈</a></div></div>
-      <div class="m-cate-group"><div class="m-cate-title"><a href="company.html">회사개요</a></div></div>
-      <div class="m-cate-group"><div class="m-cate-title"><a href="history.html">회사연혁</a></div></div>
-      <div class="m-cate-group"><div class="m-cate-title"><a href="greeting.html">인사말씀</a></div></div>
-      <div class="m-cate-group"><div class="m-cate-title"><a href="gear.html">특수기어</a></div></div>
-      <div class="m-cate-group"><div class="m-cate-title"><a href="bearing.html">선회 베어링</a></div></div>
+      <div class="m-cate-group has-submenu">
+        <div class="m-cate-title"><a href="company.html">회사소개</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="company.html">회사개요</a></li>
+          <li><a href="history.html">회사연혁</a></li>
+          <li><a href="greeting.html">인사말씀</a></li>
+        </ul>
+      </div>
+      <div class="m-cate-group has-submenu">
+        <div class="m-cate-title"><a href="gear.html">제품소개</a></div>
+        <ul class="m-sub-nav">
+          <li><a href="gear.html">특수기어</a></li>
+          <li><a href="bearing.html">선회 베어링</a></li>
+        </ul>
+      </div>
       <div class="m-cate-group"><div class="m-cate-title"><a href="equipment.html">설비현황</a></div></div>
       <div class="m-cate-group"><div class="m-cate-title"><a href="support-center.html">고객지원</a></div></div>
     </div>
@@ -498,12 +555,13 @@
             </div>
             <div class="mega-menu-contact">
               <small>견적 · 문의</small>
-              <strong>031-541-1248</strong>
+              <strong>가공 사양 상담</strong>
               <a href="support-center.html">문의하기</a>
             </div>
           </div>
         </div>
       </nav>
+      <a class="header-contact" href="tel:0315411248">031-541-1248</a>
     </div>
   </header>
 
@@ -517,16 +575,16 @@
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <div class="hero-tag">PRECISION ENGINEERING</div>
-        <h1 class="hero-title">정밀 가공의 <span class="hero-title-main">새 기준</span><br>현장 중심의 제조 파트너</h1>
-        <p class="hero-desc">대형 특수기어, 고정밀 선회 베어링, CNC 가공, 설비 제작까지 산업 현장의 조건과 요구를 정확히 <span class="keep-word">이해</span>하고 설계부터 제작, 검사, 납품, 사후 지원까지 함께 책임지는 제조 솔루션을 제공합니다.</p>
+        <h1 class="hero-title">대형 기어의 <span class="hero-title-main">정밀도</span>를 설계하다</h1>
+        <p class="hero-desc">대형 특수기어와 선회 베어링, CNC 부품을 정밀하게 가공합니다.<br>도면과 현장 조건에 맞춰 제작합니다.</p>
         <div class="hero-actions">
           <a href="#business" class="btn-signal">제품 살펴보기</a>
           <a href="support-center.html" class="btn-outline">견적 문의</a>
         </div>
-        <div class="hero-stats" aria-label="주요 실적">
-          <div class="hero-stat"><strong data-count="30" data-suffix="+">30+</strong><span>년 축적 기술</span></div>
-          <div class="hero-stat"><strong data-count="1000" data-suffix="+">1000+</strong><span>프로젝트 실적</span></div>
-          <div class="hero-stat"><strong data-count="99.2" data-dec="1" data-suffix="%">99.2%</strong><span>품질 만족도</span></div>
+        <div class="hero-stats" aria-label="주요 가공 사양">
+          <div class="hero-stat"><strong>[수치 입력] mm</strong><span>최대 가공 직경</span></div>
+          <div class="hero-stat"><strong>[수치 입력] μm</strong><span>가공 정밀도</span></div>
+          <div class="hero-stat"><strong>[수치 입력] 대</strong><span>보유 장비</span></div>
         </div>
       </div>
       <div class="hero-pagination" role="group" aria-label="메인 이미지 선택">
@@ -543,9 +601,9 @@
           <p class="section-desc">설계, 제작, 검사, 납품, 사후 지원까지 연결되는 완성형 제조 역량으로 산업 현장의 고난도 요구를 안정적이고 정확하게 해결하는 전문 제조 파트너입니다.</p>
         </div>
         <div class="grid-4">
-          <a href="gear.html" class="card-item"><div class="card-img"><img src="./image/gear2.png" alt="특수 기어"></div><div class="card-body"><h3>특수기어 제작</h3><p>산업 현장과 장비 규격에 맞춘 대형 특수기어를 정밀하게 제작합니다.</p><span class="card-more">자세히 보기 →</span></div></a>
-          <a href="bearing.html" class="card-item"><div class="card-img"><img src="./image/bearing1.png" alt="고정밀 선회 베어링"></div><div class="card-body"><h3>고정밀 선회 베어링</h3><p>중장비와 산업용 기계에 필요한 대형 선회 베어링을 안정적으로 공급합니다.</p><span class="card-more">자세히 보기 →</span></div></a>
-          <a href="equipment.html" class="card-item"><div class="card-img"><img src="./image/machine/gleasonpfauter600.png" alt="최첨단 생산 설비"></div><div class="card-body"><h3>최첨단 생산 설비</h3><p>대형 공작기계와 정밀 측정 장비로 까다로운 가공 요구를 구현합니다.</p><span class="card-more">자세히 보기 →</span></div></a>
+          <a href="gear.html" class="card-item"><div class="card-img"><img src="./image/gear2.png" alt="특수 기어"></div><div class="card-body"><h3>특수기어 제작</h3><p>대형 규격과 현장 조건에 맞춘 기어 가공</p></div></a>
+          <a href="bearing.html" class="card-item"><div class="card-img"><img src="./image/bearing1.png" alt="고정밀 선회 베어링"></div><div class="card-body"><h3>선회 베어링</h3><p>산업 장비용 대형 선회 베어링 제작</p></div></a>
+          <a href="equipment.html" class="card-item"><div class="card-img"><img src="./image/machine/gleasonpfauter600.png" alt="생산 설비"></div><div class="card-body"><h3>가공 설비</h3><p>대형 공작기계와 정밀 측정 설비</p></div></a>
         </div>
       </div>
     </section>
@@ -555,10 +613,10 @@
         <div class="history-heading">
           <div>
             <span class="history-label">OUR HISTORY</span>
-            <h2>품질과 신용으로 걸어온<br>30여 년의 시간</h2>
+            <h2>정밀 제조의 기록</h2>
           </div>
           <div>
-            <p>1991년 설립 이후 쌓아온 기술과 설비의 발전 과정을 핵심 이정표로 소개합니다.</p>
+            <p>주요 설비와 생산 기반의 변화를 이정표로 정리했습니다.</p>
             <a href="history.html" class="history-link">회사연혁 전체 보기 <span>→</span></a>
           </div>
         </div>
@@ -576,7 +634,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <nav class="footer-links"><a href="index.html">홈</a><a href="company.html">회사소개</a><a href="bearing.html">제품소개</a><a href="equipment.html">설비현황</a><a href="support-center.html">고객지원</a></nav>
-      <div class="footer-info">사업자등록번호 127-86-41052 <span>*</span> 대표이사 박병호 <span>*</span> 경기도 포천시 소흘읍 호국로479번길 15 <span>*</span> 전화 031-541-1248~9</div>
+      <div class="footer-info">사업자등록번호 127-86-41052 <span>*</span> 대표이사 박병호 <span>*</span> 경기도 포천시 소흘읍 호국로479번길 15</div>
       <div class="footer-copy">COPYRIGHT © (주)대형특수기어 ALL RIGHT RESERVED.</div>
     </div>
   </footer>
@@ -585,32 +643,10 @@
     const heroSlides = [...document.querySelectorAll('.hero-slide')];
     const heroPaginationButtons = [...document.querySelectorAll('.hero-pagination button')];
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const heroStats = [...document.querySelectorAll('.hero-stat strong[data-count]')];
     let activeHeroSlide = 0;
-
-    const formatHeroStat = (element, value) => {
-      const decimals = Number(element.dataset.dec) || 0;
-      const formatted = decimals ? value.toFixed(decimals) : Math.round(value).toLocaleString('en-US');
-      element.textContent = formatted + (element.dataset.suffix || '');
-    };
 
     if (!reduceMotion) {
       mainHero.classList.add('is-entering');
-      heroStats.forEach((element, index) => {
-        const end = Number(element.dataset.count);
-        const duration = 1800;
-        formatHeroStat(element, 0);
-
-        window.setTimeout(() => {
-          const startTime = performance.now();
-          const countFrame = (now) => {
-            const progress = Math.min((now - startTime) / duration, 1);
-            formatHeroStat(element, end * (1 - Math.pow(1 - progress, 3)));
-            if (progress < 1) window.requestAnimationFrame(countFrame);
-          };
-          window.requestAnimationFrame(countFrame);
-        }, 900 + index * 130);
-      });
     }
 
     if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {

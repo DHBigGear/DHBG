@@ -252,18 +252,41 @@ aside.sticky-edge-sidebar {
 
 .header-contact {
   flex: 0 0 auto;
-  padding: 10px 20px;
-  border: 1px solid #d4dce1;
+  margin-left: 24px;
+  padding: 10px 16px;
+  border: 1px solid rgba(8, 125, 136, .42);
   border-radius: 24px;
-  color: #1d2b34;
+  color: #12434a;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+
+.header-contact::before {
+  content: '문의 ';
+  color: #718187;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.header-contact:hover,
+.m-header-contact:hover { color: #00898b; }
+
+.m-header-contact {
+  margin-left: auto;
+  margin-right: 14px;
+  color: #123f45;
   font-size: 14px;
   font-weight: 700;
   white-space: nowrap;
 }
 
-.header-contact:hover {
-  border-color: #55d8df;
-  background: #e8fbfc;
+.m-header-contact::before {
+  content: '문의 ';
+  color: #74878b;
+  font-size: 11px;
+  font-weight: 400;
 }
 
 .drawer-content {
@@ -444,4 +467,8 @@ main h4 {
   .m-site-header {
     display: flex !important;
   }
+}
+
+@media (min-width: 901px) {
+  .m-header-contact { display: none; }
 }
