@@ -394,7 +394,8 @@ main h4 {
 .sec-intro h2,
 .greeting-text h2,
 .history-overview h2,
-.contact-intro h2 {
+.contact-intro h2,
+.company-overview .company-lead-title {
   font-family: var(--font-heading) !important;
   font-size: var(--font-size-section-title) !important;
   line-height: 1.4 !important;
@@ -405,7 +406,8 @@ main h4 {
 .gear-section .hero-product-info p,
 .bearing-section .hero-product-info p,
 .equipment-section .equip-card-body > p,
-.contact-intro p {
+.contact-intro p,
+.company-overview .company-lead {
   font-size: var(--font-size-body) !important;
   line-height: 1.75 !important;
 }
