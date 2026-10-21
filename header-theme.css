@@ -63,3 +63,17 @@
 
 .m-site-header .m-menu-btn { color: #10232b; }
 .m-site-header .m-menu-btn:focus-visible { outline: 2px solid #087d88; outline-offset: 3px; }
+
+@media (max-width: 1024px) {
+  .m-site-header { display: flex !important; }
+  .m-site-header .m-header-contact { display: none !important; }
+  .m-site-header .m-menu-btn {
+    display: inline-flex !important;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+    margin-left: auto;
+  }
+}
