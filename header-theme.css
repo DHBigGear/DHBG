@@ -1,0 +1,65 @@
+﻿/* Shared contrast and typography for every site header. */
+.site-header .nav-item > a {
+  color: #33444d;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.site-header .nav-item.active > a {
+  color: #10232b !important;
+  font-weight: 700;
+}
+
+.site-header .nav-item:hover > a,
+.site-header .nav-item > a:focus-visible {
+  color: #075b64 !important;
+}
+
+.site-header .header-contact {
+  border-color: #8fbec2;
+  background: #f2fbfb;
+  color: #123f45;
+  font-weight: 700;
+}
+
+.site-header .header-contact:hover,
+.site-header .header-contact:focus-visible {
+  border-color: #087d88;
+  background: #e4f6f7;
+  color: #064c54;
+}
+
+.site-header .banner-top-line { color: #a71927; }
+.site-header .banner-main-line { color: #10232b; }
+.site-header .banner-sub-line { color: #52666b; }
+
+.m-site-header .m-header-contact {
+  margin-left: auto;
+  margin-right: 14px;
+  padding: 7px 12px;
+  border: 1px solid #a1c8cc;
+  border-radius: 20px;
+  background: #f2fbfb;
+  color: #123f45;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.m-site-header .m-header-contact::before {
+  content: '문의 ';
+  color: #52666b;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.m-site-header .m-header-contact:hover,
+.m-site-header .m-header-contact:focus-visible {
+  border-color: #087d88;
+  background: #e4f6f7;
+  color: #064c54;
+}
+
+.m-site-header .m-menu-btn { color: #10232b; }
+.m-site-header .m-menu-btn:focus-visible { outline: 2px solid #087d88; outline-offset: 3px; }

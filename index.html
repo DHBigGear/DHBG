@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -368,16 +368,16 @@
   }
   .main-hero > img { display: none; }
   .hero-slideshow { position: absolute; inset: 0; overflow: hidden; }
-  .hero-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: saturate(.88) contrast(1.01) brightness(.9); transform: scale(1.015); translate: var(--hero-shift-x, 0px) var(--hero-shift-y, 0px); transition: opacity 1.8s ease-in-out, transform 1.8s ease-in-out, translate .35s ease-out; }
-  .hero-slide.is-active { opacity: 1; transform: scale(1.08); transition-duration: 1.8s, 5s, .35s; }
-  .hero-overlay { background: linear-gradient(90deg, rgba(5, 24, 30, .72), rgba(5, 24, 30, .38) 60%, rgba(5, 24, 30, .2)), linear-gradient(0deg, rgba(3, 20, 25, .52), transparent 48%); }
+  .hero-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: saturate(1.08) contrast(1.04) brightness(1.04); transform: scale(1.01); translate: var(--hero-shift-x, 0px) var(--hero-shift-y, 0px); transition: opacity 1.8s ease-in-out, transform 1.8s ease-in-out, translate .35s ease-out; }
+  .hero-slide.is-active { opacity: 1; transform: scale(1.035); transition-duration: 1.8s, 5s, .35s; }
+  .hero-overlay { background: linear-gradient(90deg, rgba(5, 20, 26, .68) 0%, rgba(5, 20, 26, .42) 43%, rgba(5, 20, 26, .14) 100%), linear-gradient(0deg, rgba(3, 18, 23, .34), transparent 58%); }
   .hero-content { position: relative; inset: auto; width: 100%; justify-content: center; max-width: 1440px; padding: 0 28px 48px; }
   .hero-tag { width: fit-content; margin-bottom: 24px; padding: 0 0 0 14px; border: 0; border-left: 1px solid var(--color-accent); border-radius: 0; background: transparent; color: #70dfdf; font-family: var(--font-sans); font-size: 12px; letter-spacing: .2em; }
-  .hero-title { max-width: 1100px; margin-bottom: 22px; font-family: var(--font-heading); font-size: clamp(40px, 4.2vw, 62px); font-weight: 700; line-height: 1.2; letter-spacing: -.055em; text-shadow: none; white-space: nowrap; }
+  .hero-title { max-width: 1100px; margin-bottom: 22px; font-family: var(--font-heading); font-size: clamp(40px, 4.2vw, 62px); font-weight: 700; line-height: 1.2; letter-spacing: -.055em; text-shadow: 0 3px 18px rgba(0, 0, 0, .58); white-space: nowrap; }
   .hero-title-main { padding: 0; border: 0; color: #70dfdf; letter-spacing: inherit; white-space: inherit; }
   .hero-title-company { display: inline; margin: 0; font-size: inherit; letter-spacing: inherit; }
   .hero-title-company-only { font-size: inherit; }
-  .hero-desc { max-width: 650px; margin-bottom: 32px; color: rgba(239, 247, 248, .88); font-size: 17px; line-height: 1.8; }
+  .hero-desc { max-width: 650px; margin-bottom: 32px; color: #f4f9fa; font-size: 17px; line-height: 1.8; text-shadow: 0 2px 10px rgba(0, 0, 0, .7); }
   .hero-desc .keep-word { white-space: nowrap; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .btn-signal, .history-link { min-height: 50px; padding: 13px 24px; border-radius: 26px; background: linear-gradient(100deg, #83e5e8, #a1eadb); color: #10343a; }
@@ -387,7 +387,7 @@
   .hero-stat { min-width: 174px; padding: 8px 28px 8px 0; margin-right: 28px; border: 0; border-right: 1px solid rgba(179, 192, 195, .22); border-radius: 0; background: transparent; }
   .hero-stat:last-child { border-right: 0; }
   .hero-stat strong { display: block; color: #70dfdf; font-size: 25px; font-weight: 600; line-height: 1.2; letter-spacing: -.04em; }
-  .hero-stat span { display: block; margin-top: 8px; color: rgba(239, 247, 248, .76); font-size: 12px; letter-spacing: .04em; }
+  .hero-stat span { display: block; margin-top: 8px; color: rgba(248, 252, 253, .92); font-size: 12px; letter-spacing: .04em; text-shadow: 0 2px 8px rgba(0, 0, 0, .65); }
   .hero-pagination { position: absolute; z-index: 2; right: 0; bottom: 22px; left: 0; display: flex; justify-content: center; gap: 10px; }
   .hero-pagination button { width: 10px; height: 10px; padding: 0; border: 1px solid rgba(255,255,255,.85); border-radius: 50%; background: rgba(255,255,255,.45); cursor: pointer; transition: width .2s ease, background-color .2s ease; }
   .hero-pagination button[aria-pressed="true"] { width: 28px; border-color: #5bdde0; border-radius: 8px; background: #5bdde0; }
@@ -533,6 +533,7 @@
   }
 </style>
 <link rel="stylesheet" href="page-gears.css">
+<link rel="stylesheet" href="header-theme.css?v=1">
 </head>
 <body>
   <header class="m-site-header">
@@ -554,6 +555,7 @@
           <li><a href="greeting.html">인사말씀</a></li>
           <li><a href="history.html">회사연혁</a></li>
           <li><a href="company.html">회사개요</a></li>
+          <li><a href="process.html">제작공정</a></li>
           <li><a href="location.html">찾아오시는 길</a></li>
 
         </ul>
@@ -607,6 +609,7 @@
                 <a class="mega-menu-sub-link" href="greeting.html">인사말씀</a>
                 <a class="mega-menu-sub-link" href="history.html">회사연혁</a>
                 <a class="mega-menu-sub-link" href="company.html">회사개요</a>
+                <a class="mega-menu-sub-link" href="process.html">제작공정</a>
                 <a class="mega-menu-sub-link" href="location.html">찾아오시는 길</a>
 
               </div>
@@ -756,3 +759,10 @@
   <script src="mobile-menu.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+

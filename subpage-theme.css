@@ -576,3 +576,75 @@ main h4 {
 .drawer-content .m-cate-group.has-submenu .m-sub-nav a:hover {
   color: #087f83;
 }
+
+/* Shared typography for the first content heading on subpages. */
+:root {
+  --intro-accent: #16878d;
+  --intro-ink: #172b32;
+  --intro-muted: #60747a;
+}
+
+.company-overview .company-eyebrow,
+.history-eyebrow,
+.directions-eyebrow,
+.process-eyebrow,
+.sec-intro .sub-tag,
+.contact-intro .sub-tag,
+.greeting-text .subtitle {
+  color: var(--intro-accent) !important;
+  font-family: var(--font-body) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+  line-height: 1.4 !important;
+}
+
+.company-overview .company-lead-title,
+.history-overview h2,
+.directions-title,
+.process-title,
+.sec-intro h2,
+.contact-intro h2,
+.greeting-text h2 {
+  color: var(--intro-ink) !important;
+  font-family: var(--font-heading) !important;
+  font-size: 30px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  letter-spacing: -.025em;
+}
+
+.company-overview .company-lead,
+.history-summary,
+.directions-description,
+.process-description,
+.sec-intro > p,
+.contact-intro p,
+.greeting-body p {
+  color: var(--intro-muted) !important;
+  font-family: var(--font-body) !important;
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+}
+
+@media (max-width: 768px) {
+  .company-overview .company-lead-title,
+  .history-overview h2,
+  .directions-title,
+  .process-title,
+  .sec-intro h2,
+  .contact-intro h2,
+  .greeting-text h2 {
+    font-size: 26px !important;
+  }
+
+  .company-overview .company-lead,
+  .history-summary,
+  .directions-description,
+  .process-description,
+  .sec-intro > p,
+  .contact-intro p,
+  .greeting-body p {
+    font-size: 14px !important;
+  }
+}
