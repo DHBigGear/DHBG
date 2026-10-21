@@ -237,7 +237,7 @@ ul, ol, li {
 
 .mega-menu-inner {
   width: 100%;
-  min-height: 200px;
+  min-height: 0;
   margin: 0;
   display: grid;
   grid-template-columns: minmax(260px, 1fr) calc(var(--mega-column-width) * 4) minmax(260px, 1fr);
@@ -267,7 +267,7 @@ ul, ol, li {
 }
 
 .mega-menu-brand {
-  padding: 34px 40px 34px max(40px, calc((100vw - 1400px) / 2 + 24px));
+  padding: 30px 40px 30px max(24px, calc((100vw - 1400px) / 2 + 8px));
   background: linear-gradient(120deg, #051a21, #0a3640);
   color: #ffffff;
   display: flex;
@@ -278,16 +278,17 @@ ul, ol, li {
 .mega-menu-brand small {
   color: #6fd8d4;
   letter-spacing: .12em;
-  font: 700 12px 'Noto Serif KR', serif;
+  font: 700 14px 'Noto Serif KR', serif;
 }
 
 .mega-menu-brand strong {
-  font: 700 21px/1.45 'Noto Serif KR', serif;
-  margin: 8px 0 10px;
+  font: 700 25px/1.6 'Noto Serif KR', serif;
+  letter-spacing: .035em;
+  margin: 12px 0 14px;
 }
 
 .mega-menu-brand span {
-  font-size: 13px;
+  font-size: 15px;
   color: rgba(255, 255, 255, .7);
   line-height: 1.7;
 }
@@ -295,7 +296,7 @@ ul, ol, li {
 .mega-menu-columns {
   display: grid;
   grid-template-columns: repeat(4, var(--mega-column-width));
-  padding: 30px 0 26px;
+  padding: 20px 0 18px;
 }
 
 .mega-menu-group {
@@ -318,7 +319,7 @@ ul, ol, li {
 
 .mega-menu-group .mega-menu-heading,
 .mega-menu-group .mega-menu-category {
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   color: #1b8d8d;
   font-size: 13px;
   font-weight: 700;
@@ -336,7 +337,7 @@ ul, ol, li {
 }
 
 .mega-menu-contact {
-  padding: 34px max(40px, calc((100vw - 1400px) / 2 + 24px)) 34px 40px;
+  padding: 24px max(40px, calc((100vw - 1400px) / 2 + 24px)) 24px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -366,7 +367,7 @@ ul, ol, li {
 
 .mega-menu-sub-link {
   display: block;
-  padding: 7px 0;
+  padding: 5px 0;
   font-size: 14.5px;
   color: #35505a;
   transition: color .15s, transform .15s;
