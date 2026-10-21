@@ -8,6 +8,14 @@
   --line: #e2e8f0;
 }
 
+/* Keep the page canvas tied to the device viewport, including after pinch zoom. */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

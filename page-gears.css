@@ -1,8 +1,12 @@
 html {
+  width: 100%;
+  min-width: 0;
   background: #eef5f5;
 }
 
 body {
+  width: 100%;
+  min-width: 0;
   position: relative;
   isolation: isolate;
   background: transparent !important;
@@ -59,6 +63,12 @@ body::before {
 }
 
 @media (max-width: 700px) {
+  body::before {
+    inset-inline: 0;
+    width: 100%;
+    background-size: auto 100%;
+  }
+
   body::before {
     background-position: 72% center;
   }
