@@ -59,7 +59,7 @@ body::before {
 .location-section,
 .biz-section,
 .history-preview {
-  background-color: rgba(243, 247, 248, .65) !important;
+  background-color: rgba(243, 247, 248, .75) !important;
 }
 
 @media (max-width: 700px) {
