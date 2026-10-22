@@ -1,0 +1,110 @@
+/* Shared quote and inquiry band used at the end of key subpages. */
+body .company-overview .company-contact-band,
+body .process-page .process-cta,
+body .applications-section .application-cta {
+  margin-top: 32px;
+  padding: 25px 28px;
+  border: 1px solid rgba(143, 190, 194, .28);
+  border-radius: 8px;
+  background: linear-gradient(105deg, #102b32, #17474e);
+  color: #fff;
+}
+
+body .company-contact-band h3 {
+  margin: 0 0 6px;
+  color: #fff;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+body .company-overview .company-contact-band p,
+body .process-cta > p,
+body .application-cta > p {
+  margin: 0;
+  color: rgba(255, 255, 255, .78);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+body .company-overview .company-contact-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 10px;
+}
+
+body .company-overview .company-contact-actions a,
+body .inquiry-band .inquiry-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 19px;
+  border: 1px solid #16878d;
+  border-radius: 5px;
+  background: #16878d;
+  color: #fff;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+}
+
+body .company-overview .company-contact-actions .inquiry-secondary {
+  border-color: rgba(255, 255, 255, .48);
+  background: transparent;
+}
+
+body .company-overview .company-contact-band .inquiry-primary:hover,
+body .inquiry-band .inquiry-primary:hover {
+  border-color: #0d656b;
+  background: #0d656b;
+  transform: none;
+}
+
+body .company-overview .company-contact-actions .inquiry-secondary:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, .08);
+}
+
+body .inquiry-band .inquiry-primary:focus-visible,
+body .company-overview .company-contact-actions a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  body .company-overview .company-contact-band,
+  body .process-page .process-cta,
+  body .applications-section .application-cta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    padding: 22px 20px;
+  }
+
+  body .company-overview .company-contact-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  body .company-overview .company-contact-actions a {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body .company-overview .company-contact-actions a,
+  body .inquiry-band .inquiry-primary {
+    transition: none;
+  }
+}

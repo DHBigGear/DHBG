@@ -55,7 +55,10 @@ main > section:not(.sub-hero),
 }
 
 aside.sticky-edge-sidebar {
+  width: 136px !important;
+  border-radius: 12px;
   border-color: #d9e6ea;
+  background: rgba(255, 255, 255, .98);
   box-shadow: 0 12px 28px rgba(9, 39, 49, .07), inset 0 1px 0 rgba(255, 255, 255, .9);
 }
 
@@ -79,6 +82,10 @@ aside.sticky-edge-sidebar {
 
 .sidebar-header {
   font-size: 14px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
   padding: 9px 0;
 }
 
@@ -115,24 +122,36 @@ aside.sticky-edge-sidebar {
 aside.sticky-edge-sidebar {
   display: flex;
   flex-direction: column;
-  height: min(430px, calc(100vh - 120px));
+  height: auto;
+  max-height: calc(100vh - 120px);
 }
 
 .sidebar-menu {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
+  display: block;
+  flex: none;
+  overflow-y: auto;
 }
 
 .sidebar-menu li {
-  flex: 1;
+  flex: none;
+  border-top: 0;
+}
+
+/* Separate the four navigation groups with a quiet divider, without category labels. */
+.sidebar-menu li:nth-child(6),
+.sidebar-menu li:nth-child(9),
+.sidebar-menu li:nth-child(11) {
+  margin-top: 4px;
+  padding-top: 5px;
+  border-top: 1px solid #d9e6ea;
 }
 
 .sidebar-menu li a {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  padding: 0 8px 0 12px;
+  display: block;
+  height: auto;
+  padding: 6px 12px;
+  line-height: 1.4;
+  white-space: normal;
 }
 
 .sidebar-quick-contact,
@@ -239,7 +258,6 @@ aside.sticky-edge-sidebar {
 
 .nav-item.active > a {
   color: #17242d !important;
-  font-weight: 500 !important;
 }
 
 .nav-item:hover > a {
@@ -459,7 +477,7 @@ main h4 {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .site-header {
     display: none !important;
   }
@@ -469,7 +487,7 @@ main h4 {
   }
 }
 
-@media (min-width: 901px) {
+@media (min-width: 1025px) {
   .m-header-contact { display: none; }
 }
 

@@ -1,13 +1,14 @@
 ﻿/* Shared contrast and typography for every site header. */
 .site-header .nav-item > a {
   color: #33444d;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 15px;
   font-weight: 600;
 }
 
 .site-header .nav-item.active > a {
   color: #10232b !important;
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 
 .site-header .nav-item:hover > a,

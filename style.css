@@ -618,12 +618,12 @@ ul, ol, li {
 }
 
 /* ====================================
-   [5. 120px 슬림 사이드바]
+   [5. 서브페이지 공통 사이드바]
 ==================================== */
 aside.sticky-edge-sidebar {
   position: sticky;
   top: 90px;
-  width: 152px;
+  width: 136px;
   flex-shrink: 0;
   background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.98));
   border: 1px solid rgba(15, 23, 42, 0.08);

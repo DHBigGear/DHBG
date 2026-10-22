@@ -1,0 +1,340 @@
+/* Shared interior-page styling for Applications and Quality. */
+.applications-section,
+.quality-section {
+  padding: 60px 24px 80px;
+  background: rgba(243, 247, 248, .78);
+  color: #172b32;
+}
+
+.applications-layout,
+.quality-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 136px;
+  align-items: start;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.applications-main,
+.quality-main {
+  min-width: 0;
+}
+
+.applications-layout .sidebar-menu li a,
+.quality-layout .sidebar-menu li a {
+  font-weight: 500;
+}
+
+.section-kicker {
+  display: block;
+  margin-bottom: 12px;
+  color: #16878d;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.page-title {
+  margin: 0 0 8px;
+  color: #102a33;
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(26px, 3.4vw, 32px);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -.025em;
+}
+
+.page-lead {
+  max-width: 800px;
+  margin: 0;
+  color: #586a71;
+  font-size: 15px;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+.filter-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 28px 0 0;
+}
+
+.filter-list button {
+  min-height: 40px;
+  padding: 0 17px;
+  border: 1px solid #cbdcde;
+  border-radius: 4px;
+  background: #fff;
+  color: #29444c;
+  font: 500 14px 'Noto Sans KR', sans-serif;
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+}
+
+.filter-list button:hover,
+.filter-list button[aria-pressed="true"] {
+  border-color: #16878d;
+  background: #16878d;
+  color: #fff;
+}
+
+.filter-list button:focus-visible,
+.application-row:focus-visible,
+.applications-section a:focus-visible,
+.quality-section a:focus-visible {
+  outline: 2px solid #087d88;
+  outline-offset: 3px;
+}
+
+.application-list {
+  margin: 24px 0 0;
+  padding: 0;
+  border-top: 1px solid #cbdcde;
+}
+
+.application-row {
+  display: grid;
+  grid-template-columns: minmax(150px, .7fr) minmax(0, 2fr) minmax(110px, .5fr);
+  align-items: center;
+  gap: 20px;
+  padding: 21px 16px;
+  border-bottom: 1px solid #dce7e8;
+  background: rgba(255, 255, 255, .72);
+  animation: applications-fade-up .9s both;
+}
+
+.application-row[hidden] {
+  display: none;
+}
+
+.application-row h3 {
+  margin: 0;
+  color: #172b32;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.application-row p {
+  margin: 0;
+  color: #586a71;
+  font-size: 14px;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+.application-type {
+  justify-self: end;
+  color: #087d88;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+
+.application-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  margin-top: 32px;
+  padding: 23px 24px;
+  border: 1px solid #dce7e8;
+  background: #102a33;
+  color: #fff;
+}
+
+.application-cta p {
+  margin: 0;
+  color: #edf5f6;
+  font-size: 15px;
+}
+
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 19px;
+  border: 1px solid #16878d;
+  border-radius: 4px;
+  background: #16878d;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+.action-link:hover {
+  border-color: #0d656b;
+  background: #0d656b;
+}
+
+.inspection-stage {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 20px;
+  margin: 30px 0 26px;
+  padding: 23px 0;
+  border-top: 1px solid #cbdcde;
+  border-bottom: 1px solid #cbdcde;
+}
+
+.stage-number {
+  color: #16878d;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stage-copy h3,
+.data-block h3 {
+  margin: 0 0 9px;
+  color: #102a33;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.stage-copy p {
+  margin: 0;
+  color: #586a71;
+  font-size: 14px;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+.data-block {
+  margin-top: 28px;
+}
+
+.data-block h3 {
+  margin-bottom: 12px;
+}
+
+.inspection-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 2px solid #16878d;
+  background: rgba(255, 255, 255, .72);
+}
+
+.inspection-table th,
+.inspection-table td {
+  padding: 13px 16px;
+  border-bottom: 1px solid #dce7e8;
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.inspection-table th {
+  width: 220px;
+  color: #29444c;
+  font-weight: 600;
+}
+
+.inspection-table td {
+  color: #586a71;
+}
+
+.inspection-table .accent,
+.confirmation-note strong {
+  color: #087d88;
+  font-weight: 700;
+}
+
+.confirmation-note {
+  margin-top: 26px;
+  padding: 16px 19px;
+  border: 1px solid #dce7e8;
+  border-left: 3px solid #16878d;
+  background: rgba(255, 255, 255, .72);
+  color: #52686f;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+@keyframes applications-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+  .applications-section,
+  .quality-section {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .applications-layout,
+  .quality-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .applications-layout > .sticky-edge-sidebar,
+  .quality-layout > .sticky-edge-sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .applications-section,
+  .quality-section {
+    padding: 48px 20px 64px;
+  }
+
+  .application-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 18px 14px;
+  }
+
+  .application-type {
+    justify-self: start;
+  }
+
+  .application-cta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    padding: 21px;
+  }
+
+  .inspection-stage {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 14px;
+    padding: 19px 0;
+  }
+
+  .stage-number {
+    font-size: 26px;
+  }
+
+  .inspection-table th,
+  .inspection-table td {
+    padding: 11px 9px;
+    font-size: 13px;
+  }
+
+  .inspection-table th {
+    width: 145px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .application-row,
+  .filter-list button,
+  .action-link {
+    animation: none;
+    transition: none;
+  }
+}
