@@ -1,0 +1,66 @@
+﻿/* Shared site typography. Keep page-wide type sizes aligned here. */
+:root {
+  --font-body: 'Noto Sans KR', sans-serif;
+  --font-heading: 'Noto Serif KR', serif;
+  --font-size-body: 15px;
+  --font-size-section-title: 30px;
+  --font-size-page-title: 38px;
+}
+
+body {
+  font-family: var(--font-body) !important;
+  font-size: var(--font-size-body) !important;
+  line-height: 1.7 !important;
+}
+
+main p,
+main li,
+main .page-lead,
+main .process-description {
+  font-family: var(--font-body) !important;
+  font-size: var(--font-size-body) !important;
+  line-height: 1.75 !important;
+}
+
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
+  font-family: var(--font-heading) !important;
+}
+
+.sub-hero-title {
+  font-family: var(--font-heading) !important;
+  font-size: var(--font-size-page-title) !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  letter-spacing: -.03em !important;
+}
+
+.page-title,
+main .sec-title,
+main .process-title,
+main .sec-intro h2,
+main .greeting-text h2,
+main .history-overview h2,
+main .contact-intro h2,
+main .company-overview .company-lead-title,
+main .directions-title {
+  font-family: var(--font-heading) !important;
+  font-size: var(--font-size-section-title) !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-body: 14px;
+    --font-size-section-title: 26px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root { --font-size-page-title: 30px; }
+}

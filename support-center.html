@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -759,10 +759,12 @@
     .phone-action { min-height: 36px; padding: 0 10px; font-size: 13px; }
   }
 </style>
-<link rel="stylesheet" href="subpage-theme.css?v=6">
+<link rel="stylesheet" href="subpage-theme.css?v=7">
 <link rel="stylesheet" href="page-motion.css">
 <link rel="stylesheet" href="page-gears.css">
 <link rel="stylesheet" href="header-theme.css?v=3">
+  <link rel="stylesheet" href="mobile-menu.css?v=1">
+  <link rel="stylesheet" href="typography.css?v=1">
 </head>
 
 <body>
@@ -785,52 +787,20 @@
     
     <div class="drawer-content">
       <nav class="drawer-quick-links" aria-label="전체 메뉴">
-        <a href="index.html">홈</a>
-        <a href="greeting.html">인사말씀</a>
-        <a href="history.html">회사연혁</a>
-        <a href="company.html">회사개요</a>
-        
-        <a href="location.html">찾아오시는 길</a>
-
-        <a href="gear.html">특수기어</a>
-        <a href="bearing.html">선회 베어링</a>
-        <a href="equipment.html">설비현황</a>
-        <a href="support-center.html">고객지원</a>
+        <a href="index.html">홈</a><a href="greeting.html">인사말씀</a><a href="history.html">회사연혁</a><a href="company.html">회사개요</a><a href="location.html">찾아오시는 길</a><a href="gear.html">특수기어</a><a href="bearing.html">선회 베어링</a><a href="equipment.html">설비현황</a><a href="support-center.html">고객지원</a>
       </nav>
       <div class="m-cate-group">
         <div class="m-cate-title"><a href="company.html">회사소개</a></div>
-        <ul class="m-sub-nav">
-          <li><a href="greeting.html">인사말씀</a></li>
-          <li><a href="history.html">회사연혁</a></li>
-          <li><a href="company.html">회사개요</a></li>
-          <li><a href="location.html">찾아오시는 길</a></li>
-          <li><a href="process.html">제작공정</a></li>
-
-        </ul>
-      </div>
+        <ul class="m-sub-nav"><li><a href="greeting.html">인사말씀</a></li><li><a href="history.html">회사연혁</a></li><li><a href="company.html">회사개요</a></li><li><a href="location.html">찾아오시는 길</a></li><li><a href="process.html">제작공정</a></li></ul></div>
       <div class="m-cate-group">
         <div class="m-cate-title"><a href="gear.html">제품소개</a></div>
-        <ul class="m-sub-nav">
-          <li><a href="gear.html">특수기어</a></li>
-          <li><a href="bearing.html">선회 베어링</a></li>
-          <li><a href="applications.html">적용 분야</a></li>
-        </ul>
-      </div>
+        <ul class="m-sub-nav"><li><a href="gear.html">특수기어</a></li><li><a href="bearing.html">선회 베어링</a></li><li><a href="applications.html">적용 분야</a></li></ul></div>
       <div class="m-cate-group">
         <div class="m-cate-title"><a href="equipment.html">설비현황</a></div>
-        <ul class="m-sub-nav">
-          <li><a href="equipment.html">보유 설비 전체</a></li>
-          <li><a href="quality.html">품질·검사</a></li>
-          
-        </ul>
-      </div>
+        <ul class="m-sub-nav"><li><a href="equipment.html">보유 설비 전체</a></li><li><a href="quality.html">품질·검사</a></li></ul></div>
       <div class="m-cate-group">
         <div class="m-cate-title"><a href="support-center.html">고객지원</a></div>
-        <ul class="m-sub-nav">
-          
-          <li><a href="support-center.html">고객지원</a></li>
-        </ul>
-      </div>
+        <ul class="m-sub-nav"><li><a href="support-center.html">고객지원</a></li></ul></div>
     </div>
 
     <!-- 모바일 드로어 하단 Quick Contact -->
@@ -914,7 +884,7 @@
     <div class="sub-hero-content">
       <div class="sub-hero-tag">CUSTOMER SUPPORT</div>
       <h1 class="sub-hero-title">고객지원</h1>
-      <div class="breadcrumb">HOME &gt; 고객지원</div>
+      <div class="breadcrumb">HOME &gt; <span aria-current="page">고객지원</span></div>
     </div>
   </section>
 
@@ -1022,7 +992,7 @@
   </script>
 
   <!-- 모바일 메뉴 제어 스크립트 -->
-  <script src="mobile-menu.js?v=2"></script>
+  <script src="mobile-menu.js?v=3"></script>
 </body>
 </html>
 

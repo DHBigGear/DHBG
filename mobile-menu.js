@@ -1,4 +1,4 @@
-function initPageMotion() {
+﻿function initPageMotion() {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduceMotion || !('IntersectionObserver' in window)) return;
 
@@ -50,13 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const menuDrawer = document.getElementById('side-menu-drawer');
   if (menuDrawer) {
-    const menuContent = menuDrawer.querySelector('.drawer-content');
-    if (menuContent && !menuDrawer.querySelector('.drawer-brand')) {
-      const brand = document.createElement('div');
-      brand.className = 'drawer-brand';
-      brand.innerHTML = '<small>DAEHYUNG SPECIAL GEAR</small><strong>정밀 가공 전문 기업</strong><span>대형 특수기어 · 정밀 선회 베어링 · CNC 가공</span>';
-      menuContent.before(brand);
-    }
+
 
     const quickContact = menuDrawer.querySelector('.drawer-quick-contact');
     if (quickContact) {

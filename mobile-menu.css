@@ -1,0 +1,128 @@
+﻿/* Shared mobile hamburger menu styles. Edit this file to update every page. */
+#side-menu-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 1999 !important;
+  display: none;
+  background: rgba(0, 0, 0, .5) !important;
+}
+#side-menu-overlay.is-active { display: block !important; }
+
+#side-menu-drawer {
+  position: fixed !important;
+  z-index: 2000 !important;
+  inset: 0 0 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 280px !important;
+  max-width: calc(100vw - 48px) !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  overflow: hidden !important;
+  background: #fff !important;
+  transform: translateX(100%) !important;
+  transition: transform .28s ease !important;
+}
+#side-menu-drawer.is-open { transform: translateX(0) !important; }
+
+#side-menu-drawer .drawer-header {
+  display: flex !important;
+  flex: 0 0 56px !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 20px !important;
+  border: 0 !important;
+  background: #0b1b1f !important;
+  color: #fff !important;
+}
+#side-menu-drawer .drawer-title { color: #fff !important; font-size: 16px !important; font-weight: 700 !important; }
+#side-menu-drawer #side-menu-close-btn { color: #fff !important; }
+
+#side-menu-drawer .drawer-content {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  align-content: start !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  gap: 6px !important;
+  overflow-y: auto !important;
+  padding: 20px 20px 14px !important;
+}
+#side-menu-drawer .drawer-quick-links { display: none !important; }
+#side-menu-drawer .drawer-brand { display: none !important; }
+#side-menu-drawer .m-cate-group {
+  display: block !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+#side-menu-drawer .m-cate-title { display: flex !important; }
+#side-menu-drawer .m-cate-title a {
+  display: flex !important;
+  width: 100% !important;
+  min-height: 38px !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding: 7px 4px !important;
+  border: 0 !important;
+  border-bottom: 1px solid #dce6e8 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #22343e !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  text-decoration: none !important;
+}
+#side-menu-drawer .m-cate-title a::after { content: none !important; display: none !important; }
+#side-menu-drawer .m-sub-nav {
+  display: block !important;
+  margin: 0 !important;
+  padding: 3px 4px 6px !important;
+  list-style: none !important;
+}
+#side-menu-drawer .m-sub-nav li { margin: 0 !important; padding: 0 !important; }
+#side-menu-drawer .m-sub-nav a {
+  display: block !important;
+  padding: 6px 8px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #62767d !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  text-decoration: none !important;
+}
+
+#side-menu-drawer .drawer-quick-contact {
+  display: block !important;
+  flex: 0 0 auto !important;
+  padding: 16px 20px !important;
+  border-top: 1px solid #dce6e8 !important;
+  background: #edf6f7 !important;
+}
+#side-menu-drawer .drawer-quick-contact small {
+  display: block !important;
+  margin: 0 0 8px !important;
+  color: #087f83 !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: .08em !important;
+}
+#side-menu-drawer .drawer-quick-contact a {
+  display: block !important;
+  padding: 12px !important;
+  border: 0 !important;
+  background: #087f88 !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 10px rgba(8, 125, 136, .22) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #side-menu-drawer { transition: none !important; }
+}

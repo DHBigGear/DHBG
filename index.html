@@ -244,8 +244,8 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     align-content: start;
-    gap: 6px;
-    padding: 20px 20px 14px;
+    gap: 3px;
+    padding: 16px 20px 10px;
   }
   .drawer-content .m-cate-group {
     display: block;
@@ -271,22 +271,16 @@
     font-weight: 700;
     line-height: 1.35;
   }
-  .drawer-content .m-cate-title a::after {
-    content: '\203A';
-    color: #7f9da4;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1;
-  }
   .drawer-content .m-cate-group.has-submenu .m-sub-nav {
     display: block;
-    padding: 3px 10px 9px;
+    padding: 0 4px 4px;
   }
   .drawer-content .m-cate-group.has-submenu .m-sub-nav a {
     display: block;
-    padding: 6px 8px;
+    padding: 4px 8px 3px;
+
     color: #62767d;
-    font-size: 13px;
+    font-size: 12px;
   }
   .drawer-quick-contact a { box-shadow: 0 4px 10px rgba(8, 125, 136, .22); }
 
@@ -469,30 +463,10 @@
   .header-contact { flex: 0 0 auto; margin-left: 24px; padding: 10px 16px; border: 1px solid rgba(88, 217, 211, .6); color: #12434a; font-size: 14px; font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
   .header-contact::before { content: '문의 '; color: #718187; font-size: 11px; font-weight: 400; }
   .header-contact:hover, .m-header-contact:hover { color: #00898b; }
-  .drawer-content { display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 6px; padding: 20px 20px 14px; }
+  .drawer-content { display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 3px; padding: 16px 20px 10px; }
   .drawer-content .m-cate-group { display: block; min-width: 0; margin: 0; padding: 0; border: 0; }
   .drawer-content .m-cate-title { display: flex; }
   .drawer-content .m-cate-title a { display: flex; width: 100%; min-height: 34px; align-items: center; justify-content: space-between; padding: 5px 4px; border: 0; border-bottom: 1px solid #dce6e8; border-radius: 0; background: transparent; color: #22343e; font-size: 14px; font-weight: 700; line-height: 1.35; text-decoration: none; transition: color 0.18s ease; }
-  .drawer-content .m-cate-title a::after { content: '\203A'; color: #7f9da4; font-size: 20px; font-weight: 400; line-height: 1; }
-  .drawer-content .m-cate-title a:hover, .drawer-content .m-cate-title a:focus-visible { background: transparent; color: #075b64; }
-  .drawer-content .m-cate-group.has-submenu { display: block; }
-  .drawer-content .m-cate-group.has-submenu .m-sub-nav { display: block; padding: 3px 10px 9px; }
-  .drawer-content .m-cate-group.has-submenu .m-sub-nav li { margin-bottom: 0; }
-  .drawer-content .m-cate-group.has-submenu .m-sub-nav a { display: block; padding: 6px 8px; color: #62767d; font-size: 13px; text-decoration: none; }
-  .drawer-content .m-cate-group.has-submenu .m-sub-nav li:first-child a { padding-top: 6px; }
-  .drawer-content .m-cate-group.has-submenu .m-sub-nav a:hover { color: #087f83; }
-
-  main h1,
-  main h2,
-  main h3,
-  main h4,
-  main h5,
-  main h6 { font-family: var(--font-heading); }
-
-  @media (max-width: 900px) {
-    .site-header { display: none !important; }
-    .m-site-header { display: flex !important; }
-  }
   @media (min-width: 901px) {
     .m-header-contact { display: none; }
   }
@@ -543,6 +517,8 @@
 </style>
 <link rel="stylesheet" href="page-gears.css">
 <link rel="stylesheet" href="header-theme.css?v=3">
+  <link rel="stylesheet" href="mobile-menu.css?v=1">
+  <link rel="stylesheet" href="typography.css?v=1">
 </head>
 <body>
   <header class="m-site-header">
@@ -557,44 +533,19 @@
       <span class="drawer-title">전체메뉴</span>
       <button id="side-menu-close-btn" class="close-btn" aria-label="메뉴 닫기">✕</button>
     </div>
-    <div class="drawer-brand">
-      <small>DAEHYUNG SPECIAL GEAR</small>
-      <strong>정밀 가공 전문 기업</strong>
-      <span>대형 특수기어 · 정밀 선회 베어링 · CNC 가공</span>
-    </div>
     <div class="drawer-content">
       <div class="m-cate-group has-submenu">
         <div class="m-cate-title"><a href="company.html">회사소개</a></div>
-        <ul class="m-sub-nav">
-          <li><a href="greeting.html">인사말씀</a></li>
-          <li><a href="history.html">회사연혁</a></li>
-          <li><a href="company.html">회사개요</a></li>
-          <li><a href="location.html">찾아오시는 길</a></li>
-          <li><a href="process.html">제작공정</a></li>
-
-        </ul>
-      </div>
+        <ul class="m-sub-nav"><li><a href="greeting.html">인사말씀</a></li><li><a href="history.html">회사연혁</a></li><li><a href="company.html">회사개요</a></li><li><a href="location.html">찾아오시는 길</a></li><li><a href="process.html">제작공정</a></li></ul></div>
       <div class="m-cate-group has-submenu">
         <div class="m-cate-title"><a href="gear.html">제품소개</a></div>
-        <ul class="m-sub-nav">
-          <li><a href="gear.html">특수기어</a></li>
-          <li><a href="bearing.html">선회 베어링</a></li>
-          <li><a href="applications.html">적용 분야</a></li>
-        </ul>
-      </div>
+        <ul class="m-sub-nav"><li><a href="gear.html">특수기어</a></li><li><a href="bearing.html">선회 베어링</a></li><li><a href="applications.html">적용 분야</a></li></ul></div>
       <div class="m-cate-group has-submenu">
         <div class="m-cate-title"><a href="equipment.html">설비현황</a></div>
-        <ul class="m-sub-nav"><li><a href="equipment.html">보유 설비 전체</a></li>
-          <li><a href="quality.html">품질·검사</a></li>
-          </ul>
-      </div>
+        <ul class="m-sub-nav"><li><a href="equipment.html">보유 설비 전체</a></li><li><a href="quality.html">품질·검사</a></li></ul></div>
       <div class="m-cate-group has-submenu">
         <div class="m-cate-title"><a href="support-center.html">고객지원</a></div>
-        <ul class="m-sub-nav">
-          
-          <li><a href="support-center.html">고객지원</a></li>
-        </ul>
-      </div>
+        <ul class="m-sub-nav"><li><a href="support-center.html">고객지원</a></li></ul></div>
     </div>
     <div class="drawer-quick-contact">
       <small>견적 · 문의</small>
@@ -782,7 +733,7 @@
     }
 
   </script>
-  <script src="mobile-menu.js?v=2"></script>
+  <script src="mobile-menu.js?v=3"></script>
 </body>
 </html>
 

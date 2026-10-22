@@ -599,13 +599,6 @@ main h4 {
   transition: color 0.18s ease;
 }
 
-.drawer-content .m-cate-title a::after {
-  content: '\203A';
-  color: #7f9da4;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1;
-}
 
 .drawer-content .m-cate-title a:hover,
 .drawer-content .m-cate-title a:focus-visible {
