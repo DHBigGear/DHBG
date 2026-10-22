@@ -17,10 +17,7 @@
 }
 
 .site-header .header-contact {
-  border-color: #8fbec2;
-  background: #f2fbfb;
-  color: #123f45;
-  font-weight: 700;
+  display: none !important;
 }
 
 .site-header .header-contact:hover,
