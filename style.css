@@ -1,4 +1,4 @@
-﻿/* ====================================
+/* ====================================
    [1. 공통 변수 및 초기화]
 ==================================== */
 :root {
@@ -27,7 +27,7 @@ body {
   font-size: 15px;
   color: var(--ink);
   background-color: #ffffff;
-  overflow-x: hidden;
+  overflow-x: clip;
   line-height: 1.7;
 }
 

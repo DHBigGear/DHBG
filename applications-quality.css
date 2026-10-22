@@ -1,4 +1,4 @@
-/* Shared interior-page styling for Applications and Quality. */
+﻿/* Shared interior-page styling for Applications and Quality. */
 .applications-section,
 .quality-section {
   padding: 60px 24px 80px;
@@ -183,6 +183,10 @@
   padding: 23px 0;
   border-top: 1px solid #cbdcde;
   border-bottom: 1px solid #cbdcde;
+}
+
+.quality-section .inspection-stage {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .stage-number {
