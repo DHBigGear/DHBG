@@ -2,8 +2,8 @@
 :root {
   --font-body: 'Noto Sans KR', sans-serif;
   --font-heading: 'Noto Serif KR', serif;
-  --font-size-body: 15px;
-  --font-size-section-title: 30px;
+  --font-size-body: 17px;
+  --font-size-section-title: 32px;
   --font-size-page-title: 38px;
 }
 
@@ -31,6 +31,23 @@ main h6 {
   font-family: var(--font-heading) !important;
 }
 
+/* Keep content headings and reading text legible across every page. */
+main h3 {
+  font-size: 21px !important;
+  line-height: 1.5 !important;
+}
+
+main h4 {
+  font-size: 19px !important;
+  line-height: 1.5 !important;
+}
+
+main h5,
+main h6 {
+  font-size: 17px !important;
+  line-height: 1.55 !important;
+}
+
 .sub-hero-title {
   font-family: var(--font-heading) !important;
   font-size: var(--font-size-page-title) !important;
@@ -54,10 +71,30 @@ main .directions-title {
   line-height: 1.4 !important;
 }
 
+main p,
+main li,
+main .page-lead,
+main .process-description {
+  line-height: 1.8 !important;
+}
+
 @media (max-width: 768px) {
   :root {
-    --font-size-body: 14px;
-    --font-size-section-title: 26px;
+    --font-size-body: 16px;
+    --font-size-section-title: 28px;
+  }
+
+  main h3 {
+    font-size: 19px !important;
+  }
+
+  main h4 {
+    font-size: 18px !important;
+  }
+
+  main h5,
+  main h6 {
+    font-size: 16px !important;
   }
 }
 

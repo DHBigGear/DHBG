@@ -8,13 +8,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <title>적용 분야 | (주)대형특수기어</title>
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="subpage-theme.css?v=7">
+<link rel="stylesheet" href="subpage-theme.css?v=9">
 <link rel="stylesheet" href="page-gears.css">
 <link rel="stylesheet" href="header-theme.css?v=3">
 <link rel="stylesheet" href="applications-quality.css">
 <link rel="stylesheet" href="inquiry-band.css">
   <link rel="stylesheet" href="mobile-menu.css?v=1">
-  <link rel="stylesheet" href="typography.css?v=1">
+  <link rel="stylesheet" href="typography.css?v=2">
 </head>
 <body>
 
@@ -132,7 +132,7 @@
 <div class="filter-list" id="application-filters" role="group" aria-label="제품별 분야 필터"><button type="button" data-filter="all" aria-pressed="true">전체</button><button type="button" data-filter="gear" aria-pressed="false">특수기어</button><button type="button" data-filter="bearing" aria-pressed="false">선회 베어링</button></div>
 <ul class="application-list" id="application-list">
 <li class="application-row" data-product="bearing"><h3>타워크레인</h3><p>타워크레인 선회부에 적용되는 선회 베어링.</p><span class="application-type">선회 베어링</span></li>
-<li class="application-row" data-product="bearing"><h3>센터홀오가 (Center Hole Auger)</h3><p>굴착(드릴링) 작업 시 가운데가 뚫려 있는 중공축 구조를 가진 오가 스크류 볼트 및 관련 장비.</p><span class="application-type">선회 베어링</span></li>
+<li class="application-row" data-product="bearing"><h3>센터홀 오거 (Center Hole Auger)</h3><p>굴착(드릴링) 작업 시 가운데가 뚫려 있는 중공축 구조를 가진 오거 스크류 볼트 및 관련 장비.</p><span class="application-type">선회 베어링</span></li>
 <li class="application-row" data-product="bearing"><h3>포크레인</h3><p>포크레인 선회부에 적용되는 선회 베어링.</p><span class="application-type">선회 베어링</span></li>
 <li class="application-row" data-product="bearing"><h3>유압크레인</h3><p>유압크레인 선회부에 적용되는 선회 베어링.</p><span class="application-type">선회 베어링</span></li>
 <li class="application-row" data-product="bearing"><h3>펌프카</h3><p>펌프카 선회부에 적용되는 선회 베어링.</p><span class="application-type">선회 베어링</span></li>
@@ -155,7 +155,7 @@
   <li><a href="support-center.html">고객지원</a></li>
 </ul>
 </aside></div></main>
-<footer class="site-footer"><div class="footer-inner"><nav class="footer-links"><a href="index.html">홈</a><a href="company.html">회사소개</a><a href="gear.html">제품소개</a><a href="equipment.html">설비현황</a><a href="support-center.html">고객지원</a></nav><div class="footer-info">사업자등록번호 127-86-41052 <span>*</span> 대표이사 박병호 <span>*</span> 경기도 포천시 소흘읍 호국로479번길 15 / 경기도 안산시 단원구 원시로 30</div><div class="footer-copy">COPYRIGHT © (주)대형특수기어 ALL RIGHT RESERVED.</div></div></footer>
+<footer class="site-footer"><div class="footer-inner"><nav class="footer-links"><a href="index.html">홈</a><a href="company.html">회사소개</a><a href="gear.html">제품소개</a><a href="equipment.html">설비현황</a><a href="support-center.html">고객지원</a></nav><div class="footer-info">사업자등록번호 127-86-41052 <span>*</span> 대표이사 박병호 <span>*</span> 경기도 포천시 소흘읍 호국로479번길 15 / 경기도 안산시 단원구 원시로 30</div><div class="footer-copy">COPYRIGHT © (주)대형특수기어 ALL RIGHTS RESERVED.</div></div></footer>
 <script src="mobile-menu.js?v=3"></script><script>
 document.getElementById('application-filters').addEventListener('click',function(event){const button=event.target.closest('button[data-filter]');if(!button)return;this.querySelectorAll('button').forEach(function(item){item.setAttribute('aria-pressed',String(item===button))});const filter=button.dataset.filter;document.querySelectorAll('.application-row').forEach(function(row){row.hidden=filter!=='all'&&row.dataset.product!==filter})});
 </script>

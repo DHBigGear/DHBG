@@ -119,6 +119,21 @@ aside.sticky-edge-sidebar {
   font-size: 13.5px;
 }
 
+@media (min-width: 1025px) {
+  .sidebar-category-title,
+  .sidebar-menu li a {
+    font-size: 14px;
+  }
+
+  .sidebar-quick-contact .qc-title {
+    font-size: 12px;
+  }
+
+  .sidebar-quick-contact .qc-sub {
+    font-size: 14px;
+  }
+}
+
 aside.sticky-edge-sidebar {
   display: flex;
   flex-direction: column;
@@ -644,7 +659,7 @@ main h4 {
 .greeting-text .subtitle {
   color: var(--intro-accent) !important;
   font-family: var(--font-body) !important;
-  font-size: 12px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   letter-spacing: .14em !important;
   line-height: 1.4 !important;
@@ -674,7 +689,7 @@ main h4 {
 .greeting-body p {
   color: var(--intro-muted) !important;
   font-family: var(--font-body) !important;
-  font-size: 15px !important;
+  font-size: 17px !important;
   line-height: 1.75 !important;
 }
 
@@ -696,6 +711,6 @@ main h4 {
   .sec-intro > p,
   .contact-intro p,
   .greeting-body p {
-    font-size: 14px !important;
+    font-size: 16px !important;
   }
 }
