@@ -48,6 +48,29 @@ function initPageMotion() {
 document.addEventListener('DOMContentLoaded', () => {
   initPageMotion();
 
+  const menuDrawer = document.getElementById('side-menu-drawer');
+  if (menuDrawer) {
+    const menuContent = menuDrawer.querySelector('.drawer-content');
+    if (menuContent && !menuDrawer.querySelector('.drawer-brand')) {
+      const brand = document.createElement('div');
+      brand.className = 'drawer-brand';
+      brand.innerHTML = '<small>DAEHYUNG SPECIAL GEAR</small><strong>정밀 가공 전문 기업</strong><span>대형 특수기어 · 정밀 선회 베어링 · CNC 가공</span>';
+      menuContent.before(brand);
+    }
+
+    const quickContact = menuDrawer.querySelector('.drawer-quick-contact');
+    if (quickContact) {
+      let label = quickContact.querySelector('small');
+      if (!label) {
+        label = document.createElement('small');
+        label.textContent = '견적 · 문의';
+        quickContact.prepend(label);
+      }
+      const contactLink = quickContact.querySelector('a');
+      if (contactLink) contactLink.textContent = '문의하기';
+    }
+  }
+
   if (window.__mobileMenuInitialized) return;
   window.__mobileMenuInitialized = true;
 

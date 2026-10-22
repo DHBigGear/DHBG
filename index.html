@@ -225,13 +225,18 @@
   .drawer-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: #111518; color: #ffffff; }
   .drawer-title { font-weight: 700; font-size: 16px; }
   .close-btn { color: #ffffff; background: none; border: none; font-size: 20px; cursor: pointer; }
+  .drawer-brand { padding: 14px 20px; border-bottom: 1px solid var(--line); }
+  .drawer-brand small, .drawer-quick-contact small { display: block; color: #087f83; font-size: 10px; font-weight: 700; letter-spacing: .08em; }
+  .drawer-brand strong { display: block; margin-top: 6px; color: #22343e; font-size: 17px; }
+  .drawer-brand span { display: block; margin-top: 6px; color: #62767d; font-size: 12px; line-height: 1.5; }
   .drawer-content { flex: 1; padding: 20px; overflow-y: auto; }
   .m-cate-group { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #f1f5f9; }
   .m-cate-title a { font-weight: 700; color: var(--signal); text-decoration: none; }
   .m-sub-nav { list-style: none; padding: 10px 0 0 10px; margin: 0; }
   .m-sub-nav li { margin-bottom: 8px; }
   .m-sub-nav a { color: var(--muted); text-decoration: none; font-size: 13px; }
-  .drawer-quick-contact { padding: 16px 20px; background: #faf9f6; border-top: 1px solid var(--line); }
+  .drawer-quick-contact { padding: 16px 20px; background: #edf6f7; border-top: 1px solid var(--line); }
+  .drawer-quick-contact small { margin-bottom: 8px; }
   .drawer-quick-contact a { display: block; padding: 12px; background: var(--signal); color: #ffffff; font-size: 14px; font-weight: 700; text-align: center; text-decoration: none; }
 
   /* 모바일 드로어 메뉴를 서브페이지와 같은 카드형 스타일로 통일 */
@@ -240,6 +245,7 @@
     grid-template-columns: minmax(0, 1fr);
     align-content: start;
     gap: 6px;
+    padding: 20px 20px 14px;
   }
   .drawer-content .m-cate-group {
     display: block;
@@ -252,15 +258,16 @@
   .drawer-content .m-cate-title a {
     display: flex;
     width: 100%;
-    min-height: 52px;
+    min-height: 34px;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 14px;
-    border: 1px solid #e0eaed;
-    border-radius: 5px;
-    background: #f7fafb;
+    padding: 5px 4px;
+    border: 0;
+    border-bottom: 1px solid #dce6e8;
+    border-radius: 0;
+    background: transparent;
     color: #22343e;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     line-height: 1.35;
   }
@@ -273,15 +280,14 @@
   }
   .drawer-content .m-cate-group.has-submenu .m-sub-nav {
     display: block;
-    padding: 4px 12px 8px;
+    padding: 3px 10px 9px;
   }
   .drawer-content .m-cate-group.has-submenu .m-sub-nav a {
     display: block;
-    padding: 8px 10px;
+    padding: 6px 8px;
     color: #62767d;
     font-size: 13px;
   }
-  .drawer-quick-contact { background: #edf6f7; }
   .drawer-quick-contact a { box-shadow: 0 4px 10px rgba(8, 125, 136, .22); }
 
   @media (max-width: 1024px) {
@@ -463,17 +469,17 @@
   .header-contact { flex: 0 0 auto; margin-left: 24px; padding: 10px 16px; border: 1px solid rgba(88, 217, 211, .6); color: #12434a; font-size: 14px; font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
   .header-contact::before { content: '문의 '; color: #718187; font-size: 11px; font-weight: 400; }
   .header-contact:hover, .m-header-contact:hover { color: #00898b; }
-  .drawer-content { display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 6px; }
+  .drawer-content { display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 6px; padding: 20px 20px 14px; }
   .drawer-content .m-cate-group { display: block; min-width: 0; margin: 0; padding: 0; border: 0; }
   .drawer-content .m-cate-title { display: flex; }
-  .drawer-content .m-cate-title a { display: flex; width: 100%; min-height: 52px; align-items: center; justify-content: space-between; padding: 10px 14px; border: 1px solid #e0eaed; border-radius: 5px; background: #f7fafb; color: #22343e; font-size: 15px; font-weight: 700; line-height: 1.35; text-decoration: none; transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease; }
+  .drawer-content .m-cate-title a { display: flex; width: 100%; min-height: 34px; align-items: center; justify-content: space-between; padding: 5px 4px; border: 0; border-bottom: 1px solid #dce6e8; border-radius: 0; background: transparent; color: #22343e; font-size: 14px; font-weight: 700; line-height: 1.35; text-decoration: none; transition: color 0.18s ease; }
   .drawer-content .m-cate-title a::after { content: '\203A'; color: #7f9da4; font-size: 20px; font-weight: 400; line-height: 1; }
-  .drawer-content .m-cate-title a:hover, .drawer-content .m-cate-title a:focus-visible { border-color: #8bcbd0; background: #eaf6f7; color: #075b64; }
+  .drawer-content .m-cate-title a:hover, .drawer-content .m-cate-title a:focus-visible { background: transparent; color: #075b64; }
   .drawer-content .m-cate-group.has-submenu { display: block; }
-  .drawer-content .m-cate-group.has-submenu .m-sub-nav { display: block; padding: 4px 12px 4px 0; }
+  .drawer-content .m-cate-group.has-submenu .m-sub-nav { display: block; padding: 3px 10px 9px; }
   .drawer-content .m-cate-group.has-submenu .m-sub-nav li { margin-bottom: 0; }
-  .drawer-content .m-cate-group.has-submenu .m-sub-nav a { display: block; padding: 8px 10px 4px; color: #62767d; font-size: 13px; text-decoration: none; }
-  .drawer-content .m-cate-group.has-submenu .m-sub-nav li:first-child a { padding-top: 10px; }
+  .drawer-content .m-cate-group.has-submenu .m-sub-nav a { display: block; padding: 6px 8px; color: #62767d; font-size: 13px; text-decoration: none; }
+  .drawer-content .m-cate-group.has-submenu .m-sub-nav li:first-child a { padding-top: 6px; }
   .drawer-content .m-cate-group.has-submenu .m-sub-nav a:hover { color: #087f83; }
 
   main h1,
@@ -551,6 +557,11 @@
       <span class="drawer-title">전체메뉴</span>
       <button id="side-menu-close-btn" class="close-btn" aria-label="메뉴 닫기">✕</button>
     </div>
+    <div class="drawer-brand">
+      <small>DAEHYUNG SPECIAL GEAR</small>
+      <strong>정밀 가공 전문 기업</strong>
+      <span>대형 특수기어 · 정밀 선회 베어링 · CNC 가공</span>
+    </div>
     <div class="drawer-content">
       <div class="m-cate-group has-submenu">
         <div class="m-cate-title"><a href="company.html">회사소개</a></div>
@@ -586,7 +597,8 @@
       </div>
     </div>
     <div class="drawer-quick-contact">
-      <a href="support-center.html">✉ 빠른 견적 · 문의</a>
+      <small>견적 · 문의</small>
+      <a href="support-center.html">문의하기</a>
     </div>
   </aside>
 
@@ -670,9 +682,7 @@
         <div class="hero-stats" aria-label="주요 가공 사양">
           <!-- // Ø3000은 OM CNC 터닝 가공 범위 표기 기준이며, 최종 사양 확인 중 -->
           <div class="hero-stat"><strong>Ø3000</strong><span>최대 가공 직경 · 추가 업데이트 중</span></div>
-          <div class="hero-stat"><strong>M20 / 2000</strong><span>최대 치절 규격</span></div>
-          <div class="hero-stat"><strong>문의</strong><span>기어 검사 가능 직경</span></div>
-          <div class="hero-stat"><strong>30대</strong><span>보유 장비 · 추가 업데이트 중</span></div>
+          <div class="hero-stat"><strong>36대</strong><span>보유 장비 · 추가 업데이트 중</span></div>
           <div class="hero-stat"><strong>2곳</strong><span>생산 거점 (포천·안산)</span></div>
         </div>
       </div>
@@ -772,7 +782,7 @@
     }
 
   </script>
-  <script src="mobile-menu.js"></script>
+  <script src="mobile-menu.js?v=2"></script>
 </body>
 </html>
 
