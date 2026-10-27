@@ -1,0 +1,54 @@
+[공통 규칙]
+각 페이지 <head> 안, 기존 <title> 바로 아래에 아래 5줄을 넣는다. (title은 지금 그대로 유지)
+{파일명}, {설명}은 아래 페이지별 표에서 가져온다. 홈(index.html)의 canonical 주소는 https://dehyoung.com/ 로 한다.
+
+<meta name="description" content="{설명}">
+<link rel="canonical" href="https://dehyoung.com/{파일명}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{해당 페이지 title}">
+<meta property="og:description" content="{설명}">
+<meta property="og:image" content="https://dehyoung.com/image/factory_front.jpg">
+<meta property="og:url" content="https://dehyoung.com/{파일명}">
+
+[페이지별 설명] (한 줄 80자 안팎, 검색 결과에 그대로 노출됨)
+
+index.html
+포천·안산 두 공장에서 대형 특수기어, 선회 베어링, CNC 정밀 가공을 제작하는 (주)대형특수기어. 1991년부터 이어온 정밀 가공 전문 기업입니다.
+
+greeting.html
+(주)대형특수기어의 인사말씀입니다. 품질과 신용을 최우선으로 하는 정밀 가공 기업을 소개합니다.
+
+history.html
+1991년 서울 성동구 설립부터 포천 공장 완공, 2026년 안산 시화공단 공장 확장까지 (주)대형특수기어의 연혁입니다.
+
+company.html
+(주)대형특수기어 회사개요. 1991년 창사, 포천과 안산 두 공장에서 대형 특수기어와 정밀 부품을 제작합니다.
+
+location.html
+(주)대형특수기어 포천 공장(소흘읍 호국로479번길 15)과 안산 시화공단 공장(단원구 원시로 30) 위치 안내입니다.
+
+process.html
+상담·도면 접수부터 가공, 열처리, 검사, 납품까지 (주)대형특수기어의 제작 공정 8단계를 안내합니다.
+
+gear.html
+고속 정밀 연마 기어, 스파이럴 베벨, 대형 링 기어, 헬리컬·스퍼 기어, 산업용 감속기를 제작하는 (주)대형특수기어의 특수기어 제품 소개입니다.
+
+bearing.html
+타워크레인, 포크레인, 유압크레인, 펌프카 등 중장비용 외치형·내치형 선회 베어링을 제작하는 (주)대형특수기어의 제품 소개입니다.
+
+applications.html
+선회 베어링과 특수기어가 쓰이는 분야(타워크레인, 센터홀오가, 포크레인, 유압크레인, 펌프카, 플랜트, 제철, 건설 기계)를 안내합니다.
+
+equipment.html
+기어 연삭기, 호빙기, CNC 터닝, 밀링, 검사 장비 등 (주)대형특수기어의 보유 설비 현황입니다.
+
+quality.html
+Klingelnberg 기어 테스터기(Ø1200)와 각종 측정 장비 등 (주)대형특수기어의 기어 검사·품질 관리 설비를 안내합니다.
+
+support-center.html
+(주)대형특수기어 전화(031-541-1248)와 메일(dehyoung@naver.com) 문의 안내입니다. 평일 08:30~17:30 상담 가능합니다.
+
+[확인할 것]
+- greeting.html은 내용을 확인하지 못해 무난하게 썼으므로 실제 내용에 맞게 고치기
+- og:image는 공장 전경 사진(factory_front.jpg)으로 정했으니, 공유용 대표 이미지가 따로 있으면 그 주소로 교체하기
+- 이미 description이나 og 태그가 들어 있는 페이지는 중복되지 않게 기존 것을 교체하기
