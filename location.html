@@ -834,7 +834,9 @@
                 <h3 id="pocheon-heading">포천 공장</h3>
           <p class="directions-address">경기도 포천시 소흘읍 호국로479번길 15</p>
                 <div class="directions-actions">
-                  <a class="directions-button kakao-map-button" href="https://map.kakao.com/link/search/%ED%8F%AC%EC%B2%9C%EC%8B%9C%20%EC%86%8C%ED%9D%98%EC%9D%8D%20%ED%98%B8%EA%B5%AD%EB%A1%9C479%EB%B2%88%EA%B8%B8%2015" target="_blank" rel="noopener noreferrer">카카오맵에서 위치 확인 ↗</a>
+                  <a class="directions-button kakao-map-button" href="https://map.kakao.com/link/search/%ED%8F%AC%EC%B2%9C%EC%8B%9C%20%EC%86%8C%ED%9D%98%EC%9D%8D%20%ED%98%B8%EA%B5%AD%EB%A1%9C479%EB%B2%88%EA%B8%B8%2015" target="_blank" rel="noopener noreferrer">카카오맵 ↗</a>
+                  <a class="directions-button naver-map-button" href="https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%8F%AC%EC%B2%9C%EC%8B%9C%20%EC%86%8C%ED%9D%98%EC%9D%8D%20%ED%98%B8%EA%B5%AD%EB%A1%9C479%EB%B2%88%EA%B8%B8%2015" target="_blank" rel="noopener noreferrer">네이버 지도 ↗</a>
+                  <button class="directions-button copy-address-button" type="button" data-copy-address="경기도 포천시 소흘읍 호국로479번길 15">주소 복사 📋</button>
                 </div>
               </div>
             </article>
@@ -847,7 +849,9 @@
                 <h3 id="ansan-heading">안산 공장 <small>(시화공단)</small></h3>
                 <p class="directions-address">경기도 안산시 단원구 원시로 30</p>
                 <div class="directions-actions">
-                  <a class="directions-button kakao-map-button" href="https://map.kakao.com/link/search/%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%8B%A8%EC%9B%90%EA%B5%AC%20%EC%9B%90%EC%8B%9C%EB%A1%9C%2030" target="_blank" rel="noopener noreferrer">카카오맵에서 위치 확인 ↗</a>
+                  <a class="directions-button kakao-map-button" href="https://map.kakao.com/link/search/%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%8B%A8%EC%9B%90%EA%B5%AC%20%EC%9B%90%EC%8B%9C%EB%A1%9C%2030" target="_blank" rel="noopener noreferrer">카카오맵 ↗</a>
+                  <a class="directions-button naver-map-button" href="https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%8B%A8%EC%9B%90%EA%B5%AC%20%EC%9B%90%EC%8B%9C%EB%A1%9C%2030" target="_blank" rel="noopener noreferrer">네이버 지도 ↗</a>
+                  <button class="directions-button copy-address-button" type="button" data-copy-address="경기도 안산시 단원구 원시로 30">주소 복사 📋</button>
                 </div>
               </div>
             </article>
@@ -882,13 +886,36 @@
     </div>
   </footer>
 
+  <script>
+    document.querySelectorAll('[data-copy-address]').forEach(button => {
+      button.addEventListener('click', async () => {
+        const address = button.dataset.copyAddress;
+        try {
+          await navigator.clipboard.writeText(address);
+        } catch {
+          const temp = document.createElement('textarea');
+          temp.value = address;
+          temp.style.position = 'fixed';
+          temp.style.opacity = '0';
+          document.body.append(temp);
+          temp.select();
+          document.execCommand('copy');
+          temp.remove();
+        }
+        const originalText = button.textContent;
+        button.textContent = '복사 완료 ✓';
+        window.setTimeout(() => {
+          button.textContent = originalText;
+        }, 1800);
+      });
+    });
+  </script>
+
   <!-- 모바일 메뉴 제어 스크립트 -->
   <script src="mobile-menu.js?v=3"></script>
 
 </body>
 </html>
-
-
 
 
 

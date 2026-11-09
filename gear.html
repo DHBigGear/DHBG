@@ -530,6 +530,15 @@
     display: block;
   }
 
+  .gear-feature-gallery .gallery-card-img {
+    height: 380px;
+    background-color: #e8f0ea;
+  }
+
+  .gear-feature-gallery .gallery-card-img img {
+    object-fit: contain;
+  }
+
   .gallery-card-body {
     padding: 20px 24px;
   }
@@ -786,6 +795,9 @@
     .gallery-card-img {
       height: 240px;
     }
+    .gear-feature-gallery .gallery-card-img {
+      height: 320px;
+    }
   }
 
   @media (max-width: 768px) {
@@ -798,6 +810,7 @@
 <link rel="stylesheet" href="page-motion.css">
 <link rel="stylesheet" href="page-gears.css">
 <link rel="stylesheet" href="header-theme.css?v=3">
+  <link rel="stylesheet" href="inquiry-band.css">
   <link rel="stylesheet" href="mobile-menu.css?v=1">
   <link rel="stylesheet" href="typography.css?v=2">
 </head>
@@ -904,7 +917,7 @@
   <!-- 서브 히어로 배너 -->
   <section class="sub-hero">
     <div class="sub-hero-bg">
-      <img src="./image/gear1.png" alt="(주)대형특수기어 공장 전경">
+      <img src="./image/gear1.png" alt="스파이럴 베벨 기어와 피니언 샤프트">
     </div>
     <div class="sub-hero-overlay"></div>
     <div class="sub-hero-content">
@@ -922,7 +935,7 @@
       <div class="main-container">
         <div class="sec-intro">
           <span class="sub-tag">PRECISION GEAR MANUFACTURING</span>
-          <h2>고정밀 연마 기술과 엄격한 품질의 산업용 기어</h2>
+          <h2>정밀 치형 연마와 엄격한 품질 관리로 완성하는 산업용 기어</h2>
         </div>
 
         <!-- 1번 이미지: 대표 정밀 기어 세트 -->
@@ -934,14 +947,57 @@
             <h3>고속 정밀 연마 기어</h3>
             <div class="subtitle">Precision Ground Gear Series</div>
             <p>
-              정밀 가공 및 치형 연마 기술을 적용하여 고속 회전 시 발생하는 진동과 소음을 줄였습니다. 
-              다양한 산업 현장의 내구성과 신뢰성을 높여줍니다.
+              정밀 가공과 치형 연마를 통해 고속 회전 시 진동과 소음을 낮추고,
+              다양한 산업 현장에 필요한 내구성과 신뢰성을 제공합니다.
             </p>
             <ul class="feature-list">
-              <li>저소음, 고속 정밀 연마 기어 생산</li>
-              <li>산업용 감속기 및 산업용 특수기어 맞춤 제작</li>
-              <li>고하중·고내구성 열처리 및 정밀 치형 가공</li>
+              <li>저소음·고속 운전에 적합한 정밀 연마 기어 제작</li>
+              <li>산업용 감속기 및 특수기어 맞춤 제작</li>
+              <li>고하중 환경에 대응하는 열처리 및 정밀 치형 가공</li>
             </ul>
+          </div>
+        </div>
+
+        <!-- 더블 헬리컬 기어 및 기어박스 제작 과정 -->
+        <div class="detail-gallery-grid gear-feature-gallery">
+          <div class="gallery-card">
+            <div class="gallery-card-img">
+              <img src="./image/machine/double_helical_gear01.png" alt="축에 조립된 더블 헬리컬 기어">
+            </div>
+            <div class="gallery-card-body">
+              <h4>정밀 더블 헬리컬 기어</h4>
+              <p>서로 반대 방향의 헬리컬 치형이 축방향 하중을 상쇄해 고하중 구동에 적합합니다.</p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-card-img">
+              <img src="./image/machine/double_helical_gear02.png" alt="더블 헬리컬 기어 치형 맞물림 상세">
+            </div>
+            <div class="gallery-card-body">
+              <h4>정밀 더블 헬리컬 기어 맞물림</h4>
+              <p>양방향 헬리컬 치형이 정밀하게 맞물려 부드럽고 안정적인 동력 전달을 돕습니다.</p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-card-img">
+              <img src="./image/machine/gearbox02.png" alt="기어박스 내부 기어 조립 과정">
+            </div>
+            <div class="gallery-card-body">
+              <h4>1. 기어박스 내부 기어 조립</h4>
+              <p>기어와 축 등 주요 부품을 하우징에 배치하고, 조립 순서에 맞춰 정밀하게 결합합니다.</p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-card-img">
+              <img src="./image/machine/gearbox01.png" alt="기어박스 조립 완료 후 내부 구성">
+            </div>
+            <div class="gallery-card-body">
+              <h4>2. 기어박스 조립 및 맞물림 점검</h4>
+              <p>조립된 기어의 맞물림과 회전 상태를 확인해 기어박스의 원활한 구동을 점검합니다.</p>
+            </div>
           </div>
         </div>
 
@@ -955,7 +1011,7 @@
             </div>
             <div class="gallery-card-body">
               <h4>스파이럴 베벨 &amp; 피니언 기어 세트</h4>
-              <p>직교 축 동력 전달을 위한 정밀 스파이럴 베벨 기어 및 맞춤형 스플라인 샤프트 가공품</p>
+              <p>직교하는 두 축 사이의 동력 전달에 적합한 스파이럴 베벨 기어와 맞춤형 스플라인 샤프트입니다.</p>
             </div>
           </div>
 
@@ -965,8 +1021,8 @@
               <img src="./image/machine/gear03.jpg" alt="대형 링 기어">
             </div>
             <div class="gallery-card-body">
-              <h4>대형 내치/외치 링 기어</h4>
-              <p>산업용 회전체 및 대형 턴테이블 구동을 위한 대구경 정밀 링 기어</p>
+              <h4>대형 내치·외치 링 기어</h4>
+              <p>산업용 회전체와 대형 턴테이블 구동에 사용되는 대구경 정밀 링 기어입니다.</p>
             </div>
           </div>
 
@@ -977,7 +1033,7 @@
             </div>
             <div class="gallery-card-body">
               <h4>헬리컬 &amp; 스퍼 기어 시리즈</h4>
-              <p>우수한 물림율로 동력 전달 효율을 극대화한 다양한 규격의 헬리컬 기어 제품군</p>
+              <p>헬리컬·스퍼 기어를 다양한 규격으로 제작해 용도에 맞는 동력 전달을 지원합니다.</p>
             </div>
           </div>
 
@@ -987,8 +1043,8 @@
               <img src="./image/machine/gear05.jpg" alt="대형 기어 가공 설비 작업 모습">
             </div>
             <div class="gallery-card-body">
-              <h4>대형 기어 절삭 및 가공 공정</h4>
-              <p>최첨단 호빙기 및 치형 연마 설비를 통한 대형 특수 기어 가공 현장</p>
+              <h4>대형 기어 호빙 가공 현장</h4>
+              <p>호빙과 치형 연마를 통해 대형 특수기어를 정밀하게 가공합니다.</p>
             </div>
           </div>
 
@@ -1003,8 +1059,8 @@
             <h3>정밀 연마 헬리컬 기어 &amp; 샤프트</h3>
             <div class="subtitle">Helical Gear &amp; Pinion Shaft Assembly</div>
             <p>
-              내마모성이 좋은 합금강 소재를 사용하고, 정밀 열처리 후 연마 가공하여 치형 정밀도와 
-	      내구성을 확보합니다.
+              내마모성이 우수한 합금강을 사용하고, 정밀 열처리와 연마 가공을 거쳐 높은 치형 정밀도와
+              내구성을 확보합니다.
             </p>
           </div>
         </div>
@@ -1015,14 +1071,24 @@
             <img src="./image/machine/gear07.jpg" alt="산업용 정밀 감속기 완제품">
           </div>
           <div class="reducer-info">
-            <h3>산업용 감속기 완제품 (Industrial Gearbox)</h3>
+            <h3>산업용 감속기 완제품</h3>
             <p>
-              각종 플랜트 및 제철, 건설 기계 등에 적용되는 산업용 감속기입니다. 
-              치형 맞물림 설계와 견고한 케이싱 조립으로 제작합니다.
+              플랜트·제철 설비·건설기계 등에 적용되는 산업용 감속기입니다.
+              정밀한 기어 맞물림 설계와 견고한 케이싱 조립으로 안정적인 동력 전달을 구현합니다.
             </p>
           </div>
         </div>
 
+      <section class="page-inquiry-band inquiry-band" aria-label="견적 및 문의">
+        <div>
+          <h3>편하게 문의 주세요. <small>(도면이 있으면 더 빠르게 안내드릴 수 있어요)</small></h3>
+          <p>평일 08:30 ~ 17:30 (주말·공휴일 휴무)</p>
+        </div>
+        <div class="company-contact-actions">
+          <a class="inquiry-primary" href="support-center.html">견적 · 문의</a>
+          <a class="inquiry-secondary" href="tel:0315411248">031-541-1248</a>
+        </div>
+      </section>
       </div>
 
       <!-- PC 전용 120px 슬림 사이드바 -->
@@ -1064,9 +1130,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
