@@ -368,8 +368,10 @@
   }
 
   .quality-section .quality-inspection-visual {
-    width: 70%;
+    width: 100%;
     justify-self: center;
+    padding: 6px;
+    background: #fff;
   }
 
   .quality-section .stage-copy {
@@ -379,7 +381,9 @@
   }
 
   .quality-inspection-visual img {
-    aspect-ratio: 1.35;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
   }
 
   .stage-number {
