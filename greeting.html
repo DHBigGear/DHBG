@@ -855,6 +855,24 @@
   <!-- 모바일 메뉴 제어 스크립트 -->
   <script src="mobile-menu.js?v=3"></script>
 
+<script>
+  // 내 PC(file://)가 아닌 실제 웹서버(http/https)에서 열렸을 때만 작동
+  if (window.location.protocol !== 'file:') {
+    // 1. 현재 주소창에 .html이 붙어 있다면 깔끔하게 숨김
+    if (window.location.pathname.endsWith('.html')) {
+      const cleanPath = window.location.pathname.slice(0, -5);
+      window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+    }
+
+    // 2. 페이지 내 모든 .html 링크를 확장자 없는 깔끔한 링크로 자동 변환
+    document.querySelectorAll('a[href$=".html"]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('http')) {
+        link.setAttribute('href', href.slice(0, -5));
+      }
+    });
+  }
+</script>
 </body>
 </html>
 
