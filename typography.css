@@ -22,6 +22,10 @@ main .process-description {
   line-height: 1.75 !important;
 }
 
+body .page-inquiry-band p {
+  font-size: var(--font-size-body) !important;
+}
+
 main h1,
 main h2,
 main h3,
